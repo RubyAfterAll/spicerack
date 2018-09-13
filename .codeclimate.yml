@@ -1,0 +1,11 @@
+plugins:
+  rubocop:
+    enabled: true
+
+exclude_patterns:
+  - "bin/"
+  - "**.gemspec"
+
+ratings:
+  paths:
+    - "**.rb"
