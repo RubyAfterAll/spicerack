@@ -3,7 +3,7 @@ plugins:
     enabled: true
 
 exclude_patterns:
-  - "bin/"
+  - "**/bin/"
   - "**.gemspec"
 
 ratings:
