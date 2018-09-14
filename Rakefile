@@ -1,14 +1,8 @@
-require "bundler/gem_tasks"
+# frozen_string_literal: true
 
-REPO_GEMS = %w[around_the_world]
+require "bundler/gem_tasks"
+require "rspec/core/rake_task"
+
+RSpec::Core::RakeTask.new(:spec)
 
 task default: :spec
-
-desc "Run spec task for all projects"
-task :spec do
-  errors = []
-  REPO_GEMS.each do |repo_gem|
-    system(%(cd #{repo_gem} && #{$0} spec)) || errors << repo_gem
-  end
-  fail("Errors in #{errors.join(', ')}") unless errors.empty?
-end
