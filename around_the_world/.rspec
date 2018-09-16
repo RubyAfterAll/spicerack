@@ -2,4 +2,3 @@
 --color
 --require spec_helper
 --pattern "{/**/}spec/*_spec.rb"
---exclude-pattern "**/vendor/**/*_spec.rb"
