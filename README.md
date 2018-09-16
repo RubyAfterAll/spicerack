@@ -44,6 +44,7 @@ bundle gem GEM
 cd GEM
 rm -rf .git
 rm .travis.yml
+rm .gitignore
 ```
 
 ## License
