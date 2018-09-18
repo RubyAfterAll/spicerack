@@ -50,10 +50,11 @@ rm .gitignore
 chmod 0664 GEM/lib/GEM/version.rb
 ```
 
-Also:
+Also, be sure to:
 
-- Edit the README.md to add badges, update usage docs, fix contributor space, etc.
-- Add the name to the `SPICERACK_GEMS` const in `./tasks/spicerack.rb`
+- Edit the README.md to add badges, update usage docs, fix contributor space, etc
+- Add the name to the `SPICERACK_GEMS` const in `Rakefile`
+- Add a require for your new gem into `lib/spicerack.rb`
 
 ### Release
 
