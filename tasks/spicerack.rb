@@ -12,7 +12,7 @@ SPICERACK_GEMS.each do |gem|
       file_text = File.read(file_path)
 
       file_text.gsub!(%r{^(\s*)VERSION(\s*)= .*?$}, "\\1VERSION = \"#{version}\"")
-      raise "Could not insert VERSION in #{file_path}" unless $1
+      raise StandardError, "Could not insert VERSION in #{file_path}" unless $1
 
       File.open(file_path, "w") { |f| f.write file_text }
     end
