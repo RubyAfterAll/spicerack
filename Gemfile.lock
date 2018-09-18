@@ -4,6 +4,8 @@ PATH
     around_the_world (0.0.0c)
     spicerack (0.0.0c)
       around_the_world (= 0.0.0c)
+      technologic (= 0.0.0c)
+    technologic (0.1.0)
 
 GEM
   remote: https://rubygems.org/

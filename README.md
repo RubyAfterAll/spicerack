@@ -34,7 +34,13 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/Freshly/spicerack.
+This Open Source is supported by [Freshly](https://freshly.com), a company committed to quality code and delicious food.
+
+We're basically [always hiring](https://jobs.lever.co/freshly).
+
+Come join us in our New York City or Phoenix offices and write some awesome software!
+
+Community support is always appreciated! Bug reports and pull requests are welcome on [GitHub](https://github.com/Freshly/spicerack).
 
 ### Add
 
@@ -47,15 +53,35 @@ cd GEM
 rm -rf .git
 rm .travis.yml
 rm .gitignore
-chmod 0664 GEM/lib/GEM/version.rb
+chmod 0664 lib/GEM/version.rb
 ```
 
-Also, be sure to:
+Here's a checklist of some other tasks (see another gem as reference):
 
-- Edit the README.md to add badges, update usage docs, fix contributor space, etc
-- Add the name to the `SPICERACK_GEMS` const in `Rakefile`
+⚠️ Reminder: Add the magic comment to the top of all the generated ruby files!
+
+- Delete `Gemfile`
+- Edit `lib/GEM/version.rb` to add the comment line
+- Edit `README.md` to add badges and update contributor
+- Edit `Rakefile` to add GEM to the `SPICERACK_GEMS` constant
+- Remove the failing spec in `spec/GEM_spec.rb`
+- Edit `spec/spec_helper.rb` to use the shared spec helper
+- Edit `GEM.gemspec` and clean up the boilerplate
+
+Then in the base directory:
+
 - Add a require for your new gem into `lib/spicerack.rb`
-- Update the `GEM.gemspec` file
+- Add the new gem into `spicerack.gemspec`
+- Increment the version in `SPICERACK_VERSION`
+- Run `rake spicerack:update_all_versions` to the correct version
+
+Next, push the code up and open a new pull request. 
+
+Once that gets merged into master, run:
+
+- Run `rake spicerack:release_all` to claim the new gem name with the empty build
+
+🚨 Don't forget to run `bundle` so the `Gemfile.lock` gets updated!!
 
 ### Release
 
@@ -71,6 +97,18 @@ rake spicerack:release_all
 ```
 
 This will build and release all dependent gems at the same time.
+
+### Versions
+
+Spicerack uses `Major.Minor.Patch` version control.
+
+Versions should be increased according to the following rules:
+
+- *Major Version* for non-backwards compatible changes.
+- *Minor Version* for new gems or important features.
+- *Patch Version* for bug fixes, enhancements, and optimizations.
+
+💁‍ Please remember to keep the `CHANGELOG` up to date!
 
 ## License
 
