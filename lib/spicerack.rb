@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
-require_relative "../../shared/spec_helper"
+require "spicerack/version"
 
 require "around_the_world"
+
+module Spicerack; end

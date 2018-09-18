@@ -11,7 +11,10 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://www.freshly.com/"
   spec.license       = "MIT"
 
-  spec.files         = ["README.md"]
+  spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]
+  spec.require_paths = "lib"
+
+  spec.add_dependency "around_the_world", version
 
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"

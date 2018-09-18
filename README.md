@@ -36,6 +36,8 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/Freshly/spicerack.
 
+### Add
+
 To add a new gem to the spicerack:
 
 ```
@@ -45,7 +47,30 @@ cd GEM
 rm -rf .git
 rm .travis.yml
 rm .gitignore
+chmod 0664 GEM/lib/GEM/version.rb
 ```
+
+Also, be sure to:
+
+- Edit the README.md to add badges, update usage docs, fix contributor space, etc
+- Add the name to the `SPICERACK_GEMS` const in `Rakefile`
+- Add a require for your new gem into `lib/spicerack.rb`
+- Update the `GEM.gemspec` file
+
+### Release
+
+This is a monorepo which contains several gems designed to build and release together.
+
+To perform release, set the new canonical version in the `SPICERACK_VERSION` file then run the task.
+
+```ruby
+echo "0.1.0" > SPICERACK_VERSION
+rake spicerack:update_all_versions
+git commit -am "Updating to version x.y.z"
+rake spicerack:release_all
+```
+
+This will build and release all dependent gems at the same time.
 
 ## License
 
