@@ -60,6 +60,8 @@ To perform release, set the new canonical version in the `SPICERACK_VERSION` fil
 
 ```ruby
 echo "0.1.0" > SPICERACK_VERSION
+rake spicerack:update_all_versions
+git commit -am "Updating to version x.y.z"
 rake spicerack:release_all
 ```
 
