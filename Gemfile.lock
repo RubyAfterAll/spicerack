@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     around_the_world (0.0.0a)
-    spicerack (0.0.0a)
-      around_the_world (= 0.0.0a)
+    spicerack (0.0.0b)
+      around_the_world (= 0.0.0b)
 
 GEM
   remote: https://rubygems.org/

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module AroundTheWorld
+module Spicerack
   # This constant is managed by spicerack
-  VERSION = "0.0.0b"
+  VERSION = "0.0.0a"
 end
