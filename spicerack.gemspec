@@ -11,7 +11,8 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://www.freshly.com/"
   spec.license       = "MIT"
 
-  spec.files         = ["README.md"]
+  spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]
+  spec.require_paths = "lib"
 
   spec.add_dependency "around_the_world", version
 

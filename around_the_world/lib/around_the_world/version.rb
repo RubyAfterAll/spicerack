@@ -2,5 +2,5 @@
 
 module AroundTheWorld
   # This constant is managed by spicerack
-  VERSION = "0.0.0b"
+  VERSION = "0.0.0c"
 end

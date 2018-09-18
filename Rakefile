@@ -6,10 +6,11 @@ require "rspec/core/rake_task"
 require_relative "shared/rakefile"
 
 SPICERACK_GEMS = %w[around_the_world].freeze
+ALL_GEMS = %w[spicerack] + SPICERACK_GEMS
 
 version = File.read("#{__dir__}/SPICERACK_VERSION").strip
 
-%w[spicerack] + SPICERACK_GEMS.each do |gem|
+ALL_GEMS.each do |gem|
   namespace gem do
     task :update_version do
       file_prefix = (gem == "spicerack") ? "" : "#{__dir__}/#{gem}/"
@@ -26,7 +27,7 @@ end
 
 namespace :spicerack do
   task :update_all_versions do
-    SPICERACK_GEMS.each { |gem| Rake::Task["#{gem}:update_version"].invoke }
+    ALL_GEMS.each { |gem| Rake::Task["#{gem}:update_version"].invoke }
   end
 
   task :release_all do
