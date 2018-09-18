@@ -25,7 +25,7 @@ namespace :spicerack do
   end
 
   task :release_all do
-    SPICERACK_GEMS.each { |gem| sh "cd #{gem} && bundle exec rake release" }
     Rake::Task["release"].execute
+    SPICERACK_GEMS.each { |gem| sh "cd #{gem} && bundle exec rake release" }
   end
 end
