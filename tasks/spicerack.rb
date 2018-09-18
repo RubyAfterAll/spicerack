@@ -21,11 +21,11 @@ end
 
 namespace :spicerack do
   task :update_all_versions do
-    SPICERACK_GEMS.each { |gem| Rake::Task["#{gem}:update_version"].execute }
+    SPICERACK_GEMS.each { |gem| Rake::Task["#{gem}:update_version"].invoke }
   end
 
   task :release_all do
-    Rake::Task["release"].execute
+    Rake::Task["release"].invoke
     SPICERACK_GEMS.each { |gem| sh "cd #{gem} && bundle exec rake release" }
   end
 end
