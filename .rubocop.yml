@@ -380,6 +380,7 @@ Metrics/BlockLength:
   Exclude:
     - config/environments/*
     - spec/**/*
+    - "**/spec/**/*"
 Metrics/BlockNesting:
   Enabled: true
   Max: 3
