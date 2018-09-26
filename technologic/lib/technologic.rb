@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 require "technologic/version"
+require "technologic/subscriber"
 require "active_support"
+require "active_support/callbacks"
 require "active_support/inflector"
 require "active_support/core_ext/hash/keys"
 require "active_support/core_ext/module/delegation"
