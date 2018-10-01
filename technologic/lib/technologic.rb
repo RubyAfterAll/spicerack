@@ -1,12 +1,19 @@
 # frozen_string_literal: true
 
-require "technologic/version"
-require "technologic/subscriber"
 require "active_support"
 require "active_support/callbacks"
 require "active_support/inflector"
 require "active_support/core_ext/hash/keys"
 require "active_support/core_ext/module/delegation"
+
+require "technologic/version"
+require "technologic/event"
+require "technologic/subscriber/base"
+require "technologic/fatal_subscriber"
+require "technologic/error_subscriber"
+require "technologic/warn_subscriber"
+require "technologic/info_subscriber"
+require "technologic/debug_subscriber"
 
 module Technologic
   extend ActiveSupport::Concern

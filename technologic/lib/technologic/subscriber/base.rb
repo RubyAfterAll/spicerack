@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
+require_relative "core"
+
 module Technologic
-  module Loggers
+  module Subscriber
     class Base
       include Core
     end
@@ -10,7 +12,25 @@ end
 
 
 # # frozen_string_literal: true
+#def call(name, started, finished, _unique_id, payload)
+# event = name.chomp(".#{severity}")
 #
+# Rails.logger.public_send(severity) do
+#   payload.
+#   transform_values { |value| format_value_for_log(value) }.
+#   merge(event: event).
+#   tap do |hash|
+#     duration = (finished - started).round
+#     hash[:duration] = duration unless duration == 0
+#   end
+# end
+# end
+#
+# protected
+#
+# def severity
+#   @severity ||= self.class.name.demodulize.downcase.to_sym
+# end
 # class ApplicationLogger
 #   AUTO_ALERT_SEVERITY ||= %i[fatal warn].freeze
 #
