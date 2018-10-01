@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require "around_the_world/version"
+require_relative "around_the_world/version"
+require_relative "around_the_world/errors"
 require "active_support"
 
 module AroundTheWorld
@@ -45,6 +46,10 @@ module AroundTheWorld
       const_set(proxy_module_name, Module.new) unless const_defined?(namespaced_proxy_module_name)
 
       proxy_module = const_get(namespaced_proxy_module_name)
+
+      if proxy_module.instance_methods.include?(method_name.to_sym)
+        raise DoubleWrapError, "Module #{namespaced_proxy_module_name} already defines the method :#{method_name}"
+      end
 
       proxy_module.define_method(method_name, &block)
 
