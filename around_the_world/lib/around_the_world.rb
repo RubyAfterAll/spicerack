@@ -2,7 +2,7 @@
 
 require_relative "around_the_world/version"
 require_relative "around_the_world/errors"
-require "active_support"
+require "active_support/concern"
 
 module AroundTheWorld
   extend ActiveSupport::Concern
@@ -42,10 +42,9 @@ module AroundTheWorld
     #                                   parameter is required.
     def around_method(method_name, proxy_module_name, &block)
       proxy_module = around_method_proxy_module(proxy_module_name)
-      ensure_method_uniqueness!(method_name, proxy_module)
+      ensure_around_method_uniqueness!(method_name, proxy_module)
 
       proxy_module.define_method(method_name, &block)
-
       prepend proxy_module unless ancestors.include?(proxy_module)
     end
 
@@ -59,7 +58,7 @@ module AroundTheWorld
       const_get(namespaced_proxy_module_name)
     end
 
-    def ensure_method_uniqueness!(method_name, proxy_module)
+    def ensure_around_method_uniqueness!(method_name, proxy_module)
       return if proxy_module.instance_methods.exclude?(method_name.to_sym)
 
       raise DoubleWrapError, "Module #{proxy_module} already defines the method :#{method_name}"
