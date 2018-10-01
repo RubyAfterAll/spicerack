@@ -3,8 +3,10 @@ PATH
   specs:
     around_the_world (0.1.9)
       activesupport (>= 5.1.6)
+    short_circu_it (0.1.9)
     spicerack (0.1.9)
       around_the_world (= 0.1.9)
+      short_circu_it (= 0.1.9)
       technologic (= 0.1.9)
     technologic (0.1.9)
 
