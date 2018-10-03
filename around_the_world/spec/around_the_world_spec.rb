@@ -30,7 +30,7 @@ RSpec.describe AroundTheWorld do
   end
 
   describe ".around_method" do
-    subject(:around) { sample_class.__send__(:around_method, wrapped_method_name, prepended_module_name) { } }
+    subject(:around) { sample_class.__send__(:around_method, wrapped_method_name, prepended_module_name) {} }
 
     context "when class has no name" do
       it "raises an error" do
