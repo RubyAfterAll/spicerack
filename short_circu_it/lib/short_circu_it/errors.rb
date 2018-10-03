@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class MemoizationStore
+module ShortCircuIt
   class NotMemoizedError < StandardError; end
 end

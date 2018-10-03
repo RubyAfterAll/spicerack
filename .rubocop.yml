@@ -379,7 +379,7 @@ Metrics/BlockLength:
   Max: 24
   Exclude:
     - config/environments/*
-    - spec/**/*
+    - "**/spec/**/*"
     - rspice/**/*
 Metrics/BlockNesting:
   Enabled: true
