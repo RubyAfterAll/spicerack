@@ -1,3 +1,8 @@
+# v0.2.4
+
+- Fixing require bug with faker.
+- Removing accidentally included shared context.
+
 # v0.2.3
 
 - `require` bug. Trying a better fix...

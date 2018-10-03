@@ -1,6 +1,14 @@
+# v0.2.4
+
+*Release Date*: 10/3/18
+
+- Fixing new bug found in `v0.2.3` with faker for Spicerack. 💀
+
 # v0.2.3
 
 *Release Date*: 10/3/18
+
+🙅‍ No Good. Yanked due to a newly uncovered bug.
 
 - Actual fix of the bug mentioned in `v0.2.1` and `v0.2.2`. 😰
 

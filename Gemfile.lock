@@ -1,14 +1,14 @@
 PATH
   remote: .
   specs:
-    around_the_world (0.2.3)
-    rspice (0.2.3)
+    around_the_world (0.2.4)
+    rspice (0.2.4)
       faker (~> 1.8)
       rspec (~> 3.0)
-    spicerack (0.2.3)
-      around_the_world (= 0.2.3)
-      technologic (= 0.2.3)
-    technologic (0.2.3)
+    spicerack (0.2.4)
+      around_the_world (= 0.2.4)
+      technologic (= 0.2.4)
+    technologic (0.2.4)
 
 GEM
   remote: https://rubygems.org/
@@ -22,7 +22,7 @@ GEM
       i18n (>= 0.7)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
-    jaro_winkler (1.5.1)
+    jaro_winkler (1.5.1-x86_64-darwin-17)
     json (2.1.0)
     method_source (0.9.0)
     parallel (1.12.1)
@@ -74,7 +74,7 @@ DEPENDENCIES
   pry (~> 0.9)
   rake (~> 10.0)
   rspec (~> 3.0)
-  rspice (= 0.2.3)
+  rspice (= 0.2.4)
   rubocop (~> 0.58)
   rubocop-rspec (~> 1.27)
   simplecov (~> 0.16)
