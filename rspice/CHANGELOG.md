@@ -1,3 +1,7 @@
+# v0.2.5
+
+- Removing crufty require line
+
 # v0.2.4
 
 - Fixing require bug with faker.
