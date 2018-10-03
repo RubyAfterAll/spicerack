@@ -45,7 +45,6 @@ module AroundTheWorld
       ensure_around_method_uniqueness!(method_name, proxy_module)
 
       proxy_module.define_method(method_name, &block)
-
       prepend proxy_module unless ancestors.include?(proxy_module)
     end
 
