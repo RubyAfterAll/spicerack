@@ -62,6 +62,7 @@ Here's a checklist of some other tasks (see another gem as reference):
 ⚠️ Reminder: Add the magic comment to the top of all the generated ruby files!
 
 - Delete `Gemfile`
+- Create a `CHANGELOG.md` and make the first entry
 - Edit `lib/GEM/version.rb` to add the comment line
 - Edit `README.md` to add badges and update contributor
 - Edit `Rakefile` to add GEM to the `SPICERACK_GEMS` constant
@@ -86,7 +87,7 @@ Once that gets merged into master, run:
 
 ### Release
 
-💁‍ Please remember to keep the `CHANGELOG` up to date!
+💁‍ Please remember to keep all the `CHANGELOGS` up to date!
 
 This is a monorepo which contains several gems designed to build and release together.
 

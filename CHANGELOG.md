@@ -1,8 +1,16 @@
+# v0.2.3
+
+*Release Date*: 10/3/18
+
+- Actual fix of the bug mentioned in `v0.2.1` and `v0.2.2`. 😰
+
 # v0.2.2
 
 *Release Date*: 10/3/18
 
--  Fix of the bug mentioned in `v0.2.1`. 😅
+🙅‍ No Good. Yanked due to the same bug.
+
+- Fix of the bug mentioned in `v0.2.1`. 😅
 
 # v0.2.1
 
@@ -10,7 +18,7 @@
 
 🙅‍ No Good. Yanked due to a bug.
 
--  Learning to gem is fun and rewarding. 🤩
+- Learning to gem is fun and rewarding. 🤩
 
 # v0.2.0
 

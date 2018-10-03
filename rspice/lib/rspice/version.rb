@@ -2,5 +2,5 @@
 
 module Rspice
   # This constant is managed by spicerack
-  VERSION = "0.2.2"
+  VERSION = "0.2.3"
 end
