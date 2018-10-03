@@ -2,8 +2,10 @@
 
 require "short_circu_it/version"
 require "short_circu_it/memoization_store"
-require "around_the_world"
+require "active_support/core_ext/module"
+require "active_support/core_ext/array"
 require "active_support/concern"
+require "around_the_world"
 
 module ShortCircuIt
   extend ActiveSupport::Concern

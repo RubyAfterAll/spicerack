@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "errors"
+require "active_support/core_ext/module"
 
 module ShortCircuIt
   class MemoizationStore
