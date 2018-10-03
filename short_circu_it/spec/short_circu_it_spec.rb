@@ -42,6 +42,7 @@ RSpec.describe ShortCircuIt do
         end
       end
     end
+
     let(:memoized_instance) { memoized_class.new }
     let(:memoized_module) { memoized_class::MemoizedMethods }
     let(:all_observer_methods) { %i[observed_value_one observed_value_two] }
