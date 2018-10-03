@@ -2,6 +2,10 @@
 
 require "bundler/setup"
 require "simplecov"
+require "faker"
+require "pry"
+
+require "rspice"
 
 SimpleCov.start
 
