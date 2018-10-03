@@ -2,7 +2,7 @@
 
 require_relative "around_the_world/version"
 require_relative "around_the_world/errors"
-require "active_support"
+require "active_support/concern"
 
 module AroundTheWorld
   extend ActiveSupport::Concern
