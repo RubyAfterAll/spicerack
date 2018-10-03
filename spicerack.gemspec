@@ -14,6 +14,7 @@ Gem::Specification.new do |spec|
   spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]
   spec.require_paths = "lib"
 
+  # Spicerack Gems
   spec.add_dependency "around_the_world", version
   spec.add_dependency "short_circu_it", version
   spec.add_dependency "technologic", version
@@ -23,4 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "simplecov", "~> 0.16"
   spec.add_development_dependency "pry", ">= 0.11.3"
+
+  # Spicerack Development Gems
+  # spec.add_development_dependency "rspice", version
 end

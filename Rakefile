@@ -5,7 +5,12 @@ require "rspec/core/rake_task"
 
 require_relative "shared/rakefile"
 
-SPICERACK_GEMS = %w[around_the_world technologic short_circu_it].freeze
+SPICERACK_GEMS = %w[
+  around_the_world
+  rspice
+  short_circu_it
+  technologic
+].freeze
 ALL_GEMS = %w[spicerack] + SPICERACK_GEMS
 
 version = File.read("#{__dir__}/SPICERACK_VERSION").strip
