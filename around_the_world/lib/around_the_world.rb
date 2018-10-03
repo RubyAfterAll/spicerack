@@ -59,7 +59,7 @@ module AroundTheWorld
     end
 
     def ensure_around_method_uniqueness!(method_name, proxy_module)
-      return if proxy_module.instance_methods.exclude?(method_name.to_sym)
+      return unless proxy_module.instance_methods.include?(method_name.to_sym)
 
       raise DoubleWrapError, "Module #{proxy_module} already defines the method :#{method_name}"
     end
