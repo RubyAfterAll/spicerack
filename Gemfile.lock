@@ -6,7 +6,7 @@ PATH
     rspice (0.3.0)
       faker (~> 1.8)
       rspec (~> 3.0)
-    short_circu_it (0.2.0)
+    short_circu_it (0.3.0)
       activesupport (~> 5.1.6)
       around_the_world (~> 0.2.0)
     spicerack (0.3.0)
