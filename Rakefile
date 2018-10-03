@@ -32,6 +32,7 @@ end
 namespace :spicerack do
   task :update_all_versions do
     ALL_GEMS.each { |gem| Rake::Task["#{gem}:update_version"].invoke }
+    system "bundle"
   end
 
   task :release_all do
