@@ -20,7 +20,7 @@ module ShortCircuIt
 
   private
 
-  # @return [Memoizable::MemoizationStore]
+  # @return [ShortCircuIt::MemoizationStore]
   def memoization_store
     @memoization_store ||= MemoizationStore.new(self)
   end

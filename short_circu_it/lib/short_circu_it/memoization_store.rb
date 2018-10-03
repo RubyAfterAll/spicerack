@@ -39,10 +39,18 @@ module ShortCircuIt
     end
 
     def inspect
-      "#<#{self.class}:0x#{object_id.to_s(16)} memoized: #{memoized_hash.keys.inspect}>"
+      "#<#{self.class} memoized: #{memoized_hash.keys.inspect}>"
     end
 
     private
+
+    def memoized_hash
+      @memoized_hash ||= {}
+    end
+
+    def memoization_for_method(method_name)
+      memoized_hash[method_name] ||= {}
+    end
 
     # @param method_name [Symbol] The name of the method to memoize
     # @param argument_hash [Integer] The hash value of the arguments passed to the method
@@ -60,22 +68,20 @@ module ShortCircuIt
       current_memoization_for_method(method_name)[argument_hash]
     end
 
-    def memoized_hash
-      @memoized_hash ||= {}
-    end
-
-    def memoization_for_method(method_name)
-      memoized_hash[method_name] ||= {}
-    end
-
+    # @param method_name [Symbol] The name of a memoized method
+    # @return [Hash] A hash of memoized values for the current state of the observed objects for the given method.
     def current_memoization_for_method(method_name)
       memoization_for_method(method_name)[state_hash(method_name)] ||= {}
     end
 
+    # @param method_name [Symbol] The name of a memoized method
+    # @return [Boolean] True if there are any memoized values for the current state of the observed objects.
     def current_memoization_for_method?(method_name)
       memoization_for_method(method_name).key?(state_hash(method_name))
     end
 
+    # @param method_name [Symbol] The name of a memoized method
+    # @return [Integer] The hash value of all observed objects for the given method.
     def state_hash(method_name)
       memoization_observers[method_name].map { |observed_method| owner.public_send(observed_method) }.hash
     end
