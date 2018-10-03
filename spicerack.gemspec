@@ -16,6 +16,7 @@ Gem::Specification.new do |spec|
 
   # Spicerack Gems
   spec.add_dependency "around_the_world", version
+  spec.add_dependency "short_circu_it", version
   spec.add_dependency "technologic", version
 
   spec.add_development_dependency "bundler", "~> 1.16"
@@ -25,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rubocop", "~> 0.58"
   spec.add_development_dependency "rubocop-rspec", "~> 1.27"
   spec.add_development_dependency "faker", "~> 1.8"
-  spec.add_development_dependency "pry", "~> 0.9"
+  spec.add_development_dependency "pry", ">= 0.11.3"
 
   # Spicerack Development Gems
   spec.add_development_dependency "rspice", version

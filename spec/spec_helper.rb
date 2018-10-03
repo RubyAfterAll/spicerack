@@ -2,3 +2,4 @@
 
 require_relative "../shared/spec_helper"
 require "spicerack"
+require "pry"

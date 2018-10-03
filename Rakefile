@@ -8,6 +8,7 @@ require_relative "shared/rakefile"
 SPICERACK_GEMS = %w[
   around_the_world
   rspice
+  short_circu_it
   technologic
 ].freeze
 ALL_GEMS = %w[spicerack] + SPICERACK_GEMS
@@ -32,6 +33,7 @@ end
 namespace :spicerack do
   task :update_all_versions do
     ALL_GEMS.each { |gem| Rake::Task["#{gem}:update_version"].invoke }
+    system "bundle"
   end
 
   task :release_all do
