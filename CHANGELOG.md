@@ -1,3 +1,24 @@
+# v0.2.2
+
+*Release Date*: 10/3/18
+
+-  Fix of the bug mentioned in `v0.2.1`. 😅
+
+# v0.2.1
+
+*Release Date*: 10/3/18
+
+🙅‍ No Good. Yanked due to a bug.
+
+-  Learning to gem is fun and rewarding. 🤩
+
+# v0.2.0
+
+*Release Date*: 10/1/18
+
+- Added gem badges to README
+- Claimed rspice gem name
+
 # v0.1.9
 
 *Release Date*: 8/18/18
