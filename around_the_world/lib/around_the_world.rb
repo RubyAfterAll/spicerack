@@ -42,7 +42,7 @@ module AroundTheWorld
     #                                   parameter is required.
     def around_method(method_name, proxy_module_name, &block)
       proxy_module = around_method_proxy_module(proxy_module_name)
-      ensure_method_uniqueness!(method_name, proxy_module)
+      ensure_around_method_uniqueness!(method_name, proxy_module)
 
       proxy_module.define_method(method_name, &block)
 
@@ -59,7 +59,7 @@ module AroundTheWorld
       const_get(namespaced_proxy_module_name)
     end
 
-    def ensure_method_uniqueness!(method_name, proxy_module)
+    def ensure_around_method_uniqueness!(method_name, proxy_module)
       return unless proxy_module.instance_methods.include?(method_name.to_sym)
 
       raise DoubleWrapError, "Module #{proxy_module} already defines the method :#{method_name}"
