@@ -1,13 +1,5 @@
-# frozen_string_literal: true
-
 require "bundler/setup"
-require "simplecov"
-require "faker"
-require "pry"
-
-require "rspice"
-
-SimpleCov.start
+require "short_circu_it"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

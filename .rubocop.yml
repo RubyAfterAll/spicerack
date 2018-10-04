@@ -381,6 +381,7 @@ Metrics/BlockLength:
     - config/environments/*
     - spec/**/*
     - "**/spec/**/*"
+    - rspice/**/*
 Metrics/BlockNesting:
   Enabled: true
   Max: 3
@@ -1249,9 +1250,7 @@ RSpec/VoidExpect:
 FactoryBot/CreateList:
   Enabled: true
   EnforcedStyle: create_list
-FactoryBot/DynamicAttributeDefinedStatically:
-  Enabled: true
-FactoryBot/StaticAttributeDefinedDynamically:
+FactoryBot/AttributeDefinedStatically:
   Enabled: true
 
 Capybara/CurrentPathExpectation:

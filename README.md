@@ -1,5 +1,6 @@
 # Spicerack
 
+[![Gem Version](https://badge.fury.io/rb/spicerack.svg)](https://badge.fury.io/rb/spicerack)
 [![Build Status](https://semaphoreci.com/api/v1/freshly/spicerack/branches/master/badge.svg)](https://semaphoreci.com/freshly/spicerack)
 [![Maintainability](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/maintainability)](https://codeclimate.com/github/Freshly/spicerack/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/test_coverage)](https://codeclimate.com/github/Freshly/spicerack/test_coverage)
@@ -61,6 +62,7 @@ Here's a checklist of some other tasks (see another gem as reference):
 ⚠️ Reminder: Add the magic comment to the top of all the generated ruby files!
 
 - Delete `Gemfile`
+- Create a `CHANGELOG.md` and make the first entry
 - Edit `lib/GEM/version.rb` to add the comment line
 - Edit `README.md` to add badges and update contributor
 - Edit `Rakefile` to add GEM to the `SPICERACK_GEMS` constant
@@ -85,6 +87,8 @@ Once that gets merged into master, run:
 
 ### Release
 
+💁‍ Please remember to keep all the `CHANGELOGS` up to date!
+
 This is a monorepo which contains several gems designed to build and release together.
 
 To perform release, set the new canonical version in the `SPICERACK_VERSION` file then run the task.
@@ -92,11 +96,13 @@ To perform release, set the new canonical version in the `SPICERACK_VERSION` fil
 ```ruby
 echo "0.1.0" > SPICERACK_VERSION
 rake spicerack:update_all_versions
-git commit -am "Updating to version x.y.z"
+git commit -am "Updating to version 0.1.0 for release"
 rake spicerack:release_all
 ```
 
 This will build and release all dependent gems at the same time.
+
+Only the master branch should be released!
 
 ### Versions
 
@@ -107,8 +113,6 @@ Versions should be increased according to the following rules:
 - *Major Version* for non-backwards compatible changes.
 - *Minor Version* for new gems or important features.
 - *Patch Version* for bug fixes, enhancements, and optimizations.
-
-💁‍ Please remember to keep the `CHANGELOG` up to date!
 
 ## License
 
