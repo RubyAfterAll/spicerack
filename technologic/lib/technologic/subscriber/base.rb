@@ -5,7 +5,7 @@ require_relative "core"
 module Technologic
   module Subscriber
     class Base
-      include Core
+      extend Core
     end
   end
 end

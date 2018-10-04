@@ -14,6 +14,7 @@ PATH
       short_circu_it (= 0.3.0)
       technologic (= 0.3.0)
     technologic (0.3.0)
+      activesupport (~> 5.1.6)
 
 GEM
   remote: https://rubygems.org/

@@ -2,4 +2,6 @@
 
 RSpec.describe Technologic::Subscriber::Base do
   subject { described_class }
+
+  it { is_expected.to extend_module Technologic::Subscriber::Core }
 end
