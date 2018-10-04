@@ -2,5 +2,5 @@
 
 module Spicerack
   # This constant is managed by spicerack
-  VERSION = "0.3.0"
+  VERSION = "0.3.1"
 end

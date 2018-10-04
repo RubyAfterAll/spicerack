@@ -1,19 +1,19 @@
 PATH
   remote: .
   specs:
-    around_the_world (0.3.0)
+    around_the_world (0.3.1)
       activesupport (~> 5.1.6)
-    rspice (0.3.0)
+    rspice (0.3.1)
       faker (~> 1.8)
       rspec (~> 3.0)
-    short_circu_it (0.3.0)
+    short_circu_it (0.3.1)
       activesupport (~> 5.1.6)
-      around_the_world (~> 0.2.0)
-    spicerack (0.3.0)
-      around_the_world (= 0.3.0)
-      short_circu_it (= 0.3.0)
-      technologic (= 0.3.0)
-    technologic (0.3.0)
+      around_the_world (~> 0.3.1)
+    spicerack (0.3.1)
+      around_the_world (= 0.3.1)
+      short_circu_it (= 0.3.1)
+      technologic (= 0.3.1)
+    technologic (0.3.1)
 
 GEM
   remote: https://rubygems.org/
@@ -83,12 +83,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.16)
+  bundler (~> 1.15)
   faker (~> 1.8)
   pry (>= 0.11.3)
   rake (~> 10.0)
   rspec (~> 3.0)
-  rspice (= 0.3.0)
+  rspice (= 0.3.1)
   rubocop (~> 0.58)
   rubocop-rspec (~> 1.27)
   simplecov (~> 0.16)

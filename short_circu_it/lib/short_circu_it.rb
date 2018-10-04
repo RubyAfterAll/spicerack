@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "short_circu_it/version"
+require "short_circu_it/errors"
 require "short_circu_it/memoization_store"
 require "active_support/core_ext/module"
 require "active_support/core_ext/array"
