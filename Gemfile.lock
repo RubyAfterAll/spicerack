@@ -8,6 +8,12 @@ PATH
       rspec (~> 3.0)
     short_circu_it (0.3.1)
       activesupport (~> 5.1.6)
+      around_the_world (~> 0.3.1)
+    spicerack (0.3.1)
+      around_the_world (= 0.3.1)
+      short_circu_it (= 0.3.1)
+      technologic (= 0.3.1)
+    technologic (0.3.1)
       around_the_world (~> 0.2.0)
     spicerack (0.3.1)
       around_the_world (= 0.3.1)
@@ -85,7 +91,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.16)
+  bundler (~> 1.15)
   faker (~> 1.8)
   pry (>= 0.11.3)
   rake (~> 10.0)
