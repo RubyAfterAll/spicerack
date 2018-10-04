@@ -6,6 +6,8 @@ require "active_support/inflector"
 require "active_support/core_ext/hash/keys"
 require "active_support/core_ext/module/delegation"
 
+require "short_circu_it"
+
 require "technologic/version"
 require "technologic/event"
 require "technologic/subscriber/base"

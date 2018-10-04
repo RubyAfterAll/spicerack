@@ -8,6 +8,8 @@ RSpec.describe Technologic::Event do
   let(:finished) { rand(15..20) }
   let(:payload) { Hash[*Faker::Lorem.words(2 * rand(1..2))] }
 
+  it { is_expected.to include_module ShortCircuIt }
+
   describe "#initialize" do
     it "initializes values" do
       expect(event.name).to eq name
