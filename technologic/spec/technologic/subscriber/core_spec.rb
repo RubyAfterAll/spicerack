@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Technologic::Subscriber::Core do
-  let(:example_class) { Class.new.extend(described_class) }
+  let(:example_class) { Class.new.include(described_class) }
   let(:severity) { Faker::Internet.domain_word }
 
   describe ".severity" do

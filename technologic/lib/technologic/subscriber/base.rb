@@ -1,15 +1,18 @@
 # frozen_string_literal: true
 
 require_relative "core"
+require_relative "registrar"
+require_relative "trigger"
 
 module Technologic
   module Subscriber
     class Base
-      extend Core
+      include Core
+      include Registrar
+      include Trigger
     end
   end
 end
-
 
 # # frozen_string_literal: true
 #def call(name, started, finished, _unique_id, payload)
@@ -28,9 +31,7 @@ end
 #
 # protected
 #
-# def severity
-#   @severity ||= self.class.name.demodulize.downcase.to_sym
-# end
+
 # class ApplicationLogger
 #   AUTO_ALERT_SEVERITY ||= %i[fatal warn].freeze
 #
@@ -48,23 +49,8 @@ end
 #   end
 #
 #   delegate :format_value_for_log, to: :class
-#
-#
-#
-#
-#
-#   def trigger_external_alert?(payload = {})
-#     return AUTO_ALERT_SEVERITY.include?(severity) unless payload.key? :notify
-#
-#     payload[:notify]
-#   end
 # end
 #
-# class FatalLogger < ApplicationLogger; end
-# class ErrorLogger < ApplicationLogger; end
-# class WarnLogger < ApplicationLogger; end
-# class InfoLogger < ApplicationLogger; end
-# class DebugLogger < ApplicationLogger; end
 #
 # ActiveSupport::Notifications.subscribe(%r{\.fatal$}, FatalLogger.new)
 # ActiveSupport::Notifications.subscribe(%r{\.error$}, ErrorLogger.new)
