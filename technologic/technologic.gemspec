@@ -17,6 +17,6 @@ Gem::Specification.new do |spec|
   spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]
   spec.require_paths = "lib"
 
-  spec.add_runtime_dependency "activesupport", "~> 5.1.6"
+  spec.add_runtime_dependency "activesupport", "~> 5.2.1"
   spec.add_runtime_dependency "short_circu_it", Technologic::VERSION
 end

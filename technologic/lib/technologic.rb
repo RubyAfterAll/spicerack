@@ -16,6 +16,7 @@ require "technologic/error_subscriber"
 require "technologic/warn_subscriber"
 require "technologic/info_subscriber"
 require "technologic/debug_subscriber"
+require "technologic/logger"
 
 module Technologic
   extend ActiveSupport::Concern
