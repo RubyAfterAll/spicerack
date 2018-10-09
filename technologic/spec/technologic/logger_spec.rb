@@ -31,12 +31,12 @@ RSpec.describe Technologic::Logger do
       expect(@result).to eq expected_log_data # rubocop:disable RSpec/InstanceVariable
     end
 
-    Rails.logger.public_send(severity) do
-      event.data.transform_values { |value| format_value_for_log(value) }
-    end
+    # Rails.logger.public_send(severity) do
+    #   event.data.transform_values { |value| format_value_for_log(value) }
+    # end
   end
 
   describe ".format_value_for_log" do
-
+    it "needs specs"
   end
 end

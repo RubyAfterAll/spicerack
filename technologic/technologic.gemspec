@@ -18,5 +18,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = "lib"
 
   spec.add_runtime_dependency "activesupport", "~> 5.2.1"
+  spec.add_runtime_dependency "railties", "~> 5.2.1"
   spec.add_runtime_dependency "short_circu_it", Technologic::VERSION
 end

@@ -4,6 +4,8 @@ module Technologic
   class Logger
     class << self
       def log(severity, event)
+        return unless defined?(Rails)
+
         Rails.logger.public_send(severity) do
           event.data.transform_values { |value| format_value_for_log(value) }
         end
@@ -24,9 +26,3 @@ module Technologic
     end
   end
 end
-
-# ActiveSupport::Notifications.subscribe(%r{\.fatal$}, FatalLogger.new)
-# ActiveSupport::Notifications.subscribe(%r{\.error$}, ErrorLogger.new)
-# ActiveSupport::Notifications.subscribe(%r{\.warn$}, WarnLogger.new)
-# ActiveSupport::Notifications.subscribe(%r{\.info$}, InfoLogger.new)
-# ActiveSupport::Notifications.subscribe(%r{\.debug$}, DebugLogger.new)

@@ -5,6 +5,7 @@ require "active_support/callbacks"
 require "active_support/inflector"
 require "active_support/core_ext/hash/keys"
 require "active_support/core_ext/module/delegation"
+require "active_support/core_ext/string/inflections"
 
 require "short_circu_it"
 
@@ -17,6 +18,8 @@ require "technologic/warn_subscriber"
 require "technologic/info_subscriber"
 require "technologic/debug_subscriber"
 require "technologic/logger"
+require "technologic/config_options"
+require "technologic/setup"
 
 module Technologic
   extend ActiveSupport::Concern
@@ -70,3 +73,5 @@ module Technologic
     end
   end
 end
+
+require "technologic/railtie" if defined?(Rails)
