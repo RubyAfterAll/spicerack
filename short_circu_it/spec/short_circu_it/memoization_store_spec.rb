@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe ShortCircuIt::MemoizationStore do
+RSpec.describe ShortCircuIt::MemoizationStore do
   describe "#initialize" do
     it "needs specs"
   end
