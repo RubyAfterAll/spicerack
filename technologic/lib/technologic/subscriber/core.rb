@@ -17,4 +17,3 @@ module Technologic
     end
   end
 end
-
