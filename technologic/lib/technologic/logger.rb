@@ -11,8 +11,6 @@ module Technologic
         end
       end
 
-      private
-
       def format_value_for_log(value)
         # `#to_log_string` is idiomatic to Technologic and is the most explicit way to specify how an object is logged.
         return value.to_log_string if value.respond_to?(:to_log_string)

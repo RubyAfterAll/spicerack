@@ -50,6 +50,44 @@ RSpec.describe Technologic::Logger do
   end
 
   describe ".format_value_for_log" do
-    it "needs specs"
+    subject { described_class.format_value_for_log(value) }
+
+    let(:formatted_value) { Faker::Lorem.word }
+
+    context "when value responds to #to_log_string" do
+      let(:value) { double(to_log_string: formatted_value) } # rubocop:disable RSpec/VerifiedDoubles
+
+      it { is_expected.to eq formatted_value }
+    end
+
+    context "when value is a number" do
+      let(:value) { 3 }
+
+      it { is_expected.to eq value }
+    end
+
+    context "when value responds to #id" do
+      let(:value) { double(id: formatted_value) } # rubocop:disable RSpec/VerifiedDoubles
+
+      it { is_expected.to eq formatted_value }
+    end
+
+    context "when value responds to #map" do
+      let(:value) { [ object_0, object_1 ] }
+      let(:object_0) { double(id: formatted_value_0) } # rubocop:disable RSpec/VerifiedDoubles
+      let(:object_1) { double(to_log_string: formatted_value_1) } # rubocop:disable RSpec/VerifiedDoubles
+      let(:formatted_value_0) { Faker::Lorem.unique.word }
+      let(:formatted_value_1) { Faker::Lorem.unique.word }
+
+      it { is_expected.to eq [ formatted_value_0, formatted_value_1 ] }
+    end
+
+    context "without a special case" do
+      let(:value) { double }
+
+      before { allow(value).to receive(:to_s).and_return(formatted_value) }
+
+      it { is_expected.to eq formatted_value }
+    end
   end
 end
