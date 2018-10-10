@@ -120,7 +120,7 @@ RSpec.describe Technologic::Setup do
         it "registers correct handler" do
           expect(subscriber_class).to have_received(:on_event)
 
-          @block.call(event)
+          @block.call(event) # rubocop:disable RSpec/InstanceVariable
 
           expect(Technologic::Logger).to have_received(:log).with(severity, event)
         end
