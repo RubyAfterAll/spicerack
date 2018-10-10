@@ -69,6 +69,7 @@ Here's a checklist of some other tasks (see another gem as reference):
 - Remove the failing spec in `spec/GEM_spec.rb`
 - Edit `spec/spec_helper.rb` to use the shared spec helper
 - Edit `GEM.gemspec` and clean up the boilerplate
+- Copy over `GEM/Rakefile` from any other gem
 
 Then in the base directory:
 
