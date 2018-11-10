@@ -15,7 +15,7 @@ module AroundTheWorld
     end
 
     def inspect
-      "#<#{self.class.name}#{" for: #{purpose.inspect}" if purpose}>"
+      "#<#{self.class.name}#{":#{purpose}" if purpose}>"
     end
   end
 end
