@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe AroundTheWorld do
-  # NOTE: if :sample_method gets changed to something else, you must change the definitions in the sample classes as well
+  # NOTE: if :sample_method gets changed to something else,
+  # you must change the definitions in the sample classes as well,
   let(:wrapped_method_name) { :sample_method }
   let(:prevent_double_wrapping_purpose) { nil }
   let(:sample_class_response) { Faker::Hipster.sentence }
@@ -63,8 +64,6 @@ RSpec.describe AroundTheWorld do
           expect { around }.to raise_error described_class::DoubleWrapError
         end
       end
-
-
     end
 
     context "when method has not been defined on the specified module" do

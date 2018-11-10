@@ -17,7 +17,8 @@ module AroundTheWorld
     #   An identifier to define the proxy module's purpose in the ancestor tree.
     #   A method can only be wrapped once for a given purpose, though it can be wrapped
     #   again for other purposes, or for no given purpose.
-    # @block The block that will be executed when the method is invoked. Should always call super, at least conditionally.
+    # @block The block that will be executed when the method is invoked.
+    #        Should always call super, at least conditionally.
     def initialize(method_name, target, prevent_double_wrapping_for = false, &block)
       @method_name = method_name.to_sym
       @target = target
@@ -63,7 +64,8 @@ module AroundTheWorld
     end
 
     # @return [AroundTheWorld::ProxyModule] The first defined ProxyModule that does not define the method to be wrapped.
-    # @return [NilClass] If all prepended ProxyModules already define the method, or no ProxyModules have been prepended yet.
+    # @return [NilClass] If all prepended ProxyModules already define the method,
+    #                    or no ProxyModules have been prepended yet.
     def first_available_proxy_module
       existing_proxy_modules.reverse_each.find { |ancestor| !ancestor.instance_methods.include?(method_name) }
     end

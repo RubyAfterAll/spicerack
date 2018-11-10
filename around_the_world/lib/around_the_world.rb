@@ -42,7 +42,8 @@ module AroundTheWorld
     #   around_method :dont_look_in_here, prevent_double_wrapping_for: :memoization do
     #     @memoized ||= super
     #   end
-    #   # => AroundTheWorld::DoubleWrapError: "Module AroundTheWorld:ProxyModule:memoization already defines the method :dont_look_in_here"
+    #   # => AroundTheWorld::DoubleWrapError:
+    #          "Module AroundTheWorld:ProxyModule:memoization already defines the method :dont_look_in_here"
     #
     #   around_method :dont_look_in_here do
     #     do_something_else
