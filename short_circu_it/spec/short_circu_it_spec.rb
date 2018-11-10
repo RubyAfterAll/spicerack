@@ -44,7 +44,11 @@ RSpec.describe ShortCircuIt do
     end
 
     let(:memoized_instance) { memoized_class.new }
-    let(:memoized_module) { memoized_class::MemoizedMethods }
+    let(:memoized_module) do
+      memoized_class.ancestors.find do |ancestor|
+        ancestor.is_a?(AroundTheWorld::ProxyModule) && ancestor.for?(described_class)
+      end
+    end
     let(:all_observer_methods) { %i[observed_value_one observed_value_two] }
 
     let(:target_change) { nil }
