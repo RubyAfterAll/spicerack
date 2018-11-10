@@ -12,8 +12,6 @@ module ShortCircuIt
   extend ActiveSupport::Concern
   include AroundTheWorld
 
-  PREPEND_MODULE_NAME = "MemoizedMethods"
-
   included do
     delegate :memoization_observers, to: :class
     delegate :clear_memoization, :clear_all_memoization, to: :memoization_store
@@ -71,7 +69,7 @@ module ShortCircuIt
     def memoize(method_name, observes: :itself)
       add_memoized_observers(method_name.to_sym, observes)
 
-      around_method method_name.to_sym, PREPEND_MODULE_NAME do |*args|
+      around_method method_name.to_sym, prevent_double_wrapping_for: ShortCircuIt do |*args|
         memoization_store.memoize(method_name.to_sym, args.hash) do
           super(*args)
         end
