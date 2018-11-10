@@ -50,17 +50,31 @@ RSpec.describe AroundTheWorld do
       end
 
       context "when prevent_double_wrapping_for is not set" do
-        it "adds another prepended module" do
-          ancestors_before = sample_class.ancestors
-          expect { around }.to change { sample_class.ancestors.count }.by(1)
-          expect((sample_class.ancestors - ancestors_before).first).to be_a described_class::ProxyModule
+        context "when prepend_module_name is set" do
+          subject(:around) { sample_class.__send__(:around_method, wrapped_method_name, prepend_module_name) {} }
+
+          let(:prepend_module_name) { Faker::Lorem.word }
+
+          before { sample_class.__send__(:around_method, wrapped_method_name, prepend_module_name) {} }
+
+          it "raises" do
+            expect { around }.to raise_error described_class::DoubleWrapError
+          end
+        end
+
+        context "when prepend_module_name is not set" do
+          it "adds another prepended module" do
+            ancestors_before = sample_class.ancestors
+            expect { around }.to change { sample_class.ancestors.count }.by(1)
+            expect((sample_class.ancestors - ancestors_before).first).to be_a described_class::ProxyModule
+          end
         end
       end
 
       context "when prevent_double_wrapping_for is set" do
         let(:prevent_double_wrapping_purpose) { Faker::Lorem.word }
 
-        it "raises an error" do
+        it "raises" do
           expect { around }.to raise_error described_class::DoubleWrapError
         end
       end
