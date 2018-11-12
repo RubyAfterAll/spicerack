@@ -28,22 +28,53 @@ module AroundTheWorld
 
     # Defines the wrapped method inside a proxy module and prepends the proxy module to the target module if necessary.
     def wrap
+      ensure_method_defined!
       prevent_double_wrapping! if prevent_double_wrapping?
 
-      proxy_module.define_method(method_name, &block)
+      define_proxy_method
       target.prepend proxy_module unless target.ancestors.include?(proxy_module)
     end
 
     private
 
-    def prevent_double_wrapping?
-      !prevent_double_wrapping_for.blank?
+    def ensure_method_defined!
+      return if target.instance_methods(true).include?(method_name) || target.private_method_defined?(method_name)
+
+      raise MethodNotDefinedError, "#{target} does not define :#{method_name}"
     end
 
     def prevent_double_wrapping!
       return unless proxy_module_for(prevent_double_wrapping_for)&.instance_methods&.include?(method_name)
 
       raise DoubleWrapError, "Module #{proxy_module} already defines the method :#{method_name}"
+    end
+
+    def define_proxy_method
+      proxy_module.define_method(method_name, &block)
+
+      proxy_module.instance_exec(method_name, method_privacy) do |method_name, method_privacy|
+        case method_privacy
+        when :protected
+          protected method_name
+        when :private
+          private method_name
+        end
+      end
+    end
+
+    def method_privacy
+      return @method_privacy if instance_variable_defined?(:@method_privacy)
+
+      @method_privacy =
+        if target.protected_method_defined?(method_name)
+          :protected
+        elsif target.private_method_defined?(method_name)
+          :private
+        end
+    end
+
+    def prevent_double_wrapping?
+      !prevent_double_wrapping_for.blank?
     end
 
     # @return [AroundTheWorld::ProxyModule] The proxy module upon which the method wrapper will be defined
@@ -72,7 +103,7 @@ module AroundTheWorld
 
     # @return [Array<AroundTheWorld::ProxyModule>] All ProxyModules +prepended+ to the target module.
     def existing_proxy_modules
-      target.ancestors.select.with_index do |ancestor, index|
+      @existing_proxy_modules ||= target.ancestors.select.with_index do |ancestor, index|
         next if index >= base_ancestry_index
 
         ancestor.is_a? ProxyModule

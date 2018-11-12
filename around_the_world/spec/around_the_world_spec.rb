@@ -1,27 +1,19 @@
 # frozen_string_literal: true
 
 RSpec.describe AroundTheWorld do
-  # NOTE: if :sample_method gets changed to something else,
-  # you must change the definitions in the sample classes as well,
   let(:wrapped_method_name) { :sample_method }
   let(:prevent_double_wrapping_purpose) { nil }
   let(:sample_class_response) { Faker::Hipster.sentence }
+  let(:proxy_module) { sample_class.ancestors.find { |mod| mod.is_a?(described_class::ProxyModule) } }
 
   let(:sample_class) do
-    Class.new do
-      include AroundTheWorld
+    Class.new.tap do |klass|
+      klass.instance_exec(described_class, wrapped_method_name) do |described_class, wrapped_method_name|
+        include described_class
 
-      def sample_method
-        # TODO: Do something testable here
-      end
-    end
-  end
-
-  let(:sample_inheriting_class_response) { Faker::ChuckNorris.fact }
-  let(:sample_inheriting_class) do
-    Class.new do
-      def sample_method
-        # TODO: Do something testable here
+        define_method(wrapped_method_name) do
+          # TODO: Do something testable here
+        end
       end
     end
   end
@@ -39,6 +31,35 @@ RSpec.describe AroundTheWorld do
       ) {}
     end
 
+    context "when the target does not define the wrapped method" do
+      before { sample_class.undef_method(wrapped_method_name) }
+
+      it "raises" do
+        expect { around }.to raise_error AroundTheWorld::MethodNotDefinedError
+      end
+    end
+
+    context "when the method is protected" do
+      subject { proxy_module }
+
+      before do
+        sample_class.__send__(:protected, wrapped_method_name)
+        around
+      end
+
+      it { is_expected.to be_protected_method_defined wrapped_method_name }
+    end
+
+    context "when the method is private" do
+      subject { proxy_module }
+
+      before do
+        sample_class.__send__(:private, wrapped_method_name)
+        around
+      end
+
+      it { is_expected.to be_private_method_defined wrapped_method_name }
+    end
 
     context "when method has been defined on the specified module already" do
       before do
