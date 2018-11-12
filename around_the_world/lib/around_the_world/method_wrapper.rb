@@ -65,12 +65,13 @@ module AroundTheWorld
     def method_privacy
       return @method_privacy if instance_variable_defined?(:@method_privacy)
 
-      @method_privacy =
+      @method_privacy = begin
         if target.protected_method_defined?(method_name)
           :protected
         elsif target.private_method_defined?(method_name)
           :private
         end
+      end
     end
 
     def prevent_double_wrapping?
