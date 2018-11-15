@@ -53,7 +53,7 @@ module AroundTheWorld
     #
     # @param method_name [Symbol]
     # @param proxy_module_name [String]
-    #   DEPRECATED: this method is deprecated and will be removed in a future release.
+    #   DEPRECATED: this argument is deprecated and will be removed in a future release.
     #     Use the :prevent_double_wrapping_for option instead.
     #   The camelized name of a custom module to place the wrapper method in. This is necessary
     #   to enable wrapping a single method more than once since a module cannot super to itself.
