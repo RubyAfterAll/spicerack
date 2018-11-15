@@ -3,9 +3,7 @@
 require_relative "./spec_helper"
 
 RSpec.describe ShortCircuIt do
-  it "has a version number" do
-    expect(ShortCircuIt::VERSION).not_to be nil
-  end
+  it_behaves_like "a versioned spicerack gem"
 
   describe ".memoize" do
     let(:memoized_class) do
