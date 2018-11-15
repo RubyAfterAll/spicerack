@@ -126,11 +126,18 @@ RSpec.describe AroundTheWorld do
         allow(another_class).to receive(external_method_name).and_return(external_method_return_value)
         around
       end
-
     end
 
     context "when the wrapper block calls super" do
       include_context "when method is wrapped"
+
+      shared_examples_for "it calls both methods" do
+        it "calls both methods" do
+          expect(wrapped_method).to eq returned_value
+          expect(wrapped_instance).to have_received(private_method_name).with(*method_call_args)
+          expect(another_class).to have_received(external_method_name).with(wrapped_instance, *method_call_args)
+        end
+      end
 
       context "when the wrapper block returns super" do
         let(:wrapper_proc) do
@@ -140,10 +147,8 @@ RSpec.describe AroundTheWorld do
           end
         end
 
-        it "returns the wrapped method value" do
-          expect(wrapped_method).to eq wrapped_method_return_value
-          expect(wrapped_instance).to have_received(private_method_name).with(*method_call_args)
-          expect(another_class).to have_received(external_method_name).with(wrapped_instance, *method_call_args)
+        it_behaves_like "it calls both methods" do
+          let(:returned_value) { wrapped_method_return_value }
         end
       end
 
@@ -155,10 +160,8 @@ RSpec.describe AroundTheWorld do
           end
         end
 
-        it "returns the wrapped method value" do
-          expect(wrapped_method).to eq external_method_return_value
-          expect(wrapped_instance).to have_received(private_method_name).with(*method_call_args)
-          expect(another_class).to have_received(external_method_name).with(wrapped_instance, *method_call_args)
+        it_behaves_like "it calls both methods" do
+          let(:returned_value) { external_method_return_value }
         end
       end
     end
