@@ -25,7 +25,10 @@ module ShortCircuIt
   end
 
   class_methods do
-    attr_internal_reader :memoization_observers
+    def memoization_observers
+      @memoization_observers ||=
+        superclass.respond_to?(:memoization_observers) ? superclass.memoization_observers : {}
+    end
 
     protected
 
@@ -78,11 +81,10 @@ module ShortCircuIt
 
     private
 
-    attr_internal_writer :memoization_observers
+    attr_writer :memoization_observers
 
     def add_memoized_observers(method_name, observers)
       # TODO: Raise an error if method has already been memoized? A warning maybe?
-      self.memoization_observers ||= {}
       self.memoization_observers = memoization_observers.
         merge(method_name.to_sym => Array.wrap(observers).freeze).
         freeze
