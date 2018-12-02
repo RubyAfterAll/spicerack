@@ -1,3 +1,9 @@
+# v0.5.0
+
+*Release Date*: 11/10/18
+
+- Updates to AroundTheWorld
+
 # v0.2.5
 
 *Release Date*: 10/3/18

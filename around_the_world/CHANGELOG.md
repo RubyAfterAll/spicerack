@@ -1,3 +1,9 @@
+# v0.5.0
+
+- Deprecate `proxy_module_name` parameter
+- Add `prevent_double_wrapping_for` option
+- Limit method clutter for includers
+
 # v0.2.5
 
 - No changes

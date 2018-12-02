@@ -66,9 +66,24 @@ module Technologic
     end
 
     EXCEPTION_SEVERITIES.each do |severity|
-      define_method("#{severity}!") do |error_class = StandardError, message = nil, **data, &block|
-        instrument severity, error_class.name.demodulize, **data, &block
-        raise error_class, message
+      define_method("#{severity}!") do |exception = StandardError, message = nil, **data, &block|
+        if exception.is_a?(Exception)
+          instrument(
+            severity,
+            exception.class.name.demodulize,
+            **{
+              message: exception.message,
+              additional_message: message,
+            }.compact,
+            **data,
+            &block
+          )
+
+          raise exception
+        else
+          instrument severity, exception.name.demodulize, message: message, **data, &block
+          raise exception, message
+        end
       end
     end
   end

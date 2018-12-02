@@ -12,8 +12,6 @@ module ShortCircuIt
   extend ActiveSupport::Concern
   include AroundTheWorld
 
-  PREPEND_MODULE_NAME = "MemoizedMethods"
-
   included do
     delegate :memoization_observers, to: :class
     delegate :clear_memoization, :clear_all_memoization, to: :memoization_store
@@ -27,7 +25,10 @@ module ShortCircuIt
   end
 
   class_methods do
-    attr_internal_reader :memoization_observers
+    def memoization_observers
+      @memoization_observers ||=
+        superclass.respond_to?(:memoization_observers) ? superclass.memoization_observers : {}
+    end
 
     protected
 
@@ -71,7 +72,7 @@ module ShortCircuIt
     def memoize(method_name, observes: :itself)
       add_memoized_observers(method_name.to_sym, observes)
 
-      around_method method_name.to_sym, PREPEND_MODULE_NAME do |*args|
+      around_method method_name.to_sym, prevent_double_wrapping_for: ShortCircuIt do |*args|
         memoization_store.memoize(method_name.to_sym, args.hash) do
           super(*args)
         end
@@ -80,11 +81,10 @@ module ShortCircuIt
 
     private
 
-    attr_internal_writer :memoization_observers
+    attr_writer :memoization_observers
 
     def add_memoized_observers(method_name, observers)
       # TODO: Raise an error if method has already been memoized? A warning maybe?
-      self.memoization_observers ||= {}
       self.memoization_observers = memoization_observers.
         merge(method_name.to_sym => Array.wrap(observers).freeze).
         freeze
