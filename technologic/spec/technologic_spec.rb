@@ -117,18 +117,60 @@ RSpec.describe Technologic do
     before { stub_const(modulized_error_class_name, example_error_class) }
   end
 
-  shared_examples_for "an exception severity method" do |described_method|
+  shared_examples_for "an exception severity method" do |severity|
     include_context "with instrumentation data"
-    include_context "with example error class"
 
-    subject(:example_method) { example_class.__send__(method_name, example_error_class, error_message, **data, &block) }
+    let(:message) { Faker::Lorem.sentence }
+    let(:module_name) { Faker::Internet.unique.domain_word.capitalize }
+    let(:error_class_name) { Faker::Internet.unique.domain_word.capitalize }
+    let(:modulized_error_class_name) { "#{module_name}::#{error_class_name}" }
+    let(:error_class) { modulized_error_class_name.constantize }
+    let(:expected_event_name) { "#{error_class_name}.#{event_namespace}.#{severity}" }
+    let(:example_error_class) { Class.new(StandardError) }
 
-    let(:severity) { described_method }
-    let(:method_name) { "#{severity}!" }
+    before { stub_const(modulized_error_class_name, example_error_class) }
 
-    it "raises and logs" do
-      expect { example_method }.to raise_error example_error_class, error_message
-      expect(ActiveSupport::Notifications).to have_received(:instrument).with(expected_event_name, **data, &block)
+    context "when an exception class is given" do
+      subject(:instrument!) { example_class.__send__("#{severity}!", error_class, message, **data, &block) }
+
+      it "raises and logs" do
+        expect { instrument! }.to raise_error example_error_class, message
+
+        expect(ActiveSupport::Notifications).
+          to have_received(:instrument).
+          with(expected_event_name, message: message, **data, &block)
+      end
+    end
+
+    context "when an exception instance is given" do
+      subject(:instrument!) do
+        example_class.__send__("#{severity}!", error_instance, **data, &block)
+      end
+
+      let(:error_instance) { example_error_class.new(message) }
+
+      it "raises and logs" do
+        expect { instrument! }.to raise_error error_instance
+
+        expect(ActiveSupport::Notifications).
+          to have_received(:instrument).
+          with(expected_event_name, message: message, **data, &block)
+      end
+
+      context "when another message is included in the #{severity}! call" do
+        subject(:instrument!) do
+          example_class.__send__("#{severity}!", error_instance, additional_message, **data, &block)
+        end
+
+        let(:additional_message) { Faker::ChuckNorris.fact }
+
+        it "includes the additional message in the log" do
+          expect { instrument! }.to raise_error error_instance
+          expect(ActiveSupport::Notifications).
+            to have_received(:instrument).
+            with(expected_event_name, message: message, additional_message: additional_message, **data, &block)
+        end
+      end
     end
   end
 
