@@ -7,11 +7,7 @@ RSpec.describe Technologic do
 
   before { stub_const("ExampleClass", example_class) }
 
-  describe "::VERSION" do
-    subject { described_class::VERSION }
-
-    it { is_expected.to be_a String }
-  end
+  it_behaves_like "a versioned spicerack gem"
 
   describe "::SEVERITIES" do
     subject { described_class::SEVERITIES }

@@ -31,8 +31,10 @@ RSpec.shared_examples_for "a class pass method" do |method|
 
     if accepts_block?
       allow(test_class).to receive(:new).with(*arguments, &block).and_return(instance)
-    else
+    elsif arguments.any?
       allow(test_class).to receive(:new).with(*arguments).and_return(instance)
+    else
+      allow(test_class).to receive(:new).with(no_args).and_return(instance)
     end
   end
 
