@@ -10,8 +10,6 @@ module AroundTheWorld
     end
 
     def for?(purpose)
-      return false if self.purpose.blank?
-
       self.purpose == purpose
     end
 

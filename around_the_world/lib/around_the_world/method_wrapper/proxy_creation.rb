@@ -22,17 +22,17 @@ module AroundTheWorld
         existing_proxy_modules(target).reverse_each.find do |ancestor|
           ancestor.for?(purpose) &&
             !ancestor.defines_proxy_method?(method_name) &&
-            ancestor.wrap_subclasses? == wrap_subclasses
+            ancestor.wraps_subclasses? == wrap_subclasses
         end
       end
 
       # @return [Array<AroundTheWorld::ProxyModule>] All ProxyModules +prepended+ to the target module.
       def existing_proxy_modules(target)
-        target_index = base_ancestry_index(target)
+        target_ancestry_index = base_ancestry_index(target)
 
         @existing_proxy_modules ||= {}
         @existing_proxy_modules[target] ||= target.ancestors.select.with_index do |ancestor, index|
-          next if index >= target_index
+          next if index >= target_ancestry_index
 
           ancestor.is_a? ProxyModule
         end

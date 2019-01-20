@@ -72,7 +72,7 @@ RSpec.describe AroundTheWorld do
       it { is_expected.to be_private_method_defined wrapped_method_name }
     end
 
-    context "when method has been defined on the specified module already" do
+    context "when method has been wrapped already" do
       before do
         wrapped_class.__send__(
           :around_method,
@@ -108,6 +108,19 @@ RSpec.describe AroundTheWorld do
 
         it "raises" do
           expect { around }.to raise_error described_class::DoubleWrapError
+        end
+      end
+
+      context "when another method is wrapped" do
+        let(:another_method_name) { "#{wrapped_method_name}xyz" }
+
+        before do
+          wrapped_class.define_method(another_method_name) { rand(1234) }
+    end
+
+        it "uses the same proxy module" do
+          expect { wrapped_class.__send__(:around_method, another_method_name) {} }.
+            not_to(change { wrapped_class.ancestors.length })
         end
       end
     end
