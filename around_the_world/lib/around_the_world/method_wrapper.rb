@@ -9,19 +9,13 @@ module AroundTheWorld
     private_class_method :new
 
     class << self
-      # Passes arguments directly to {#new} - see docs
-      def wrap(method_name:, target:, prevent_double_wrapping_for: false, wrap_subclasses: false, &block)
-        new(
-          method_name: method_name,
-          target: target,
-          prevent_double_wrapping_for: prevent_double_wrapping_for,
-          wrap_subclasses: wrap_subclasses,
-          &block
-        ).wrap
+      # Passes arguments directly to {#new} - see {#initialize} for full docs
+      def wrap(**args, &block)
+        new(**args, &block).wrap
       end
     end
 
-    attr_reader :method_name, :target, :prevent_double_wrapping_for, :wrap_subclasses, :block
+    attr_reader :method_name, :target
 
     # @param :method_name [String, Symbol] The name of the method to be wrapped.
     # @param :target [Module] The class or module containing the method to be wrapped.
@@ -36,10 +30,12 @@ module AroundTheWorld
     # @block The block that will be executed when the method is invoked.
     #        Should always call super, at least conditionally.
     def initialize(method_name:, target:, prevent_double_wrapping_for: nil, wrap_subclasses: false, &block)
+      raise TypeError, "target must be a module or a class" unless target.is_a?(Module)
+
       @method_name = method_name.to_sym
       @target = target
       @prevent_double_wrapping_for = prevent_double_wrapping_for || nil
-      @wrap_subclasses = wrap_subclasses.present?
+      @wrap_subclasses = wrap_subclasses
       @block = block
     end
 
@@ -52,15 +48,17 @@ module AroundTheWorld
       target.prepend proxy_module unless target.ancestors.include?(proxy_module)
     end
 
-    private
-
     def prevent_double_wrapping?
-      !prevent_double_wrapping_for.blank?
+      prevent_double_wrapping_for.present?
     end
 
     def wrap_subclasses?
       wrap_subclasses.present?
     end
+
+    private
+
+    attr_reader :prevent_double_wrapping_for, :wrap_subclasses, :block
 
     def ensure_method_defined!
       return if target.instance_methods(true).include?(method_name) || target.private_method_defined?(method_name)
@@ -97,7 +95,7 @@ module AroundTheWorld
 
     # @return [AroundTheWorld::ProxyModule] The proxy module upon which the method wrapper will be defined
     def proxy_module
-      proxy_module_with_purpose(method_name, target, prevent_double_wrapping_for, wrap_subclasses)
+      @proxy_module ||= proxy_module_with_purpose(method_name, target, prevent_double_wrapping_for, wrap_subclasses?)
     end
   end
 end
