@@ -73,7 +73,12 @@ module AroundTheWorld
         DEPRECATION
       end
 
-      MethodWrapper.wrap(method_name, self, prevent_double_wrapping_for, &block)
+      MethodWrapper.wrap(
+        method_name: method_name,
+        target: self,
+        prevent_double_wrapping_for: prevent_double_wrapping_for,
+        &block
+      )
     end
   end
 end
