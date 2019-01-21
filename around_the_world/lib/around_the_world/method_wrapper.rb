@@ -48,6 +48,10 @@ module AroundTheWorld
       target.prepend proxy_module unless target.ancestors.include?(proxy_module)
     end
 
+    private
+
+    attr_reader :prevent_double_wrapping_for, :wrap_subclasses, :block
+
     def prevent_double_wrapping?
       prevent_double_wrapping_for.present?
     end
@@ -55,10 +59,6 @@ module AroundTheWorld
     def wrap_subclasses?
       wrap_subclasses.present?
     end
-
-    private
-
-    attr_reader :prevent_double_wrapping_for, :wrap_subclasses, :block
 
     def ensure_method_defined!
       return if target.instance_methods(true).include?(method_name) || target.private_method_defined?(method_name)
