@@ -140,64 +140,30 @@ RSpec.describe ShortCircuIt do
       end
     end
 
-    shared_examples_for "a method that takes no arguments" do |with_memoization: true|
-      let(:memoized_method) { :method_without_arguments }
-      let(:arguments) { [] }
+    shared_examples_for "a method that observes nothing" do |with_memoization|
+      include_context "when it observes nothing"
 
-      context "when the method observes nothing" do
-        include_context "when it observes nothing"
+      it_behaves_like "it defines a memoization method"
 
-        it_behaves_like "it defines a memoization method"
-
-        context "when the instance does not change" do
-          if with_memoization
-            it_behaves_like "a memoized value"
-          else
-            it_behaves_like "a new value"
-          end
-        end
-
-        context "when the instance changes between calls" do
-          include_context "when hash changes"
-
-          if with_memoization
-            it_behaves_like "a memoized value"
-          else
-            it_behaves_like "a new value"
-          end
-        end
+      context "when the instance does not change" do
+        it_behaves_like(with_memoization ? "a memoized value" : "a new value")
       end
 
-      context "when the method observes self" do
-        include_context "when it observes itself"
+      context "when the instance changes between calls" do
+        include_context "when hash changes"
 
-        it_behaves_like "it defines a memoization method"
-
-        context "when the instance does not change" do
-          if with_memoization
-            it_behaves_like "a memoized value"
-          else
-            it_behaves_like "a new value"
-          end
-        end
-
-        context "when the instance changes between calls" do
-          include_context "when hash changes"
-          it_behaves_like "a new value"
-        end
+        it_behaves_like(with_memoization ? "a memoized value" : "a new value")
       end
+    end
 
+    shared_examples_for "a method that observes one method" do |with_memoization|
       context "when the method observes one method" do
         include_context "when it observes one method"
 
         it_behaves_like "it defines a memoization method"
 
         context "when the observed method does not change" do
-          if with_memoization
-            it_behaves_like "a memoized value"
-          else
-            it_behaves_like "a new value"
-          end
+          it_behaves_like(with_memoization ? "a memoized value" : "a new value")
         end
 
         context "when the observed method changes between calls" do
@@ -205,29 +171,61 @@ RSpec.describe ShortCircuIt do
           it_behaves_like "a new value"
         end
       end
+    end
+
+    shared_examples_for "a method that observes self" do |with_memoization|
+      include_context "when it observes itself"
+
+      it_behaves_like "it defines a memoization method"
+
+      context "when the instance does not change" do
+        it_behaves_like(with_memoization ? "a memoized value" : "a new value")
+      end
+
+      context "when the instance changes between calls" do
+        include_context "when hash changes"
+        it_behaves_like "a new value"
+      end
+    end
+
+    shared_examples_for "a method that observes multiple methods" do |with_memoization|
+      include_context "when it observes multiple methods"
+
+      it_behaves_like "it defines a memoization method"
+
+      context "when neither observed method changes" do
+        it_behaves_like(with_memoization ? "a memoized value" : "a new value")
+      end
+
+      context "when one observed method changes" do
+        include_context "when one of the observed methods changes"
+        it_behaves_like "a new value"
+      end
+
+      context "when both observed methods change" do
+        include_context "when both observed methods change"
+        it_behaves_like "a new value"
+      end
+    end
+
+    shared_examples_for "a method that takes no arguments" do |with_memoization: true|
+      let(:memoized_method) { :method_without_arguments }
+      let(:arguments) { [] }
+
+      context "when the method observes nothing" do
+        it_behaves_like "a method that observes nothing", with_memoization
+      end
+
+      context "when the method observes self" do
+        it_behaves_like "a method that observes self", with_memoization
+      end
+
+      context "when the method observes one method" do
+        it_behaves_like "a method that observes one method", with_memoization
+      end
 
       context "when the method observes multiple methods" do
-        include_context "when it observes multiple methods"
-
-        it_behaves_like "it defines a memoization method"
-
-        context "when neither observed method changes" do
-          if with_memoization
-            it_behaves_like "a memoized value"
-          else
-            it_behaves_like "a new value"
-          end
-        end
-
-        context "when one observed method changes" do
-          include_context "when one of the observed methods changes"
-          it_behaves_like "a new value"
-        end
-
-        context "when both observed methods change" do
-          include_context "when both observed methods change"
-          it_behaves_like "a new value"
-        end
+        it_behaves_like "a method that observes multiple methods", with_memoization
       end
     end
 
@@ -237,89 +235,19 @@ RSpec.describe ShortCircuIt do
 
       context "when arguments do NOT change between calls" do
         context "when the method observes nothing" do
-          include_context "when it observes nothing"
-
-          it_behaves_like "it defines a memoization method"
-
-          context "when the instance does not change" do
-            if with_memoization
-              it_behaves_like "a memoized value"
-            else
-              it_behaves_like "a new value"
-            end
-          end
-
-          context "when the instance changes between calls" do
-            include_context "when hash changes"
-
-            if with_memoization
-              it_behaves_like "a memoized value"
-            else
-              it_behaves_like "a new value"
-            end
-          end
+          it_behaves_like "a method that observes nothing", with_memoization
         end
 
         context "when the method observes self" do
-          include_context "when it observes itself"
-
-          it_behaves_like "it defines a memoization method"
-
-          context "when the instance does not change" do
-            if with_memoization
-              it_behaves_like "a memoized value"
-            else
-              it_behaves_like "a new value"
-            end
-          end
-
-          context "when the instance changes between calls" do
-            include_context "when hash changes"
-            it_behaves_like "a new value"
-          end
+          it_behaves_like "a method that observes self", with_memoization
         end
 
         context "when the method observes one method" do
-          include_context "when it observes one method"
-
-          it_behaves_like "it defines a memoization method"
-
-          context "when the observed method does not change" do
-            if with_memoization
-              it_behaves_like "a memoized value"
-            else
-              it_behaves_like "a new value"
-            end
-          end
-
-          context "when the observed method changes between calls" do
-            include_context "when observed method changes"
-            it_behaves_like "a new value"
-          end
+          it_behaves_like "a method that observes one method", with_memoization
         end
 
         context "when the method observes multiple methods" do
-          include_context "when it observes multiple methods"
-
-          it_behaves_like "it defines a memoization method"
-
-          context "when neither observed method changes" do
-            if with_memoization
-              it_behaves_like "a memoized value"
-            else
-              it_behaves_like "a new value"
-            end
-          end
-
-          context "when one observed method changes" do
-            include_context "when one of the observed methods changes"
-            it_behaves_like "a new value"
-          end
-
-          context "when both observed methods change" do
-            include_context "when both observed methods change"
-            it_behaves_like "a new value"
-          end
+          it_behaves_like "a method that observes multiple methods", with_memoization
         end
       end
 
