@@ -58,31 +58,13 @@ module AroundTheWorld
     #   # => no error raised
     #
     # @param method_name [Symbol]
-    # @param proxy_module_name [String]
-    #   DEPRECATED: this argument is deprecated and will be removed in a future release.
-    #     Use the :prevent_double_wrapping_for option instead.
-    #   The camelized name of a custom module to place the wrapper method in. This is necessary
-    #   to enable wrapping a single method more than once since a module cannot super to itself.
-    #   It's recommended to name the module after what the method wrapper will do, for example
-    #   LogsAnEvent for a wrapper method that logs something. Because of the potential for
-    #   overriding previously wrapped methods, this parameter is required.
-    #
     # @param :prevent_double_wrapping_for [Object]
     #   If defined, this prevents wrapping the method twice for a given purpose. Accepts any argument.
     # @param :wrap_subclasses [Boolean]
     #   If true, the given method will still be wrapped by the given block in subclasses that override the given method.
     #   If false, subclasses that override the method will also override the wrapping block.
     #   Default: false
-    def around_method(method_name, proxy_module_name = nil, prevent_double_wrapping_for: nil, wrap_subclasses: false, &block)
-      if proxy_module_name
-        prevent_double_wrapping_for ||= proxy_module_name
-
-        puts <<~DEPRECATION
-          DEPRECATION WARNING: the proxy_module_name argument is deprecated and will be removed
-            in version 1.0. Please use the :prevent_double_wrapping_for option instead.
-        DEPRECATION
-      end
-
+    def around_method(method_name, prevent_double_wrapping_for: nil, wrap_subclasses: false, &block)
       MethodWrapper.wrap(
         method_name: method_name,
         target: self,
