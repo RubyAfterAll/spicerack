@@ -77,7 +77,7 @@ module AroundTheWorld
     end
 
     def inherited(child)
-      super
+      super(child)
 
       Rewrapper.rewrap(child, proxy_modules_for_subwrapping)
     end
