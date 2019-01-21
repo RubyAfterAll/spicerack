@@ -2,14 +2,11 @@
 
 *Release Date*: 1/xx/2019
 
-- Remove `proxy_module_name` parameter
-- Add `wrap_subclasses` option
+- Add `memoize_subclasses` option
 
 # v0.5.0
 
-- Deprecate `proxy_module_name` parameter
-- Add `prevent_double_wrapping_for` option
-- Limit method clutter for includers
+- No changes
 
 # v0.2.5
 

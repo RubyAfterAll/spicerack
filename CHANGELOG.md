@@ -1,3 +1,9 @@
+# v0.6.0
+
+*Release Date*: 1/xx/2019
+
+- Updates to AroundTheWorld and ShortCircuIt
+
 # v0.5.0
 
 *Release Date*: 11/10/18
