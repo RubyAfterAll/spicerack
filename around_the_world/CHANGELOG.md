@@ -1,3 +1,8 @@
+# v0.6.0
+
+- Remove `proxy_module_name` parameter
+- Add `wrap_subclasses` option
+
 # v0.5.0
 
 - Deprecate `proxy_module_name` parameter

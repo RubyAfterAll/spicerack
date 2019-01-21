@@ -53,30 +53,32 @@ RSpec.describe ShortCircuIt do
 
     let(:target_change) { nil }
     let(:argument_change) { nil }
+    let(:memoize_subclasses) { false }
+    let(:memoization_options) { { observes: observes, memoize_subclasses: memoize_subclasses } }
 
     before do
-      stub_const("MemoizedClass", base_class)
+      stub_const("BaseClass", base_class)
+      stub_const("MemoizedClass", memoized_class)
       allow(memoized_instance).to receive(:expensive_method).and_call_original
+      base_class.__send__(:memoize, memoized_method, **memoization_options)
     end
 
     shared_context "when it observes nothing" do
-      before { base_class.__send__(:memoize, memoized_method, observes: nil) }
+      let(:observes) { nil }
     end
 
     shared_context "when it observes itself" do
-      before { base_class.__send__(:memoize, memoized_method) }
+      let(:observes) { :itself }
     end
 
     shared_context "when it observes one method" do
       let(:observed_method) { all_observer_methods.sample }
-
-      before { base_class.__send__(:memoize, memoized_method, observes: observed_method) }
+      let(:observes) { observed_method }
     end
 
     shared_context "when it observes multiple methods" do
       let(:observed_methods) { all_observer_methods }
-
-      before { base_class.__send__(:memoize, memoized_method, observes: observed_methods) }
+      let(:observes) { observed_methods }
     end
 
     shared_context "when hash changes" do
@@ -138,47 +140,30 @@ RSpec.describe ShortCircuIt do
       end
     end
 
-    shared_examples_for "a memoized method that takes no arguments" do
-      let(:memoized_method) { :method_without_arguments }
-      let(:arguments) { [] }
+    shared_examples_for "a method that observes nothing" do |with_memoization|
+      include_context "when it observes nothing"
 
-      context "when the method observes nothing" do
-        include_context "when it observes nothing"
+      it_behaves_like "it defines a memoization method"
 
-        it_behaves_like "it defines a memoization method"
-
-        context "when the instance does not change" do
-          it_behaves_like "a memoized value"
-        end
-
-        context "when the instance changes between calls" do
-          include_context "when hash changes"
-          it_behaves_like "a memoized value"
-        end
+      context "when the instance does not change" do
+        it_behaves_like(with_memoization ? "a memoized value" : "a new value")
       end
 
-      context "when the method observes self" do
-        include_context "when it observes itself"
+      context "when the instance changes between calls" do
+        include_context "when hash changes"
 
-        it_behaves_like "it defines a memoization method"
-
-        context "when the instance does not change" do
-          it_behaves_like "a memoized value"
-        end
-
-        context "when the instance changes between calls" do
-          include_context "when hash changes"
-          it_behaves_like "a new value"
-        end
+        it_behaves_like(with_memoization ? "a memoized value" : "a new value")
       end
+    end
 
+    shared_examples_for "a method that observes one method" do |with_memoization|
       context "when the method observes one method" do
         include_context "when it observes one method"
 
         it_behaves_like "it defines a memoization method"
 
         context "when the observed method does not change" do
-          it_behaves_like "a memoized value"
+          it_behaves_like(with_memoization ? "a memoized value" : "a new value")
         end
 
         context "when the observed method changes between calls" do
@@ -186,96 +171,83 @@ RSpec.describe ShortCircuIt do
           it_behaves_like "a new value"
         end
       end
+    end
 
-      context "when the method observes multiple methods" do
-        include_context "when it observes multiple methods"
+    shared_examples_for "a method that observes self" do |with_memoization|
+      include_context "when it observes itself"
 
-        it_behaves_like "it defines a memoization method"
+      it_behaves_like "it defines a memoization method"
 
-        context "when neither observed method changes" do
-          it_behaves_like "a memoized value"
-        end
+      context "when the instance does not change" do
+        it_behaves_like(with_memoization ? "a memoized value" : "a new value")
+      end
 
-        context "when one observed method changes" do
-          include_context "when one of the observed methods changes"
-          it_behaves_like "a new value"
-        end
-
-        context "when both observed methods change" do
-          include_context "when both observed methods change"
-          it_behaves_like "a new value"
-        end
+      context "when the instance changes between calls" do
+        include_context "when hash changes"
+        it_behaves_like "a new value"
       end
     end
 
-    shared_examples_for "a memoized method that takes arguments" do
+    shared_examples_for "a method that observes multiple methods" do |with_memoization|
+      include_context "when it observes multiple methods"
+
+      it_behaves_like "it defines a memoization method"
+
+      context "when neither observed method changes" do
+        it_behaves_like(with_memoization ? "a memoized value" : "a new value")
+      end
+
+      context "when one observed method changes" do
+        include_context "when one of the observed methods changes"
+        it_behaves_like "a new value"
+      end
+
+      context "when both observed methods change" do
+        include_context "when both observed methods change"
+        it_behaves_like "a new value"
+      end
+    end
+
+    shared_examples_for "a method that takes no arguments" do |with_memoization: true|
+      let(:memoized_method) { :method_without_arguments }
+      let(:arguments) { [] }
+
+      context "when the method observes nothing" do
+        it_behaves_like "a method that observes nothing", with_memoization
+      end
+
+      context "when the method observes self" do
+        it_behaves_like "a method that observes self", with_memoization
+      end
+
+      context "when the method observes one method" do
+        it_behaves_like "a method that observes one method", with_memoization
+      end
+
+      context "when the method observes multiple methods" do
+        it_behaves_like "a method that observes multiple methods", with_memoization
+      end
+    end
+
+    shared_examples_for "a method that takes arguments" do |with_memoization: true|
       let(:memoized_method) { :method_with_arguments }
       let(:arguments) { Array(rand(1..4)) { rand(100) } }
 
       context "when arguments do NOT change between calls" do
         context "when the method observes nothing" do
-          include_context "when it observes nothing"
-
-          it_behaves_like "it defines a memoization method"
-
-          context "when the instance does not change" do
-            it_behaves_like "a memoized value"
-          end
-
-          context "when the instance changes between calls" do
-            include_context "when hash changes"
-            it_behaves_like "a memoized value"
-          end
+          it_behaves_like "a method that observes nothing", with_memoization
         end
 
         context "when the method observes self" do
-          include_context "when it observes itself"
-
-          it_behaves_like "it defines a memoization method"
-
-          context "when the instance does not change" do
-            it_behaves_like "a memoized value"
-          end
-
-          context "when the instance changes between calls" do
-            include_context "when hash changes"
-            it_behaves_like "a new value"
-          end
+          it_behaves_like "a method that observes self", with_memoization
         end
 
         context "when the method observes one method" do
-          include_context "when it observes one method"
-
-          it_behaves_like "it defines a memoization method"
-
-          context "when the observed method does not change" do
-            it_behaves_like "a memoized value"
-          end
-
-          context "when the observed method changes between calls" do
-            include_context "when observed method changes"
-            it_behaves_like "a new value"
-          end
+          it_behaves_like "a method that observes one method", with_memoization
         end
 
         context "when the method observes multiple methods" do
-          include_context "when it observes multiple methods"
-
-          it_behaves_like "it defines a memoization method"
-
-          context "when neither observed method changes" do
-            it_behaves_like "a memoized value"
-          end
-
-          context "when one observed method changes" do
-            include_context "when one of the observed methods changes"
-            it_behaves_like "a new value"
-          end
-
-          context "when both observed methods change" do
-            include_context "when both observed methods change"
-            it_behaves_like "a new value"
-          end
+          it_behaves_like "a method that observes multiple methods", with_memoization
         end
       end
 
@@ -350,22 +322,58 @@ RSpec.describe ShortCircuIt do
     end
 
     context "when the method takes no arguments" do
-      it_behaves_like "a memoized method that takes no arguments"
+      it_behaves_like "a method that takes no arguments", with_memoization: true
     end
 
     context "when the method takes arguments" do
-      it_behaves_like "a memoized method that takes arguments"
+      it_behaves_like "a method that takes arguments", with_memoization: true
     end
 
     context "when the method is memoized in a parent class" do
       let(:memoized_class) { Class.new(base_class) }
 
       context "when the method takes no arguments" do
-        it_behaves_like "a memoized method that takes no arguments"
+        it_behaves_like "a method that takes no arguments", with_memoization: true
       end
 
       context "when the method takes arguments" do
-        it_behaves_like "a memoized method that takes arguments"
+        it_behaves_like "a method that takes arguments", with_memoization: true
+      end
+
+      context "when the method is re-defined in the child class" do
+        before do
+          memoized_class.__send__(:define_method, :method_without_arguments) do
+            expensive_method(rand(100))
+          end
+
+          memoized_class.__send__(:define_method, :method_with_arguments) do |*args|
+            expensive_method(args.first)
+          end
+        end
+
+        context "when memoize_subclasses is false" do
+          let(:memoize_subclasses) { false }
+
+          context "when the method takes no arguments" do
+            it_behaves_like "a method that takes no arguments", with_memoization: false
+          end
+
+          context "when the method takes arguments" do
+            it_behaves_like "a method that takes arguments", with_memoization: false
+          end
+        end
+
+        context "when memoize_subclasses is true" do
+          let(:memoize_subclasses) { true }
+
+          context "when the method takes no arguments" do
+            it_behaves_like "a method that takes no arguments", with_memoization: true
+          end
+
+          context "when the method takes arguments" do
+            it_behaves_like "a method that takes arguments", with_memoization: true
+          end
+        end
       end
     end
   end

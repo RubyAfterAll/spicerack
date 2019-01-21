@@ -2,6 +2,7 @@
 
 RSpec.describe AroundTheWorld do
   let(:prevent_double_wrapping_purpose) { nil }
+  let(:wrap_subclasses) { false }
   let(:proxy_module) { wrapped_class.ancestors.find { |mod| mod.is_a?(described_class::ProxyModule) } }
 
   let(:wrapped_method_name) { :sample_method }
@@ -26,19 +27,22 @@ RSpec.describe AroundTheWorld do
     end
   end
 
+  let(:wrap_method) do
+    wrapped_class.__send__(
+      :around_method,
+      wrapped_method_name,
+      prevent_double_wrapping_for: prevent_double_wrapping_purpose,
+      wrap_subclasses: wrap_subclasses,
+      &wrapper_proc
+    )
+  end
+
   before { allow(wrapped_instance).to receive(private_method_name).and_call_original }
 
   it_behaves_like "a versioned spicerack gem"
 
   describe ".around_method" do
-    subject(:around) do
-      wrapped_class.__send__(
-        :around_method,
-        wrapped_method_name,
-        prevent_double_wrapping_for: prevent_double_wrapping_purpose,
-        &wrapper_proc
-      )
-    end
+    subject(:around) { wrap_method }
 
     let(:wrapper_proc) { -> {} }
 
@@ -72,34 +76,24 @@ RSpec.describe AroundTheWorld do
       it { is_expected.to be_private_method_defined wrapped_method_name }
     end
 
-    context "when method has been defined on the specified module already" do
-      before do
+    context "when method has been wrapped already" do
+      subject(:around) do
         wrapped_class.__send__(
           :around_method,
           wrapped_method_name,
           prevent_double_wrapping_for: prevent_double_wrapping_purpose,
-        ) {}
+          wrap_subclasses: wrap_subclasses,
+          &wrapper_proc
+        )
       end
 
+      before { wrap_method }
+
       context "when prevent_double_wrapping_for is not set" do
-        context "when prepend_module_name is set" do
-          subject(:around) { wrapped_class.__send__(:around_method, wrapped_method_name, prepend_module_name) {} }
-
-          let(:prepend_module_name) { Faker::Lorem.word }
-
-          before { wrapped_class.__send__(:around_method, wrapped_method_name, prepend_module_name) {} }
-
-          it "raises" do
-            expect { around }.to raise_error described_class::DoubleWrapError
-          end
-        end
-
-        context "when prepend_module_name is not set" do
-          it "adds another prepended module" do
-            ancestors_before = wrapped_class.ancestors
-            expect { around }.to change { wrapped_class.ancestors.count }.by(1)
-            expect((wrapped_class.ancestors - ancestors_before).first).to be_a described_class::ProxyModule
-          end
+        it "adds another prepended module" do
+          ancestors_before = wrapped_class.ancestors
+          expect { around }.to change { wrapped_class.ancestors.count }.by(1)
+          expect((wrapped_class.ancestors - ancestors_before).first).to be_a described_class::ProxyModule
         end
       end
 
@@ -110,11 +104,22 @@ RSpec.describe AroundTheWorld do
           expect { around }.to raise_error described_class::DoubleWrapError
         end
       end
+
+      context "when another method is wrapped" do
+        let(:another_method_name) { "#{wrapped_method_name}xyz" }
+
+        before do
+          wrapped_class.define_method(another_method_name) { rand(1234) }
+        end
+
+        it "uses the same proxy module" do
+          expect { wrapped_class.__send__(:around_method, another_method_name) {} }.
+            not_to(change { wrapped_class.ancestors.length })
+        end
+      end
     end
 
-    shared_context "when method is wrapped" do
-      subject(:wrapped_method) { wrapped_instance.public_send(wrapped_method_name, *method_call_args) }
-
+    shared_context "with stubbed side effect class" do
       let(:method_call_args) { Faker::Hipster.words }
 
       let(:external_method_name) { :side_effect }
@@ -124,8 +129,15 @@ RSpec.describe AroundTheWorld do
       before do
         stub_const("AnotherClass", another_class)
         allow(another_class).to receive(external_method_name).and_return(external_method_return_value)
-        around
       end
+    end
+
+    shared_context "when method is wrapped" do
+      subject(:wrapped_method) { wrapped_instance.public_send(wrapped_method_name, *method_call_args) }
+
+      include_context "with stubbed side effect class"
+
+      before { around }
     end
 
     context "when the wrapper block calls super" do
@@ -179,6 +191,91 @@ RSpec.describe AroundTheWorld do
         expect(wrapped_method).to eq external_method_return_value
         expect(wrapped_instance).not_to have_received(private_method_name)
         expect(another_class).to have_received(external_method_name).with(wrapped_instance, *method_call_args)
+      end
+    end
+
+    describe "subclassed methods" do
+      let(:subclass_wrapped_method_return_value) { Faker::ChuckNorris.fact }
+      let(:subclass_instance) { subclass.new }
+      let(:subclass) do
+        Class.new(wrapped_class).tap do |klass|
+          klass.instance_exec(self) do |spec_context|
+            define_method(spec_context.wrapped_method_name) do |*args|
+              __send__(spec_context.private_method_name, *args)
+            end
+
+            private
+
+            define_method(spec_context.private_method_name) do |*_args|
+              spec_context.subclass_wrapped_method_return_value
+            end
+          end
+        end
+      end
+
+      let(:wrapper_proc) do
+        lambda do |*args|
+          AnotherClass.public_send(:side_effect, self, *args)
+          super(*args)
+        end
+      end
+
+      include_context "with stubbed side effect class"
+
+      shared_context "when around_method is called before the subclass is defined" do
+        before do
+          around
+          subclass
+        end
+      end
+
+      shared_context "when around_method is called after the subclass is defined" do
+        before do
+          around
+          subclass
+        end
+      end
+
+      context "when wrap_subclasses is false" do
+        let(:wrap_subclasses) { false }
+
+        shared_examples_for "it doesn't re-wrap the subclass" do
+          it "calls the subclass methods" do
+            expect(subclass_instance.public_send(wrapped_method_name)).to eq subclass_wrapped_method_return_value
+            expect(AnotherClass).not_to have_received(:side_effect)
+          end
+        end
+
+        context "when around_method is called before the subclass is defined" do
+          include_context "when around_method is called before the subclass is defined"
+          it_behaves_like "it doesn't re-wrap the subclass"
+        end
+
+        context "when around_method is called after the subclass is defined" do
+          include_context "when around_method is called after the subclass is defined"
+          it_behaves_like "it doesn't re-wrap the subclass"
+        end
+      end
+
+      context "when wrap_subclasses is true" do
+        let(:wrap_subclasses) { true }
+
+        shared_examples_for "it re-wraps the subclass" do
+          it "calls the subclass methods" do
+            expect(subclass_instance.public_send(wrapped_method_name)).to eq subclass_wrapped_method_return_value
+            expect(AnotherClass).to have_received(:side_effect)
+          end
+        end
+
+        context "when around_method is called before the subclass is defined" do
+          include_context "when around_method is called before the subclass is defined"
+          it_behaves_like "it re-wraps the subclass"
+        end
+
+        context "when around_method is called after the subclass is defined" do
+          include_context "when around_method is called after the subclass is defined"
+          it_behaves_like "it re-wraps the subclass"
+        end
       end
     end
   end
