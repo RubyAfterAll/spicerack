@@ -116,7 +116,7 @@ RSpec.describe AroundTheWorld do
 
         before do
           wrapped_class.define_method(another_method_name) { rand(1234) }
-    end
+        end
 
         it "uses the same proxy module" do
           expect { wrapped_class.__send__(:around_method, another_method_name) {} }.
