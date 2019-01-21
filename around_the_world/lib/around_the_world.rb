@@ -2,12 +2,18 @@
 
 require_relative "around_the_world/errors"
 require_relative "around_the_world/method_wrapper"
+require_relative "around_the_world/rewrapper"
 require_relative "around_the_world/proxy_module"
 require_relative "around_the_world/version"
 require "active_support/concern"
+require "active_support/descendants_tracker"
 
 module AroundTheWorld
   extend ActiveSupport::Concern
+
+  included do
+    extend ActiveSupport::DescendantsTracker
+  end
 
   class_methods do
     protected
@@ -63,7 +69,11 @@ module AroundTheWorld
     #
     # @param :prevent_double_wrapping_for [Object]
     #   If defined, this prevents wrapping the method twice for a given purpose. Accepts any argument.
-    def around_method(method_name, proxy_module_name = nil, prevent_double_wrapping_for: nil, &block)
+    # @param :wrap_subclasses [Boolean]
+    #   If true, the given method will still be wrapped by the given block in subclasses that override the given method.
+    #   If false, subclasses that override the method will also override the wrapping block.
+    #   Default: false
+    def around_method(method_name, proxy_module_name = nil, prevent_double_wrapping_for: nil, wrap_subclasses: false, &block)
       if proxy_module_name
         prevent_double_wrapping_for ||= proxy_module_name
 
@@ -77,8 +87,23 @@ module AroundTheWorld
         method_name: method_name,
         target: self,
         prevent_double_wrapping_for: prevent_double_wrapping_for,
+        wrap_subclasses: wrap_subclasses,
         &block
       )
+
+      descendants.each { |child| Rewrapper.rewrap(child, proxy_modules_for_subwrapping) }
+    end
+
+    def inherited(child)
+      super
+
+      Rewrapper.rewrap(child, proxy_modules_for_subwrapping)
+    end
+
+    private
+
+    def proxy_modules_for_subwrapping
+      ancestors.select { |mod| mod.is_a?(ProxyModule) && self < mod && mod.wraps_subclasses? }
     end
   end
 end

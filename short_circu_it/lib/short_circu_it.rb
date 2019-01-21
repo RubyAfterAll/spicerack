@@ -66,13 +66,22 @@ module ShortCircuIt
     #   => #<SomeAssociation:2468 id: 2>
     #
     # @param method_name [Symbol] The name of the method to be memoized
-    # @param :observes [Symbol, Array<Symbol>] A method or array of methods to be observed to determine memoization
-    #                                          cache validity. If any of the observed values change, the cached
-    #                                          value will be invalidated. By default, the object will observe itself.
-    def memoize(method_name, observes: :itself)
+    # @param :observes [Symbol, Array<Symbol>]
+    #   A method or array of methods to be observed to determine memoization cache validity.
+    #   If any of the observed values change, the cached value will be invalidated.
+    #   By default, the object will observe itself.
+    # @param :memoize_subclasses [Boolean]
+    #   If true, method will be memoized in subclasses that redefine the method.
+    #   If false, subclasses that redefine the method will not memoizee the resolveed value.
+    #   Default: false
+    def memoize(method_name, observes: :itself, memoize_subclasses: false)
       add_memoized_observers(method_name.to_sym, observes)
 
-      around_method method_name.to_sym, prevent_double_wrapping_for: ShortCircuIt do |*args|
+      around_method(
+        method_name.to_sym,
+        prevent_double_wrapping_for: ShortCircuIt,
+        wrap_subclasses: memoize_subclasses,
+      ) do |*args|
         memoization_store.memoize(method_name.to_sym, args.hash) do
           super(*args)
         end
