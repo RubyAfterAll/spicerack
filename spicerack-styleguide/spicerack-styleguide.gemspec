@@ -14,7 +14,11 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/Freshly/spicerack/tree/develop/spicerack-styleguide"
   spec.license       = "MIT"
 
-  spec.require_paths = ["lib"]
+  spec.require_paths = "lib"
+
+  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "simplecov", "~> 0.16"
 
   spec.add_development_dependency "rubocop", "0.59.2"
   spec.add_development_dependency "rubocop-rspec", "1.29.1"
