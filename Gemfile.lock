@@ -14,6 +14,8 @@ PATH
       short_circu_it (= 0.6.0.pre)
       technologic (= 0.6.0.pre)
     spicerack-styleguide (0.6.0.pre)
+      rubocop (= 0.59.2)
+      rubocop-rspec (= 1.29.1)
     technologic (0.6.0.pre)
       activesupport (~> 5.2.1)
       railties (~> 5.2.1)
