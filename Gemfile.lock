@@ -13,6 +13,7 @@ PATH
       around_the_world (= 0.6.0.pre)
       short_circu_it (= 0.6.0.pre)
       technologic (= 0.6.0.pre)
+    spicerack-styleguide (0.6.0.pre)
     technologic (0.6.0.pre)
       activesupport (~> 5.2.1)
       railties (~> 5.2.1)
@@ -138,6 +139,7 @@ DEPENDENCIES
   rubocop-rspec (~> 1.27)
   simplecov (~> 0.16)
   spicerack!
+  spicerack-styleguide (= 0.6.0.pre)
 
 BUNDLED WITH
    1.16.4

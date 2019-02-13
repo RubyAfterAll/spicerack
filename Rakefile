@@ -10,6 +10,7 @@ SPICERACK_GEMS = %w[
   rspice
   short_circu_it
   technologic
+  spicerack-styleguide
 ].freeze
 ALL_GEMS = %w[spicerack] + SPICERACK_GEMS
 
@@ -18,14 +19,13 @@ version = File.read("#{__dir__}/SPICERACK_VERSION").strip
 ALL_GEMS.each do |gem|
   namespace gem do
     task :update_version do
-      file_prefix = (gem == "spicerack") ? "" : "#{__dir__}/#{gem}/"
-      file_path = "#{file_prefix}lib/#{gem}/version.rb"
-      file_text = File.read(file_path)
+      version_path = File.join(__dir__, (gem == "spicerack") ? "" : gem, "lib", gem.gsub("-", "/"), "version.rb")
+      file_text = File.read(version_path)
 
       file_text.gsub!(%r{^(\s*)VERSION(\s*)= .*?$}, "\\1VERSION = \"#{version}\"")
-      raise StandardError, "Could not insert VERSION in #{file_path}" unless $1
+      raise StandardError, "Could not insert VERSION in #{version_path}" unless $1
 
-      File.open(file_path, "w") { |f| f.write file_text }
+      File.open(version_path, "w") { |f| f.write file_text }
     end
   end
 end
