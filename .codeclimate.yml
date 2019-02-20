@@ -1,3 +1,8 @@
+prepare:
+  fetch:
+    - url: "https://raw.githubusercontent.com/Freshly/spicerack/blob/62d9e4f1cc279cf0a1e76cdbab292ec3b43d6b14/spicerack-styleguide/rubocop.yml"
+      path: ".rubocop.yml"
+
 plugins:
   rubocop:
     enabled: true
