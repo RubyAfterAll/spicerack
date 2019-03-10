@@ -1,8 +1,6 @@
 # v0.6.0
 
-*Release Date*: 1/xx/2019
-
-- Add `memoize_subclasses` option
+- No changes
 
 # v0.5.0
 

@@ -53,8 +53,7 @@ RSpec.describe ShortCircuIt do
 
     let(:target_change) { nil }
     let(:argument_change) { nil }
-    let(:memoize_subclasses) { false }
-    let(:memoization_options) { { observes: observes, memoize_subclasses: memoize_subclasses } }
+    let(:memoization_options) { { observes: observes } }
 
     before do
       stub_const("BaseClass", base_class)
@@ -351,28 +350,12 @@ RSpec.describe ShortCircuIt do
           end
         end
 
-        context "when memoize_subclasses is false" do
-          let(:memoize_subclasses) { false }
-
-          context "when the method takes no arguments" do
-            it_behaves_like "a method that takes no arguments", with_memoization: false
-          end
-
-          context "when the method takes arguments" do
-            it_behaves_like "a method that takes arguments", with_memoization: false
-          end
+        context "when the method takes no arguments" do
+          it_behaves_like "a method that takes no arguments", with_memoization: false
         end
 
-        context "when memoize_subclasses is true" do
-          let(:memoize_subclasses) { true }
-
-          context "when the method takes no arguments" do
-            it_behaves_like "a method that takes no arguments", with_memoization: true
-          end
-
-          context "when the method takes arguments" do
-            it_behaves_like "a method that takes arguments", with_memoization: true
-          end
+        context "when the method takes arguments" do
+          it_behaves_like "a method that takes arguments", with_memoization: false
         end
       end
     end

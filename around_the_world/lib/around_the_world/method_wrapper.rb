@@ -23,19 +23,14 @@ module AroundTheWorld
     #   An identifier to define the proxy module's purpose in the ancestor tree.
     #   A method can only be wrapped once for a given purpose, though it can be wrapped
     #   again for other purposes, or for no given purpose.
-    # @param :wrap_subclasses [Boolean]
-    #   If true, the given method will still be wrapped by the given block in subclasses that override the given method.
-    #   If false, subclasses that override the method will also override the wrapping block.
-    #   Default: false
     # @block The block that will be executed when the method is invoked.
     #        Should always call super, at least conditionally.
-    def initialize(method_name:, target:, prevent_double_wrapping_for: nil, wrap_subclasses: false, &block)
+    def initialize(method_name:, target:, prevent_double_wrapping_for: nil, &block)
       raise TypeError, "target must be a module or a class" unless target.is_a?(Module)
 
       @method_name = method_name.to_sym
       @target = target
       @prevent_double_wrapping_for = prevent_double_wrapping_for || nil
-      @wrap_subclasses = wrap_subclasses
       @block = block
     end
 
@@ -50,14 +45,10 @@ module AroundTheWorld
 
     private
 
-    attr_reader :prevent_double_wrapping_for, :wrap_subclasses, :block
+    attr_reader :prevent_double_wrapping_for, :block
 
     def prevent_double_wrapping?
       prevent_double_wrapping_for.present?
-    end
-
-    def wrap_subclasses?
-      wrap_subclasses.present?
     end
 
     def ensure_method_defined!
@@ -95,7 +86,7 @@ module AroundTheWorld
 
     # @return [AroundTheWorld::ProxyModule] The proxy module upon which the method wrapper will be defined
     def proxy_module
-      @proxy_module ||= proxy_module_with_purpose(method_name, target, prevent_double_wrapping_for, wrap_subclasses?)
+      @proxy_module ||= proxy_module_with_purpose(method_name, target, prevent_double_wrapping_for)
     end
   end
 end

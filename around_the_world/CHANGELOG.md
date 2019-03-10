@@ -3,7 +3,6 @@
 *Release Date*: 1/xx/2019
 
 - Remove `proxy_module_name` parameter
-- Add `wrap_subclasses` option
 
 # v0.5.0
 
