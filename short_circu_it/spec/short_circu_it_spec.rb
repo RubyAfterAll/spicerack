@@ -44,11 +44,6 @@ RSpec.describe ShortCircuIt do
     let(:target_class) { base_class }
 
     let(:target_instance) { target_class.new }
-    let(:memoized_module) do
-      target_class.ancestors.find do |ancestor|
-        ancestor.is_a?(AroundTheWorld::ProxyModule) && ancestor.for?(described_class)
-      end
-    end
     let(:all_observer_methods) { %i[observed_value_one observed_value_two] }
 
     let(:target_change) { nil }
@@ -110,12 +105,6 @@ RSpec.describe ShortCircuIt do
       end
     end
 
-    shared_examples_for "it defines a memoization method" do
-      subject { memoized_module.instance_methods }
-
-      it { is_expected.to include memoized_method }
-    end
-
     shared_examples_for "a memoized value" do
       let!(:initial_value) { target_instance.public_send(memoized_method, *arguments) }
 
@@ -141,8 +130,6 @@ RSpec.describe ShortCircuIt do
     shared_examples_for "a method that observes nothing" do |with_memoization|
       include_context "when it observes nothing"
 
-      it_behaves_like "it defines a memoization method"
-
       context "when the instance does not change" do
         it_behaves_like(with_memoization ? "a memoized value" : "a new value")
       end
@@ -158,8 +145,6 @@ RSpec.describe ShortCircuIt do
       context "when the method observes one method" do
         include_context "when it observes one method"
 
-        it_behaves_like "it defines a memoization method"
-
         context "when the observed method does not change" do
           it_behaves_like(with_memoization ? "a memoized value" : "a new value")
         end
@@ -174,8 +159,6 @@ RSpec.describe ShortCircuIt do
     shared_examples_for "a method that observes self" do |with_memoization|
       include_context "when it observes itself"
 
-      it_behaves_like "it defines a memoization method"
-
       context "when the instance does not change" do
         it_behaves_like(with_memoization ? "a memoized value" : "a new value")
       end
@@ -188,8 +171,6 @@ RSpec.describe ShortCircuIt do
 
     shared_examples_for "a method that observes multiple methods" do |with_memoization|
       include_context "when it observes multiple methods"
-
-      it_behaves_like "it defines a memoization method"
 
       context "when neither observed method changes" do
         it_behaves_like(with_memoization ? "a memoized value" : "a new value")
@@ -253,8 +234,6 @@ RSpec.describe ShortCircuIt do
         context "when the method observes nothing" do
           include_context "when it observes nothing"
 
-          it_behaves_like "it defines a memoization method"
-
           context "when the instance does not change" do
             it_behaves_like "a new value"
           end
@@ -267,8 +246,6 @@ RSpec.describe ShortCircuIt do
 
         context "when the method observes self" do
           include_context "when it observes itself"
-
-          it_behaves_like "it defines a memoization method"
 
           context "when the instance does not change" do
             it_behaves_like "a new value"
@@ -283,8 +260,6 @@ RSpec.describe ShortCircuIt do
         context "when the method observes one method" do
           include_context "when it observes one method"
 
-          it_behaves_like "it defines a memoization method"
-
           context "when the observed method does not change" do
             it_behaves_like "a new value"
           end
@@ -297,8 +272,6 @@ RSpec.describe ShortCircuIt do
 
         context "when the method observes multiple methods" do
           include_context "when it observes multiple methods"
-
-          it_behaves_like "it defines a memoization method"
 
           context "when neither observed method changes" do
             it_behaves_like "a new value"
