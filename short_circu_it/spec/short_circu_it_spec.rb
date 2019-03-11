@@ -42,6 +42,7 @@ RSpec.describe ShortCircuIt do
     end
 
     let(:target_class) { base_class }
+    let(:memoized_class) { base_class }
 
     let(:target_instance) { target_class.new }
     let(:all_observer_methods) { %i[observed_value_one observed_value_two] }
@@ -52,7 +53,7 @@ RSpec.describe ShortCircuIt do
 
     before do
       stub_const("BaseClass", base_class)
-      stub_const("MemoizedClass", target_class)
+      stub_const("TargetClass", target_class)
       allow(target_instance).to receive(:expensive_method).and_call_original
     end
 
@@ -291,6 +292,9 @@ RSpec.describe ShortCircuIt do
     end
 
     shared_examples_for "memoization" do
+      let(:memoized_method_with_args) { :method_with_arguments }
+      let(:memoized_method_without_args) { :method_without_arguments }
+
       context "when the method takes no arguments" do
         let(:memoized_method) { memoized_method_without_args }
 
@@ -342,34 +346,35 @@ RSpec.describe ShortCircuIt do
           end
         end
       end
-
-      context "when the method is memoized in a child class" do
-        let(:target_class) { Class.new(base_class) }
-
-        before do
-
-        end
-      end
     end
 
     context "when only one method is memoized at a time" do
-      before { base_class.__send__(:memoize, memoized_method, **memoization_options) }
+      before { memoized_class.__send__(:memoize, memoized_method, **memoization_options) }
 
-      it_behaves_like "memoization" do
-        let(:memoized_method_with_args) { :method_with_arguments }
-        let(:memoized_method_without_args) { :method_without_arguments }
-      end
+      it_behaves_like "memoization"
     end
 
     context "when multiple methods are memoized at a time" do
-      let(:memoized_methods) { %i[method_with_arguments method_without_arguments] }
+      let(:memoized_methods) { [ memoized_method_with_args, memoized_method_without_args ] }
 
-      before { base_class.__send__(:memoize, *memoized_methods, **memoization_options) }
+      before { memoized_class.__send__(:memoize, *memoized_methods, **memoization_options) }
 
-      it_behaves_like "memoization" do
-        let(:memoized_method_with_args) { :method_with_arguments }
-        let(:memoized_method_without_args) { :method_without_arguments }
+      it_behaves_like "memoization"
+    end
+
+    context "when the method is memoized in the parent class after the child class is defined" do
+      let(:target_class) do
+        Class.new(base_class) do
+          def inconsequential_method; end
+          memoize :inconsequential_method
+        end
       end
+
+      before do
+        memoized_class.__send__(:memoize, memoized_method, **memoization_options)
+      end
+
+      it_behaves_like "memoization"
     end
   end
 end
