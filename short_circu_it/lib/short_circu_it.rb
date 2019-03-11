@@ -71,14 +71,14 @@ module ShortCircuIt
     #   If any of the observed values change, the cached value will be invalidated.
     #   By default, the object will observe itself.
     def memoize(*method_names, observes: :itself)
-      method_names.each do |method_name|
-        add_memoized_observers(method_name.to_sym, observes)
+      method_names.map(&:to_sym).each do |method_name|
+        add_memoized_observers(method_name, observes)
 
         around_method(
-          method_name.to_sym,
+          method_name,
           prevent_double_wrapping_for: ShortCircuIt,
         ) do |*args|
-          memoization_store.memoize(method_name.to_sym, args.hash) do
+          memoization_store.memoize(method_name, args.hash) do
             super(*args)
           end
         end
