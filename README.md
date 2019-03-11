@@ -78,7 +78,7 @@ Then in the base directory:
 - Increment the version in `SPICERACK_VERSION`
 - Run `rake spicerack:update_all_versions` to the correct version
 
-Next, push the code up and open a new pull request. 
+Next, push the code up and open a new pull request.
 
 Once that gets merged into master, run:
 

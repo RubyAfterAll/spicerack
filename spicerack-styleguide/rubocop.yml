@@ -8,6 +8,7 @@ AllCops:
     - Rakefile
     - spec/*_helper.rb
     - db/**/*
+    - **.gemspec
 
 Layout/AccessModifierIndentation:
   Enabled: true
