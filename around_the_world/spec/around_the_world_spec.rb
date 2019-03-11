@@ -2,9 +2,7 @@
 
 RSpec.describe AroundTheWorld do
   let(:prevent_double_wrapping_purpose) { nil }
-  let(:wrap_subclasses) { false }
   let(:proxy_module) { wrapped_class.ancestors.find { |mod| mod.is_a?(described_class::ProxyModule) } }
-
   let(:wrapped_method_name) { :sample_method }
   let(:private_method_name) { :some_private_method }
   let(:wrapped_method_return_value) { Faker::Hipster.sentence }
@@ -32,7 +30,6 @@ RSpec.describe AroundTheWorld do
       :around_method,
       wrapped_method_name,
       prevent_double_wrapping_for: prevent_double_wrapping_purpose,
-      wrap_subclasses: wrap_subclasses,
       &wrapper_proc
     )
   end
@@ -82,7 +79,6 @@ RSpec.describe AroundTheWorld do
           :around_method,
           wrapped_method_name,
           prevent_double_wrapping_for: prevent_double_wrapping_purpose,
-          wrap_subclasses: wrap_subclasses,
           &wrapper_proc
         )
       end
@@ -191,91 +187,6 @@ RSpec.describe AroundTheWorld do
         expect(wrapped_method).to eq external_method_return_value
         expect(wrapped_instance).not_to have_received(private_method_name)
         expect(another_class).to have_received(external_method_name).with(wrapped_instance, *method_call_args)
-      end
-    end
-
-    describe "subclassed methods" do
-      let(:subclass_wrapped_method_return_value) { Faker::ChuckNorris.fact }
-      let(:subclass_instance) { subclass.new }
-      let(:subclass) do
-        Class.new(wrapped_class).tap do |klass|
-          klass.instance_exec(self) do |spec_context|
-            define_method(spec_context.wrapped_method_name) do |*args|
-              __send__(spec_context.private_method_name, *args)
-            end
-
-            private
-
-            define_method(spec_context.private_method_name) do |*_args|
-              spec_context.subclass_wrapped_method_return_value
-            end
-          end
-        end
-      end
-
-      let(:wrapper_proc) do
-        lambda do |*args|
-          AnotherClass.public_send(:side_effect, self, *args)
-          super(*args)
-        end
-      end
-
-      include_context "with stubbed side effect class"
-
-      shared_context "when around_method is called before the subclass is defined" do
-        before do
-          around
-          subclass
-        end
-      end
-
-      shared_context "when around_method is called after the subclass is defined" do
-        before do
-          around
-          subclass
-        end
-      end
-
-      context "when wrap_subclasses is false" do
-        let(:wrap_subclasses) { false }
-
-        shared_examples_for "it doesn't re-wrap the subclass" do
-          it "calls the subclass methods" do
-            expect(subclass_instance.public_send(wrapped_method_name)).to eq subclass_wrapped_method_return_value
-            expect(AnotherClass).not_to have_received(:side_effect)
-          end
-        end
-
-        context "when around_method is called before the subclass is defined" do
-          include_context "when around_method is called before the subclass is defined"
-          it_behaves_like "it doesn't re-wrap the subclass"
-        end
-
-        context "when around_method is called after the subclass is defined" do
-          include_context "when around_method is called after the subclass is defined"
-          it_behaves_like "it doesn't re-wrap the subclass"
-        end
-      end
-
-      context "when wrap_subclasses is true" do
-        let(:wrap_subclasses) { true }
-
-        shared_examples_for "it re-wraps the subclass" do
-          it "calls the subclass methods" do
-            expect(subclass_instance.public_send(wrapped_method_name)).to eq subclass_wrapped_method_return_value
-            expect(AnotherClass).to have_received(:side_effect)
-          end
-        end
-
-        context "when around_method is called before the subclass is defined" do
-          include_context "when around_method is called before the subclass is defined"
-          it_behaves_like "it re-wraps the subclass"
-        end
-
-        context "when around_method is called after the subclass is defined" do
-          include_context "when around_method is called after the subclass is defined"
-          it_behaves_like "it re-wraps the subclass"
-        end
       end
     end
   end

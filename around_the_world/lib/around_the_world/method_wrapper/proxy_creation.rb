@@ -13,16 +13,14 @@ module AroundTheWorld
 
       # @return [AroundTheWorld::ProxyModule] Either an already-defined proxy module for the given purpose,
       #                                       or a new proxy module if one does not exist for the given purpose.
-      def proxy_module_with_purpose(method_name, target, purpose, wrap_subclasses)
-        existing_proxy_module_with_purpose(method_name, target, purpose, wrap_subclasses) ||
-          ProxyModule.new(purpose: purpose, wrap_subclasses: wrap_subclasses?)
+      def proxy_module_with_purpose(method_name, target, purpose)
+        existing_proxy_module_with_purpose(method_name, target, purpose) ||
+          ProxyModule.new(purpose: purpose)
       end
 
-      def existing_proxy_module_with_purpose(method_name, target, purpose, wrap_subclasses)
+      def existing_proxy_module_with_purpose(method_name, target, purpose)
         existing_proxy_modules(target).reverse_each.find do |ancestor|
-          ancestor.for?(purpose) &&
-            !ancestor.defines_proxy_method?(method_name) &&
-            ancestor.wraps_subclasses? == wrap_subclasses
+          ancestor.for?(purpose) && !ancestor.defines_proxy_method?(method_name)
         end
       end
 
