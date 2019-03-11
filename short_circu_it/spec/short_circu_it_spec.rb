@@ -207,7 +207,6 @@ RSpec.describe ShortCircuIt do
     end
 
     shared_examples_for "a method that takes no arguments" do |with_memoization: true|
-      let(:memoized_method) { memoized_method_without_args }
       let(:arguments) { [] }
 
       context "when the method observes nothing" do
@@ -228,7 +227,6 @@ RSpec.describe ShortCircuIt do
     end
 
     shared_examples_for "a method that takes arguments" do |with_memoization: true|
-      let(:memoized_method) { memoized_method_with_args }
       let(:arguments) { Array(rand(1..4)) { rand(100) } }
 
       context "when arguments do NOT change between calls" do
@@ -321,10 +319,14 @@ RSpec.describe ShortCircuIt do
 
     shared_examples_for "memoization" do
       context "when the method takes no arguments" do
+        let(:memoized_method) { memoized_method_without_args }
+
         it_behaves_like "a method that takes no arguments", with_memoization: true
       end
 
       context "when the method takes arguments" do
+        let(:memoized_method) { memoized_method_with_args }
+
         it_behaves_like "a method that takes arguments", with_memoization: true
       end
 
@@ -332,10 +334,14 @@ RSpec.describe ShortCircuIt do
         let(:memoized_class) { Class.new(base_class) }
 
         context "when the method takes no arguments" do
+          let(:memoized_method) { memoized_method_without_args }
+
           it_behaves_like "a method that takes no arguments", with_memoization: true
         end
 
         context "when the method takes arguments" do
+          let(:memoized_method) { memoized_method_with_args }
+
           it_behaves_like "a method that takes arguments", with_memoization: true
         end
 
@@ -351,10 +357,14 @@ RSpec.describe ShortCircuIt do
           end
 
           context "when the method takes no arguments" do
+            let(:memoized_method) { memoized_method_without_args }
+
             it_behaves_like "a method that takes no arguments", with_memoization: false
           end
 
           context "when the method takes arguments" do
+            let(:memoized_method) { memoized_method_with_args }
+
             it_behaves_like "a method that takes arguments", with_memoization: false
           end
         end
