@@ -41,6 +41,10 @@ RSpec.describe ShortCircuIt do
       end
     end
 
+    let(:memoized_method_with_args) { :method_with_arguments }
+    let(:memoized_method_without_args) { :method_without_arguments }
+    let(:memoized_methods) { [ memoized_method_with_args, memoized_method_without_args ] }
+
     let(:target_class) { base_class }
     let(:memoized_class) { base_class }
 
@@ -292,9 +296,6 @@ RSpec.describe ShortCircuIt do
     end
 
     shared_examples_for "memoization" do
-      let(:memoized_method_with_args) { :method_with_arguments }
-      let(:memoized_method_without_args) { :method_without_arguments }
-
       context "when the method takes no arguments" do
         let(:memoized_method) { memoized_method_without_args }
 
@@ -355,8 +356,6 @@ RSpec.describe ShortCircuIt do
     end
 
     context "when multiple methods are memoized at a time" do
-      let(:memoized_methods) { [ memoized_method_with_args, memoized_method_without_args ] }
-
       before { memoized_class.__send__(:memoize, *memoized_methods, **memoization_options) }
 
       it_behaves_like "memoization"
