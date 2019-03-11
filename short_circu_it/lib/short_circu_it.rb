@@ -26,11 +26,9 @@ module ShortCircuIt
 
   class_methods do
     def memoization_observers
-      if superclass.respond_to?(:memoization_observers)
-        superclass.memoization_observers.merge(_memoization_observers)
-      else
-        _memoization_observers
-      end
+      return _memoization_observers unless superclass.respond_to?(:memoization_observers)
+
+      superclass.memoization_observers.merge(_memoization_observers)
     end
 
     protected
