@@ -59,7 +59,6 @@ RSpec.describe ShortCircuIt do
       stub_const("BaseClass", base_class)
       stub_const("MemoizedClass", memoized_class)
       allow(memoized_instance).to receive(:expensive_method).and_call_original
-      base_class.__send__(:memoize, memoized_method, **memoization_options)
     end
 
     shared_context "when it observes nothing" do
@@ -208,7 +207,7 @@ RSpec.describe ShortCircuIt do
     end
 
     shared_examples_for "a method that takes no arguments" do |with_memoization: true|
-      let(:memoized_method) { :method_without_arguments }
+      let(:memoized_method) { memoized_method_without_args }
       let(:arguments) { [] }
 
       context "when the method observes nothing" do
@@ -229,7 +228,7 @@ RSpec.describe ShortCircuIt do
     end
 
     shared_examples_for "a method that takes arguments" do |with_memoization: true|
-      let(:memoized_method) { :method_with_arguments }
+      let(:memoized_method) { memoized_method_with_args }
       let(:arguments) { Array(rand(1..4)) { rand(100) } }
 
       context "when arguments do NOT change between calls" do
@@ -320,17 +319,7 @@ RSpec.describe ShortCircuIt do
       end
     end
 
-    context "when the method takes no arguments" do
-      it_behaves_like "a method that takes no arguments", with_memoization: true
-    end
-
-    context "when the method takes arguments" do
-      it_behaves_like "a method that takes arguments", with_memoization: true
-    end
-
-    context "when the method is memoized in a parent class" do
-      let(:memoized_class) { Class.new(base_class) }
-
+    shared_examples_for "memoization" do
       context "when the method takes no arguments" do
         it_behaves_like "a method that takes no arguments", with_memoization: true
       end
@@ -339,24 +328,56 @@ RSpec.describe ShortCircuIt do
         it_behaves_like "a method that takes arguments", with_memoization: true
       end
 
-      context "when the method is re-defined in the child class" do
-        before do
-          memoized_class.__send__(:define_method, :method_without_arguments) do
-            expensive_method(rand(100))
-          end
-
-          memoized_class.__send__(:define_method, :method_with_arguments) do |*args|
-            expensive_method(args.first)
-          end
-        end
+      context "when the method is memoized in a parent class" do
+        let(:memoized_class) { Class.new(base_class) }
 
         context "when the method takes no arguments" do
-          it_behaves_like "a method that takes no arguments", with_memoization: false
+          it_behaves_like "a method that takes no arguments", with_memoization: true
         end
 
         context "when the method takes arguments" do
-          it_behaves_like "a method that takes arguments", with_memoization: false
+          it_behaves_like "a method that takes arguments", with_memoization: true
         end
+
+        context "when the method is re-defined in the child class" do
+          before do
+            memoized_class.__send__(:define_method, :method_without_arguments) do
+              expensive_method(rand(100))
+            end
+
+            memoized_class.__send__(:define_method, :method_with_arguments) do |*args|
+              expensive_method(args.first)
+            end
+          end
+
+          context "when the method takes no arguments" do
+            it_behaves_like "a method that takes no arguments", with_memoization: false
+          end
+
+          context "when the method takes arguments" do
+            it_behaves_like "a method that takes arguments", with_memoization: false
+          end
+        end
+      end
+    end
+
+    context "when only one method is memoized at a time" do
+      before { base_class.__send__(:memoize, memoized_method, **memoization_options) }
+
+      it_behaves_like "memoization" do
+        let(:memoized_method_with_args) { :method_with_arguments }
+        let(:memoized_method_without_args) { :method_without_arguments }
+      end
+    end
+
+    context "when multiple methods are memoized at a time" do
+      let(:memoized_methods) { %i[method_with_arguments method_without_arguments] }
+
+      before { base_class.__send__(:memoize, *memoized_methods, **memoization_options) }
+
+      it_behaves_like "memoization" do
+        let(:memoized_method_with_args) { :method_with_arguments }
+        let(:memoized_method_without_args) { :method_without_arguments }
       end
     end
   end
