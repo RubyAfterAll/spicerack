@@ -31,4 +31,5 @@ Gem::Specification.new do |spec|
 
   # Spicerack Development Gems
   spec.add_development_dependency "rspice", version
+  spec.add_development_dependency "spicerack-styleguide", version
 end
