@@ -1,14 +1,14 @@
 require: rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.5.1
+  TargetRubyVersion: 2.5.3
   Exclude:
     - bin/**/*
     - Gemfile*
     - Rakefile
     - spec/*_helper.rb
     - db/**/*
-    - **/*.gemspec
+    - "**/*.gemspec"
 
 Layout/AccessModifierIndentation:
   Enabled: true
