@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Keeps your code fresh"
   spec.description   = "Wanna write code the Freshly way? Inherit this gem in your rubocop.yml and start your engines!"
-  spec.homepage      = "https://github.com/Freshly/spicerack/tree/develop/spicerack-styleguide"
+  spec.homepage      = "https://github.com/Freshly/spicerack/tree/master/spicerack-styleguide"
   spec.license       = "MIT"
 
   spec.require_paths = "lib"
