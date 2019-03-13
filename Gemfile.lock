@@ -13,7 +13,7 @@ PATH
       around_the_world (= 0.6.0.pre2)
       short_circu_it (= 0.6.0.pre2)
       technologic (= 0.6.0.pre2)
-    spicerack-styleguide (0.6.0.pre2)
+    spicerack-styleguide (0.6.0.pre4)
       rubocop (= 0.59.2)
       rubocop-rspec (= 1.29.1)
     technologic (0.6.0.pre2)
