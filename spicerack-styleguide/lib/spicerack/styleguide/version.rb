@@ -3,6 +3,6 @@
 module Spicerack
   module Styleguide
     # This constant is managed by spicerack
-    VERSION = "0.6.0.pre4"
+    VERSION = "0.6.0.pre5"
   end
 end

@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/Freshly/spicerack/tree/master/spicerack-styleguide"
   spec.license       = "MIT"
 
-  spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]
+  spec.files         = Dir["rubocop.yml", "README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]
   spec.require_paths = "lib"
 
   spec.add_dependency "rubocop", "0.59.2"
