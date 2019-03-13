@@ -41,14 +41,14 @@ RSpec.describe ShortCircuIt do
       end
     end
 
+    let(:memoized_method_with_args) { :method_with_arguments }
+    let(:memoized_method_without_args) { :method_without_arguments }
+    let(:memoized_methods) { [ memoized_method_with_args, memoized_method_without_args ] }
+
+    let(:target_class) { base_class }
     let(:memoized_class) { base_class }
 
-    let(:memoized_instance) { memoized_class.new }
-    let(:memoized_module) do
-      memoized_class.ancestors.find do |ancestor|
-        ancestor.is_a?(AroundTheWorld::ProxyModule) && ancestor.for?(described_class)
-      end
-    end
+    let(:target_instance) { target_class.new }
     let(:all_observer_methods) { %i[observed_value_one observed_value_two] }
 
     let(:target_change) { nil }
@@ -57,8 +57,8 @@ RSpec.describe ShortCircuIt do
 
     before do
       stub_const("BaseClass", base_class)
-      stub_const("MemoizedClass", memoized_class)
-      allow(memoized_instance).to receive(:expensive_method).and_call_original
+      stub_const("TargetClass", target_class)
+      allow(target_instance).to receive(:expensive_method).and_call_original
     end
 
     shared_context "when it observes nothing" do
@@ -80,68 +80,60 @@ RSpec.describe ShortCircuIt do
     end
 
     shared_context "when hash changes" do
-      let(:target_change) { allow(memoized_instance).to receive(:hash).and_return(memoized_instance.hash + 1) }
+      let(:target_change) { allow(target_instance).to receive(:hash).and_return(target_instance.hash + 1) }
     end
 
     shared_context "when observed method changes" do
       let(:target_change) do
-        allow(memoized_instance).
+        allow(target_instance).
           to receive(observed_method).
-          and_return(memoized_instance.public_send(observed_method).hash + 1)
+          and_return(target_instance.public_send(observed_method).hash + 1)
       end
     end
 
     shared_context "when one of the observed methods changes" do
       let(:changed_method) { observed_methods.sample }
       let(:target_change) do
-        allow(memoized_instance).
+        allow(target_instance).
           to receive(changed_method).
-          and_return(memoized_instance.public_send(changed_method) + 1)
+          and_return(target_instance.public_send(changed_method) + 1)
       end
     end
 
     shared_context "when both observed methods change" do
       let(:target_change) do
         observed_methods.each do |changed_method|
-          allow(memoized_instance).
+          allow(target_instance).
             to receive(changed_method).
-            and_return(memoized_instance.public_send(changed_method) + 1)
+            and_return(target_instance.public_send(changed_method) + 1)
         end
       end
     end
 
-    shared_examples_for "it defines a memoization method" do
-      subject { memoized_module.instance_methods }
-
-      it { is_expected.to include memoized_method }
-    end
-
     shared_examples_for "a memoized value" do
-      let!(:initial_value) { memoized_instance.public_send(memoized_method, *arguments) }
+      let!(:initial_value) { target_instance.public_send(memoized_method, *arguments) }
 
       it "memoizes the value" do
         target_change
         argument_change
-        expect(memoized_instance.public_send(memoized_method, *arguments)).to eq initial_value
-        expect(memoized_instance).to have_received(:expensive_method).exactly(:once)
+        expect(target_instance.public_send(memoized_method, *arguments)).to eq initial_value
+        expect(target_instance).to have_received(:expensive_method).exactly(:once)
       end
     end
 
     shared_examples_for "a new value" do
-      let!(:initial_value) { memoized_instance.public_send(memoized_method, *arguments) }
+      let!(:initial_value) { target_instance.public_send(memoized_method, *arguments) }
 
       it "gets a new value" do
         target_change
         argument_change
-        memoized_instance.public_send(memoized_method, *arguments)
-        expect(memoized_instance).to have_received(:expensive_method).twice
+        target_instance.public_send(memoized_method, *arguments)
+        expect(target_instance).to have_received(:expensive_method).twice
       end
     end
 
     shared_examples_for "a method that observes nothing" do |with_memoization|
       include_context "when it observes nothing"
-
-      it_behaves_like "it defines a memoization method"
 
       context "when the instance does not change" do
         it_behaves_like(with_memoization ? "a memoized value" : "a new value")
@@ -158,8 +150,6 @@ RSpec.describe ShortCircuIt do
       context "when the method observes one method" do
         include_context "when it observes one method"
 
-        it_behaves_like "it defines a memoization method"
-
         context "when the observed method does not change" do
           it_behaves_like(with_memoization ? "a memoized value" : "a new value")
         end
@@ -174,8 +164,6 @@ RSpec.describe ShortCircuIt do
     shared_examples_for "a method that observes self" do |with_memoization|
       include_context "when it observes itself"
 
-      it_behaves_like "it defines a memoization method"
-
       context "when the instance does not change" do
         it_behaves_like(with_memoization ? "a memoized value" : "a new value")
       end
@@ -188,8 +176,6 @@ RSpec.describe ShortCircuIt do
 
     shared_examples_for "a method that observes multiple methods" do |with_memoization|
       include_context "when it observes multiple methods"
-
-      it_behaves_like "it defines a memoization method"
 
       context "when neither observed method changes" do
         it_behaves_like(with_memoization ? "a memoized value" : "a new value")
@@ -207,7 +193,6 @@ RSpec.describe ShortCircuIt do
     end
 
     shared_examples_for "a method that takes no arguments" do |with_memoization: true|
-      let(:memoized_method) { memoized_method_without_args }
       let(:arguments) { [] }
 
       context "when the method observes nothing" do
@@ -228,7 +213,6 @@ RSpec.describe ShortCircuIt do
     end
 
     shared_examples_for "a method that takes arguments" do |with_memoization: true|
-      let(:memoized_method) { memoized_method_with_args }
       let(:arguments) { Array(rand(1..4)) { rand(100) } }
 
       context "when arguments do NOT change between calls" do
@@ -255,8 +239,6 @@ RSpec.describe ShortCircuIt do
         context "when the method observes nothing" do
           include_context "when it observes nothing"
 
-          it_behaves_like "it defines a memoization method"
-
           context "when the instance does not change" do
             it_behaves_like "a new value"
           end
@@ -269,8 +251,6 @@ RSpec.describe ShortCircuIt do
 
         context "when the method observes self" do
           include_context "when it observes itself"
-
-          it_behaves_like "it defines a memoization method"
 
           context "when the instance does not change" do
             it_behaves_like "a new value"
@@ -285,8 +265,6 @@ RSpec.describe ShortCircuIt do
         context "when the method observes one method" do
           include_context "when it observes one method"
 
-          it_behaves_like "it defines a memoization method"
-
           context "when the observed method does not change" do
             it_behaves_like "a new value"
           end
@@ -299,8 +277,6 @@ RSpec.describe ShortCircuIt do
 
         context "when the method observes multiple methods" do
           include_context "when it observes multiple methods"
-
-          it_behaves_like "it defines a memoization method"
 
           context "when neither observed method changes" do
             it_behaves_like "a new value"
@@ -319,42 +295,54 @@ RSpec.describe ShortCircuIt do
       end
     end
 
-    shared_examples_for "memoization" do
+    shared_examples_for "a class with memoized methods" do
       context "when the method takes no arguments" do
+        let(:memoized_method) { memoized_method_without_args }
+
         it_behaves_like "a method that takes no arguments", with_memoization: true
       end
 
       context "when the method takes arguments" do
+        let(:memoized_method) { memoized_method_with_args }
+
         it_behaves_like "a method that takes arguments", with_memoization: true
       end
 
       context "when the method is memoized in a parent class" do
-        let(:memoized_class) { Class.new(base_class) }
+        let(:target_class) { Class.new(base_class) }
 
         context "when the method takes no arguments" do
+          let(:memoized_method) { memoized_method_without_args }
+
           it_behaves_like "a method that takes no arguments", with_memoization: true
         end
 
         context "when the method takes arguments" do
+          let(:memoized_method) { memoized_method_with_args }
+
           it_behaves_like "a method that takes arguments", with_memoization: true
         end
 
         context "when the method is re-defined in the child class" do
           before do
-            memoized_class.__send__(:define_method, :method_without_arguments) do
+            target_class.__send__(:define_method, :method_without_arguments) do
               expensive_method(rand(100))
             end
 
-            memoized_class.__send__(:define_method, :method_with_arguments) do |*args|
+            target_class.__send__(:define_method, :method_with_arguments) do |*args|
               expensive_method(args.first)
             end
           end
 
           context "when the method takes no arguments" do
+            let(:memoized_method) { memoized_method_without_args }
+
             it_behaves_like "a method that takes no arguments", with_memoization: false
           end
 
           context "when the method takes arguments" do
+            let(:memoized_method) { memoized_method_with_args }
+
             it_behaves_like "a method that takes arguments", with_memoization: false
           end
         end
@@ -362,23 +350,30 @@ RSpec.describe ShortCircuIt do
     end
 
     context "when only one method is memoized at a time" do
-      before { base_class.__send__(:memoize, memoized_method, **memoization_options) }
+      before { memoized_class.__send__(:memoize, memoized_method, **memoization_options) }
 
-      it_behaves_like "memoization" do
-        let(:memoized_method_with_args) { :method_with_arguments }
-        let(:memoized_method_without_args) { :method_without_arguments }
-      end
+      it_behaves_like "a class with memoized methods"
     end
 
     context "when multiple methods are memoized at a time" do
-      let(:memoized_methods) { %i[method_with_arguments method_without_arguments] }
+      before { memoized_class.__send__(:memoize, *memoized_methods, **memoization_options) }
 
-      before { base_class.__send__(:memoize, *memoized_methods, **memoization_options) }
+      it_behaves_like "a class with memoized methods"
+    end
 
-      it_behaves_like "memoization" do
-        let(:memoized_method_with_args) { :method_with_arguments }
-        let(:memoized_method_without_args) { :method_without_arguments }
+    context "when the method is memoized in the parent class after the child class is defined" do
+      let(:target_class) do
+        Class.new(base_class) do
+          def inconsequential_method; end
+          memoize :inconsequential_method
+        end
       end
+
+      before do
+        memoized_class.__send__(:memoize, memoized_method, **memoization_options)
+      end
+
+      it_behaves_like "a class with memoized methods"
     end
   end
 end
