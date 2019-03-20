@@ -3,6 +3,8 @@ PATH
   specs:
     around_the_world (0.6.0)
       activesupport (~> 5.2.1)
+    hall_monitor (0.6.0)
+      around_the_world (= 0.6.0)
     rspice (0.6.0)
       faker (~> 1.8)
       rspec (~> 3.0)
@@ -11,6 +13,7 @@ PATH
       around_the_world (= 0.6.0)
     spicerack (0.6.0)
       around_the_world (= 0.6.0)
+      hall_monitor (= 0.6.0)
       short_circu_it (= 0.6.0)
       technologic (= 0.6.0)
     spicerack-styleguide (0.6.0)
