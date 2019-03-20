@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["allen.rettberg@freshly.com"]
 
   spec.summary       = "Make sure your child processes return when they say they will"
-  spec.description   = "Calls the police if they get captured by a timeout"
+  spec.description   = "Perks up when a method runs off after getting called, and calls the police if they get captured by a timeout"
   spec.homepage      = "https://github.com/Freshly/spicerack/tree/master/hall_monitor"
   spec.license       = "MIT"
 
