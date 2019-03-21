@@ -34,6 +34,24 @@ end
 monitor_calls_to :expensive_and_critical_process, wait: 5.minutes
 ```
 
+## Configuration
+
+To configure HallMonitor for your application, add the following to an initializer:
+```ruby
+# hall_monitor.rb
+
+HallMonitor::Configuration.configure do |config|
+
+  # config.default_wait_time = 2.minutes
+  
+  # config.redis_db = 0
+  
+  # By default, this will revert to the REDIS_URL environment variable
+  # config.redis_url = "redis://:pa55w0rd@your.host:4444/2"
+  
+end
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

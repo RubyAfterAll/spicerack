@@ -23,4 +23,6 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "around_the_world", HallMonitor::VERSION
   spec.add_runtime_dependency "activesupport", "~> 5.2.0"
+  spec.add_runtime_dependency "activejob", "~> 5.2.0"
+  spec.add_runtime_dependency "redis", ">= 3.3.0"
 end
