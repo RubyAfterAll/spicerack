@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 require "hall_monitor/version"
+require "active_support/concern"
 
 module HallMonitor
-  # Your code goes here...
+  extend ActiveSupport::Concern
+
+  # Fun things coming soon!
 end
