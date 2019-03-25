@@ -1,6 +1,12 @@
+# v0.6.1
+
+*Release Date*: 3/25/2019
+
+- Bug fix in Technologic
+
 # v0.6.0
 
-*Release Date*: 1/xx/2019
+*Release Date*: 3/13/2019
 
 - Updates to AroundTheWorld and ShortCircuIt
 

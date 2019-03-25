@@ -1,3 +1,11 @@
+# v0.6.1
+
+- No changes
+
+# v0.6.0
+
+- No changes
+
 # v0.2.5
 
 - Removing crufty require line
