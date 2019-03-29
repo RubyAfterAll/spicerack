@@ -1,3 +1,7 @@
+# v0.6.3
+
+- Fix `has_error.with_detail_key` matcher
+
 # v0.6.2
 
 - Added `has_error.with_detail_key` matcher
