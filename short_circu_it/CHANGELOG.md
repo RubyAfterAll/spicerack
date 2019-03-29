@@ -1,3 +1,7 @@
+# v0.6.1
+
+- No changes
+
 # v0.6.0
 
 - No changes

@@ -1,6 +1,12 @@
+# v0.6.1
+
+*Release Date*: 3/25/2019
+
+- No changes
+
 # v0.6.0
 
-*Release Date*: 1/xx/2019
+*Release Date*: 3/13/2019
 
 - Remove `proxy_module_name` parameter
 

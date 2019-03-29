@@ -1,3 +1,15 @@
+# v0.6.2
+
+- Added `has_error.with_detail_key` matcher
+
+# v0.6.1
+
+- No changes
+
+# v0.6.0
+
+- No changes
+
 # v0.2.5
 
 - Removing crufty require line
