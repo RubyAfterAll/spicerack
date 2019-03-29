@@ -1,3 +1,9 @@
+# v0.6.3
+
+*Release Date*: 3/29/2019
+
+- Fix added matcher to RSpice
+
 # v0.6.2
 
 *Release Date*: 3/29/2019
