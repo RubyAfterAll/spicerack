@@ -1,3 +1,7 @@
+# v0.6.1
+
+- Fix a bug logging enumerators
+
 # v0.2.5
 
 - No changes

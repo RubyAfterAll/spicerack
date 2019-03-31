@@ -371,6 +371,8 @@ Lint/UselessSetterCall:
 Lint/Void:
   Enabled: true
   CheckForMethodsWithNoSideEffects: true
+  Exclude:
+    - spec/features/**/*
 
 Metrics/AbcSize:
   Enabled: true

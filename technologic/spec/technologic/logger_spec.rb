@@ -60,6 +60,12 @@ RSpec.describe Technologic::Logger do
       it { is_expected.to eq formatted_value }
     end
 
+    context "when the value is an enumerator" do
+      let(:value) { Faker::Hipster.words(3).each }
+
+      it { is_expected.to eq value.to_s }
+    end
+
     context "when value is a number" do
       let(:value) { 3 }
 
