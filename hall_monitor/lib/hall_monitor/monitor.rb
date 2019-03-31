@@ -5,22 +5,29 @@ module HallMonitor
     REDIS_KEY = "hall_passes"
 
     class << self
-      def watch(method_name, args, &block)
-        new(method_name, args).watch(&block)
+      def watch(method_name, args, wait:, queue_name:, &block)
+        new(method_name, args, wait, queue_name).watch(&block)
       end
 
-      # def clear(me)
+      protected
+
+      def configuration
+        HallMonitor.configuration
+      end
     end
 
-    attr_reader :method_name, :args
+    attr_reader :method_name, :args, :wait, :queue_name
 
-    def initialize(method_name, args)
+    def initialize(method_name, args, wait, queue_name)
       @method_name = method_name
       @args = args
+      @wait = wait
+      @queue_name = queue_name
     end
 
     def watch
       set_redis_key
+      enqueue_monitor_job
 
       yield
     ensure
@@ -28,6 +35,15 @@ module HallMonitor
     end
 
     private
+
+    delegate :configuration, to: :class
+    delegate :redis, to: :configuration
+
+    def enqueue_monitor_job
+      MonitorJob.
+        set(wait: wait, queue: queue_name).
+        perform_later(method_name)
+    end
 
     def set_redis_key
       puts "setting redis key"
@@ -37,10 +53,6 @@ module HallMonitor
     def clear_redis_key
       puts "clearing redis key"
       redis.hdel(REDIS_KEY, hash)
-    end
-
-    def redis
-      HallMonitor.configuration.redis
     end
   end
 end

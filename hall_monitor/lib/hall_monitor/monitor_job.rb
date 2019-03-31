@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require "active_job"
+
 module HallMonitor
-  class MonitorJob < (const_defined?(ApplicationJob) ? ApplicationJob : ActiveJob::Base)
-    queue_as Configuration.queue_name
+  class MonitorJob < (const_defined?("ApplicationJob") ? ApplicationJob : ActiveJob::Base)
+
 
     def perform(*args)
       # TODO: something

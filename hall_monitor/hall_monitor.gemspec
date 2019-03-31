@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Allen Rettberg"]
   spec.email         = ["allen.rettberg@freshly.com"]
 
-  spec.summary       = "Make sure your child processes return when they say they will"
-  spec.description   = "Perks up when a method runs off after getting called, and calls the police if they get captured by a timeout"
+  spec.summary       = "Make sure your child instances return when they say they will"
+  spec.description   = "Perks up when a method runs off after getting called, and calls the police if it gets captured by a timeout"
   spec.homepage      = "https://github.com/Freshly/spicerack/tree/master/hall_monitor"
   spec.license       = "MIT"
 
@@ -22,8 +22,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.0"
 
   spec.add_runtime_dependency "around_the_world", HallMonitor::VERSION
-  spec.add_runtime_dependency "activesupport", "~> 5.2.0"
-  spec.add_runtime_dependency "activejob", "~> 5.2.0"
+  spec.add_runtime_dependency "activesupport", ">= 5.2.0"
+  spec.add_runtime_dependency "activejob", ">= 5.2.0"
   spec.add_runtime_dependency "redis", ">= 3.3.0"
   spec.add_runtime_dependency "technologic", HallMonitor::VERSION
 end

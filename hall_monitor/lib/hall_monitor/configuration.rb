@@ -13,7 +13,7 @@ module HallMonitor
       delegate :default_wait_time, :redis_url, :redis_db, :redis, :queue_name, to: :configuration
 
       def configure
-        configuration.redis = nil
+        HallMonitor.reset_redis_connection!
 
         yield configuration
       end
@@ -23,12 +23,6 @@ module HallMonitor
       def configuration
         @configuration ||= new
       end
-    end
-
-    attr_writer :redis
-
-    def redis
-      @redis ||= Redis.new(url: redis_url, db: redis_db, namespace: REDIS_NAMESPACE)
     end
 
     def queue_name

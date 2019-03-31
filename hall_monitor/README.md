@@ -44,6 +44,8 @@ HallMonitor::Configuration.configure do |config|
 
   # config.default_wait_time = 2.minutes
   
+  # config.default_queue_name = :default
+  
   # config.redis_db = 0
   
   # By default, this will revert to the REDIS_URL environment variable
@@ -51,6 +53,16 @@ HallMonitor::Configuration.configure do |config|
   
 end
 ```
+
+## MonitorJob
+
+HallMonitor uses ActiveJob delayed jobs to monitor and report on dead processes, so whichever queue processor your app uses needs to support delayed jobs. Some processor options are:
+* Sidekiq (recommended)
+* Resque (requires usage of the `resque-scheduler` gem)
+* Delayed::Job
+* Backburner
+
+_Note: HallMonitor does not support the ActiveJob `:priority` option._
 
 ## Development
 
