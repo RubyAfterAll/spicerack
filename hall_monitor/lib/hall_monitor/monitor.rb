@@ -2,7 +2,7 @@
 
 module HallMonitor
   class Monitor
-    REDIS_KEY = "hall_monitor:passes"
+    REDIS_KEY = "hall_passes"
 
     class << self
       def watch(method_name, args, &block)
