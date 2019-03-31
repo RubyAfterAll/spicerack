@@ -4,6 +4,7 @@ module HallMonitor
   Configuration = Struct.new(:default_wait_time, :redis_url, :redis_host, :redis_port, :redis_db, :queue_name) do
     DEFAULTS = {
       default_wait_time: (5 * 60),
+      queue_name: :default,
     }.freeze
 
     REDIS_NAMESPACE = "hall_monitor"
@@ -31,7 +32,7 @@ module HallMonitor
     end
 
     def queue_name
-      @queue_name || :default
+      @queue_name || DEFAULTS[:queue_name]
     end
   end
 
