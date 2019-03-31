@@ -27,7 +27,13 @@ module HallMonitor
     attr_writer :redis
 
     def redis
-      @redis ||= Redis::Client.new(url: redis_url, db: redis_db, namespace: REDIS_NAMESPACE)
+      @redis ||= Redis.new(url: redis_url, db: redis_db, namespace: REDIS_NAMESPACE)
+    end
+  end
+
+  class << self
+    def configuration
+      Configuration
     end
   end
 end
