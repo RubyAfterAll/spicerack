@@ -38,7 +38,7 @@ monitor_calls_to :expensive_and_critical_process, wait: 5.minutes
 
 To configure HallMonitor for your application, add the following to an initializer:
 ```ruby
-# hall_monitor.rb
+# initializers/hall_monitor.rb
 
 HallMonitor::Configuration.configure do |config|
 
@@ -50,7 +50,7 @@ HallMonitor::Configuration.configure do |config|
   
   # By default, this will revert to the REDIS_URL environment variable
   # config.redis_url = "redis://:pa55w0rd@your.host:4444/2"
-  
+
 end
 ```
 

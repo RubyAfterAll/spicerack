@@ -1,4 +1,6 @@
+# frozen_string_literal: true
 # coding: utf-8
+
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "hall_monitor/version"
@@ -21,9 +23,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
 
-  spec.add_runtime_dependency "around_the_world", HallMonitor::VERSION
   spec.add_runtime_dependency "activesupport", ">= 5.2.0"
   spec.add_runtime_dependency "activejob", ">= 5.2.0"
+  spec.add_runtime_dependency "around_the_world", HallMonitor::VERSION
   spec.add_runtime_dependency "redis", ">= 3.3.0"
   spec.add_runtime_dependency "technologic", HallMonitor::VERSION
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module HallMonitor
-  Configuration = Struct.new(:default_wait_time, :redis_url, :redis_host, :redis_port, :redis_db, :queue_name) do
+  Configuration = Struct.new(:default_wait_time, :redis_url, :redis_db, :queue_name) do
     DEFAULTS = {
       default_wait_time: (5 * 60),
       queue_name: :default,
@@ -10,7 +10,7 @@ module HallMonitor
     REDIS_NAMESPACE = "hall_monitor"
 
     class << self
-      delegate :default_wait_time, :redis_url, :redis_db, :redis, :queue_name, to: :configuration
+      delegate :default_wait_time, :redis_url, :redis_db, :queue_name, to: :configuration
 
       def configure
         HallMonitor.reset_redis_connection!
