@@ -5,9 +5,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/maintainability)](https://codeclimate.com/github/Freshly/spicerack/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/test_coverage)](https://codeclimate.com/github/Freshly/spicerack/test_coverage)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rspice`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+RSpice - a collection of custom matchers and other test helpers to make your tests a little easier to write.
 
 ## Installation
 
@@ -27,17 +25,109 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To include the RSpice tools in your rspecs, add the following to your `rails_helper.rb`:
+```ruby
+require 'rspice'
+```
+
+## Included Helpers
+
+### Custom Matchers
+
+* `alias_method`
+  ```ruby
+  describe "#a_method" do
+    it { is_expected.to alias_method :alias_name, :target_name }
+  end
+  ```
+* `extend_module`
+  ```ruby
+  describe AModule do
+    it { is_expected.to extend_module AnotherModule }
+  end
+  ```
+* `have_error_on_attribute`
+  ```ruby
+  describe "Validations" do
+    before { instance.attribute = :invalid_value }
+    
+    it { is_expected.to have_error_on_attribute(:attribute).with_detail_key(:invalid) }
+  end
+  ```
+* `include_module`
+  ```ruby
+  describe AClass do
+    it { is_expected.to include_module SuperUsefulModule }
+  end
+  ```
+* `inherit_from`
+  ```ruby
+  describe PartB do
+    it { is_expected.to inherit_from Partaayyyy }
+  end
+  ```
+
+### Shared Contexts
+
+* `"with an example descendant class"`
+  ```ruby
+  describe ClassA do
+    include_context "with an example descendant class"
+    
+    let(:example_class_name) { "ChildClass" }
+    
+    it "has a descendant class now" do
+      expect(ChildClass.ancestors).to include described_class
+    end
+  end
+  ```
+
+### Shared Examples
+
+* `"a class pass method"`
+  ```ruby
+  class SomeClass
+    def self.do_something_extraordinary!(some, instance, params)
+      new(some, instance, params).do_something_extraordinary!
+    end
+    
+    attr_reader :some, :instance, :params
+    
+    def initialize(some, instance, params)
+      @some = some
+      @instance = instance
+      @params = params
+    end
+    
+    def do_something_extraordinary!
+      # Important things happen here
+    end
+  end
+  
+  # some_class_spec.rb
+  describe SomeClass do
+    describe ".do_something_extraordinary!" do
+      it_behaves_like "a class pass method", :do_something_extraordinary!
+    end
+  end
+  ```
+  
+* `"a versioned spicerack gem"`
+  ```ruby
+  describe YourGemHere do
+    it_behaves_like "a versioned spicerack gem"
+  end
+  ```
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+See Spicerack development instructions [here](https://github.com/Freshly/spicerack/blob/develop/README.md#development).
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To add a new example, context or matcher, add a new file to the appropriate directory in lib/rspice. Next, require the added file in its respective include file (such as `lib/rspice/custom_matchers.rb`).
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/Freshly/spicerack.
+See Spicerack contribution instructions [here](https://github.com/Freshly/spicerack/blob/develop/README.md#contributing).
 
 ## License
 

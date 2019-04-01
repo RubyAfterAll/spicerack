@@ -23,9 +23,23 @@ Or install it yourself as:
 
     $ gem install spicerack
 
-## Usage
+## Included Gems
 
-TODO: Write usage instructions here
+* `around_the_world`  
+  See docs [here](https://github.com/Freshly/spicerack/tree/master/around_the_world)
+
+* `rspice`  
+  See docs [here](https://github.com/Freshly/spicerack/tree/master/rspice)
+
+* `short_curcu_it`  
+  See docs [here](https://github.com/Freshly/spicerack/tree/master/short_circu_it)
+
+* `spicerack-styleguide`  
+  See docs [here](https://github.com/Freshly/spicerack/tree/master/spicerack-styleguide)
+
+* `technologic`  
+  See docs [here](https://github.com/Freshly/spicerack/tree/master/technologic)
+
 
 ## Development
 
