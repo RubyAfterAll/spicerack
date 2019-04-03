@@ -2,17 +2,13 @@
 
 module HallMonitor
   class Monitor
-    REDIS_KEY = "hall_passes"
+    include Configured
+
+    REDIS_KEY = "passes"
 
     class << self
       def watch(method_name, args, wait:, queue_name:, &block)
         new(method_name, args, wait, queue_name).watch(&block)
-      end
-
-      protected
-
-      def configuration
-        HallMonitor.configuration
       end
     end
 
@@ -36,7 +32,6 @@ module HallMonitor
 
     private
 
-    delegate :configuration, to: :class
     delegate :redis, to: :configuration
 
     def enqueue_monitor_job

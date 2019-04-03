@@ -6,6 +6,7 @@ require "redis"
 require "around_the_world"
 require "hall_monitor/version"
 require "hall_monitor/configuration"
+require "hall_monitor/configured"
 require "hall_monitor/monitor"
 require "hall_monitor/monitor_job"
 
