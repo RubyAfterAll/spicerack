@@ -32,40 +32,85 @@ require 'rspice'
 
 ## Included Helpers
 
-### Custom Matchers
+### Custom RSpec Matchers
 
-* `alias_method`
-  ```ruby
-  describe "#a_method" do
-    it { is_expected.to alias_method :alias_name, :target_name }
+#### alias_method
+
+```ruby
+class Klass
+  def old_name; end
+  alias_method :alias_name, :old_name
+end
+```
+
+```ruby
+RSpec.describe Klass do
+  it { is_expected.to alias_method :alias_name, :old_name }
+end
+```
+
+#### extend_module
+
+```ruby
+class Klass
+  extend Module
+end
+```
+
+```ruby
+RSpec.describe Klass do
+  it { is_expected.to extend_module Module }
+end
+```
+
+#### have_error_on_attribute
+
+```ruby
+class Klass < ApplicationRecord
+  validate_uniqueness_of :attribute
+end
+```
+
+```ruby
+RSpec.describe Klass, type: :model do
+  subject(:klass) { model.new(attribute: attribute) }
+  
+  let(:attribute) { "attribute" }
+  
+  before do
+    model.create(attribute: attribute)
+    klass.validate
   end
-  ```
-* `extend_module`
-  ```ruby
-  describe AModule do
-    it { is_expected.to extend_module AnotherModule }
-  end
-  ```
-* `have_error_on_attribute`
-  ```ruby
-  describe "Validations" do
-    before { instance.attribute = :invalid_value }
-    
-    it { is_expected.to have_error_on_attribute(:attribute).with_detail_key(:invalid) }
-  end
-  ```
-* `include_module`
-  ```ruby
-  describe AClass do
-    it { is_expected.to include_module SuperUsefulModule }
-  end
-  ```
-* `inherit_from`
-  ```ruby
-  describe PartB do
-    it { is_expected.to inherit_from Partaayyyy }
-  end
-  ```
+
+  it { is_expected.to have_error_on_attribute(:attribute).with_detail_key(:taken) }
+end
+```
+
+#### include_module
+
+```ruby
+class Klass
+  include Module
+end
+```
+
+```ruby
+RSpec.describe Klass do
+  it { is_expected.to include_module Module }
+end
+```
+  
+#### inherit_from
+
+```ruby
+class Klass < ApplicationRecord; end
+```
+
+```ruby
+describe Klass do
+  it { is_expected.to inherit_from ApplicationRecord }
+end
+```
 
 ### Shared Contexts
 
