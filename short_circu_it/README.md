@@ -118,7 +118,7 @@ antist.body_weight_ants_can_carry
 # => Most of it
 ```
 
-The second call to `body_weight_ants_can_carry` returns the memoized value, despite root beer flotat's deliciousness changing. `actual_science` stayed constant, so the memoized value did as well.
+The second call to `body_weight_ants_can_carry` returns the memoized value, despite root beer float's deliciousness changing. `actual_science` stayed constant, so the memoized value did as well.
 
 ## Development
 
