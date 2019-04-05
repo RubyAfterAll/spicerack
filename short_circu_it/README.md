@@ -55,9 +55,9 @@ just_classy = TheClassiest.new
 3.times.map { just_classy.how_methodical }
 # Pity on my sysop!
 #=> [
-#   "One Billion Procdures",
-#   "One Billion Procdures",
-#   "One Billion Procdures"
+#   "One Billion Procedures",
+#   "One Billion Procedures",
+#   "One Billion Procedures"
 # ]
 ```
 
@@ -68,14 +68,14 @@ But what if your method takes arguments? We gotcha covered:
 ```ruby
 just_classy.how_methodical(1)
 # Pity on my sysop!
-#=> "One Billion Procdures"
+#=> "One Billion Procedures"
 
 just_classy.how_methodical(1)
-#=> "One Billion Procdures"
+#=> "One Billion Procedures"
 
 just_classy.how_methodical(2)
 # Pity on my sysop!
-#=> "Two Billion Procdures"
+#=> "Two Billion Procedures"
 ```
 
 ### Instance State
@@ -83,15 +83,15 @@ Sometimes instances are stateful and mutable. By default, ShortCircuIt will watc
 ```ruby
 just_classy.how_methodical(1)
 # Pity on my sysop!
-#=> "One Billion Procdures"
+#=> "One Billion Procedures"
 
 just_classy.how_methodical(1)
-#=> "One Billion Procdures"
+#=> "One Billion Procedures"
 
 just_classy.orders_of_magnitude = 8
 just_classy.how_methodical(1)
 # Pity on my sysop!
-#=> "One Hundred Million Procdures"
+#=> "One Hundred Million Procedures"
 ```
 
 ### Observables
