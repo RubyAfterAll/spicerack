@@ -98,17 +98,17 @@ the_classiest.how_methodical(1)
 
 ### Observables
 
-_`memoize` accepts the argument `observes` with either a symbol or array of symbols._
-
 Maybe I have a method I'd like memoize on a complex object with many unrelated attributes:
 ```ruby
 class TheAntist
-  attr_accessor :root_beer_floats_are_delicious, :physics
+  attr_accessor :root_beer_floats_are_delicious, :physics, :weight_of_the_universe
   
   def how_much_ants_can_carry
     # SCIENCE
   end
   memoize :how_much_ants_can_carry, observes: :physics
+  # Can also be
+  memoize :how_much_ants_can_carry, observes: [:physics, :weight_of_the_universe]
 end
 
 antist = TheAntist.new
