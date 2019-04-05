@@ -101,12 +101,12 @@ _`memoize` accepts the argument `observes` with either a symbol or array of symb
 Maybe I have a method I'd like memoize on a complex object with many unrelated attributes:
 ```ruby
 class TheAntist
-  attr_accessor :root_beer_floats_are_delicious, :actual_science
+  attr_accessor :root_beer_floats_are_delicious, :science
   
   def body_weight_ants_can_carry
     # SCIENCE
   end
-  memoize :body_weight_ants_can_carry, observes: :actual_science
+  memoize :body_weight_ants_can_carry, observes: :science
 end
 
 antist = TheAntist.new
@@ -118,7 +118,7 @@ antist.body_weight_ants_can_carry
 # => Most of it
 ```
 
-The second call to `body_weight_ants_can_carry` returns the memoized value, despite root beer float's deliciousness changing. `actual_science` stayed constant, so the memoized value did as well.
+The second call to `body_weight_ants_can_carry` returns the memoized value, despite root beer float's deliciousness changing. `science` stayed constant, so the memoized value did as well.
 
 ## Development
 
