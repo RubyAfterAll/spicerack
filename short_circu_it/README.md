@@ -44,20 +44,20 @@ In the simplest case, ShortCircuIt is no harder to forget than the method name i
 class TheClassiest
   include ShortCircuIt
   
-  def how_classy_though
+  def how_methodical
     puts "Pity on my sysop!"
     this_must_be_expensive
   end
-  memoize :how_classy_though
+  memoize :how_methodical
 end
 
 just_classy = TheClassiest.new
-3.times.map { just_classy.how_classy_though }
+3.times.map { just_classy.how_methodical }
 # Pity on my sysop!
 #=> [
-#   "One Billion Classes",
-#   "One Billion Classes",
-#   "One Billion Classes"
+#   "One Billion Procdures",
+#   "One Billion Procdures",
+#   "One Billion Procdures"
 # ]
 ```
 
@@ -66,32 +66,32 @@ just_classy = TheClassiest.new
 But what if your method takes arguments? We gotcha covered:
 
 ```ruby
-just_classy.how_classy_though(1)
+just_classy.how_methodical(1)
 # Pity on my sysop!
-#=> "One Billion Classes"
+#=> "One Billion Procdures"
 
-just_classy.how_classy_though(1)
-#=> "One Billion Classes"
+just_classy.how_methodical(1)
+#=> "One Billion Procdures"
 
-just_classy.how_classy_though(2)
+just_classy.how_methodical(2)
 # Pity on my sysop!
-#=> "Two Billion Classes"
+#=> "Two Billion Procdures"
 ```
 
 ### Instance State
 Sometimes instances are stateful and mutable. By default, ShortCircuIt will watch an object's state via its `hash` value, so the memoization is broken when its attributes change:
 ```ruby
-just_classy.how_classy_though(1)
+just_classy.how_methodical(1)
 # Pity on my sysop!
-#=> "One Billion Classes"
+#=> "One Billion Procdures"
 
-just_classy.how_classy_though(1)
-#=> "One Billion Classes"
+just_classy.how_methodical(1)
+#=> "One Billion Procdures"
 
 just_classy.orders_of_magnitude = 8
-just_classy.how_classy_though(1)
+just_classy.how_methodical(1)
 # Pity on my sysop!
-#=> "One Hundred Million Classes"
+#=> "One Hundred Million Procdures"
 ```
 
 ### Observables
