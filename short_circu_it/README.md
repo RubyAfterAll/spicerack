@@ -51,47 +51,49 @@ class TheClassiest
   memoize :how_methodical
 end
 
-just_classy = TheClassiest.new
-3.times.map { just_classy.how_methodical }
+the_classiest = TheClassiest.new
+3.times.map { the_classiest.how_methodical }
 # Pity on my sysop!
 #=> [
-#   "One Billion Procedures",
-#   "One Billion Procedures",
-#   "One Billion Procedures"
+#   "One Billion Dollars",
+#   "One Billion Dollars",
+#   "One Billion Dollars"
 # ]
 ```
 
+Even though the method gets called 3 times, the code only gets executed once.
+
 ### Arguments
 
-But what if your method takes arguments? We gotcha covered:
+But what if your method takes arguments? We gotcha covered - memoization is specific to the arguments passed to the method, so a call with the same arguments will return the memoized value, while a call with different arguments will execute the method again.
 
 ```ruby
-just_classy.how_methodical(1)
+the_classiest.how_methodical(1)
 # Pity on my sysop!
-#=> "One Billion Procedures"
+#=> "One Billion Dollars"
 
-just_classy.how_methodical(1)
-#=> "One Billion Procedures"
+the_classiest.how_methodical(1)
+#=> "One Billion Dollars"
 
-just_classy.how_methodical(2)
+the_classiest.how_methodical(2)
 # Pity on my sysop!
-#=> "Two Billion Procedures"
+#=> "Two Billion Dollars"
 ```
 
 ### Instance State
 Sometimes instances are stateful and mutable. By default, ShortCircuIt will watch an object's state via its `hash` value, so the memoization is broken when its attributes change:
 ```ruby
-just_classy.how_methodical(1)
+the_classiest.how_methodical(1)
 # Pity on my sysop!
-#=> "One Billion Procedures"
+#=> "One Billion Dollars"
 
-just_classy.how_methodical(1)
-#=> "One Billion Procedures"
+the_classiest.how_methodical(1)
+#=> "One Billion Dollars"
 
-just_classy.orders_of_magnitude = 8
-just_classy.how_methodical(1)
+the_classiest.orders_of_magnitude = 8
+the_classiest.how_methodical(1)
 # Pity on my sysop!
-#=> "One Hundred Million Procedures"
+#=> "One Hundred Million Dollars"
 ```
 
 ### Observables
@@ -101,24 +103,28 @@ _`memoize` accepts the argument `observes` with either a symbol or array of symb
 Maybe I have a method I'd like memoize on a complex object with many unrelated attributes:
 ```ruby
 class TheAntist
-  attr_accessor :root_beer_floats_are_delicious, :science
+  attr_accessor :root_beer_floats_are_delicious, :physics
   
-  def body_weight_ants_can_carry
+  def how_much_ants_can_carry
     # SCIENCE
   end
-  memoize :body_weight_ants_can_carry, observes: :science
+  memoize :how_much_ants_can_carry, observes: :physics
 end
 
 antist = TheAntist.new
-antist.body_weight_ants_can_carry
-# => Most of it
+antist.how_much_ants_can_carry
+# => .5 oz
 
+# When we change an unobserved value, the memoiozatioon persists:
 antist.root_beer_floats_are_delicious = true
-antist.body_weight_ants_can_carry
-# => Most of it
-```
+antist.how_much_ants_can_carry
+# => .5 oz
 
-The second call to `body_weight_ants_can_carry` returns the memoized value, despite root beer float's deliciousness changing. `science` stayed constant, so the memoized value did as well.
+# But if we change the observed value, the memoization is broken:
+antist.physics = :parallel_universe
+antist.how_much_ants_can_carry
+# => 100 lbs
+```
 
 ## Development
 
