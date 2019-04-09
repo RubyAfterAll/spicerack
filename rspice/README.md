@@ -236,6 +236,39 @@ RSpec.describe Flow::Callbacks, type: :module do
 end
 ```
 
+#### `"an inherited property"`
+
+```ruby
+module State::Attributes
+  extend ActiveSupport::Concern
+
+  included do
+    class_attribute :_attributes, instance_writer: false, default: []
+  end
+
+  class_methods do
+    def inherited(base)
+      base._attributes = _attributes.dup
+      super
+    end
+
+    def define_attribute(attribute)
+      _attributes << attribute
+    end
+  end
+end
+
+RSpec.describe State::Attributes, type: :module do
+  let(:example_class) { Class.new.include(State::Attributes) }
+
+  describe ".inherited" do
+    it_behaves_like "an inherited property", :define_attribute, :_attributes do
+      let(:root_class) { example_class }
+    end
+  end
+end
+```
+
 #### `"an instrumented event"`
 
 ```ruby
