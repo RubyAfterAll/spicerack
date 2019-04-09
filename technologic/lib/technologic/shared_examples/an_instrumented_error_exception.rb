@@ -30,5 +30,5 @@
 #   end
 # end
 RSpec.shared_examples_for "an instrumented error exception" do |error_class|
-  include_examples "an instrumented exception with severity", error_class, :fatal!
+  include_examples "an instrumented exception with severity", error_class, :error!
 end
