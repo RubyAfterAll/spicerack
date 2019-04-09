@@ -10,7 +10,6 @@ RSpec.describe Technologic::Setup do
     before do
       allow(described_class).to receive(:setup_subscribers)
       allow(described_class).to receive(:setup_loggers)
-      allow(described_class).to receive(:setup_includes)
     end
 
     it "calls constituent methods with the given config" do
@@ -18,7 +17,6 @@ RSpec.describe Technologic::Setup do
 
       expect(described_class).to have_received(:setup_subscribers).with(config)
       expect(described_class).to have_received(:setup_loggers).with(config)
-      expect(described_class).to have_received(:setup_includes).with(config)
     end
   end
 
