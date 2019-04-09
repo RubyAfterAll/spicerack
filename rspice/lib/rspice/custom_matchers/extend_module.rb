@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
-# RSpec matcher for extend module.
+# RSpec matcher that tests usages of [Object#extend](https://www.apidock.com/ruby/Object/extend)
 #
-# Usage:
+#     module Nodule; end
+#     class Klass
+#       extend Nodule
+#     end
 #
-# RSpec.describe User, type: :model do
-#   subject { described_class }
-#
-#   it { is_expected.to extend_module Authenticatable }
-# end
+#     RSpec.describe Klass do
+#       it { is_expected.to extend_module Nodule }
+#     end
 
 RSpec::Matchers.define :extend_module do |module_class|
   match { test_subject.singleton_class.included_modules.include? module_class }

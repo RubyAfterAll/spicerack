@@ -25,302 +25,34 @@ Or install it yourself as:
 
 ## Usage
 
-To include the RSpice tools in your rspecs, add the following to your `rails_helper.rb`:
+To include the RSpice tools add the following to your `rails_helper.rb`:
+
 ```ruby
 require 'rspice'
 ```
 
-## Included Helpers
+## Custom Matchers
 
-### Custom RSpec Matchers
+* [alias_method](lib/rspice/custom_matchers/alias_method.rb) tests usages of [Module#alias_method](https://apidock.com/ruby/Module/alias_method)
+* [extend_module](lib/rspice/custom_matchers/extend_module.rb) tests usages of [Object#extend](https://www.apidock.com/ruby/Object/extend)
+* [have_error_on_attribute](lib/rspice/custom_matchers/have_error_on_attribute.rb) tests usages of [ActiveModel::Errors](https://api.rubyonrails.org/classes/ActiveModel/Errors.html)
+* [include_module](lib/rspice/custom_matchers/include_module.rb) tests usages of [Module#include](https://apidock.com/ruby/Module/include)
+* [inherit_from](lib/rspice/custom_matchers/inherit_from.rb) tests inheritance of [Classes](https://apidock.com/ruby/Class)
 
-#### alias_method
+## Shared Context
 
-```ruby
-class Klass
-  def old_name; end
-  alias_method :alias_name, :old_name
-end
-```
+* [with_an_example_descendant_class](lib/rspice/shared_context/with_an_example_descendant_class.rb) creates a named descendant of `described_class`
+* [with_callbacks](lib/rspice/shared_context/with_callbacks.rb) defines callbacks for [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks)
+* [with_example_class_having_callback](lib/rspice/shared_context/with_example_class_having_callback.rb) creates a class with 
 
-```ruby
-RSpec.describe Klass do
-  it { is_expected.to alias_method :alias_name, :old_name }
-end
-```
+## Shared Examples
 
-#### extend_module
-
-```ruby
-class Klass
-  extend Module
-end
-```
-
-```ruby
-RSpec.describe Klass do
-  it { is_expected.to extend_module Module }
-end
-```
-
-#### have_error_on_attribute
-
-```ruby
-class Klass < ApplicationRecord
-  validate_uniqueness_of :attribute
-end
-```
-
-```ruby
-RSpec.describe Klass, type: :model do
-  subject(:klass) { model.new(attribute: attribute) }
-  
-  let(:attribute) { "attribute" }
-  
-  before do
-    model.create(attribute: attribute)
-    klass.validate
-  end
-
-  it { is_expected.to have_error_on_attribute(:attribute).with_detail_key(:taken) }
-end
-```
-
-#### include_module
-
-```ruby
-class Klass
-  include Module
-end
-```
-
-```ruby
-RSpec.describe Klass do
-  it { is_expected.to include_module Module }
-end
-```
-
-#### inherit_from
-
-```ruby
-class Klass < ApplicationRecord; end
-```
-
-```ruby
-describe Klass do
-  it { is_expected.to inherit_from ApplicationRecord }
-end
-```
-
-### Shared Contexts
-
-#### `"with an example descendant class"`
-
-```ruby
-describe ClassA do
-  include_context "with an example descendant class"
-  
-  let(:example_class_name) { "ChildClass" }
-  
-  it "has a descendant class now" do
-    expect(ChildClass.ancestors).to include described_class
-  end
-end
-```
-
-#### `"with callbacks""`
-
-```ruby
-class TestClass
-  include ActiveSupport::Callbacks
-  define_callbacks :foo
-
-  def foo
-    run_callbacks(:foo)
-  end
-end
-
-RSpec.describe TestClass do
-  it_behaves_like "a class with callback" do
-    include_context "with callbacks", :foo
-
-    subject(:callback_runner) { described_class.new.foo }
-
-    let(:example_class) { described_class }
-  end
-end
-```
-
-#### `"with example class having callback"`
-
-```ruby
-RSpec.describe State::Core, type: :module do
-  describe "#initialize" do
-    include_context "with example class having callback", :foo
-
-    subject(:callback_runner) { example_class_having_callback.new.run_callbacks(:foo) }
-
-    it "runs the callbacks" do
-      expect { callback_runner }.
-        to change { example.before_hook_run }.from(nil).to(true).
-        and change { example.around_hook_run }.from(nil).to(true).
-        and change { example.after_hook_run }.from(nil).to(true)
-    end
-  end
-end
-```
-
-### Shared Examples
-
-#### `"a class pass method"`
-
-```ruby
-class SomeClass
-  def self.do_something_extraordinary!(some, instance, params)
-    new(some, instance, params).do_something_extraordinary!
-  end
-  
-  attr_reader :some, :instance, :params
-  
-  def initialize(some, instance, params)
-    @some = some
-    @instance = instance
-    @params = params
-  end
-  
-  def do_something_extraordinary!
-    # Important things happen here
-  end
-end
-
-# some_class_spec.rb
-describe SomeClass do
-  describe ".do_something_extraordinary!" do
-    it_behaves_like "a class pass method", :do_something_extraordinary!
-  end
-end
-```
-
-#### `"a class with callback"`
-
-```ruby
-module State::Core
-  extend ActiveSupport::Concern
-
-  def initialize
-    run_callbacks(:initialize)
-  end
-end
-
-RSpec.describe State::Core, type: :module do
-  describe "#initialize" do
-    include_context "with example class having callback", :initialize
-
-    subject(:instance) { example_class.new }
-
-    let(:example_class) { example_class_having_callback.include(State::Core) }
-
-    it_behaves_like "a class with callback" do
-      subject(:callback_runner) { instance }
-
-      let(:example) { example_class }
-    end
-  end
-end
-```
-  
-#### `"a versioned spicerack gem"`
-
-```ruby
-describe YourGemHere do
-  it_behaves_like "a versioned spicerack gem"
-end
-```
-
-#### `"an example class with callbacks"`
-
-```ruby
-module Flow::Callbacks
-  extend ActiveSupport::Concern
-
-  included do
-    include ActiveSupport::Callbacks
-    define_callbacks :initialize, :trigger
-  end
-end
-
-RSpec.describe Flow::Callbacks, type: :module do
-  subject(:example_class) { Class.new.include described_class }
-
-  it { is_expected.to include_module ActiveSupport::Callbacks }
-
-  it_behaves_like "an example class with callbacks", described_class, %i[initialize trigger]
-end
-```
-
-#### `"an inherited property"`
-
-```ruby
-module State::Attributes
-  extend ActiveSupport::Concern
-
-  included do
-    class_attribute :_attributes, instance_writer: false, default: []
-  end
-
-  class_methods do
-    def inherited(base)
-      base._attributes = _attributes.dup
-      super
-    end
-
-    def define_attribute(attribute)
-      _attributes << attribute
-    end
-  end
-end
-
-RSpec.describe State::Attributes, type: :module do
-  let(:example_class) { Class.new.include(State::Attributes) }
-
-  describe ".inherited" do
-    it_behaves_like "an inherited property", :define_attribute, :_attributes do
-      let(:root_class) { example_class }
-    end
-  end
-end
-```
-
-#### `"an instrumented event"`
-
-```ruby
-let(:test_class) do
-  Class.new do
-    def initialize(user)
-      @user = user
-    end
-
-    def do_a_thing
-      ActiveSupport::Notifications.instrument("a_thing_was_done.namespace", user: @user)
-    end
-  end
-end
-
-describe "#do_a_thing" do
-  subject(:do_a_thing) { instance.do_a_thing }
-
-  let(:instance) { test_class.new(user) }
-  let(:user) { double }
-
-  before { do_a_thing }
-
-  it_behaves_like "an instrumented event", "a_thing_was_done.namespace" do
-    let(:expected_data) do
-      { user: user }
-    end
-  end
-end
-```
+* [a_class_pass_method](lib/rspice/shared_examples/a_class_pass_method.rb) tests class methods which take arguments that instantiate and call instance method of the same name
+* [a_class_with_callback](lib/rspice/shared_examples/a_class_with_callback.rb) tests usage of [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks)
+* [a_versioned_spicerack_gem](lib/rspice/shared_examples/a_versioned_spicerack_gem.rb) ensures gem compliance with internal standard of [Spicerack](https://github.com/Freshly/spicerack/)
+* [an_example_class_with_callbacks](lib/rspice/shared_examples/an_example_class_with_callbacks.rb) tests for defined [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks)
+* [an_inherited_property](lib/rspice/shared_examples/an_inherited_property.rb) tests usages of inherited [Class.class_attributes](https://apidock.com/rails/Class/class_attribute)
+* [an_instrumented_event](lib/rspice/shared_examples/an_instrumented_event.rb) tests usage of [ActiveSupport::Notification](https://apidock.com/rails/ActiveSupport/Notifications)
 
 ## Development
 
