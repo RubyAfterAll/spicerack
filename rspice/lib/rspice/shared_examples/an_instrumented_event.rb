@@ -29,7 +29,7 @@ RSpec.shared_examples_for "an instrumented event" do |event_name|
   subject { ActiveSupport::Notifications }
 
   let(:expected_event) { event_name }
-  let(:expected_args) { [expected_event].push(expected_data).compact }
+  let(:expected_args) { [ expected_event ].push(expected_data).compact }
   let(:expected_data) do
     {}
   end
