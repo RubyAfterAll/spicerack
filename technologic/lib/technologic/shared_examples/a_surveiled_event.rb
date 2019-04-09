@@ -12,17 +12,22 @@
 #   end
 #
 #   def do_a_thing
-#     surveil(:doing_a_thing) { :a_thing_is_done }
+#     surveil(:doing_a_thing, user: @user) { :a_thing_is_done }
 #   end
 # end
 #
 # RSpec.describe TestClass do
 #   describe "#do_a_thing" do
-#     let(:instance) { described_class.new }
+#     let(:instance) { described_class.new(user) }
+#     let(:user) { double }
 #
 #     before { instance.do_a_thing }
 #
-#     it_behaves_like "a surveiled event", :doing_a_thing, "#{described_class}.info"
+#     it_behaves_like "a surveiled event", :doing_a_thing, "#{described_class}.info" do
+#       let(:expected_data) do
+#         { user: user }
+#       end
+#     end
 #   end
 # end
 
