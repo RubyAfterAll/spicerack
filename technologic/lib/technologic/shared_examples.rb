@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative "shared_examples/a_surveiled_event"
 require_relative "shared_examples/an_instrumented_exception_with_severity"
 require_relative "shared_examples/an_instrumented_error_exception"
 require_relative "shared_examples/an_instrumented_fatal_exception"
