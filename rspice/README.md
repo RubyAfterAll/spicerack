@@ -129,6 +129,25 @@ describe ClassA do
 end
 ```
 
+#### `"with example class having callback"`
+
+```ruby
+RSpec.describe State::Core, type: :module do
+  describe "#initialize" do
+    include_context "with example class having callback", :foo
+
+    subject(:callback_runner) { example_class_having_callback.new.run_callbacks(:foo) }
+
+    it "runs the callbacks" do
+      expect { callback_runner }.
+        to change { example.before_hook_run }.from(nil).to(true).
+        and change { example.around_hook_run }.from(nil).to(true).
+        and change { example.after_hook_run }.from(nil).to(true)
+    end
+  end
+end
+```
+
 ### Shared Examples
 
 #### `"a class pass method"`
@@ -159,12 +178,61 @@ describe SomeClass do
   end
 end
 ```
+
+#### `"a class with callback"`
+
+```ruby
+module State::Core
+  extend ActiveSupport::Concern
+
+  def initialize
+    run_callbacks(:initialize)
+  end
+end
+
+RSpec.describe State::Core, type: :module do
+  describe "#initialize" do
+    include_context "with example class having callback", :initialize
+
+    subject(:instance) { example_class.new }
+
+    let(:example_class) { example_class_having_callback.include(State::Core) }
+
+    it_behaves_like "a class with callback" do
+      subject(:callback_runner) { instance }
+
+      let(:example) { example_class }
+    end
+  end
+end
+```
   
 #### `"a versioned spicerack gem"`
 
 ```ruby
 describe YourGemHere do
   it_behaves_like "a versioned spicerack gem"
+end
+```
+
+#### `"an example class with callbacks"`
+
+```ruby
+module Flow::Callbacks
+  extend ActiveSupport::Concern
+
+  included do
+    include ActiveSupport::Callbacks
+    define_callbacks :initialize, :trigger
+  end
+end
+
+RSpec.describe Flow::Callbacks, type: :module do
+  subject(:example_class) { Class.new.include described_class }
+
+  it { is_expected.to include_module ActiveSupport::Callbacks }
+
+  it_behaves_like "an example class with callbacks", described_class, %i[initialize trigger]
 end
 ```
 

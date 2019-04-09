@@ -1,5 +1,24 @@
 # frozen_string_literal: true
 
+# RSpec shared context to create a class with an `ActiveSupport::Callback` of a given name.
+#
+# Usage:
+#
+# RSpec.describe State::Core, type: :module do
+#   describe "#initialize" do
+#     include_context "with example class having callback", :foo
+#
+#     subject(:callback_runner) { example_class_having_callback.new.run_callbacks(:foo) }
+#
+#     it "runs the callbacks" do
+#       expect { callback_runner }.
+#         to change { example.before_hook_run }.from(nil).to(true).
+#         and change { example.around_hook_run }.from(nil).to(true).
+#         and change { example.after_hook_run }.from(nil).to(true)
+#     end
+#   end
+# end
+
 RSpec.shared_context "with example class having callback" do |callback|
   let(:example_class_having_callback) do
     Class.new do
