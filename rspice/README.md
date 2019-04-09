@@ -33,26 +33,11 @@ require 'rspice'
 
 ## Custom Matchers
 
-* [alias_method](rspice/lib/rspice/custom_matchers/alias_method.rb) tests usages of `#alias_method`.
+* [alias_method](lib/rspice/custom_matchers/alias_method.rb) tests usages of [Module#alias_method](https://apidock.com/ruby/Module/alias_method)
 
 ## Included Helpers
 
 ### Custom RSpec Matchers
-
-#### alias_method
-
-```ruby
-class Klass
-  def old_name; end
-  alias_method :alias_name, :old_name
-end
-```
-
-```ruby
-RSpec.describe Klass do
-  it { is_expected.to alias_method :alias_name, :old_name }
-end
-```
 
 #### extend_module
 
