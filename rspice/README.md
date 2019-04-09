@@ -25,10 +25,15 @@ Or install it yourself as:
 
 ## Usage
 
-To include the RSpice tools in your rspecs, add the following to your `rails_helper.rb`:
+To include the RSpice tools add the following to your `rails_helper.rb`:
+
 ```ruby
 require 'rspice'
 ```
+
+## Custom Matchers
+
+* [alias_method](rspice/lib/rspice/custom_matchers/alias_method.rb) tests usages of `#alias_method`.
 
 ## Included Helpers
 
