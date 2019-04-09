@@ -115,7 +115,7 @@ antist = TheAntist.new
 antist.how_much_ants_can_carry
 # => .5 oz
 
-# When we change an unobserved value, the memoiozatioon persists:
+# When we change an unobserved value, the memoiozation persists:
 antist.root_beer_floats_are_delicious = true
 antist.how_much_ants_can_carry
 # => .5 oz
