@@ -3,6 +3,8 @@
 require "rspec"
 require "faker"
 
+require "active_support/core_ext/object/inclusion"
+
 require "rspice/version"
 
 require "rspice/rspec_configuration"

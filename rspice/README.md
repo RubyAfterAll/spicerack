@@ -99,7 +99,6 @@ RSpec.describe Klass do
   it { is_expected.to include_module Module }
 end
 ```
-  
 
 #### inherit_from
 
@@ -125,6 +124,48 @@ describe ClassA do
   
   it "has a descendant class now" do
     expect(ChildClass.ancestors).to include described_class
+  end
+end
+```
+
+#### `"with callbacks""`
+
+```ruby
+class TestClass
+  include ActiveSupport::Callbacks
+  define_callbacks :foo
+
+  def foo
+    run_callbacks(:foo)
+  end
+end
+
+RSpec.describe TestClass do
+  it_behaves_like "a class with callback" do
+    include_context "with callbacks", :foo
+
+    subject(:callback_runner) { described_class.new.foo }
+
+    let(:example_class) { described_class }
+  end
+end
+```
+
+#### `"with example class having callback"`
+
+```ruby
+RSpec.describe State::Core, type: :module do
+  describe "#initialize" do
+    include_context "with example class having callback", :foo
+
+    subject(:callback_runner) { example_class_having_callback.new.run_callbacks(:foo) }
+
+    it "runs the callbacks" do
+      expect { callback_runner }.
+        to change { example.before_hook_run }.from(nil).to(true).
+        and change { example.around_hook_run }.from(nil).to(true).
+        and change { example.after_hook_run }.from(nil).to(true)
+    end
   end
 end
 ```
@@ -159,12 +200,94 @@ describe SomeClass do
   end
 end
 ```
+
+#### `"a class with callback"`
+
+```ruby
+module State::Core
+  extend ActiveSupport::Concern
+
+  def initialize
+    run_callbacks(:initialize)
+  end
+end
+
+RSpec.describe State::Core, type: :module do
+  describe "#initialize" do
+    include_context "with example class having callback", :initialize
+
+    subject(:instance) { example_class.new }
+
+    let(:example_class) { example_class_having_callback.include(State::Core) }
+
+    it_behaves_like "a class with callback" do
+      subject(:callback_runner) { instance }
+
+      let(:example) { example_class }
+    end
+  end
+end
+```
   
 #### `"a versioned spicerack gem"`
 
 ```ruby
 describe YourGemHere do
   it_behaves_like "a versioned spicerack gem"
+end
+```
+
+#### `"an example class with callbacks"`
+
+```ruby
+module Flow::Callbacks
+  extend ActiveSupport::Concern
+
+  included do
+    include ActiveSupport::Callbacks
+    define_callbacks :initialize, :trigger
+  end
+end
+
+RSpec.describe Flow::Callbacks, type: :module do
+  subject(:example_class) { Class.new.include described_class }
+
+  it { is_expected.to include_module ActiveSupport::Callbacks }
+
+  it_behaves_like "an example class with callbacks", described_class, %i[initialize trigger]
+end
+```
+
+#### `"an inherited property"`
+
+```ruby
+module State::Attributes
+  extend ActiveSupport::Concern
+
+  included do
+    class_attribute :_attributes, instance_writer: false, default: []
+  end
+
+  class_methods do
+    def inherited(base)
+      base._attributes = _attributes.dup
+      super
+    end
+
+    def define_attribute(attribute)
+      _attributes << attribute
+    end
+  end
+end
+
+RSpec.describe State::Attributes, type: :module do
+  let(:example_class) { Class.new.include(State::Attributes) }
+
+  describe ".inherited" do
+    it_behaves_like "an inherited property", :define_attribute, :_attributes do
+      let(:root_class) { example_class }
+    end
+  end
 end
 ```
 
