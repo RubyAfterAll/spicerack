@@ -1,32 +1,26 @@
 # frozen_string_literal: true
 
-# RSpec shared example to spec a class which uses `ActiveSupport::Callbacks`.
+# RSpec example that tests usage of [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks)
 #
-# Usage:
-#
-# module State::Core
-#   extend ActiveSupport::Concern
-#
-#   def initialize
-#     run_callbacks(:initialize)
-#   end
-# end
-#
-# RSpec.describe State::Core, type: :module do
-#   describe "#initialize" do
-#     include_context "with example class having callback", :initialize
-#
-#     subject(:instance) { example_class.new }
-#
-#     let(:example_class) { example_class_having_callback.include(State::Core) }
-#
-#     it_behaves_like "a class with callback" do
-#       subject(:callback_runner) { instance }
-#
-#       let(:example) { example_class }
+#     module Nodule
+#       def call
+#         run_callbacks(:kallback)
+#       end
 #     end
-#   end
-# end
+#
+#     RSpec.describe Nodule do
+#       include_context "with example class having callback", :kallback
+#
+#       subject(:instance) { example_class.new }
+#
+#       let(:example_class) { example_class_having_callback.include(Nodule) }
+#
+#       it_behaves_like "a class with callback" do
+#         subject(:callback_runner) { instance.call }
+#
+#         let(:example) { example_class }
+#       end
+#     end
 
 RSpec.shared_examples_for "a class with callback" do
   it "runs the callbacks" do

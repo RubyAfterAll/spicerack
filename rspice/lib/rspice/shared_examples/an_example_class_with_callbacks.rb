@@ -1,25 +1,15 @@
 # frozen_string_literal: true
 
-# RSpec shared example to spec a class with callbacks
+# RSpec example that tests for defined [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks)
 #
-# Usage:
+#     class Klass
+#       include ActiveSupport::Callbacks
+#       define_callbacks :kallback, :on_error
+#     end
 #
-# module Flow::Callbacks
-#   extend ActiveSupport::Concern
-#
-#   included do
-#     include ActiveSupport::Callbacks
-#     define_callbacks :initialize, :trigger
-#   end
-# end
-#
-# RSpec.describe Flow::Callbacks, type: :module do
-#   subject(:example_class) { Class.new.include described_class }
-#
-#   it { is_expected.to include_module ActiveSupport::Callbacks }
-#
-#   it_behaves_like "an example class with callbacks", described_class, %i[initialize trigger]
-# end
+#     RSpec.describe Klass do
+#       it_behaves_like "an example class with callbacks", described_class, %i[kallback on_error]
+#     end
 
 RSpec.shared_examples_for "an example class with callbacks" do |callback_module, callbacks|
   subject(:example_class) { Class.new.include callback_module }

@@ -1,37 +1,29 @@
 # frozen_string_literal: true
 
-# RSpec shared example to spec a class which supports inheritance on class based properties
+# RSpec example that tests usages of inherited [Class.class_attributes](https://apidock.com/rails/Class/class_attribute)
 #
-# Usage:
+#     class Klass
+#       class_attribute :_attributes, instance_writer: false, default: []
 #
-# module State::Attributes
-#   extend ActiveSupport::Concern
+#       class << self
+#         def inherited(base)
+#           base._attributes = _attributes.dup
+#           super
+#         end
 #
-#   included do
-#     class_attribute :_attributes, instance_writer: false, default: []
-#   end
-#
-#   class_methods do
-#     def inherited(base)
-#       base._attributes = _attributes.dup
-#       super
+#         def define_attribute(attribute)
+#           _attributes << attribute
+#         end
+#       end
 #     end
 #
-#     def define_attribute(attribute)
-#       _attributes << attribute
+#     RSpec.describe Klass do
+#       describe ".inherited" do
+#         it_behaves_like "an inherited property", :define_attribute, :_attributes do
+#           let(:root_class) { example_class }
+#         end
+#       end
 #     end
-#   end
-# end
-#
-# RSpec.describe State::Attributes, type: :module do
-#   let(:example_class) { Class.new.include(State::Attributes) }
-#
-#   describe ".inherited" do
-#     it_behaves_like "an inherited property", :define_attribute, :_attributes do
-#       let(:root_class) { example_class }
-#     end
-#   end
-# end
 
 # rubocop:disable Metrics/BlockLength
 RSpec.shared_examples_for "an inherited property" do |property, attribute = "_#{property.to_s.pluralize}".to_sym|
