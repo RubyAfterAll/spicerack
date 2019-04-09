@@ -99,7 +99,6 @@ RSpec.describe Klass do
   it { is_expected.to include_module Module }
 end
 ```
-  
 
 #### inherit_from
 
@@ -125,6 +124,29 @@ describe ClassA do
   
   it "has a descendant class now" do
     expect(ChildClass.ancestors).to include described_class
+  end
+end
+```
+
+#### `"with callbacks""`
+
+```ruby
+class TestClass
+  include ActiveSupport::Callbacks
+  define_callbacks :foo
+
+  def foo
+    run_callbacks(:foo)
+  end
+end
+
+RSpec.describe TestClass do
+  it_behaves_like "a class with callback" do
+    include_context "with callbacks", :foo
+
+    subject(:callback_runner) { described_class.new.foo }
+
+    let(:example_class) { described_class }
   end
 end
 ```
