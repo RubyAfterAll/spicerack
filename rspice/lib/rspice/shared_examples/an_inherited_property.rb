@@ -33,6 +33,7 @@
 #   end
 # end
 
+# rubocop:disable Metrics/BlockLength
 RSpec.shared_examples_for "an inherited property" do |property, attribute = "_#{property.to_s.pluralize}".to_sym|
   let(:base_class) do
     Class.new(root_class).tap { |klass| klass.__send__(property, :base) }
@@ -114,3 +115,4 @@ RSpec.shared_examples_for "an inherited property" do |property, attribute = "_#{
     include_examples "an object with inherited property"
   end
 end
+# rubocop:enable Metrics/BlockLength
