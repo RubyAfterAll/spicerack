@@ -11,7 +11,7 @@
 #     end
 #
 #     def do_a_thing
-#       ActiveSupport::Notifications.instrument("a_thing_was_done.namespace", user: user)
+#       ActiveSupport::Notifications.instrument("a_thing_was_done.namespace", user: @user)
 #     end
 #   end
 # end
@@ -20,11 +20,17 @@
 #   subject(:do_a_thing) { instance.do_a_thing }
 #
 #   let(:instance) { test_class.new(user) }
+#   let(:user) { double }
 #
 #   before { do_a_thing }
 #
-#   it_behaves_like "an instrumented event", "a_thing_was_done.namespace", user: user
+#   it_behaves_like "an instrumented event", "a_thing_was_done.namespace" do
+#     let(:expected_data) do
+#       { user: user }
+#     end
+#   end
 # end
+
 RSpec.shared_examples_for "an instrumented event" do |event_name|
   subject { ActiveSupport::Notifications }
 
