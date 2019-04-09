@@ -15,7 +15,5 @@ module Technologic
     class_attribute :log_warn_events, default: true
     class_attribute :log_info_events, default: true
     class_attribute :log_debug_events, default: true
-
-    class_attribute :include_in_classes, default: %w[ApplicationController]
   end
 end
