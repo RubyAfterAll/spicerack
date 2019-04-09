@@ -100,6 +100,7 @@ RSpec.describe Klass do
 end
 ```
   
+
 #### inherit_from
 
 ```ruby
@@ -114,55 +115,64 @@ end
 
 ### Shared Contexts
 
-* `"with an example descendant class"`
-  ```ruby
-  describe ClassA do
-    include_context "with an example descendant class"
-    
-    let(:example_class_name) { "ChildClass" }
-    
-    it "has a descendant class now" do
-      expect(ChildClass.ancestors).to include described_class
-    end
+#### `"with an example descendant class"`
+
+```ruby
+describe ClassA do
+  include_context "with an example descendant class"
+  
+  let(:example_class_name) { "ChildClass" }
+  
+  it "has a descendant class now" do
+    expect(ChildClass.ancestors).to include described_class
   end
-  ```
+end
+```
 
 ### Shared Examples
 
-* `"a class pass method"`
-  ```ruby
-  class SomeClass
-    def self.do_something_extraordinary!(some, instance, params)
-      new(some, instance, params).do_something_extraordinary!
-    end
-    
-    attr_reader :some, :instance, :params
-    
-    def initialize(some, instance, params)
-      @some = some
-      @instance = instance
-      @params = params
-    end
-    
-    def do_something_extraordinary!
-      # Important things happen here
-    end
+#### `"a class pass method"`
+
+```ruby
+class SomeClass
+  def self.do_something_extraordinary!(some, instance, params)
+    new(some, instance, params).do_something_extraordinary!
   end
   
-  # some_class_spec.rb
-  describe SomeClass do
-    describe ".do_something_extraordinary!" do
-      it_behaves_like "a class pass method", :do_something_extraordinary!
-    end
-  end
-  ```
+  attr_reader :some, :instance, :params
   
-* `"a versioned spicerack gem"`
-  ```ruby
-  describe YourGemHere do
-    it_behaves_like "a versioned spicerack gem"
+  def initialize(some, instance, params)
+    @some = some
+    @instance = instance
+    @params = params
   end
-  ```
+  
+  def do_something_extraordinary!
+    # Important things happen here
+  end
+end
+
+# some_class_spec.rb
+describe SomeClass do
+  describe ".do_something_extraordinary!" do
+    it_behaves_like "a class pass method", :do_something_extraordinary!
+  end
+end
+```
+  
+#### `"a versioned spicerack gem"`
+
+```ruby
+describe YourGemHere do
+  it_behaves_like "a versioned spicerack gem"
+end
+```
+
+#### `"an instrumented event"`
+
+```ruby
+# TODO
+```
 
 ## Development
 

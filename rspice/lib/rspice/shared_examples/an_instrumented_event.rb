@@ -1,20 +1,29 @@
 # frozen_string_literal: true
 
-# RSpec shared example to spec event instrumentation.
+# RSpec shared example to spec usage of `ActiveSupport::Notification#instrumentation`.
 #
 # Usage:
 #
-# RSpec.describe GitClient, type: :client do
-#   subject(:instance) { described_class.new(github: true) }
+# let(:test_class) do
+#   Class.new do
+#     def initialize(user)
+#       @user = user
+#     end
 #
-#   describe "#retrieve_all" do
-#     subject(:retrieve_all) { instance.__send__(:retrieve_all, type, *arguments, **options) }
-#
-#     before { retrieve_all }
-#
-#     it_behaves_like "an instrumented event", "retrieve_all_started.Git::Base.info"
-#     it_behaves_like "an instrumented event", "retrieve_all_finished.Git::Base.info"
+#     def do_a_thing
+#       ActiveSupport::Notifications.instrument("a_thing_was_done.namespace", user: user)
+#     end
 #   end
+# end
+#
+# describe "#do_a_thing" do
+#   subject(:do_a_thing) { instance.do_a_thing }
+#
+#   let(:instance) { test_class.new(user) }
+#
+#   before { do_a_thing }
+#
+#   it_behaves_like "an instrumented event", "a_thing_was_done.namespace", user: user
 # end
 RSpec.shared_examples_for "an instrumented event" do |event_name|
   subject { ActiveSupport::Notifications }
