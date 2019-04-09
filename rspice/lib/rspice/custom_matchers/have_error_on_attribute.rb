@@ -1,16 +1,23 @@
 # frozen_string_literal: true
 
-# RSpec matcher to test activities.
+# RSpec matcher that tests usages of [ActiveModel::Errors](https://api.rubyonrails.org/classes/ActiveModel/Errors.html)
 #
-# Usage:
+#     class Klass < ApplicationRecord
+#       validate_uniqueness_of :attribute
+#     end
 #
-# RSpec.describe ApplicationRecord, type: :model do
-#   subject { described_class.new }
+#     RSpec.describe Klass, type: :model do
+#       subject(:klass) { model.new(attribute: attribute) }
 #
-#   before { # put record in invalid statae }
+#       let(:attribute) { "attribute" }
 #
-#   it { is_expected.to have_error_on_attribute(:foo).with_detail_key(:bar) }
-# end
+#       before do
+#         model.create(attribute: attribute)
+#         klass.validate
+#       end
+#
+#       it { is_expected.to have_error_on_attribute(:attribute).with_detail_key(:taken) }
+#     end
 
 RSpec::Matchers.define :have_error_on_attribute do |attribute|
   match do |record|

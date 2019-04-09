@@ -1,28 +1,25 @@
 # frozen_string_literal: true
 
-# RSpec shared context for adding a callback to a class which includes `ActiveSupport::Callbacks`.
+# RSpec context that defines callbacks for [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks)
 #
-# Usage:
+#     class Klass
+#       include ActiveSupport::Callbacks
+#       define_callbacks :kallback
 #
-# class TestClass
-#   include ActiveSupport::Callbacks
-#   define_callbacks :foo
+#       def call
+#         run_callbacks(:kallback)
+#       end
+#     end
 #
-#   def foo
-#     run_callbacks(:foo)
-#   end
-# end
+#     RSpec.describe Klass do
+#       it_behaves_like "a class with callback" do
+#         include_context "with callbacks", :kallback
 #
+#         subject(:callback_runner) { described_class.new.call }
 #
-# RSpec.describe TestClass do
-#   it_behaves_like "a class with callback" do
-#     include_context "with callbacks", :foo
-#
-#     subject(:callback_runner) { described_class.new.foo }
-#
-#     let(:example_class) { described_class }
-#   end
-# end
+#         let(:example_class) { described_class }
+#       end
+#     end
 
 RSpec.shared_context "with callbacks" do |callback|
   before do

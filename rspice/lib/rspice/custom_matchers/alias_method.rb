@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# RSpec matcher to tests usages of [Module#alias_method]
+# RSpec matcher that tests usages of [Module#alias_method](https://apidock.com/ruby/Module/alias_method)
 #
 #     class Klass
 #       def old_name; end

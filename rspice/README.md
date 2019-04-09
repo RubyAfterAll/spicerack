@@ -34,131 +34,18 @@ require 'rspice'
 ## Custom Matchers
 
 * [alias_method](lib/rspice/custom_matchers/alias_method.rb) tests usages of [Module#alias_method](https://apidock.com/ruby/Module/alias_method)
+* [extend_module](lib/rspice/custom_matchers/extend_module.rb) tests usages of [Object#extend](https://www.apidock.com/ruby/Object/extend)
+* [have_error_on_attribute](lib/rspice/custom_matchers/have_error_on_attribute.rb) tests usages of [ActiveModel::Errors](https://api.rubyonrails.org/classes/ActiveModel/Errors.html)
+* [include_module](lib/rspice/custom_matchers/include_module.rb) tests usages of [Module#include](https://apidock.com/ruby/Module/include)
+* [inherit_from](lib/rspice/custom_matchers/inherit_from.rb) tests inheritance of [Classes](https://apidock.com/ruby/Class)
+
+## Shared Context
+
+* [with_an_example_descendant_class](lib/rspice/shared_context/with_an_example_descendant_class.rb) creates a named descendant of `described_class`
+* [with_callbacks](lib/rspice/shared_context/with_callbacks.rb) defines callbacks for [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks)
+* [with_example_class_having_callback](lib/rspice/shared_context/with_example_class_having_callback.rb) creates a class with [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks)
 
 ## Included Helpers
-
-### Custom RSpec Matchers
-
-#### extend_module
-
-```ruby
-class Klass
-  extend Module
-end
-```
-
-```ruby
-RSpec.describe Klass do
-  it { is_expected.to extend_module Module }
-end
-```
-
-#### have_error_on_attribute
-
-```ruby
-class Klass < ApplicationRecord
-  validate_uniqueness_of :attribute
-end
-```
-
-```ruby
-RSpec.describe Klass, type: :model do
-  subject(:klass) { model.new(attribute: attribute) }
-  
-  let(:attribute) { "attribute" }
-  
-  before do
-    model.create(attribute: attribute)
-    klass.validate
-  end
-
-  it { is_expected.to have_error_on_attribute(:attribute).with_detail_key(:taken) }
-end
-```
-
-#### include_module
-
-```ruby
-class Klass
-  include Module
-end
-```
-
-```ruby
-RSpec.describe Klass do
-  it { is_expected.to include_module Module }
-end
-```
-
-#### inherit_from
-
-```ruby
-class Klass < ApplicationRecord; end
-```
-
-```ruby
-describe Klass do
-  it { is_expected.to inherit_from ApplicationRecord }
-end
-```
-
-### Shared Contexts
-
-#### `"with an example descendant class"`
-
-```ruby
-describe ClassA do
-  include_context "with an example descendant class"
-  
-  let(:example_class_name) { "ChildClass" }
-  
-  it "has a descendant class now" do
-    expect(ChildClass.ancestors).to include described_class
-  end
-end
-```
-
-#### `"with callbacks""`
-
-```ruby
-class TestClass
-  include ActiveSupport::Callbacks
-  define_callbacks :foo
-
-  def foo
-    run_callbacks(:foo)
-  end
-end
-
-RSpec.describe TestClass do
-  it_behaves_like "a class with callback" do
-    include_context "with callbacks", :foo
-
-    subject(:callback_runner) { described_class.new.foo }
-
-    let(:example_class) { described_class }
-  end
-end
-```
-
-#### `"with example class having callback"`
-
-```ruby
-RSpec.describe State::Core, type: :module do
-  describe "#initialize" do
-    include_context "with example class having callback", :foo
-
-    subject(:callback_runner) { example_class_having_callback.new.run_callbacks(:foo) }
-
-    it "runs the callbacks" do
-      expect { callback_runner }.
-        to change { example.before_hook_run }.from(nil).to(true).
-        and change { example.around_hook_run }.from(nil).to(true).
-        and change { example.after_hook_run }.from(nil).to(true)
-    end
-  end
-end
-```
 
 ### Shared Examples
 
