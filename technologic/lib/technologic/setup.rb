@@ -8,7 +8,6 @@ module Technologic
 
         setup_subscribers(technologic_config)
         setup_loggers(technologic_config)
-        setup_includes(technologic_config)
       end
 
       private
