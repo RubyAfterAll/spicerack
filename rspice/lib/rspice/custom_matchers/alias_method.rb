@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# RSpec matcher to spec inheritance.
+# RSpec matcher to spec method aliases.
 #
 # Usage:
 #
