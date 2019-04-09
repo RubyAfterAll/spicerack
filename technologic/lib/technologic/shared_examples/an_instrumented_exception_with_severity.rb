@@ -4,7 +4,7 @@
 #
 # Usage:
 #
-# let(#:test_class) do
+# let(:test_class) do
 #   Class.new do
 #     include Technologic
 #

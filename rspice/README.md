@@ -171,7 +171,32 @@ end
 #### `"an instrumented event"`
 
 ```ruby
-# TODO
+let(:test_class) do
+  Class.new do
+    def initialize(user)
+      @user = user
+    end
+
+    def do_a_thing
+      ActiveSupport::Notifications.instrument("a_thing_was_done.namespace", user: @user)
+    end
+  end
+end
+
+describe "#do_a_thing" do
+  subject(:do_a_thing) { instance.do_a_thing }
+
+  let(:instance) { test_class.new(user) }
+  let(:user) { double }
+
+  before { do_a_thing }
+
+  it_behaves_like "an instrumented event", "a_thing_was_done.namespace" do
+    let(:expected_data) do
+      { user: user }
+    end
+  end
+end
 ```
 
 ## Development
