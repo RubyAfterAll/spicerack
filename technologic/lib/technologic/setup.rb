@@ -28,10 +28,6 @@ module Technologic
         Technologic::InfoSubscriber.on_event { |e| Technologic::Logger.log(:info, e) } if config.log_info_events
         Technologic::DebugSubscriber.on_event { |e| Technologic::Logger.log(:debug, e) } if config.log_debug_events
       end
-
-      def setup_includes(config)
-        config.include_in_classes.each { |class_name| class_name.constantize.include(Technologic) }
-      end
     end
   end
 end
