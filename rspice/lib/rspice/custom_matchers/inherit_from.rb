@@ -11,19 +11,12 @@
 # end
 
 RSpec::Matchers.define :inherit_from do |superclass|
-  match do
-    described_class.ancestors.include? superclass
-  end
+  match { test_subject.ancestors.include? superclass }
+  description { "inherit from #{superclass}" }
+  failure_message { "expected #{described_class.name} to inherit from #{superclass}" }
+  failure_message_when_negated { "expected #{described_class.name} not to inherit from #{superclass}" }
 
-  description do
-    "inherit from #{superclass}"
-  end
-
-  failure_message do
-    "expected #{described_class.name} to inherit from #{superclass}"
-  end
-
-  failure_message_when_negated do
-    "expected #{described_class.name} not to inherit from #{superclass}"
+  def test_subject
+    subject.is_a?(Class) ? subject : subject.class
   end
 end
