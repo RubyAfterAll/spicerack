@@ -39,8 +39,4 @@ RSpec.shared_examples_for "a class pass method" do |method|
   end
 
   it { is_expected.to eq output }
-
-  it "has matching parameters with initialize" do
-    expect(test_class.method(method).parameters).to eq test_class.instance_method(:initialize).parameters
-  end
 end
