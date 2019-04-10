@@ -1,35 +1,31 @@
 # frozen_string_literal: true
 
-# RSpec shared example to spec usage `#surveil`.
+# RSpec example that tests usage of `#surveil`
 #
-# Usage:
+#     class Klass
+#       include Technologic
 #
-# class TestClass
-#   include Technologic
+#       def initialize(user)
+#         @user = user
+#       end
 #
-#   def initialize(user)
-#     @user = user
-#   end
-#
-#   def do_a_thing
-#     surveil(:doing_a_thing, user: @user) { :a_thing_is_done }
-#   end
-# end
-#
-# RSpec.describe TestClass do
-#   describe "#do_a_thing" do
-#     let(:instance) { described_class.new(user) }
-#     let(:user) { double }
-#
-#     before { instance.do_a_thing }
-#
-#     it_behaves_like "a surveiled event", :doing_a_thing do
-#       let(:expected_data) do
-#         { user: user }
+#       def do_a_thing
+#         surveil(:doing_a_thing, user: @user) { :a_thing_is_done }
 #       end
 #     end
-#   end
-# end
+#
+#     RSpec.describe Klass do
+#       let(:instance) { described_class.new(user) }
+#       let(:user) { double }
+#
+#       before { instance.do_a_thing }
+#
+#       it_behaves_like "a surveiled event", :doing_a_thing do
+#         let(:expected_data) do
+#           { user: user }
+#         end
+#       end
+#     end
 
 RSpec.shared_examples_for "a surveiled event" do |expected_event|
   subject { ActiveSupport::Notifications }
