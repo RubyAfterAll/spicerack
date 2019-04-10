@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# RSpec example that tests usage of named severity log handlers (used to DRY out other shared examples)
+# RSpec example that tests usage of `#debug`
 #
 #     class Klass
 #       include Technologic
@@ -10,7 +10,7 @@
 #       end
 #
 #       def do_a_thing
-#         info :thing_being_done, user: @user
+#         debug :thing_being_done, user: @user
 #       end
 #     end
 #
@@ -20,13 +20,13 @@
 #
 #       before { instance.do_a_thing }
 #
-#       it_behaves_like "a logged event with severity", :thing_being_done, :info do
+#       it_behaves_like "a debug event is logged", :thing_being_done do
 #         let(:expected_data) do
 #           { user: user }
 #         end
 #       end
 #     end
 
-RSpec.shared_examples_for "a logged event with severity" do |event, severity, for_class = described_class|
-  include_examples "an instrumented event", "#{event}.#{for_class}.#{severity}"
+RSpec.shared_examples_for "a debug event is logged" do |event, for_class = described_class|
+  include_examples "a logged event with severity", event, :debug, for_class
 end
