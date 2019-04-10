@@ -27,6 +27,6 @@
 #       end
 #     end
 
-RSpec.shared_examples_for "a debug event is logged" do |event, for_class = described_class|
+RSpec.shared_examples_for "a warn event is logged" do |event, for_class = described_class|
   include_examples "a logged event with severity", event, :warn, for_class
 end
