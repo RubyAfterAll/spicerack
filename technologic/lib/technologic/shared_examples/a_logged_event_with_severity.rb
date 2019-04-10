@@ -27,8 +27,6 @@
 #       end
 #     end
 
-RSpec.shared_examples_for "a logged event with severity" do |event, severity|
-  let(:for_class) { described_class }
-
+RSpec.shared_examples_for "a logged event with severity" do |event, severity, for_class = described_class|
   include_examples "an instrumented event", "#{event}.#{for_class}.#{severity}"
 end
