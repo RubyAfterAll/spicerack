@@ -1,34 +1,30 @@
 # frozen_string_literal: true
 
-# RSpec shared example of the common behavior between the error raising severity helpers `#error!` and `#fatal!`.
+# RSpec example that tests usage of exception raising severity loggers (used to DRY out other shared examples)
 #
-# Usage:
+#     class Klass
+#       include Technologic
 #
-# let(:test_class) do
-#   Class.new do
-#     include Technologic
+#       def initialize(user)
+#         @user = user
+#       end
 #
-#     def initialize(user)
-#       @user = user
+#       def do_a_thing
+#         error! RuntimeError, "Something bad always happens when you do a thing!", user: @user
+#       end
 #     end
 #
-#     def do_a_thing
-#       error! RuntimeError, "Something bad always happens when you do a thing!", user: @user
+#     RSpec.describe Klass do
+#       include_examples "an instrumented exception with severity", RuntimeError, :error! do
+#         let(:instance) { described_class.new(user) }
+#         let(:user) { double }
+#         let(:example_method) { instance.do_a_thing }
+#         let(:expected_message) { "Something bad always happens when you do a thing!" }
+#         let(:expected_data) do
+#           { user: user }
+#         end
+#       end
 #     end
-#   end
-# end
-#
-# describe "#do_a_thing" do
-#   include_examples "an instrumented exception with severity", RuntimeError, :error! do
-#     let(:instance) { test_class.new(user) }
-#     let(:user) { double }
-#     let(:example_method) { instance.do_a_thing }
-#     let(:expected_message) { "Something bad always happens when you do a thing!" }
-#     let(:expected_data) do
-#       { user: user }
-#     end
-#   end
-# end
 
 RSpec.shared_examples_for "an instrumented exception with severity" do |error_class, severity|
   before { allow(instance).to receive(severity).and_call_original }
