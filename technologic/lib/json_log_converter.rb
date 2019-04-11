@@ -30,13 +30,14 @@ module JsonLogConverter
   end
 
   def split_event_key_for_payload(payload)
-    return unless payload[:event].include? "."
+    return payload unless payload[:event].include? "."
 
     parts = payload[:event].split(".")
-    return unless parts.length == 2
+    return payload unless parts.length == 2
 
-    payload[:event] = parts.first
-    payload[:class] = parts.last
+    payload[:event] = parts[0]
+    payload[:class] = parts[1]
+    payload
   end
 
   def log_payload_for(severity, timestamp, msg)
