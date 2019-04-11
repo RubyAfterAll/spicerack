@@ -30,7 +30,7 @@ module JsonLogConverter
   end
 
   def split_event_key_for_payload(payload)
-    return payload unless payload[:event].include? "."
+    return payload unless payload[:event]&.include? "."
 
     parts = payload[:event].split(".")
     return payload unless parts.length == 2
