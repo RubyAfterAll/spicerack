@@ -23,9 +23,13 @@ module JsonLogConverter
     "#{log_payload_for(severity, timestamp, msg).to_json}\n"
   end
 
-  def log_payload_for(severity, timestamp, msg)
+  def default_json_payload(severity, timestamp, msg)
     payload = { severity: severity, timestamp: timestamp }
     payload[:tags] = current_tags if current_tags.any?
     payload.merge(msg.is_a?(Hash) ? msg : { message: msg })
+  end
+
+  def log_payload_for(severity, timestamp, msg)
+    default_json_payload(severity, timestamp, msg)
   end
 end
