@@ -29,6 +29,16 @@ module JsonLogConverter
     payload.merge(msg.is_a?(Hash) ? msg : { message: msg })
   end
 
+  def split_event_key_for_payload(payload)
+    return unless payload[:event].include? "."
+
+    parts = payload[:event].split(".")
+    return unless parts.length == 2
+
+    payload[:event] = parts.first
+    payload[:class] = parts.last
+  end
+
   def log_payload_for(severity, timestamp, msg)
     default_json_payload(severity, timestamp, msg)
   end
