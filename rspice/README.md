@@ -5,7 +5,14 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/maintainability)](https://codeclimate.com/github/Freshly/spicerack/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/test_coverage)](https://codeclimate.com/github/Freshly/spicerack/test_coverage)
 
-RSpice - a collection of custom matchers and other test helpers to make your tests a little easier to write.
+* [Installation](#installation)
+* [Usage](#usage)
+* [Custom Matchers](#custom-matchers)
+* [Shared Context](#shared-context)
+* [Shared Examples](#shared-examples)
+* [Development](#development)
+* [Contributing](#contributing)
+* [License](#license)
 
 ## Installation
 

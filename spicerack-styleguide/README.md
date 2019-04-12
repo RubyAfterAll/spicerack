@@ -5,6 +5,12 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/maintainability)](https://codeclimate.com/github/Freshly/spicerack/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/test_coverage)](https://codeclimate.com/github/Freshly/spicerack/test_coverage)
 
+* [Installation](#installation)
+* [Usage](#usage)
+* [Development](#development)
+* [Contributing](#contributing)
+* [License](#license)
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -46,7 +52,7 @@ Style/StringLiterals:
 
 ## Development
 
-See https://github.com/Freshly/spicerack/blob/master/README.md
+This... is a yml. You don't develop it. Go home, boilerplate gem README text, you're drunk!
 
 ## Contributing
 

@@ -4,9 +4,16 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/maintainability)](https://codeclimate.com/github/Freshly/spicerack/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/test_coverage)](https://codeclimate.com/github/Freshly/spicerack/test_coverage)
 
-### Intelligent memoization
-
-ShortCircuIt provides method memoization with awareness for arguments, instance state, weather, Oxford commas, or anything else you can think to throw at it.
+* [Installation](#installation)
+* [What's memoization?](#whats-memoization)
+* [Usage](#usage)
+   * [Static methods](#static-methods)
+   * [Arguments](#arguments)
+   * [Instance State](#instance-state)
+   * [Observables](#observables)
+* [Development](#development)
+* [Contributing](#contributing)
+* [License](#license)
 
 ## Installation
 
@@ -26,19 +33,23 @@ Or install it yourself as:
 
 ## What's memoization?
 
+ShortCircuIt provides method memoization with awareness for arguments, instance state, weather, Oxford commas, or anything else you can think to throw at it.
+
 Imagine you have this method in your code, for some reason:
+
 ```ruby
 def nth_digit_of_pi(n)
   # MATH
 end
 ```
 
-Now imagine you need to show the 1000th digit of pi in three places on a single webpage. Do you calculate it three times, or do you assign it to a variable once and use that variable three times? The latter is memoization; the former is...also an option.
+Now imagine you need to show the 1000th digit of pi in three places on a single webpage. Do you calculate it three times, or do you assign it to a variable once and use that variable three times? The latter is memoization; the former is... also an option.
 
 ## Usage
 
 ### Static methods
-In the simplest case, ShortCircuIt is no harder to forget than the method name itself:
+
+In the simplest case, `ShortCircuIt` is no harder to forget than the method name itself:
 
 ```ruby
 class TheClassiest
@@ -81,7 +92,9 @@ the_classiest.how_methodical(2)
 ```
 
 ### Instance State
+
 Sometimes instances are stateful and mutable. By default, ShortCircuIt will watch an object's state via its `hash` value, so the memoization is broken when its attributes change:
+
 ```ruby
 the_classiest.how_methodical(1)
 # Pity on my sysop!
@@ -99,6 +112,7 @@ the_classiest.how_methodical(1)
 ### Observables
 
 Maybe I have a method I'd like memoize on a complex object with many unrelated attributes:
+
 ```ruby
 class TheAntist
   attr_accessor :root_beer_floats_are_delicious, :physics, :weight_of_the_universe
