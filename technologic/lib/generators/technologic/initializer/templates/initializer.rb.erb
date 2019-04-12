@@ -1,0 +1,74 @@
+# frozen_string_literal: true
+
+Rails.application.configure do
+  # When disabled, the default subscribers and loggers are not registered, so events are triggered but not listened for.
+  # config.technologic.enabled = true
+
+  # Technologic uses an event based model to log the events you dispatch inside of your objects.
+  # Logging is therefore only one of the capabilities empowered by Technologic.
+  # Use the Technologic `on_event` subscribers to quickly build out metrics reporting, profiling, etc.
+
+  # Subscribers listen for messages triggered by Technologic's severity methods (debug, info, warn, error, fatal).
+  # Messages are converted into `Technologic::Event` objects and all registered event handlers are triggered.
+  # When disabled, subscribers will not listen for instrumentation messages, so no event handlers will be triggered.
+  # config.technologic.subscribe_to_fatal = true
+  # config.technologic.subscribe_to_error = true
+  # config.technologic.subscribe_to_warn = true
+  # config.technologic.subscribe_to_info = true
+  # config.technologic.subscribe_to_debug = true
+
+  # Loggers register with their affiliated subscribers to listen for and handle events of the specified severity.
+  # When disabled, event handlers are not registered with the subscribers, so no logs will be written.
+  # config.technologic.log_fatal_events = true
+  # config.technologic.log_error_events = true
+  # config.technologic.log_warn_events = true
+  # config.technologic.log_info_events = true
+  # config.technologic.log_debug_events = true
+end
+
+# Technologic is designed to elegantly export into very clean, minimal, and powerful JSON logs and comes packaged with
+# a simple way to convert the default Rails logger to emit JSON logs.
+# Uncomment the lines below to convert the default logger over to JSON logs.
+#
+# JsonLogConverter.convert_rails_logger
+#
+# This class takes a block if you want to customize the payload yourself:
+#
+# JsonLogConverter.convert_rails_logger do |severity, timestamp, msg|
+#   { technologic_is_cool: true, severity: severity[0], timestamp: timestamp.to_i, msg: msg }
+# end
+#
+# By default, the log payload used by the converter is:
+#
+#     { severity:, timestamp:, tags: <if there are any>, message: <for strings>, ...event_data_keys }
+#
+# If you want to manipulate this default payload in your custom formatter, use `#default_json_payload`
+#
+# JsonLogConvert.convert_rails_logger do |severity, timestamp, msg|
+#   default_json_payload(severity, timestamp, msg).merge(technologic_is_cool: true)
+# end
+#
+# *NOTE*: Whatever value you return from the block is logged, so if you return nothing a blank line will be logged!
+# Unless you've changed something about the default Rails logger, it's also a "tagged logger".
+# You can use the `#current_tags` method within your formatter block to get access to these tags.
+#
+# JsonLogConverter.convert_rails_logger do |severity, timestamp, msg|
+#   next if current_tags.include? "silence"
+#   default_json_payload(severity, timestamp, msg)
+# end
+#
+# Finally, the converter provides a Technologic specific convenience method for some optional log parsing.
+# By default, Technologic events are whatever event you log plus the class where the event originated from.
+# This is emitted as one key called event where these values are joined by a period:
+#
+#     { event: "something_bad_happened.Klass" }
+#
+# If you would prefer these two data values to be split in the logs, ex:
+#
+#     { event: "something_bad_happened", class: "Klass" }
+#
+# Then you can use the `#split_event_key_for_payload` method provided with the converter:
+#
+# JsonLogConverter.convert_rails_logger do |severity, timestamp, msg|
+#   split_event_key_for_payload(default_json_payload(severity, timestamp, msg))
+# end
