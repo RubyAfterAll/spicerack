@@ -6,7 +6,7 @@ module Technologic
       source_root File.expand_path("templates", __dir__)
 
       def create_initializer
-        template "initializer.rb.erb", File.join("config/initializer/technologic.rb")
+        template "initializer.rb.erb", File.join("config/initializers/technologic.rb")
       end
     end
   end
