@@ -52,7 +52,7 @@ end
 # Unless you've changed something about the default Rails logger, it's also a "tagged logger".
 # You can use the `#current_tags` method within your formatter block to get access to these tags.
 #
-# JsonLogConvert.convert_rails_logger do |severity, timestamp, msg|
+# JsonLogConverter.convert_rails_logger do |severity, timestamp, msg|
 #   next if current_tags.include? "silence"
 #   default_json_payload(severity, timestamp, msg)
 # end
@@ -69,6 +69,6 @@ end
 #
 # Then you can use the `#split_event_key_for_payload` method provided with the converter:
 #
-# JsonLogConvert.convert_rails_logger do |severity, timestamp, msg|
+# JsonLogConverter.convert_rails_logger do |severity, timestamp, msg|
 #   split_event_key_for_payload(default_json_payload(severity, timestamp, msg))
 # end
