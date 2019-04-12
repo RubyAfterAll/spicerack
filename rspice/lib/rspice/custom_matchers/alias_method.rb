@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
-# RSpec matcher to spec inheritance.
+# RSpec matcher that tests usages of [Module#alias_method](https://apidock.com/ruby/Module/alias_method)
 #
-# Usage:
+#     class Klass
+#       def old_name; end
+#       alias_method :alias_name, :old_name
+#     end
 #
-# RSpec.describe User, type: :model do
-#   subject { described_class.new }
-#
-#   it { is_expected.to alias_method :alias_name, :target_name }
-# end
+#     RSpec.describe Klass do
+#       it { is_expected.to alias_method :alias_name, :old_name }
+#     end
 
 RSpec::Matchers.define :alias_method do |alias_name, target_name|
   match do |instance|

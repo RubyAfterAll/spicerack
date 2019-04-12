@@ -5,7 +5,14 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/maintainability)](https://codeclimate.com/github/Freshly/spicerack/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/test_coverage)](https://codeclimate.com/github/Freshly/spicerack/test_coverage)
 
-RSpice - a collection of custom matchers and other test helpers to make your tests a little easier to write.
+* [Installation](#installation)
+* [Usage](#usage)
+* [Custom Matchers](#custom-matchers)
+* [Shared Context](#shared-context)
+* [Shared Examples](#shared-examples)
+* [Development](#development)
+* [Contributing](#contributing)
+* [License](#license)
 
 ## Installation
 
@@ -25,99 +32,34 @@ Or install it yourself as:
 
 ## Usage
 
-To include the RSpice tools in your rspecs, add the following to your `rails_helper.rb`:
+To include the RSpice tools add the following to your `rails_helper.rb`:
+
 ```ruby
 require 'rspice'
 ```
 
-## Included Helpers
+## Custom Matchers
 
-### Custom Matchers
+* [alias_method](lib/rspice/custom_matchers/alias_method.rb) tests usages of [Module#alias_method](https://apidock.com/ruby/Module/alias_method)
+* [extend_module](lib/rspice/custom_matchers/extend_module.rb) tests usages of [Object#extend](https://www.apidock.com/ruby/Object/extend)
+* [have_error_on_attribute](lib/rspice/custom_matchers/have_error_on_attribute.rb) tests usages of [ActiveModel::Errors](https://api.rubyonrails.org/classes/ActiveModel/Errors.html)
+* [include_module](lib/rspice/custom_matchers/include_module.rb) tests usages of [Module#include](https://apidock.com/ruby/Module/include)
+* [inherit_from](lib/rspice/custom_matchers/inherit_from.rb) tests inheritance of [Classes](https://apidock.com/ruby/Class)
 
-* `alias_method`
-  ```ruby
-  describe "#a_method" do
-    it { is_expected.to alias_method :alias_name, :target_name }
-  end
-  ```
-* `extend_module`
-  ```ruby
-  describe AModule do
-    it { is_expected.to extend_module AnotherModule }
-  end
-  ```
-* `have_error_on_attribute`
-  ```ruby
-  describe "Validations" do
-    before { instance.attribute = :invalid_value }
-    
-    it { is_expected.to have_error_on_attribute(:attribute).with_detail_key(:invalid) }
-  end
-  ```
-* `include_module`
-  ```ruby
-  describe AClass do
-    it { is_expected.to include_module SuperUsefulModule }
-  end
-  ```
-* `inherit_from`
-  ```ruby
-  describe PartB do
-    it { is_expected.to inherit_from Partaayyyy }
-  end
-  ```
+## Shared Context
 
-### Shared Contexts
+* [with_an_example_descendant_class](lib/rspice/shared_context/with_an_example_descendant_class.rb) creates a named descendant of `described_class`
+* [with_callbacks](lib/rspice/shared_context/with_callbacks.rb) defines callbacks for [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks)
+* [with_example_class_having_callback](lib/rspice/shared_context/with_example_class_having_callback.rb) creates a class with 
 
-* `"with an example descendant class"`
-  ```ruby
-  describe ClassA do
-    include_context "with an example descendant class"
-    
-    let(:example_class_name) { "ChildClass" }
-    
-    it "has a descendant class now" do
-      expect(ChildClass.ancestors).to include described_class
-    end
-  end
-  ```
+## Shared Examples
 
-### Shared Examples
-
-* `"a class pass method"`
-  ```ruby
-  class SomeClass
-    def self.do_something_extraordinary!(some, instance, params)
-      new(some, instance, params).do_something_extraordinary!
-    end
-    
-    attr_reader :some, :instance, :params
-    
-    def initialize(some, instance, params)
-      @some = some
-      @instance = instance
-      @params = params
-    end
-    
-    def do_something_extraordinary!
-      # Important things happen here
-    end
-  end
-  
-  # some_class_spec.rb
-  describe SomeClass do
-    describe ".do_something_extraordinary!" do
-      it_behaves_like "a class pass method", :do_something_extraordinary!
-    end
-  end
-  ```
-  
-* `"a versioned spicerack gem"`
-  ```ruby
-  describe YourGemHere do
-    it_behaves_like "a versioned spicerack gem"
-  end
-  ```
+* [a_class_pass_method](lib/rspice/shared_examples/a_class_pass_method.rb) tests class methods which take arguments that instantiate and call instance method of the same name
+* [a_class_with_callback](lib/rspice/shared_examples/a_class_with_callback.rb) tests usage of [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks)
+* [a_versioned_spicerack_gem](lib/rspice/shared_examples/a_versioned_spicerack_gem.rb) ensures gem compliance with internal standard of [Spicerack](https://github.com/Freshly/spicerack/)
+* [an_example_class_with_callbacks](lib/rspice/shared_examples/an_example_class_with_callbacks.rb) tests for defined [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks)
+* [an_inherited_property](lib/rspice/shared_examples/an_inherited_property.rb) tests usages of inherited [Class.class_attributes](https://apidock.com/rails/Class/class_attribute)
+* [an_instrumented_event](lib/rspice/shared_examples/an_instrumented_event.rb) tests usage of [ActiveSupport::Notification](https://apidock.com/rails/ActiveSupport/Notifications)
 
 ## Development
 

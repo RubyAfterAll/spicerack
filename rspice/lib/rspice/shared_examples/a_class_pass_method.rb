@@ -1,5 +1,36 @@
 # frozen_string_literal: true
 
+# RSpec example that tests class methods which take arguments that instantiate and call instance method of the same name
+#
+#     class Klass
+#       # You can just call `Klass.do_something_extraordinary!(...)`! So convenient!!
+#       def self.do_something_extraordinary!(named_argument, *arguments, **options)
+#         new(named_argument, *arguments, **options).do_something_extraordinary!
+#       end
+#
+#       attr_reader :some, :instance, :params
+#
+#       def initialize(named_argument, *arguments, **options)
+#         @some = named_argument
+#         @instance = arguments
+#         @params = options
+#       end
+#
+#       def do_something_extraordinary!
+#         # Important things happen here
+#       end
+#     end
+#
+#     RSpec.describe Klass do
+#       describe ".do_something_extraordinary!" do
+#         it_behaves_like "a class pass method", :do_something_extraordinary!
+#       end
+#
+#       describe "#do_something_extraordinary!" do
+#         it "does something important"
+#       end
+#     end
+
 RSpec.shared_examples_for "a class pass method" do |method|
   subject do
     if accepts_block?
@@ -39,8 +70,4 @@ RSpec.shared_examples_for "a class pass method" do |method|
   end
 
   it { is_expected.to eq output }
-
-  it "has matching parameters with initialize" do
-    expect(test_class.method(method).parameters).to eq test_class.instance_method(:initialize).parameters
-  end
 end

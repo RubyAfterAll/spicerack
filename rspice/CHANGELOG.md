@@ -1,40 +1,77 @@
-# v0.6.3
+# Changelog
+
+## v0.6.4
+
+*Release Date*: 4/11/2019
+
+- Moved example usage into comments of the source files with links to the documentation from the `README`
+- Standardized the example code boilerplate and made them internally consistent
+- Renamed files to ensure a match between file name and shared context/example or matcher name
+- Added a variety of shared contexts, examples, and matchers
+
+## v0.6.3
+
+*Release Date*: 3/29/2019
 
 - Fix `has_error.with_detail_key` matcher
 
-# v0.6.2
+## v0.6.2
+
+*Release Date*: 3/29/2019
 
 - Added `has_error.with_detail_key` matcher
 
-# v0.6.1
+## v0.6.1
+
+*Release Date*: 3/25/2019
 
 - No changes
 
-# v0.6.0
+## v0.6.0
+
+*Release Date*: 3/13/2019
 
 - No changes
 
-# v0.2.5
+## v0.5.0
+
+*Release Date*: 11/10/18
+
+- No changes
+
+## v0.2.5
+
+*Release Date*: 10/3/18
 
 - Removing crufty require line
 
-# v0.2.4
+## v0.2.4
+
+*Release Date*: 10/3/18
 
 - Fixing require bug with faker.
 - Removing accidentally included shared context.
 
-# v0.2.3
+## v0.2.3
+
+*Release Date*: 10/3/18
 
 - `require` bug. Trying a better fix...
 
-# v0.2.2
+## v0.2.2
+
+*Release Date*: 10/3/18
 
 - `require` bug. Trying a fix.
 
-# v0.2.1
+## v0.2.1
+
+*Release Date*: 10/3/18
 
 - Added gem badge to README
 
-# v0.2.0
+## v0.2.0
+
+*Release Date*: 10/1/18
 
 - Claimed gem name

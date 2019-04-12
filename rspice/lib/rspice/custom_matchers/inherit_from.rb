@@ -1,29 +1,20 @@
 # frozen_string_literal: true
 
-# RSpec matcher to spec inheritance.
+# RSpec matcher that tests tests inheritance of [Classes](https://apidock.com/ruby/Class)
 #
-# Usage:
+#     class Klass < ApplicationRecord; end
 #
-# RSpec.describe User, type: :model do
-#   subject { described_class }
-#
-#   it { is_expected.to inherit_from ApplicationRecord }
-# end
+#     RSpec.describe Klass do
+#       it { is_expected.to inherit_from ApplicationRecord }
+#     end
 
 RSpec::Matchers.define :inherit_from do |superclass|
-  match do
-    described_class.ancestors.include? superclass
-  end
+  match { test_subject.ancestors.include? superclass }
+  description { "inherit from #{superclass}" }
+  failure_message { "expected #{described_class.name} to inherit from #{superclass}" }
+  failure_message_when_negated { "expected #{described_class.name} not to inherit from #{superclass}" }
 
-  description do
-    "inherit from #{superclass}"
-  end
-
-  failure_message do
-    "expected #{described_class.name} to inherit from #{superclass}"
-  end
-
-  failure_message_when_negated do
-    "expected #{described_class.name} not to inherit from #{superclass}"
+  def test_subject
+    subject.is_a?(Class) ? subject : subject.class
   end
 end

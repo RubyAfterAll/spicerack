@@ -5,9 +5,11 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/maintainability)](https://codeclimate.com/github/Freshly/spicerack/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/test_coverage)](https://codeclimate.com/github/Freshly/spicerack/test_coverage)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/technologic`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+* [Installation](#installation)
+* [Usage](#usage)
+* [Development](#development)
+* [Contributing](#contributing)
+* [License](#license)
 
 ## Installation
 
@@ -27,7 +29,27 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Simply write the error class, the message as a symbol, and then as a hash anything else you want to see in the logs.
+
+```ruby
+error :ERROR_MESSAGE_HERE, HASH_KEY: INFO_TO_PASS, HASH_KEY2: INFO_TO_PASS, 
+```
+
+All error classes are available: `debug` `info` `warn` `error` `fatal`
+
+Some examples for each:
+
+```ruby
+debug :something_is_not_perfect_here, info_wanted: the_info
+
+info :some_logged_info_i_may_look_at, info_wanted: the_info
+
+warn :its_weird_and_you_wanna_know, info_wanted: the_info
+
+error :email_for_user_does_not_exist, user_id: @user.email
+
+fatal :it_is_going_to_be_a_long_day, need_to_know: info_dump
+```
 
 ## Development
 

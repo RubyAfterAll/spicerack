@@ -57,8 +57,4 @@ RSpec.describe Technologic::ConfigOptions do
   describe ".log_debug_events" do
     it_behaves_like "a config option", :log_debug_events
   end
-
-  describe ".include_in_classes" do
-    it_behaves_like "a config option", :include_in_classes, %w[ApplicationController]
-  end
 end

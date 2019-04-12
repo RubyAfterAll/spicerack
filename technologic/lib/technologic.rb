@@ -9,6 +9,8 @@ require "active_support/core_ext/string/inflections"
 
 require "short_circu_it"
 
+require "json_log_converter"
+
 require "technologic/version"
 require "technologic/event"
 require "technologic/subscriber/base"
