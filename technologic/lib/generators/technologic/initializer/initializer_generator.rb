@@ -2,7 +2,7 @@
 
 module Technologic
   module Generators
-    class InitializerGenerator < Rails::Generators::NamedBase
+    class InitializerGenerator < Rails::Generators::Base
       source_root File.expand_path("templates", __dir__)
 
       def create_initializer
