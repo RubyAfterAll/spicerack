@@ -1,25 +1,27 @@
 PATH
   remote: .
   specs:
-    around_the_world (0.6.4)
+    around_the_world (0.7.0)
       activesupport (~> 5.2.1)
-    rspice (0.6.4)
+    callforth (0.7.0)
+    rspice (0.7.0)
       faker (~> 1.8)
       rspec (~> 3.0)
-    short_circu_it (0.6.4)
+    short_circu_it (0.7.0)
       activesupport (~> 5.2.1)
-      around_the_world (= 0.6.4)
-    spicerack (0.6.4)
-      around_the_world (= 0.6.4)
-      short_circu_it (= 0.6.4)
-      technologic (= 0.6.4)
-    spicerack-styleguide (0.6.4)
+      around_the_world (= 0.7.0)
+    spicerack (0.7.0)
+      around_the_world (= 0.7.0)
+      callforth (= 0.7.0)
+      short_circu_it (= 0.7.0)
+      technologic (= 0.7.0)
+    spicerack-styleguide (0.7.0)
       rubocop (= 0.59.2)
       rubocop-rspec (= 1.29.1)
-    technologic (0.6.4)
+    technologic (0.7.0)
       activesupport (~> 5.2.1)
       railties (~> 5.2.1)
-      short_circu_it (= 0.6.4)
+      short_circu_it (= 0.7.0)
 
 GEM
   remote: https://rubygems.org/
@@ -136,12 +138,12 @@ DEPENDENCIES
   pry-nav (>= 0.2.4)
   rake (~> 10.0)
   rspec (~> 3.0)
-  rspice (= 0.6.4)
+  rspice (= 0.7.0)
   rubocop (~> 0.58)
   rubocop-rspec (~> 1.27)
   simplecov (~> 0.16)
   spicerack!
-  spicerack-styleguide (= 0.6.4)
+  spicerack-styleguide (= 0.7.0)
 
 BUNDLED WITH
    1.17.3

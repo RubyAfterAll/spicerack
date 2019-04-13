@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Allen Rettberg"]
   spec.email         = ["allen.rettberg@freshly.com"]
 
-  spec.summary       = "A metaprogramming module which allows you to wrap any method easily."
-  spec.description   = "Why metaprogram like a chump when you can do it like a champ!"
+  spec.summary       = "Allows you to easily wrap methods with custom logic on any class"
+  spec.description   = "A metaprogramming module which allows you to wrap any method easily"
   spec.homepage      = "https://www.freshly.com"
   spec.license       = "MIT"
 

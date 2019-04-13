@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Allen Rettberg"]
   spec.email         = ["allen.rettberg@freshly.com"]
 
-  spec.summary       = "Effortless memoization"
+  spec.summary       = "An intelligent and feature rich memoization gem"
   spec.description   = "Memoize methods safely with parameter and dependency observation"
   spec.homepage      = "https://www.freshly.com/"
   spec.license       = "MIT"

@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Eric Garside"]
   spec.email         = ["garside@gmail.com"]
 
-  spec.summary       = "Spice up your specs with this collection of custom matchers and shared contexts/examples."
-  spec.description   = "A dash of spice to make your RSpec tests very nice."
+  spec.summary       = "An `RSpec` utility gem of custom matchers, shared contexts and examples"
+  spec.description   = "A dash of custom matchers, a pinch of shared contexts, and shared examples (to taste) for RSpec"
   spec.homepage      = "https://www.freshly.com"
   spec.license       = "MIT"
 

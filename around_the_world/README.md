@@ -1,5 +1,7 @@
 # AroundTheWorld
 
+A metaprogramming module which allows you to wrap any method easily.
+
 [![Gem Version](https://badge.fury.io/rb/around_the_world.svg)](https://badge.fury.io/rb/around_the_world)
 [![Build Status](https://semaphoreci.com/api/v1/freshly/spicerack/branches/master/badge.svg)](https://semaphoreci.com/freshly/spicerack)
 [![Maintainability](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/maintainability)](https://codeclimate.com/github/Freshly/spicerack/maintainability)
@@ -33,9 +35,7 @@ TODO: Write usage instructions here
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Consult Spicerack's [development instructions](../README.md#development) for more info.
 
 ## Contributing
 
