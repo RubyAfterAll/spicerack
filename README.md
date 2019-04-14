@@ -1,5 +1,7 @@
 # Spicerack
 
+This collection of gems will spice up your rails and kick your rubies up a notch. Bam!
+
 [![Gem Version](https://badge.fury.io/rb/spicerack.svg)](https://badge.fury.io/rb/spicerack)
 [![Build Status](https://semaphoreci.com/api/v1/freshly/spicerack/branches/master/badge.svg)](https://semaphoreci.com/freshly/spicerack)
 [![Maintainability](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/maintainability)](https://codeclimate.com/github/Freshly/spicerack/maintainability)
@@ -32,9 +34,8 @@ Or install it yourself as:
 
 ## Included Gems
 
-This collection of gems will spice up your rails and kick your rubies up a notch. Bam!
-
 * [AroundTheWorld](around_the_world/README.md) allows you to easily wrap methods with custom logic on any class.
+* [Callforth](callforth/README.md) allows you to call, with data, any class or instance methods.
 * [RSpice](rspice/README.md) is an `RSpec` utility gem of custom matchers, shared contexts and examples.
 * [ShortCircuIt](short_circu_it/README.md) is an intelligent and feature rich memoization gem.
 * [Spicerack::Styleguide](spicerack-styleguide/README.md) is [Freshly](https://www.freshly.com/)'s Rubocop Styleguide for Rails and RSpec.
@@ -77,12 +78,12 @@ Here's a checklist of some other tasks (see another gem as reference):
 - Delete `Gemfile`
 - Create a `CHANGELOG.md` and make the first entry
 - Edit `lib/GEM/version.rb` to add the comment line
-- Edit `README.md` to add badges and update contributor
-- Edit `Rakefile` to add GEM to the `SPICERACK_GEMS` constant
-- Remove the failing spec in `spec/GEM_spec.rb`
+- Edit `README.md` to add badges, update development & contributor sections, generate ToC
+- Edit `./Rakefile` to add GEM to the `SPICERACK_GEMS` constant
+- Copy over `GEM/Rakefile` from any other gem
+- Remove the failing spec in `spec/GEM_spec.rb` and replace it with the rspice shared example
 - Edit `spec/spec_helper.rb` to use the shared spec helper
 - Edit `GEM.gemspec` and clean up the boilerplate
-- Copy over `GEM/Rakefile` from any other gem
 
 Then in the base directory:
 
