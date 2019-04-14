@@ -1,5 +1,7 @@
 # Spicerack::Styleguide
 
+Wanna write code the Freshly way? Inherit this gem in your rubocop.yml and keep your code fresh
+
 [![Gem Version](https://badge.fury.io/rb/spicerack-styleguide.svg)](https://badge.fury.io/rb/spicerack-styleguide)
 [![Build Status](https://semaphoreci.com/api/v1/freshly/spicerack/branches/master/badge.svg)](https://semaphoreci.com/freshly/spicerack)
 [![Maintainability](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/maintainability)](https://codeclimate.com/github/Freshly/spicerack/maintainability)

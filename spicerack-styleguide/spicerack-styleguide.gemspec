@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = [ "Allen Rettberg" ]
   spec.email         = [ "allen.rettberg@freshly.com" ]
 
-  spec.summary       = "Keeps your code fresh"
-  spec.description   = "Wanna write code the Freshly way? Inherit this gem in your rubocop.yml and start your engines!"
+  spec.summary       = "Rubocop Styleguide for Rails and RSpec."
+  spec.description   = "Wanna write code the Freshly way? Inherit this gem in your rubocop.yml and keep your code fresh"
   spec.homepage      = "https://github.com/Freshly/spicerack/tree/master/spicerack-styleguide"
   spec.license       = "MIT"
 
