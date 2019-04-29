@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# RSpec matcher that tests tests inheritance of [Classes](https://apidock.com/ruby/Class)
+# RSpec matcher that tests inheritance of [Classes](https://apidock.com/ruby/Class)
 #
 #     class Klass < ApplicationRecord; end
 #
