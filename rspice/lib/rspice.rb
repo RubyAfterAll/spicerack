@@ -6,6 +6,7 @@ require "faker"
 require "active_support/core_ext/object/inclusion"
 
 require "rspice/version"
+require "rspice/errors"
 
 require "rspice/rspec_configuration"
 require "rspice/custom_matchers"
