@@ -48,6 +48,7 @@ require 'rspice'
 * [include_module](lib/rspice/custom_matchers/include_module.rb) tests usages of [Module#include](https://apidock.com/ruby/Module/include)
 * [inherit_from](lib/rspice/custom_matchers/inherit_from.rb) tests inheritance of [Classes](https://apidock.com/ruby/Class)
 * [not_change](lib/rspice/custom_matchers/not_change.rb) negated `change` matcher
+* [validate](lib/rspice/custom_matchers/validate.rb) tests application and configuration of custom validators
 
 ## Shared Context
 
