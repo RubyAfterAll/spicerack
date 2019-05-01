@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.7.2
+
+*Release Date*: 5/1/2019
+
+- Add a matcher to Rspice
+
 ## v0.7.1
 
 *Release Date*: 4/24/2019
