@@ -4,13 +4,13 @@
 
 *Release Date*: 5/1/2019
 
-- Add a matcher to Rspice
+- Add a matcher to [Rspice](rspice/CHANGELOG.md#v072)
 
 ## v0.7.1
 
 *Release Date*: 4/24/2019
 
-- Add a matcher to Rspice
+- Add a matcher to [Rspice](rspice/CHANGELOG.md#v071)
 
 ## v0.7.0
 
