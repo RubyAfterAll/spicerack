@@ -1,4 +1,6 @@
-require: rubocop-rspec
+require:
+ - rubocop-rspec
+ - rubocop-performance
 
 AllCops:
   TargetRubyVersion: 2.5.3
@@ -106,15 +108,14 @@ Layout/FirstMethodArgumentLineBreak:
   Enabled: true
 Layout/FirstMethodParameterLineBreak:
   Enabled: true
-Layout/FirstParameterIndentation:
-  Enabled: true
-  EnforcedStyle: consistent
-Layout/IndentArray:
-  Enabled: true
-  EnforcedStyle: consistent
 Layout/IndentAssignment:
   Enabled: false
-Layout/IndentHash:
+Layout/IndentFirstArgument:
+  Enabled: true
+Layout/IndentFirstArrayElement:
+  Enabled: true
+  EnforcedStyle: consistent
+Layout/IndentFirstHashElement:
   Enabled: true
   EnforcedStyle: consistent
 Layout/IndentHeredoc:
@@ -265,6 +266,8 @@ Lint/EndInMethod:
   Enabled: true
 Lint/EnsureReturn:
   Enabled: true
+Lint/FlipFlop:
+  Enabled: true
 Lint/FloatOutOfRange:
   Enabled: true
 Lint/FormatParameterMismatch:
@@ -381,6 +384,7 @@ Metrics/BlockLength:
   Enabled: true
   Max: 24
   Exclude:
+    - "**/concerns/*"
     - config/environments/*
     - spec/**/*
 Metrics/BlockNesting:
@@ -493,8 +497,6 @@ Performance/FixedSize:
   Enabled: true
 Performance/FlatMap:
   Enabled: true
-Performance/LstripRstrip:
-  Enabled: true
 Performance/RangeInclude:
   Enabled: true
 Performance/RedundantBlockCall:
@@ -503,13 +505,9 @@ Performance/RedundantMatch:
   Enabled: true
 Performance/RedundantMerge:
   Enabled: true
-Performance/RedundantSortBy:
-  Enabled: true
 Performance/RegexpMatch:
   Enabled: true
 Performance/ReverseEach:
-  Enabled: true
-Performance/Sample:
   Enabled: true
 Performance/Size:
   Enabled: true
@@ -780,8 +778,6 @@ Style/EvenOdd:
   Enabled: true
 Style/ExpandPathArguments:
   Enabled: true
-Style/FlipFlop:
-  Enabled: true
 Style/For:
   Enabled: true
   EnforcedStyle: each
@@ -970,6 +966,8 @@ Style/RedundantReturn:
   AllowMultipleReturnValues: false
 Style/RedundantSelf:
   Enabled: true
+Style/RedundantSortBy:
+  Enabled: true
 Style/RegexpLiteral:
   Enabled: true
   EnforcedStyle: percent_r
@@ -991,6 +989,8 @@ Style/SafeNavigation:
     - presence
     - try
     - try!
+Style/Sample:
+  Enabled: true
 Style/SelfAssignment:
   Enabled: true
 Style/Semicolon:
@@ -1024,6 +1024,8 @@ Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
 Style/StringMethods:
+  Enabled: true
+Style/Strip:
   Enabled: true
 Style/StructInheritance:
   Enabled: true
@@ -1106,7 +1108,7 @@ Style/WordArray:
   MinSize: 0
 Style/YodaCondition:
   Enabled: true
-  EnforcedStyle: all_comparison_operators
+  EnforcedStyle: forbid_for_all_comparison_operators
 Style/ZeroLengthPredicate:
   Enabled: true
 
