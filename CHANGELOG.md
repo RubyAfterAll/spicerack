@@ -1,16 +1,22 @@
 # Changelog
 
+## v0.7.3
+
+*Release Date*: 5/3/2019
+
+### SpicerackStyleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v073)
+
 ## v0.7.2
 
 *Release Date*: 5/1/2019
 
-- Add a matcher to Rspice
+### Rspice - [see changes](rspice/CHANGELOG.md#v072)
 
 ## v0.7.1
 
 *Release Date*: 4/24/2019
 
-- Add a matcher to Rspice
+### Rspice - [see changes](rspice/CHANGELOG.md#v071)
 
 ## v0.7.0
 
