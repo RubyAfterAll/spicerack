@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.7.3
+
+*Release Date*: 5/3/2019
+
+- Update Rubocop to v68.1
+- Turn off BlockLength cop for concerns, cuz `class_methods` is a module masquerading as a block
+- Rubocop config now targets Ruby 2.6 by default
+
 ## v0.7.2
 
 *Release Date*: 5/1/2019
