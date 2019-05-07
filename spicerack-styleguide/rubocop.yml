@@ -246,6 +246,8 @@ Lint/BooleanSymbol:
   Enabled: true
 Lint/CircularArgumentReference:
   Enabled: true
+Lint/DisjunctiveAssignmentInConstructor:
+  Enabled: true
 Lint/Debugger:
   Enabled: true
 Lint/DeprecatedClassMethods:
@@ -541,9 +543,9 @@ Performance/UriDefaultParser:
 Rails/ActionFilter:
   Enabled: true
   EnforcedStyle: action
-Rails/ActiveRecordOverride:
-  Enabled: true
 Rails/ActiveRecordAliases:
+  Enabled: true
+Rails/ActiveRecordOverride:
   Enabled: true
 Rails/ActiveSupportAliases:
   Enabled: true
@@ -771,8 +773,6 @@ Style/DateTime:
 Style/DefWithParentheses:
   Enabled: true
 Style/Dir:
-  Enabled: true
-Style/DisjunctiveAssignmentInConstructor:
   Enabled: true
 Style/Documentation:
   Enabled: false
@@ -1123,6 +1123,8 @@ Style/UnneededCapitalW:
 Style/UnneededInterpolation:
   Enabled: true
 Style/UnneededPercentQ:
+  Enabled: true
+Style/UnneededSort:
   Enabled: true
 Style/UnpackFirst:
   Enabled: true
