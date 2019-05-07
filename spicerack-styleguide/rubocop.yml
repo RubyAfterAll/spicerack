@@ -329,6 +329,8 @@ Lint/ReturnInVoidContext:
   Enabled: true
 Lint/SafeNavigationChain:
   Enabled: true
+Lint/SafeNavigationWithEmpty:
+  Enabled: true
 Lint/ScriptPermission:
   Enabled: true
 Lint/ShadowedArgument:
@@ -339,6 +341,8 @@ Lint/ShadowingOuterLocalVariable:
   Enabled: true
 Lint/StringConversionInInterpolation:
   Enabled: true
+Lint/ToJSON:
+  Enabled: true
 Lint/UnderscorePrefixedVariableName:
   Enabled: true
 Lint/UnifiedInteger:
@@ -348,6 +352,8 @@ Lint/UnneededCopDisableDirective:
 Lint/UnneededCopEnableDirective:
   Enabled: true
 Lint/UnneededRequireStatement:
+  Enabled: true
+Lint/UnneededSort:
   Enabled: true
 Lint/UnneededSplatExpansion:
   Enabled: true
@@ -452,6 +458,9 @@ Naming/PredicateName:
   Exclude:
     - app/serializers/*_serializer.rb
     - spec/**/*
+Naming/RescuedExceptionsVariableName:
+  Enabled: true
+  PreferredName: exception
 Naming/UncommunicativeBlockParamName:
   Enabled: true
   MinNameLength: 1
@@ -497,6 +506,10 @@ Performance/FixedSize:
   Enabled: true
 Performance/FlatMap:
   Enabled: true
+Performance/OpenStruct:
+  Enabled: true
+  Exclude:
+    - spec/**/*
 Performance/RangeInclude:
   Enabled: true
 Performance/RedundantBlockCall:
@@ -527,11 +540,15 @@ Rails/ActionFilter:
   EnforcedStyle: action
 Rails/ActiveRecordAliases:
   Enabled: true
+Rails/ActiveRecordOverride:
+  Enabled: true
 Rails/ActiveSupportAliases:
   Enabled: true
 Rails/ApplicationJob:
   Enabled: true
 Rails/ApplicationRecord:
+  Enabled: true
+Rails/BelongsTo:
   Enabled: true
 Rails/Blank:
   Enabled: true
@@ -575,6 +592,8 @@ Rails/HttpPositionalArguments:
 Rails/HttpStatus:
   Enabled: true
   EnforcedStyle: symbolic
+Rails/IgnoredSkipActionFilterOption:
+  Enabled: true
 Rails/InverseOf:
   Enabled: true
   Include:
@@ -583,6 +602,8 @@ Rails/LexicallyScopedActionFilter:
   Enabled: true
   Include:
     - app/controllers/**/*.rb
+Rails/LinkToBlank:
+  Enabled: true
 Rails/NotNullColumn:
   Enabled: true
   Include:
@@ -611,8 +632,12 @@ Rails/ReadWriteAttribute:
     - app/models/**/*.rb
 Rails/RedundantReceiverInWithOptions:
   Enabled: true
+Rails/ReflectionClassName:
+  Enabled: true
 Rails/RelativeDateConstant:
   Enabled: true
+Rails/RedundantAllowNil:
+  Enforced: true
 Rails/RequestReferer:
   Enabled: true
   EnforcedStyle: referer
@@ -734,6 +759,8 @@ Style/ConditionalAssignment:
   EnforcedStyle: assign_inside_condition
   SingleLineConditionsOnly: false
   IncludeTernaryExpressions: false
+Style/ConstantVisibility:
+  Enabled: false
 Style/Copyright:
   Enabled: false
 Style/DateTime:
@@ -741,6 +768,8 @@ Style/DateTime:
 Style/DefWithParentheses:
   Enabled: true
 Style/Dir:
+  Enabled: true
+Style/DisjunctiveAssignmentInConstructor:
   Enabled: true
 Style/Documentation:
   Enabled: false
