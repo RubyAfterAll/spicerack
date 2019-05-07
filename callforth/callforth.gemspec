@@ -8,11 +8,14 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Eric Garside"]
   spec.email         = ["garside@gmail.com"]
 
-  spec.summary       = "allows you to call, with data, any class or instance methods"
-  spec.description   = "Like a callback, except from an outside caller rather than a bound listener"
+  spec.summary       = "Like a callback, except from a secure outside caller rather than a bound listener"
+  spec.description   = "Allows you to securely call, with data, any class or instance method"
   spec.homepage      = "https://www.freshly.com"
   spec.license       = "MIT"
 
   spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]
   spec.require_paths = "lib"
+
+  spec.add_runtime_dependency "activesupport", "~> 5.2.1"
+  spec.add_runtime_dependency "railties", "~> 5.2.1"
 end

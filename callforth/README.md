@@ -1,6 +1,6 @@
 # Callforth
 
-Like a callback, except from an outside caller rather than a bound listener
+Allows you to securely call, with data, any class or instance method
 
 [![Gem Version](https://badge.fury.io/rb/rspice.svg)](https://badge.fury.io/rb/rspice)
 [![Build Status](https://semaphoreci.com/api/v1/freshly/spicerack/branches/master/badge.svg)](https://semaphoreci.com/freshly/spicerack)
