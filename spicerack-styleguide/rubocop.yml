@@ -646,7 +646,7 @@ Rails/ReflectionClassName:
 Rails/RelativeDateConstant:
   Enabled: true
 Rails/RedundantAllowNil:
-  Enforced: true
+  Enabled: true
 Rails/RequestReferer:
   Enabled: true
   EnforcedStyle: referer
