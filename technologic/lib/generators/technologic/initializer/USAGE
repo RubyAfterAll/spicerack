@@ -2,7 +2,7 @@ Description:
     Generate the Technologic configuration initializer.
 
 Example:
-    `rails generate technologic:configuration`
+    `rails generate technologic:initializer`
 
     Generates:
       Initializer: config/initializers/technologic.rb

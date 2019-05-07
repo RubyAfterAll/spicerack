@@ -1,0 +1,9 @@
+# frozen_string_literal: true
+
+Rails.application.configure do
+  # When disabled, the secret key is not setup, so nothing can be encoded or decoded.
+  # config.callforth.enabled = true
+
+  # Callforth requires a secret key as part of the encoding/decoding process to secure and authorize callers.
+  # config.callforth.secret_key = -> { Rails.application.credentials.secret_key_base }
+end

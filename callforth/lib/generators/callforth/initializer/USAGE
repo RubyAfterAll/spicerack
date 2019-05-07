@@ -1,0 +1,8 @@
+Description:
+    Generate the Callforth configuration initializer.
+
+Example:
+    `rails generate callforth:initializer`
+
+    Generates:
+      Initializer: config/initializers/technologic.rb
