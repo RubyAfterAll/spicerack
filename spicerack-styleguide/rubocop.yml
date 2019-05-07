@@ -3,7 +3,7 @@ require:
  - rubocop-performance
 
 AllCops:
-  TargetRubyVersion: 2.5.3
+  TargetRubyVersion: 2.6
   Exclude:
     - bin/**/*
     - Gemfile*
@@ -108,6 +108,10 @@ Layout/FirstMethodArgumentLineBreak:
   Enabled: true
 Layout/FirstMethodParameterLineBreak:
   Enabled: true
+Layout/HeredocArgumentClosingParenthesis:
+  Enabled: true
+Lint/HeredocMethodCallPosition:
+  Enabled: true
 Layout/IndentAssignment:
   Enabled: false
 Layout/IndentFirstArgument:
@@ -118,6 +122,8 @@ Layout/IndentFirstArrayElement:
 Layout/IndentFirstHashElement:
   Enabled: true
   EnforcedStyle: consistent
+Layout/IndentFirstParameter:
+  Enabled: true
 Layout/IndentHeredoc:
   Enabled: true
   EnforcedStyle: auto_detection
@@ -534,10 +540,11 @@ Performance/UnfreezeString:
   Enabled: true
 Performance/UriDefaultParser:
   Enabled: true
-
 Rails/ActionFilter:
   Enabled: true
   EnforcedStyle: action
+Rails/ActiveRecordOverride:
+  Enabled: true
 Rails/ActiveRecordAliases:
   Enabled: true
 Rails/ActiveRecordOverride:
@@ -630,6 +637,8 @@ Rails/ReadWriteAttribute:
   Enabled: true
   Include:
     - app/models/**/*.rb
+Rails/RedundantAllowNil:
+  Enabled: true
 Rails/RedundantReceiverInWithOptions:
   Enabled: true
 Rails/ReflectionClassName:
