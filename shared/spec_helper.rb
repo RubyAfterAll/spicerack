@@ -7,6 +7,8 @@ require "pry"
 
 require "rspice"
 
+require_relative "../lib/spicerack/version"
+
 SimpleCov.start do
   add_filter "/spec/"
 end

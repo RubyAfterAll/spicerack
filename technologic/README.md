@@ -1,6 +1,6 @@
 # Technologic
 
-An clean and terse way to produce standardized, highly actionable, and data-rich logs
+A clean and terse way to produce standardized, highly actionable, and data-rich logs
 
 [![Gem Version](https://badge.fury.io/rb/technologic.svg)](https://badge.fury.io/rb/technologic)
 [![Build Status](https://semaphoreci.com/api/v1/freshly/spicerack/branches/master/badge.svg)](https://semaphoreci.com/freshly/spicerack)

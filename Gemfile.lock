@@ -4,6 +4,8 @@ PATH
     around_the_world (0.7.4)
       activesupport (~> 5.2.1)
     callforth (0.7.4)
+      activesupport (~> 5.2.1)
+      railties (~> 5.2.1)
     rspice (0.7.4)
       faker (~> 1.8)
       rspec (~> 3.0)
