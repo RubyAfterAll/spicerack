@@ -12,8 +12,8 @@ module Callforth
   mattr_accessor :secret_key
 
   class << self
-    def encode(klass, method, class_arguments: nil, method_arguments: nil)
-      Callforth::Encoder.new(klass, method, class_arguments: class_arguments, method_arguments: method_arguments)
+    def encode(*arguments)
+      Callforth::Encoder.new(*arguments).encode
     end
   end
 end
