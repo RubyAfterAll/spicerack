@@ -1,7 +1,9 @@
-require: rubocop-rspec
+require:
+ - rubocop-rspec
+ - rubocop-performance
 
 AllCops:
-  TargetRubyVersion: 2.5.3
+  TargetRubyVersion: 2.6
   Exclude:
     - bin/**/*
     - Gemfile*
@@ -106,17 +108,22 @@ Layout/FirstMethodArgumentLineBreak:
   Enabled: true
 Layout/FirstMethodParameterLineBreak:
   Enabled: true
-Layout/FirstParameterIndentation:
+Layout/HeredocArgumentClosingParenthesis:
   Enabled: true
-  EnforcedStyle: consistent
-Layout/IndentArray:
+Lint/HeredocMethodCallPosition:
   Enabled: true
-  EnforcedStyle: consistent
 Layout/IndentAssignment:
   Enabled: false
-Layout/IndentHash:
+Layout/IndentFirstArgument:
+  Enabled: true
+Layout/IndentFirstArrayElement:
   Enabled: true
   EnforcedStyle: consistent
+Layout/IndentFirstHashElement:
+  Enabled: true
+  EnforcedStyle: consistent
+Layout/IndentFirstParameter:
+  Enabled: true
 Layout/IndentHeredoc:
   Enabled: true
   EnforcedStyle: auto_detection
@@ -239,6 +246,8 @@ Lint/BooleanSymbol:
   Enabled: true
 Lint/CircularArgumentReference:
   Enabled: true
+Lint/DisjunctiveAssignmentInConstructor:
+  Enabled: true
 Lint/Debugger:
   Enabled: true
 Lint/DeprecatedClassMethods:
@@ -264,6 +273,8 @@ Lint/EmptyWhen:
 Lint/EndInMethod:
   Enabled: true
 Lint/EnsureReturn:
+  Enabled: true
+Lint/FlipFlop:
   Enabled: true
 Lint/FloatOutOfRange:
   Enabled: true
@@ -326,6 +337,8 @@ Lint/ReturnInVoidContext:
   Enabled: true
 Lint/SafeNavigationChain:
   Enabled: true
+Lint/SafeNavigationWithEmpty:
+  Enabled: true
 Lint/ScriptPermission:
   Enabled: true
 Lint/ShadowedArgument:
@@ -335,6 +348,8 @@ Lint/ShadowedException:
 Lint/ShadowingOuterLocalVariable:
   Enabled: true
 Lint/StringConversionInInterpolation:
+  Enabled: true
+Lint/ToJSON:
   Enabled: true
 Lint/UnderscorePrefixedVariableName:
   Enabled: true
@@ -381,6 +396,7 @@ Metrics/BlockLength:
   Enabled: true
   Max: 24
   Exclude:
+    - "**/concerns/*"
     - config/environments/*
     - spec/**/*
 Metrics/BlockNesting:
@@ -448,6 +464,9 @@ Naming/PredicateName:
   Exclude:
     - app/serializers/*_serializer.rb
     - spec/**/*
+Naming/RescuedExceptionsVariableName:
+  Enabled: true
+  PreferredName: exception
 Naming/UncommunicativeBlockParamName:
   Enabled: true
   MinNameLength: 1
@@ -493,8 +512,10 @@ Performance/FixedSize:
   Enabled: true
 Performance/FlatMap:
   Enabled: true
-Performance/LstripRstrip:
+Performance/OpenStruct:
   Enabled: true
+  Exclude:
+    - spec/**/*
 Performance/RangeInclude:
   Enabled: true
 Performance/RedundantBlockCall:
@@ -503,13 +524,9 @@ Performance/RedundantMatch:
   Enabled: true
 Performance/RedundantMerge:
   Enabled: true
-Performance/RedundantSortBy:
-  Enabled: true
 Performance/RegexpMatch:
   Enabled: true
 Performance/ReverseEach:
-  Enabled: true
-Performance/Sample:
   Enabled: true
 Performance/Size:
   Enabled: true
@@ -523,17 +540,20 @@ Performance/UnfreezeString:
   Enabled: true
 Performance/UriDefaultParser:
   Enabled: true
-
 Rails/ActionFilter:
   Enabled: true
   EnforcedStyle: action
 Rails/ActiveRecordAliases:
+  Enabled: true
+Rails/ActiveRecordOverride:
   Enabled: true
 Rails/ActiveSupportAliases:
   Enabled: true
 Rails/ApplicationJob:
   Enabled: true
 Rails/ApplicationRecord:
+  Enabled: true
+Rails/BelongsTo:
   Enabled: true
 Rails/Blank:
   Enabled: true
@@ -577,6 +597,8 @@ Rails/HttpPositionalArguments:
 Rails/HttpStatus:
   Enabled: true
   EnforcedStyle: symbolic
+Rails/IgnoredSkipActionFilterOption:
+  Enabled: true
 Rails/InverseOf:
   Enabled: true
   Include:
@@ -585,6 +607,8 @@ Rails/LexicallyScopedActionFilter:
   Enabled: true
   Include:
     - app/controllers/**/*.rb
+Rails/LinkToBlank:
+  Enabled: true
 Rails/NotNullColumn:
   Enabled: true
   Include:
@@ -611,7 +635,11 @@ Rails/ReadWriteAttribute:
   Enabled: true
   Include:
     - app/models/**/*.rb
+Rails/RedundantAllowNil:
+  Enabled: true
 Rails/RedundantReceiverInWithOptions:
+  Enabled: true
+Rails/ReflectionClassName:
   Enabled: true
 Rails/RelativeDateConstant:
   Enabled: true
@@ -736,6 +764,8 @@ Style/ConditionalAssignment:
   EnforcedStyle: assign_inside_condition
   SingleLineConditionsOnly: false
   IncludeTernaryExpressions: false
+Style/ConstantVisibility:
+  Enabled: false
 Style/Copyright:
   Enabled: false
 Style/DateTime:
@@ -779,8 +809,6 @@ Style/EvalWithLocation:
 Style/EvenOdd:
   Enabled: true
 Style/ExpandPathArguments:
-  Enabled: true
-Style/FlipFlop:
   Enabled: true
 Style/For:
   Enabled: true
@@ -970,6 +998,8 @@ Style/RedundantReturn:
   AllowMultipleReturnValues: false
 Style/RedundantSelf:
   Enabled: true
+Style/RedundantSortBy:
+  Enabled: true
 Style/RegexpLiteral:
   Enabled: true
   EnforcedStyle: percent_r
@@ -991,6 +1021,8 @@ Style/SafeNavigation:
     - presence
     - try
     - try!
+Style/Sample:
+  Enabled: true
 Style/SelfAssignment:
   Enabled: true
 Style/Semicolon:
@@ -1024,6 +1056,8 @@ Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
 Style/StringMethods:
+  Enabled: true
+Style/Strip:
   Enabled: true
 Style/StructInheritance:
   Enabled: true
@@ -1090,6 +1124,8 @@ Style/UnneededInterpolation:
   Enabled: true
 Style/UnneededPercentQ:
   Enabled: true
+Style/UnneededSort:
+  Enabled: true
 Style/UnpackFirst:
   Enabled: true
 Style/VariableInterpolation:
@@ -1106,7 +1142,7 @@ Style/WordArray:
   MinSize: 0
 Style/YodaCondition:
   Enabled: true
-  EnforcedStyle: all_comparison_operators
+  EnforcedStyle: forbid_for_all_comparison_operators
 Style/ZeroLengthPredicate:
   Enabled: true
 

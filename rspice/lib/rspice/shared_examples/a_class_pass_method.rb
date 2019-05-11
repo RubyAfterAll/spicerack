@@ -34,12 +34,13 @@
 RSpec.shared_examples_for "a class pass method" do |method|
   subject do
     if accepts_block?
-      test_class.public_send(method, *arguments, &block)
+      call_class.public_send(method, *arguments, &block)
     else
-      test_class.public_send(method, *arguments)
+      call_class.public_send(method, *arguments)
     end
   end
 
+  let(:call_class) { described_class }
   let(:test_class) { described_class }
 
   let(:method_parameters) { test_class.instance_method(:initialize).parameters }
