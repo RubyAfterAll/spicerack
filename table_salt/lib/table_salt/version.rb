@@ -2,5 +2,5 @@
 
 module TableSalt
   # This constant is managed by spicerack
-  VERSION = "0.1.0"
+  VERSION = "0.7.5"
 end
