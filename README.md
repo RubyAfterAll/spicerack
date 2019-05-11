@@ -35,7 +35,6 @@ Or install it yourself as:
 ## Included Gems
 
 * [AroundTheWorld](around_the_world/README.md) allows you to easily wrap methods with custom logic on any class.
-* [Callforth](callforth/README.md) allows you to call, with data, any class or instance methods.
 * [RSpice](rspice/README.md) is an `RSpec` utility gem of custom matchers, shared contexts and examples.
 * [ShortCircuIt](short_circu_it/README.md) is an intelligent and feature rich memoization gem.
 * [Spicerack::Styleguide](spicerack-styleguide/README.md) is [Freshly](https://www.freshly.com/)'s Rubocop Styleguide for Rails and RSpec.

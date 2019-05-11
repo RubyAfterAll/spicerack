@@ -3,9 +3,6 @@ PATH
   specs:
     around_the_world (0.7.4)
       activesupport (~> 5.2.1)
-    callforth (0.7.4)
-      activesupport (~> 5.2.1)
-      railties (~> 5.2.1)
     rspice (0.7.4)
       faker (~> 1.8)
       rspec (~> 3.0)
@@ -14,7 +11,6 @@ PATH
       around_the_world (= 0.7.4)
     spicerack (0.7.4)
       around_the_world (= 0.7.4)
-      callforth (= 0.7.4)
       short_circu_it (= 0.7.4)
       technologic (= 0.7.4)
     spicerack-styleguide (0.7.4)
