@@ -10,7 +10,6 @@ RSpec.describe Technologic::Setup do
     before do
       allow(described_class).to receive(:setup_subscribers)
       allow(described_class).to receive(:setup_loggers)
-      allow(described_class).to receive(:setup_includes)
     end
 
     it "calls constituent methods with the given config" do
@@ -18,7 +17,6 @@ RSpec.describe Technologic::Setup do
 
       expect(described_class).to have_received(:setup_subscribers).with(config)
       expect(described_class).to have_received(:setup_loggers).with(config)
-      expect(described_class).to have_received(:setup_includes).with(config)
     end
   end
 
@@ -132,33 +130,5 @@ RSpec.describe Technologic::Setup do
     it_behaves_like "a subscription event listener", :warn
     it_behaves_like "a subscription event listener", :info
     it_behaves_like "a subscription event listener", :debug
-  end
-
-  describe ".setup_includes" do
-    subject(:setup_includes) { described_class.__send__(:setup_includes, config) }
-
-    before { allow(config).to receive(:include_in_classes).and_return(include_in_classes) }
-
-    context "when there are none classes" do
-      let(:include_in_classes) { [] }
-
-      it "does not raise an error" do
-        expect { include_in_classes }.not_to raise_error
-      end
-    end
-
-    context "with a valid class" do
-      let(:include_in_classes) { [ example_class_name ] }
-
-      let(:example_class) { Class.new }
-      let(:example_class_name) { Faker::Internet.domain_word.capitalize }
-
-      before { stub_const(example_class_name, example_class) }
-
-      it "includes the modules" do
-        expect { setup_includes }.to(change { example_class.included_modules })
-        expect(example_class.included_modules).to include Technologic
-      end
-    end
   end
 end

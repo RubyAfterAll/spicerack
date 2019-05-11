@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Eric Garside"]
   spec.email         = ["garside@gmail.com"]
 
-  spec.summary       = "An approach for producing clear, terse, standardized, actionable, and data-rich logs."
-  spec.description   = "An opinionated philosophy on logging for Ruby on Rails applications."
+  spec.summary       = "Logging system built on an extensible event triggering system requiring minimal implementation"
+  spec.description   = "A clean and terse way to produce standardized, highly actionable, and data-rich logs"
   spec.homepage      = "https://www.freshly.com"
   spec.license       = "MIT"
 

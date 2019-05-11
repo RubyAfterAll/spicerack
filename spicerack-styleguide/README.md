@@ -1,9 +1,17 @@
 # Spicerack::Styleguide
 
+Wanna write code the Freshly way? Inherit this gem in your rubocop.yml and keep your code fresh
+
 [![Gem Version](https://badge.fury.io/rb/spicerack-styleguide.svg)](https://badge.fury.io/rb/spicerack-styleguide)
 [![Build Status](https://semaphoreci.com/api/v1/freshly/spicerack/branches/master/badge.svg)](https://semaphoreci.com/freshly/spicerack)
 [![Maintainability](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/maintainability)](https://codeclimate.com/github/Freshly/spicerack/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/test_coverage)](https://codeclimate.com/github/Freshly/spicerack/test_coverage)
+
+* [Installation](#installation)
+* [Usage](#usage)
+* [Development](#development)
+* [Contributing](#contributing)
+* [License](#license)
 
 ## Installation
 
@@ -46,7 +54,7 @@ Style/StringLiterals:
 
 ## Development
 
-See https://github.com/Freshly/spicerack/blob/master/README.md
+This... is a yml. You don't develop it. Go home, boilerplate gem README text, you're drunk!
 
 ## Contributing
 

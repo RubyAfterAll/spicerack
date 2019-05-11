@@ -9,14 +9,15 @@ Gem::Specification.new do |spec|
   spec.authors       = [ "Allen Rettberg" ]
   spec.email         = [ "allen.rettberg@freshly.com" ]
 
-  spec.summary       = "Keeps your code fresh"
-  spec.description   = "Wanna write code the Freshly way? Inherit this gem in your rubocop.yml and start your engines!"
+  spec.summary       = "Rubocop Styleguide for Rails and RSpec."
+  spec.description   = "Wanna write code the Freshly way? Inherit this gem in your rubocop.yml and keep your code fresh"
   spec.homepage      = "https://github.com/Freshly/spicerack/tree/master/spicerack-styleguide"
   spec.license       = "MIT"
 
   spec.files         = Dir["rubocop.yml", "README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]
   spec.require_paths = "lib"
 
-  spec.add_dependency "rubocop", "0.59.2"
-  spec.add_dependency "rubocop-rspec", "1.29.1"
+  spec.add_dependency "rubocop", "0.68.1"
+  spec.add_dependency "rubocop-rspec", "1.32.0"
+  spec.add_dependency "rubocop-performance", "1.1.0"
 end

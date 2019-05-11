@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
 module ShortCircuIt
-  VERSION = "0.6.3"
+  # This constant is managed by spicerack
+  VERSION = "0.7.5"
 end

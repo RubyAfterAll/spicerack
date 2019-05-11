@@ -19,13 +19,12 @@ Gem::Specification.new do |spec|
   spec.add_dependency "short_circu_it", version
   spec.add_dependency "hall_monitor", version
   spec.add_dependency "technologic", version
+  spec.add_dependency "table_salt", version
 
-  spec.add_development_dependency "bundler", "~> 1.15"
+  spec.add_development_dependency "bundler", "~> 2.0.1"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "simplecov", "~> 0.16"
-  spec.add_development_dependency "rubocop", "~> 0.58"
-  spec.add_development_dependency "rubocop-rspec", "~> 1.27"
   spec.add_development_dependency "faker", "~> 1.8"
   spec.add_development_dependency "pry", "~> 0.10.0"
   spec.add_development_dependency "pry-nav", ">= 0.2.4"

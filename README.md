@@ -1,11 +1,20 @@
 # Spicerack
 
+This collection of gems will spice up your rails and kick your rubies up a notch. Bam!
+
 [![Gem Version](https://badge.fury.io/rb/spicerack.svg)](https://badge.fury.io/rb/spicerack)
 [![Build Status](https://semaphoreci.com/api/v1/freshly/spicerack/branches/master/badge.svg)](https://semaphoreci.com/freshly/spicerack)
 [![Maintainability](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/maintainability)](https://codeclimate.com/github/Freshly/spicerack/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/test_coverage)](https://codeclimate.com/github/Freshly/spicerack/test_coverage)
 
-This collection of gems will spice up your rails and kick your rubies up a notch. Bam!
+* [Installation](#installation)
+* [Included Gems](#included-gems)
+* [Development](#development)
+* [Contributing](#contributing)
+   * [Adding a New Spicerack Gem](#adding-a-new-spicerack-gem)
+   * [Release](#release)
+   * [Versions](#versions)
+* [License](#license)
 
 ## Installation
 
@@ -23,9 +32,13 @@ Or install it yourself as:
 
     $ gem install spicerack
 
-## Usage
+## Included Gems
 
-TODO: Write usage instructions here
+* [AroundTheWorld](around_the_world/README.md) allows you to easily wrap methods with custom logic on any class.
+* [RSpice](rspice/README.md) is an `RSpec` utility gem of custom matchers, shared contexts and examples.
+* [ShortCircuIt](short_circu_it/README.md) is an intelligent and feature rich memoization gem.
+* [Spicerack::Styleguide](spicerack-styleguide/README.md) is [Freshly](https://www.freshly.com/)'s Rubocop Styleguide for Rails and RSpec.
+* [Technologic](technologic/README.md) is a logging system built on an extensible event triggering system requiring minimal implementation.
 
 ## Development
 
@@ -39,11 +52,11 @@ This Open Source is supported by [Freshly](https://freshly.com), a company commi
 
 We're basically [always hiring](https://jobs.lever.co/freshly).
 
-Come join us in our New York City or Phoenix offices and write some awesome software!
+Come join us in our New York City, Phoenix, or Minsk offices and write some awesome software!
 
 Community support is always appreciated! Bug reports and pull requests are welcome on [GitHub](https://github.com/Freshly/spicerack).
 
-### Add
+### Adding a New Spicerack Gem
 
 To add a new gem to the spicerack:
 
@@ -64,12 +77,12 @@ Here's a checklist of some other tasks (see another gem as reference):
 - Delete `Gemfile`
 - Create a `CHANGELOG.md` and make the first entry
 - Edit `lib/GEM/version.rb` to add the comment line
-- Edit `README.md` to add badges and update contributor
-- Edit `Rakefile` to add GEM to the `SPICERACK_GEMS` constant
-- Remove the failing spec in `spec/GEM_spec.rb`
+- Edit `README.md` to add badges, update development & contributor sections, generate ToC
+- Edit `./Rakefile` to add GEM to the `SPICERACK_GEMS` constant
+- Copy over `GEM/Rakefile` from any other gem
+- Remove the failing spec in `spec/GEM_spec.rb` and replace it with the rspice shared example
 - Edit `spec/spec_helper.rb` to use the shared spec helper
 - Edit `GEM.gemspec` and clean up the boilerplate
-- Copy over `GEM/Rakefile` from any other gem
 
 Then in the base directory:
 
@@ -92,7 +105,7 @@ Once that gets merged into master, run:
 
 This is a monorepo which contains several gems designed to build and release together.
 
-To perform release, set the new canonical version in the `SPICERACK_VERSION` file then run the task.
+To perform release, set the new canonical version in the .4.4`SPICERACK_VERSION` file then run the task.
 
 ```ruby
 echo "0.1.0" > SPICERACK_VERSION
