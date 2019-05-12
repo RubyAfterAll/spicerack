@@ -16,9 +16,10 @@ Gem::Specification.new do |spec|
 
   # Spicerack Gems
   spec.add_dependency "around_the_world", version
+  spec.add_dependency "instructor", version
   spec.add_dependency "short_circu_it", version
   spec.add_dependency "technologic", version
-  spec.add_dependency "table_salt", version
+  spec.add_dependency "tablesalt", version
 
   spec.add_development_dependency "bundler", "~> 2.0.1"
   spec.add_development_dependency "rake", "~> 10.0"
