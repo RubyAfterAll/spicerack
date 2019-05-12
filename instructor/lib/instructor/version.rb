@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Callforth
+module Instructor
   # This constant is managed by spicerack
-  VERSION = "0.7.4"
+  VERSION = "0.8.0"
 end

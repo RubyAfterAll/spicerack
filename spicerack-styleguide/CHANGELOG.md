@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.8.0
+
+*Release Date*: 5/11/2019
+
+- No changes
+
 ## v0.7.4
 
 *Release Date*: 5/7/2019
