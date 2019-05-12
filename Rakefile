@@ -7,6 +7,7 @@ require_relative "shared/rakefile"
 
 SPICERACK_GEMS = %w[
   around_the_world
+  instruct
   rspice
   short_circu_it
   technologic

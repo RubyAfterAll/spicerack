@@ -35,10 +35,12 @@ Or install it yourself as:
 ## Included Gems
 
 * [AroundTheWorld](around_the_world/README.md) allows you to easily wrap methods with custom logic on any class.
+* [Instruct](instruct/README.md) allows you to clearly require and validate input with a base class for service object.
 * [RSpice](rspice/README.md) is an `RSpec` utility gem of custom matchers, shared contexts and examples.
 * [ShortCircuIt](short_circu_it/README.md) is an intelligent and feature rich memoization gem.
 * [Spicerack::Styleguide](spicerack-styleguide/README.md) is [Freshly](https://www.freshly.com/)'s Rubocop Styleguide for Rails and RSpec.
 * [Technologic](technologic/README.md) is a logging system built on an extensible event triggering system requiring minimal implementation.
+* [TableSalt](table_salt/README.md) are miscellaneous helper modules, POROs, and more, that standardize common behavior.
 
 ## Development
 
@@ -67,6 +69,7 @@ cd GEM
 rm -rf .git
 rm .travis.yml
 rm .gitignore
+rm Gemfile
 chmod 0664 lib/GEM/version.rb
 ```
 
@@ -74,8 +77,8 @@ Here's a checklist of some other tasks (see another gem as reference):
 
 ⚠️ Reminder: Add the magic comment to the top of all the generated ruby files!
 
-- Delete `Gemfile`
 - Create a `CHANGELOG.md` and make the first entry
+- Add to the [Included Gems](#included-gems) section
 - Edit `lib/GEM/version.rb` to add the comment line
 - Edit `README.md` to add badges, update development & contributor sections, generate ToC
 - Edit `./Rakefile` to add GEM to the `SPICERACK_GEMS` constant
