@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "table_salt/version"
+require "tablesalt/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "table_salt"
-  spec.version       = TableSalt::VERSION
+  spec.name          = "tablesalt"
+  spec.version       = Tablesalt::VERSION
   spec.authors       = ["Jordan Minneti"]
   spec.email         = ["jkminneti@gmail.com"]
 

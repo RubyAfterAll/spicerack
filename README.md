@@ -40,7 +40,7 @@ Or install it yourself as:
 * [ShortCircuIt](short_circu_it/README.md) is an intelligent and feature rich memoization gem.
 * [Spicerack::Styleguide](spicerack-styleguide/README.md) is [Freshly](https://www.freshly.com/)'s Rubocop Styleguide for Rails and RSpec.
 * [Technologic](technologic/README.md) is a logging system built on an extensible event triggering system requiring minimal implementation.
-* [TableSalt](table_salt/README.md) are miscellaneous helper modules, POROs, and more, that standardize common behavior.
+* [Tablesalt](tablesalt/README.md) is full of miscellaneous helper modules, POROs, and more, that standardize common behavior.
 
 ## Development
 
@@ -94,13 +94,13 @@ Then in the base directory:
 - Increment the version in `SPICERACK_VERSION`
 - Run `rake spicerack:update_all_versions` to the correct version
 
+🚨 Don't forget to run `bundle` so the `Gemfile.lock` gets updated!!
+
 Next, push the code up and open a new pull request.
 
 Once that gets merged into master, run:
 
 - Run `rake spicerack:release_all` to claim the new gem name with the empty build
-
-🚨 Don't forget to run `bundle` so the `Gemfile.lock` gets updated!!
 
 ### Release
 

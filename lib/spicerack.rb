@@ -6,6 +6,6 @@ require "around_the_world"
 require "instructor"
 require "short_circu_it"
 require "technologic"
-require "table_salt"
+require "tablesalt"
 
 module Spicerack; end

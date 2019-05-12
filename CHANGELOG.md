@@ -1,11 +1,21 @@
 # Changelog
 
+## v0.8.1
+
+*Release Date*: 5/11/2019
+
+### Spicerack
+
+Renamed a gem and otherwise this is 0.8.0.
+
 ## v0.8.0
+
+🙅‍ No Good. Yanked due to a name collision.
 
 *Release Date*: 5/11/2019
 
 ### Instructor - [see changes](instructor/CHANGELOG.md#v080)
-### TableSalt - [see changes](table_salt/CHANGELOG.md#v080)
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v080)
 
 ## v0.7.4
 

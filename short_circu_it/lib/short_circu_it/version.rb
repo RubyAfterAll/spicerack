@@ -2,5 +2,5 @@
 
 module ShortCircuIt
   # This constant is managed by spicerack
-  VERSION = "0.8.0"
+  VERSION = "0.8.1"
 end
