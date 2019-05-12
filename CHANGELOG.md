@@ -37,7 +37,7 @@
 
 ### Callforth
 
-- Claimed gem name
+- Claimed gem name (later abandoned)
 
 ## v0.6.4
 
@@ -47,70 +47,40 @@
 
 - Updated `.codeclimate.yml` URL for spicerack-styleguide to point to `master`.
 
-### RSpice
-
-- Moved example usage into comments of the source files with links to the documentation from the `README`
-- Standardized the example code boilerplate and made them internally consistent
-- Renamed files to ensure a match between file name and shared context/example or matcher name
-- Added a variety of shared contexts, examples, and matchers
-
-### ShortCircuIt
-
-- Added `README` documentation
-
-### Technologic
-
-- Stubbed in some starting `README` documentation 
-- Added a `technologic:initializer` rails generator for creating a `config/initializer`
-- Added a utility class to convert the default Rails logger into a JSON format
-- Removed the janky autoinclude which didn't play nicely with development server reloading
-- Added a variety of shared examples through a `spec_helper`
+### Rspice - [see changes](rspice/CHANGELOG.md#v064)
+### ShortCircuIt - [see changes](short_circu_it/CHANGELOG.md#v064)
+### Technologic - [see changes](technologic/CHANGELOG.md#v064)
 
 ## v0.6.3
 
 *Release Date*: 3/29/2019
 
-### RSpice
-
-- Fix `has_error.with_detail_key` matcher
+### Rspice - [see changes](rspice/CHANGELOG.md#v063)
 
 ## v0.6.2
 
 *Release Date*: 3/29/2019
 
-### RSpice
-
-- Added `has_error.with_detail_key` matcher
+### Rspice - [see changes](rspice/CHANGELOG.md#v062)
 
 ## v0.6.1
 
 *Release Date*: 3/25/2019
 
-### Technologic
-
-- Fix a bug logging enumerators
+### Technologic - [see changes](technologic/CHANGELOG.md#v061)
 
 ## v0.6.0
 
 *Release Date*: 3/13/2019
 
-### AroundTheWorld 
-
-- Remove `proxy_module_name` parameter
-
-### ShortCircuIt
-
-- Undocumented changes...
+### AroundTheWorld - [see changes](around_the_world/CHANGELOG.md#v060)
+### ShortCircuIt - [see changes](short_circu_it/CHANGELOG.md#v060)
 
 ## v0.5.0
 
 *Release Date*: 11/10/18
 
-### AroundTheWorld
-
-- Deprecate `proxy_module_name` parameter
-- Add `prevent_double_wrapping_for` option
-- Limit method clutter for includers
+### AroundTheWorld - [see changes](around_the_world/CHANGELOG.md#v050)
 
 ## v0.2.5
 
@@ -164,10 +134,10 @@
 
 *Release Date*: 10/1/18
 
-### Spicerack
-
-- Added gem badges to README
-- Claimed rspice gem name
+### AroundTheWorld - [see changes](around_the_world/CHANGELOG.md#v020)
+### Rspice - [see changes](rspice/CHANGELOG.md#v020)
+### ShortCircuIt - [see changes](short_circu_it/CHANGELOG.md#v020)
+### Technologic - [see changes](technologic/CHANGELOG.md#v020)
 
 ## v0.1.9
 
