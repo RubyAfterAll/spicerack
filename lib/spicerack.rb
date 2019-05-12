@@ -3,7 +3,7 @@
 require "spicerack/version"
 
 require "around_the_world"
-require "instruct"
+require "instructor"
 require "short_circu_it"
 require "technologic"
 require "table_salt"
