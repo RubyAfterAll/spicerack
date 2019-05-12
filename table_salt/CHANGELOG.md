@@ -1,7 +1,7 @@
 # Changelog
 
-## v0.8
+## v0.8.0
 
-*Release Date*: ?
+*Release Date*: 5/11/2019
 
 - Claimed gem name

@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.8.0
+
+*Release Date*: 5/11/2019
+
+### Instruct - [see changes](instruct/CHANGELOG.md#v080)
+### TableSalt - [see changes](table_salt/CHANGELOG.md#v080)
+
 ## v0.7.4
 
 *Release Date*: 5/7/2019
