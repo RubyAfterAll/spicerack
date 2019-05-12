@@ -12,7 +12,7 @@ SPICERACK_GEMS = %w[
   short_circu_it
   technologic
   spicerack-styleguide
-  table_salt
+  tablesalt
 ].freeze
 ALL_GEMS = %w[spicerack] + SPICERACK_GEMS
 
