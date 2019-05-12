@@ -4,4 +4,4 @@
 
 *Release Date*: ?
 
-- No changes
+- Claimed gem name
