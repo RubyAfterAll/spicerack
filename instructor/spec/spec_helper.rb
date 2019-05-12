@@ -2,4 +2,4 @@
 
 require_relative "../../shared/spec_helper"
 
-require "instruct"
+require "instructor"

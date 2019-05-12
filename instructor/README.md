@@ -1,8 +1,8 @@
-# Instruct
+# Instructor
 
 Input structure base object for capturing and validating input with a nice DSL
 
-[![Gem Version](https://badge.fury.io/rb/instruct.svg)](https://badge.fury.io/rb/instruct)
+[![Gem Version](https://badge.fury.io/rb/instructor.svg)](https://badge.fury.io/rb/instructor)
 [![Build Status](https://semaphoreci.com/api/v1/freshly/spicerack/branches/master/badge.svg)](https://semaphoreci.com/freshly/spicerack)
 [![Maintainability](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/maintainability)](https://codeclimate.com/github/Freshly/spicerack/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/test_coverage)](https://codeclimate.com/github/Freshly/spicerack/test_coverage)
@@ -18,7 +18,7 @@ Input structure base object for capturing and validating input with a nice DSL
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'instruct'
+gem 'instructor'
 ```
 
 And then execute:
@@ -27,7 +27,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install instruct
+    $ gem install instructor
 
 ## Usage
 

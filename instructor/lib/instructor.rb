@@ -2,8 +2,8 @@
 
 require "active_support"
 
-require "instruct/version"
+require "instructor/version"
 
-module Instruct
+module Instructor
   # Your code goes here...
 end
