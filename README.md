@@ -94,13 +94,13 @@ Then in the base directory:
 - Increment the version in `SPICERACK_VERSION`
 - Run `rake spicerack:update_all_versions` to the correct version
 
+🚨 Don't forget to run `bundle` so the `Gemfile.lock` gets updated!!
+
 Next, push the code up and open a new pull request.
 
 Once that gets merged into master, run:
 
 - Run `rake spicerack:release_all` to claim the new gem name with the empty build
-
-🚨 Don't forget to run `bundle` so the `Gemfile.lock` gets updated!!
 
 ### Release
 
