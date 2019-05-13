@@ -123,6 +123,8 @@ GEM
     rubocop-rspec (1.32.0)
       rubocop (>= 0.60.0)
     ruby-progressbar (1.10.0)
+    shoulda-matchers (4.0.1)
+      activesupport (>= 4.2.0)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
@@ -146,6 +148,7 @@ DEPENDENCIES
   rake (~> 10.0)
   rspec (~> 3.0)
   rspice (= 0.8.1)
+  shoulda-matchers (= 4.0.1)
   simplecov (~> 0.16)
   spicerack!
   spicerack-styleguide (= 0.8.1)
