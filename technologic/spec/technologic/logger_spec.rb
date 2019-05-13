@@ -6,7 +6,7 @@ RSpec.describe Technologic::Logger do
 
     let(:severity) { Faker::Internet.domain_word.to_sym }
     let(:event) { instance_double(Technologic::Event, data: event_data) }
-    let(:event_data) { Hash[*Faker::Lorem.words(2 * rand(2..4))] }
+    let(:event_data) { Hash[*Faker::Lorem.unique.words(2 * rand(1..2))] }
     let(:data_keys) { event_data.keys }
     let(:data_values) { event_data.values }
     let(:expected_log_data) do
