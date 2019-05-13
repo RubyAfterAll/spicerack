@@ -1,12 +1,17 @@
 # frozen_string_literal: true
 
 RSpec.describe Tablesalt::RedisHash::Core, type: :module do
-  describe "#initialize" do
-    include_context "with example class having callback", :initialize
+  include_context "with example class having callback", :initialize
 
+  subject { example_class.new }
+
+  let(:example_class) { example_class_having_callback.include(described_class) }
+
+  it { is_expected.to delegate_method(:hgetall).to(:redis) }
+
+  describe "#initialize" do
     let(:key) { SecureRandom.hex }
     let(:redis) { instance_double(Redis) }
-    let(:example_class) { example_class_having_callback.include(described_class) }
 
     shared_examples_for "an instance" do
       let(:expected_key) { :default }
