@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 require "active_support"
+require "active_model"
+
+require "short_circu_it"
+require "technologic"
 
 require "instructor/version"
 
-module Instructor
-  # Your code goes here...
-end
+require "instructor/base"
+
+module Instructor; end

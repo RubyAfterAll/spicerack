@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "faker", "~> 1.8"
   spec.add_development_dependency "pry", "~> 0.10.0"
   spec.add_development_dependency "pry-nav", ">= 0.2.4"
+  spec.add_development_dependency "shoulda-matchers", "4.0.1"
 
   # Spicerack Development Gems
   spec.add_development_dependency "rspice", version
