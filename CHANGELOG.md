@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.8.2
+
+*Release Date*: 5/12/2019
+
+### Instructor - [see changes](instructor/CHANGELOG.md#v082)
+
 ## v0.8.1
 
 *Release Date*: 5/11/2019
