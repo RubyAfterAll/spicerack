@@ -4,7 +4,7 @@ RSpec.describe Instructor::Options, type: :module do
   include_context "with an example instructor", [ Instructor::Defaults, described_class ]
 
   describe ".option" do
-    it_behaves_like "a class which defines into a class collection", :option, :_options
+    it_behaves_like "an instructor with a class collection attribute", :option, :_options
   end
 
   describe ".inherited" do

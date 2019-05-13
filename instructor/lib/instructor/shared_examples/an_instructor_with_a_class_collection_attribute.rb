@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples_for "a class which defines into a class collection" do |method, collection|
+RSpec.shared_examples_for "an instructor with a class collection attribute" do |method, collection|
   subject(:define) { example_instructor_class.__send__(method, value) }
 
   let(:value) { Faker::Lorem.word.to_sym }
