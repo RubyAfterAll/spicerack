@@ -7,4 +7,11 @@ RSpec.describe Instructor::Base, type: :instructor do
   it { is_expected.to include_module Technologic }
   it { is_expected.to include_module ActiveModel::Model }
   it { is_expected.to include_module ActiveModel::Validations::Callbacks }
+  it { is_expected.to include_module Instructor::Callbacks }
+  it { is_expected.to include_module Instructor::Defaults }
+  it { is_expected.to include_module Instructor::Attributes }
+  it { is_expected.to include_module Instructor::Arguments }
+  it { is_expected.to include_module Instructor::Options }
+  it { is_expected.to include_module Instructor::Core }
+  it { is_expected.to include_module Instructor::String }
 end
