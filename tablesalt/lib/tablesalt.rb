@@ -2,5 +2,6 @@
 
 require "tablesalt/version"
 
-module Tablesalt
-end
+require "tablesalt/redis_hash_base"
+
+module Tablesalt; end
