@@ -8,7 +8,7 @@ module Tablesalt
 
       included do
         include ActiveSupport::Callbacks
-        define_callbacks :initialize
+        define_callbacks :initialize, :reload
       end
     end
   end
