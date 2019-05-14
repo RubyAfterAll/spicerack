@@ -7,7 +7,6 @@ module Tablesalt
       extend ActiveSupport::Concern
 
       included do
-        attr_writer :default
         attr_reader :default_proc
 
         private
@@ -17,9 +16,20 @@ module Tablesalt
         end
       end
 
+      def default=(value)
+        @default = value
+        @default_proc = nil
+      end
+
       def default_proc=(value)
         raise TypeError, "wrong default_proc type #{value.class.name} (expected Proc)" unless value.is_a? Proc
 
+        if value.lambda?
+          arity = value.arity
+          raise TypeError, "default_proc takes two arguments (2 for #{arity})" if arity >= 0 && arity != 2
+        end
+
+        @default = nil
         @default_proc = value
       end
 

@@ -69,8 +69,26 @@ RSpec.describe Tablesalt::RedisHash::Default, type: :module do
   describe "#default=" do
     subject(:assignment) { example_redis_hash.default = :default }
 
-    it "assigns default" do
-      expect { assignment }.to change { example_redis_hash.default }.from(nil).to(:default)
+    shared_examples_for "the default is assigned" do
+      it "assigns default" do
+        expect { assignment }.to change { example_redis_hash.default }.from(nil).to(:default)
+      end
+    end
+
+    context "with a default_proc" do
+      before { example_redis_hash.default_proc = default_proc }
+
+      let(:default_proc) { proc {} }
+
+      it_behaves_like "the default is assigned"
+
+      it "clears default_proc" do
+        expect { assignment }.to change { example_redis_hash.default_proc }.from(default_proc).to(nil)
+      end
+    end
+
+    context "without a default_proc" do
+      it_behaves_like "the default is assigned"
     end
   end
 
@@ -83,11 +101,67 @@ RSpec.describe Tablesalt::RedisHash::Default, type: :module do
   describe "#default_proc=" do
     subject(:assignment) { example_redis_hash.default_proc = value }
 
+    shared_examples_for "the default_proc is assigned" do
+      it "assigns default_proc" do
+        expect { assignment }.to change { example_redis_hash.default_proc }.from(nil).to(value)
+      end
+    end
+
     context "with a proc" do
       let(:value) { proc {} }
 
-      it "assigns default_proc" do
-        expect { assignment }.to change { example_redis_hash.default_proc }.from(nil).to(value)
+      context "with a default" do
+        before { example_redis_hash.default = :default }
+
+        let(:default_proc) { proc {} }
+
+        it_behaves_like "the default_proc is assigned"
+
+        it "clears default" do
+          expect { assignment }.to change { example_redis_hash.default }.from(:default).to(nil)
+        end
+      end
+
+      context "without a default" do
+        it_behaves_like "the default_proc is assigned"
+      end
+    end
+
+    context "with a lamda" do
+      context "with no arguments" do
+        let(:value) { ->{} }
+
+        it "raises" do
+          expect { assignment }.to raise_error TypeError, "default_proc takes two arguments (2 for 0)"
+        end
+      end
+
+      context "with too few" do
+        let(:value) { ->(x){} }
+
+        it "raises" do
+          expect { assignment }.to raise_error TypeError, "default_proc takes two arguments (2 for 1)"
+        end
+      end
+
+      context "with too many" do
+        let(:value) { ->(x, y, z){} }
+
+        it "raises" do
+          expect { assignment }.to raise_error TypeError, "default_proc takes two arguments (2 for 3)"
+        end
+      end
+
+      context "with two" do
+        let(:value) { ->(x, y){} }
+
+        it_behaves_like "the default_proc is assigned"
+      end
+
+      context "with glob" do
+        let(:value) { ->(*){} }
+
+        it_behaves_like "the default_proc is assigned"
       end
     end
 
