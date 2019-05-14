@@ -12,4 +12,5 @@ RSpec.describe Tablesalt::RedisHashBase do
   it { is_expected.to include_module Tablesalt::RedisHash::Predicates }
   it { is_expected.to include_module Tablesalt::RedisHash::Insertions }
   it { is_expected.to include_module Tablesalt::RedisHash::Deletions }
+  it { is_expected.to include_module Tablesalt::RedisHash::Enumerators }
 end
