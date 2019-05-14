@@ -11,7 +11,7 @@ module Tablesalt
       end
 
       def to_h
-        hgetall(key)
+        hgetall(redis_key)
       end
     end
   end
