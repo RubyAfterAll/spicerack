@@ -7,8 +7,6 @@ RSpec.describe Tablesalt::RedisHash::Core, type: :module do
 
   let(:example_class) { example_class_having_callback.include(described_class) }
 
-  it { is_expected.to delegate_method(:hgetall).to(:redis) }
-
   describe "#initialize" do
     let(:key) { SecureRandom.hex }
     let(:redis) { instance_double(Redis) }
