@@ -25,7 +25,7 @@ RSpec.describe Tablesalt::RedisHash::Identity, type: :module do
       let(:different_redis) { Redis.new(db: 15) }
 
       context "with matching key" do
-        let(:other_key) { key }
+        let(:other_key) { redis_key }
 
         context "with matching redis" do
           let(:other_redis) { redis }
@@ -62,7 +62,7 @@ RSpec.describe Tablesalt::RedisHash::Identity, type: :module do
     subject { example_redis_hash.hash }
 
     let(:expected_hash) do
-      { redis_id: redis.id, redis_key: key }.hash
+      { redis_id: redis.id, redis_key: redis_key }.hash
     end
 
     it { is_expected.to eq expected_hash }

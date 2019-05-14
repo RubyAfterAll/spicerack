@@ -18,18 +18,18 @@ RSpec.describe Tablesalt::RedisHash::Core, type: :module do
   it { is_expected.to delegate_method(:hvals).to(:redis) }
 
   describe "#initialize" do
-    let(:key) { SecureRandom.hex }
+    let(:redis_key) { SecureRandom.hex }
     let(:redis) { instance_double(Redis) }
 
     shared_examples_for "an instance" do
-      let(:expected_key) { :default }
+      let(:expected_redis_key) { :default }
       let(:expected_redis) { :default }
 
       it "has an id always" do
-        if expected_key == :default
-          expect(instance.key).not_to be_nil
+        if expected_redis_key == :default
+          expect(instance.redis_key).not_to be_nil
         else
-          expect(instance.key).to eq expected_key
+          expect(instance.redis_key).to eq expected_redis_key
         end
       end
 
@@ -49,10 +49,10 @@ RSpec.describe Tablesalt::RedisHash::Core, type: :module do
     end
 
     context "with only a key" do
-      subject(:instance) { example_class.new(key) }
+      subject(:instance) { example_class.new(redis_key) }
 
       it_behaves_like "an instance" do
-        let(:expected_key) { key }
+        let(:expected_redis_key) { redis_key }
       end
     end
 
@@ -65,10 +65,10 @@ RSpec.describe Tablesalt::RedisHash::Core, type: :module do
     end
 
     context "with key and connection" do
-      subject(:instance) { example_class.new(key, redis: redis) }
+      subject(:instance) { example_class.new(redis_key, redis: redis) }
 
       it_behaves_like "an instance" do
-        let(:expected_key) { key }
+        let(:expected_redis_key) { redis_key }
         let(:expected_redis) { redis }
       end
     end
