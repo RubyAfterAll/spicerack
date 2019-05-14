@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Identity encompasses equality and self-referential methods.
+# Identity relates to the specific object instance.
 module Tablesalt
   module RedisHash
     module Identity
@@ -14,10 +14,9 @@ module Tablesalt
         self
       end
 
-      def eql?(other)
-        other.hash == hash
+      def to_h
+        hgetall(redis_key)
       end
-      alias_method :==, :eql?
     end
   end
 end

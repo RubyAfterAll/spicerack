@@ -2,8 +2,9 @@
 
 require_relative "redis_hash/callbacks"
 require_relative "redis_hash/core"
-require_relative "redis_hash/accessors"
 require_relative "redis_hash/identity"
+require_relative "redis_hash/accessors"
+require_relative "redis_hash/comparisons"
 
 module Tablesalt
   class RedisHashBase
@@ -12,5 +13,6 @@ module Tablesalt
     include Tablesalt::RedisHash::Core
     include Tablesalt::RedisHash::Identity
     include Tablesalt::RedisHash::Accessors
+    include Tablesalt::RedisHash::Comparisons
   end
 end

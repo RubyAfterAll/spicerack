@@ -1,62 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Tablesalt::RedisHash::Identity, type: :module do
-  include_context "with an example redis hash", described_class
-
-  it { is_expected.to alias_method(:==, :eql?) }
-
-  describe "#eql?" do
-    subject(:eql?) { example_redis_hash.eql? other }
-
-    context "when other is nil" do
-      let(:other) { nil }
-
-      it { is_expected.to be false }
-    end
-
-    context "when other is something else" do
-      let(:other) { SecureRandom.hex }
-
-      it { is_expected.to be false }
-    end
-
-    context "when other is a redis hash" do
-      let(:other) { example_redis_hash_class.new(other_key, redis: other_redis) }
-      let(:different_redis) { Redis.new(db: 15) }
-
-      context "with matching key" do
-        let(:other_key) { redis_key }
-
-        context "with matching redis" do
-          let(:other_redis) { redis }
-
-          it { is_expected.to be true }
-        end
-
-        context "with different redis" do
-          let(:other_redis) { different_redis }
-
-          it { is_expected.to be false }
-        end
-      end
-
-      context "with different key" do
-        let(:other_key) { SecureRandom.hex }
-
-        context "with matching redis" do
-          let(:other_redis) { redis }
-
-          it { is_expected.to be false }
-        end
-
-        context "with different redis" do
-          let(:other_redis) { different_redis }
-
-          it { is_expected.to be false }
-        end
-      end
-    end
-  end
+  include_context "with an example redis hash"
 
   describe "#hash" do
     subject { example_redis_hash.hash }
@@ -72,5 +17,19 @@ RSpec.describe Tablesalt::RedisHash::Identity, type: :module do
     subject { example_redis_hash.to_hash }
 
     it { is_expected.to eq example_redis_hash }
+  end
+
+  describe "#to_h" do
+    subject { example_redis_hash.to_h }
+
+    context "with existing data" do
+      include_context "with data in redis"
+
+      it { is_expected.to eq expected_hash }
+    end
+
+    context "without existing data" do
+      it { is_expected.to eq({}) }
+    end
   end
 end

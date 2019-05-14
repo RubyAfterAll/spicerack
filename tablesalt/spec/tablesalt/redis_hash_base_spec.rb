@@ -8,4 +8,5 @@ RSpec.describe Tablesalt::RedisHashBase do
   it { is_expected.to include_module Tablesalt::RedisHash::Core }
   it { is_expected.to include_module Tablesalt::RedisHash::Identity }
   it { is_expected.to include_module Tablesalt::RedisHash::Accessors }
+  it { is_expected.to include_module Tablesalt::RedisHash::Comparisons }
 end
