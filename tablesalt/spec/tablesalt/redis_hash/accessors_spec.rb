@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe Tablesalt::RedisHash::Accessors, type: :module do
-  include_context "with an example redis hash", described_class
+  include_context "with an example redis hash", [
+    Tablesalt::RedisHash::Default,
+    Tablesalt::RedisHash::Insertions,
+    described_class,
+  ]
 
   it { is_expected.to delegate_method(:assoc).to(:to_h) }
   it { is_expected.to delegate_method(:compact).to(:to_h) }
@@ -15,9 +19,36 @@ RSpec.describe Tablesalt::RedisHash::Accessors, type: :module do
   it { is_expected.to alias_method(:size, :length) }
 
   describe "#[]" do
-    subject { example_redis_hash[field] }
+    subject(:lookup) { example_redis_hash[field] }
 
     let(:field) { SecureRandom.hex }
+
+    shared_examples_for "a failed lookup" do
+      context "with default" do
+        before { example_redis_hash.default = :default }
+
+        it { is_expected.to eq :default }
+      end
+
+      context "without default_proc" do
+        before do
+          example_redis_hash.default_proc = proc { |hash, field| hash[field] = "default_#{field}" }
+        end
+
+        let(:expected_value) { "default_#{field}" }
+        let(:expected_result) { expected_hash.merge(field => expected_value) }
+
+        it { is_expected.to eq expected_value }
+
+        it "inserts into hash" do
+          expect { lookup }.to change { redis.hgetall(redis_key) }.from(expected_hash).to(expected_result)
+        end
+      end
+
+      context "without default" do
+        it { is_expected.to be_nil }
+      end
+    end
 
     context "with existing data" do
       include_context "with data in redis"
@@ -29,12 +60,14 @@ RSpec.describe Tablesalt::RedisHash::Accessors, type: :module do
       end
 
       context "without matching field" do
-        it { is_expected.to be_nil }
+        it_behaves_like "a failed lookup"
       end
     end
 
     context "without existing data" do
-      it { is_expected.to be_nil }
+      let(:expected_hash) { {} }
+
+      it_behaves_like "a failed lookup"
     end
   end
 

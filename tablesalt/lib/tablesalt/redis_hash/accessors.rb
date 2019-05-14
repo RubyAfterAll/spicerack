@@ -11,7 +11,7 @@ module Tablesalt
       end
 
       def [](field)
-        hget(redis_key, field)
+        hget(redis_key, field) || default(field)
       end
 
       def fetch(field, default = nil)

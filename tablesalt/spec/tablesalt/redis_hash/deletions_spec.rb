@@ -2,7 +2,9 @@
 
 RSpec.describe Tablesalt::RedisHash::Deletions, type: :module do
   include_context "with an example redis hash", [
+    Tablesalt::RedisHash::Default,
     Tablesalt::RedisHash::Accessors,
+    Tablesalt::RedisHash::Insertions,
     Tablesalt::RedisHash::Predicates,
     described_class,
   ]
@@ -89,10 +91,29 @@ RSpec.describe Tablesalt::RedisHash::Deletions, type: :module do
     end
 
     context "without existing data" do
-      let(:field) { SecureRandom.hex }
+      context "with default" do
+        before { example_redis_hash.default = :default }
 
-      # TODO: This should return default hash value
-      it { is_expected.to be_nil }
+        it { is_expected.to eq :default }
+      end
+
+      context "without default_proc" do
+        before do
+          example_redis_hash.default_proc = proc { |hash, field| hash[field] = "default_#{field}" }
+        end
+
+        let(:expected_value) { "default_" }
+
+        it { is_expected.to eq expected_value }
+
+        it "inserts into hash" do
+          expect { shift }.to change { redis.hgetall(redis_key) }.from({}).to("" => expected_value)
+        end
+      end
+
+      context "without default" do
+        it { is_expected.to be_nil }
+      end
     end
   end
 end
