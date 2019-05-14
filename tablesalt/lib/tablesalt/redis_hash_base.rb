@@ -9,6 +9,7 @@ require_relative "redis_hash/predicates"
 require_relative "redis_hash/insertions"
 require_relative "redis_hash/deletions"
 require_relative "redis_hash/enumerators"
+require_relative "redis_hash/mutations"
 
 module Tablesalt
   class RedisHashBase
@@ -22,5 +23,6 @@ module Tablesalt
     include Tablesalt::RedisHash::Insertions
     include Tablesalt::RedisHash::Deletions
     include Tablesalt::RedisHash::Enumerators
+    include Tablesalt::RedisHash::Mutations
   end
 end
