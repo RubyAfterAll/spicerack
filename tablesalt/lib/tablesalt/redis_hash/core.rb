@@ -13,7 +13,7 @@ module Tablesalt
 
       def initialize(redis_key = nil, redis: Redis.new)
         run_callbacks(:initialize) do
-          @key = redis_key || SecureRandom.hex
+          @redis_key = redis_key || SecureRandom.hex
           @redis = redis
         end
       end
