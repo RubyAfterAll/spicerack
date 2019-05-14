@@ -9,6 +9,12 @@ module Tablesalt
       included do
         attr_writer :default
         attr_reader :default_proc
+
+        private
+
+        def to_default(field = nil, allow_nil_field: true)
+          @default.presence || (default_proc&.call(self, field) if !field.nil? || allow_nil_field)
+        end
       end
 
       def default_proc=(value)
@@ -18,10 +24,7 @@ module Tablesalt
       end
 
       def default(field = nil)
-        return @default unless @default.nil?
-        return if field.nil? || default_proc.nil?
-
-        default_proc.call(self, field)
+        to_default(field, allow_nil_field: false)
       end
     end
   end

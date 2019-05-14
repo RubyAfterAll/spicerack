@@ -17,8 +17,7 @@ module Tablesalt
       end
 
       def shift
-        # TODO: should return default hash value here
-        return if empty?
+        return to_default if empty?
 
         field = keys.first
         [ field, delete(field) ]
