@@ -3,7 +3,9 @@
 RSpec.shared_context "with an example redis hash" do |extra_redis_hash_modules = nil|
   subject(:example_redis_hash) { example_redis_hash_class.new(redis_key, redis: redis) }
 
-  let(:root_redis_hash_modules) { [ Technologic, Tablesalt::RedisHash::Callbacks, Tablesalt::RedisHash::Core ] }
+  let(:root_redis_hash_modules) do
+    [ Technologic, Tablesalt::RedisHash::Callbacks, Tablesalt::RedisHash::Core, Tablesalt::RedisHash::Identity ]
+  end
   let(:redis_hash_modules) { root_redis_hash_modules + Array.wrap(extra_redis_hash_modules) }
 
   let(:root_redis_hash_class) { Class.new }
