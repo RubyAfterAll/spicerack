@@ -6,6 +6,7 @@ require_relative "redis_hash/identity"
 require_relative "redis_hash/accessors"
 require_relative "redis_hash/comparisons"
 require_relative "redis_hash/predicates"
+require_relative "redis_hash/insertions"
 require_relative "redis_hash/deletions"
 
 module Tablesalt
@@ -17,6 +18,7 @@ module Tablesalt
     include Tablesalt::RedisHash::Accessors
     include Tablesalt::RedisHash::Comparisons
     include Tablesalt::RedisHash::Predicates
+    include Tablesalt::RedisHash::Insertions
     include Tablesalt::RedisHash::Deletions
   end
 end
