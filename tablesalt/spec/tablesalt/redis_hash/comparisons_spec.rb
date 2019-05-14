@@ -3,6 +3,9 @@
 RSpec.describe Tablesalt::RedisHash::Comparisons, type: :module do
   include_context "with an example redis hash", described_class
 
+  it { is_expected.to delegate_method(:compare_by_identity).to(:to_h) }
+  it { is_expected.to delegate_method(:compare_by_identity?).to(:to_h) }
+
   it { is_expected.to alias_method(:==, :eql?) }
 
   describe "#eql?" do
