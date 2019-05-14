@@ -12,6 +12,8 @@ RSpec.describe Tablesalt::RedisHash::Accessors, type: :module do
   it { is_expected.to delegate_method(:rassoc).to(:to_h) }
   it { is_expected.to delegate_method(:rehash).to(:to_h) }
 
+  it { is_expected.to alias_method(:size, :length) }
+
   describe "#[]" do
     subject { example_redis_hash[field] }
 
