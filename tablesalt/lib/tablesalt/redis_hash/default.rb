@@ -13,9 +13,7 @@ module Tablesalt
         private
 
         def to_default(field = nil, allow_nil_field: true)
-          return @default unless @default.nil?
-
-          default_proc&.call(self, field) if !field.nil? || allow_nil_field
+          @default.presence || (default_proc&.call(self, field) if !field.nil? || allow_nil_field)
         end
       end
 
