@@ -8,8 +8,6 @@ module Tablesalt
 
       included do
         attr_reader :key, :redis
-
-        delegate :hgetall, to: :redis
       end
 
       def initialize(key = nil, redis: Redis.new)
