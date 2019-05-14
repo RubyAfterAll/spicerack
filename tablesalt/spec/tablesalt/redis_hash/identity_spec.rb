@@ -5,30 +5,6 @@ RSpec.describe Tablesalt::RedisHash::Identity, type: :module do
 
   it { is_expected.to alias_method(:==, :eql?) }
 
-  describe "#<" do
-    subject { example_redis_hash < other }
-
-    it_behaves_like "an expected comparison", for_superset: true
-  end
-
-  describe "#<=" do
-    subject { example_redis_hash <= other }
-
-    it_behaves_like "an expected comparison", for_superset: true, for_sameset: true
-  end
-
-  describe "#>" do
-    subject { example_redis_hash > other }
-
-    it_behaves_like "an expected comparison", for_subset: true
-  end
-
-  describe "#>=" do
-    subject { example_redis_hash >= other }
-
-    it_behaves_like "an expected comparison", for_subset: true, for_sameset: true
-  end
-
   describe "#eql?" do
     subject(:eql?) { example_redis_hash.eql? other }
 
