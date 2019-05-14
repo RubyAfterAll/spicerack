@@ -15,6 +15,14 @@ module Tablesalt
         result = hdel(redis_key, field)
         (result == 0 && block_given?) ? yield(field) : value
       end
+
+      def shift
+        # TODO: should return default hash value here
+        return if empty?
+
+        field = keys.first
+        [ field, delete(field) ]
+      end
     end
   end
 end

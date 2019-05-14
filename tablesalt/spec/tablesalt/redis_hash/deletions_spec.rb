@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe Tablesalt::RedisHash::Deletions, type: :module do
-  include_context "with an example redis hash", [ Tablesalt::RedisHash::Accessors, described_class ]
+  include_context "with an example redis hash", [
+    Tablesalt::RedisHash::Accessors,
+    Tablesalt::RedisHash::Predicates,
+    described_class,
+  ]
 
   describe "#clear" do
     subject(:clear) { example_redis_hash.clear }
@@ -65,6 +69,29 @@ RSpec.describe Tablesalt::RedisHash::Deletions, type: :module do
     context "without existing data" do
       let(:field) { SecureRandom.hex }
 
+      it { is_expected.to be_nil }
+    end
+  end
+
+  describe "#shift" do
+    subject(:shift) { example_redis_hash.shift }
+
+    context "with existing data" do
+      include_context "with data in redis"
+
+      let(:field) { field0 }
+
+      it { is_expected.to eq [ field0, value0 ] }
+
+      it "deletes key" do
+        expect { shift }.to change { redis.hgetall(redis_key) }.from(expected_hash).to(field1 => value1)
+      end
+    end
+
+    context "without existing data" do
+      let(:field) { SecureRandom.hex }
+
+      # TODO: This should return default hash value
       it { is_expected.to be_nil }
     end
   end
