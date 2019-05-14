@@ -34,14 +34,10 @@ module Tablesalt
         (original == current) ? nil : current
       end
 
-      def select!(&block)
+      def select!
         return enum_for(__method__) unless block_given?
 
-        original = to_h
-        keep_if(&block)
-        current = to_h
-
-        (original == current) ? nil : current
+        reject! { |*arguments| !yield(*arguments) }
       end
 
       def transform_values!
