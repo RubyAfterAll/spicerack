@@ -1,7 +1,12 @@
 # frozen_string_literal: true
 
 RSpec.describe Tablesalt::RedisHash::Enumerators, type: :module do
-  include_context "with an example redis hash", [ Tablesalt::RedisHash::Accessors, described_class ]
+  include_context "with an example redis hash", [
+    Tablesalt::RedisHash::Accessors,
+    Tablesalt::RedisHash::Insertions,
+    Tablesalt::RedisHash::Deletions,
+    described_class,
+  ]
 
   it { is_expected.to delegate_method(:each).to(:to_h) }
   it { is_expected.to delegate_method(:each_pair).to(:to_h) }
@@ -22,9 +27,9 @@ RSpec.describe Tablesalt::RedisHash::Enumerators, type: :module do
 
         it "deletes when run" do
           expect { delete_if.each { |field, value| field == field0 && value == value0 } }.
-          to change { redis.hgetall(key) }.
-          from(expected_hash).
-          to(field1 => value1)
+            to change { redis.hgetall(redis_key) }.
+            from(expected_hash).
+            to(field1 => value1)
         end
       end
 
@@ -43,7 +48,7 @@ RSpec.describe Tablesalt::RedisHash::Enumerators, type: :module do
           it { is_expected.to eq expected_result }
 
           it "deletes matching" do
-            expect { delete_if }.to change { redis.hgetall(key) }.from(expected_hash).to(expected_result)
+            expect { delete_if }.to change { redis.hgetall(redis_key) }.from(expected_hash).to(expected_result)
           end
         end
 
@@ -91,9 +96,9 @@ RSpec.describe Tablesalt::RedisHash::Enumerators, type: :module do
 
         it "deletes when run" do
           expect { keep_if.each { |field, value| field == field0 && value == value0 } }.
-          to change { redis.hgetall(key) }.
-          from(expected_hash).
-          to(field0 => value0)
+            to change { redis.hgetall(redis_key) }.
+            from(expected_hash).
+            to(field0 => value0)
         end
       end
 
@@ -112,7 +117,7 @@ RSpec.describe Tablesalt::RedisHash::Enumerators, type: :module do
           it { is_expected.to eq expected_result }
 
           it "deletes matching" do
-            expect { keep_if }.to change { redis.hgetall(key) }.from(expected_hash).to(expected_result)
+            expect { keep_if }.to change { redis.hgetall(redis_key) }.from(expected_hash).to(expected_result)
           end
         end
 
@@ -149,8 +154,6 @@ RSpec.describe Tablesalt::RedisHash::Enumerators, type: :module do
     end
   end
 
-
-
   describe "#reject!" do
     context "without a block" do
       subject(:reject!) { example_redis_hash.reject! }
@@ -162,9 +165,9 @@ RSpec.describe Tablesalt::RedisHash::Enumerators, type: :module do
 
         it "deletes when run" do
           expect { reject!.each { |field, value| field == field0 && value == value0 } }.
-          to change { redis.hgetall(key) }.
-          from(expected_hash).
-          to(field1 => value1)
+            to change { redis.hgetall(redis_key) }.
+            from(expected_hash).
+            to(field1 => value1)
         end
       end
 
@@ -186,7 +189,7 @@ RSpec.describe Tablesalt::RedisHash::Enumerators, type: :module do
           it "deletes matching" do
             next if expected_hash == final_hash
 
-            expect { reject! }.to change { redis.hgetall(key) }.from(expected_hash).to(final_hash)
+            expect { reject! }.to change { redis.hgetall(redis_key) }.from(expected_hash).to(final_hash)
           end
         end
 
@@ -245,9 +248,9 @@ RSpec.describe Tablesalt::RedisHash::Enumerators, type: :module do
 
         it "deletes when run" do
           expect { select!.each { |field, value| field == field0 && value == value0 } }.
-          to change { redis.hgetall(key) }.
-          from(expected_hash).
-          to(field0 => value0)
+            to change { redis.hgetall(redis_key) }.
+            from(expected_hash).
+            to(field0 => value0)
         end
       end
 
@@ -269,7 +272,7 @@ RSpec.describe Tablesalt::RedisHash::Enumerators, type: :module do
           it "deletes unless matching" do
             next if expected_hash == final_hash
 
-            expect { select! }.to change { redis.hgetall(key) }.from(expected_hash).to(final_hash)
+            expect { select! }.to change { redis.hgetall(redis_key) }.from(expected_hash).to(final_hash)
           end
         end
 
@@ -328,9 +331,9 @@ RSpec.describe Tablesalt::RedisHash::Enumerators, type: :module do
 
         it "transforms when run" do
           expect { transform_values!.each { |value| "new_#{value}" } }.
-          to change { redis.hgetall(key) }.
-          from(expected_hash).
-          to(field0 => "new_#{value0}", field1 => "new_#{value1}")
+            to change { redis.hgetall(redis_key) }.
+            from(expected_hash).
+            to(field0 => "new_#{value0}", field1 => "new_#{value1}")
         end
       end
 
@@ -347,7 +350,7 @@ RSpec.describe Tablesalt::RedisHash::Enumerators, type: :module do
           it { is_expected.to eq expected_result }
 
           it "transforms values" do
-            expect { transform_values! }.to change { redis.hgetall(key) }.from(expected_hash).to(expected_result)
+            expect { transform_values! }.to change { redis.hgetall(redis_key) }.from(expected_hash).to(expected_result)
           end
         end
 
