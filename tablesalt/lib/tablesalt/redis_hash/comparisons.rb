@@ -7,7 +7,7 @@ module Tablesalt
       extend ActiveSupport::Concern
 
       included do
-        delegate :<, :<=, :>, :>=, to: :to_h
+        delegate :<, :<=, :>, :>=, :compare_by_identity, :compare_by_identity?, to: :to_h
       end
 
       def eql?(other)

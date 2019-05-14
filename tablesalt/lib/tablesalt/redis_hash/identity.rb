@@ -6,6 +6,10 @@ module Tablesalt
     module Identity
       extend ActiveSupport::Concern
 
+      included do
+        delegate :inspect, :to_proc, :to_s, to: :to_h
+      end
+
       def hash
         { redis_id: redis.id, redis_key: redis_key }.hash
       end
