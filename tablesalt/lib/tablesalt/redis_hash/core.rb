@@ -13,15 +13,14 @@ module Tablesalt
         private
 
         def set_default(default, &block)
-          self.default = default and return unless block_given?
-
-          raise ArgumentError, "cannot specify both block and static default" unless default.nil?
-
-          self.default_proc = block
+          self.default = default if default.present?
+          self.default_proc = block if block_given?
         end
       end
 
       def initialize(default = nil, redis_key: SecureRandom.hex, redis: Redis.new, &block)
+        raise ArgumentError, "cannot specify both block and static default" if block_given? && default.present?
+
         run_callbacks(:initialize) do
           set_default(default, &block)
           @redis_key = redis_key
