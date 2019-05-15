@@ -26,9 +26,11 @@ module Tablesalt
       end
 
       def default_proc=(value)
-        raise TypeError, "wrong default_proc type #{value.class.name} (expected Proc)" unless value.is_a? Proc
+        unless value.nil?
+          raise TypeError, "wrong default_proc type #{value.class.name} (expected Proc)" unless value.is_a? Proc
 
-        validate_lambda_arity(value.arity) if value.lambda?
+          validate_lambda_arity(value.arity) if value.lambda?
+        end
 
         @default = nil
         @default_proc = value

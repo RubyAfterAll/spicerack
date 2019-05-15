@@ -13,10 +13,11 @@ module Tablesalt
         private
 
         def set_default(default, &block)
-          raise ArgumentError, "cannot specify both block and static default" if block_given? && !default.nil?
+          self.default = default and return unless block_given?
 
-          self.default_proc = block if block_given?
-          self.default = default if default.present?
+          raise ArgumentError, "cannot specify both block and static default" unless default.nil?
+
+          self.default_proc = block
         end
       end
 
