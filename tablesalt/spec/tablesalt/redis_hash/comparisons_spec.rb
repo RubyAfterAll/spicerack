@@ -24,7 +24,7 @@ RSpec.describe Tablesalt::RedisHash::Comparisons, type: :module do
     end
 
     context "when other is a redis hash" do
-      let(:other) { example_redis_hash_class.new(other_key, redis: other_redis) }
+      let(:other) { example_redis_hash_class.new(redis_key: other_key, redis: other_redis) }
       let(:different_redis) { Redis.new(db: 15) }
 
       context "with matching key" do

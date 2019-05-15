@@ -53,8 +53,8 @@ RSpec.describe Tablesalt::RedisHash::Core, type: :module do
       it_behaves_like "an instance"
     end
 
-    context "with only a key" do
-      subject(:instance) { example_class.new(redis_key) }
+    context "with only a redis_key" do
+      subject(:instance) { example_class.new(redis_key: redis_key) }
 
       it_behaves_like "an instance" do
         let(:expected_redis_key) { redis_key }
@@ -70,7 +70,7 @@ RSpec.describe Tablesalt::RedisHash::Core, type: :module do
     end
 
     context "with key and connection" do
-      subject(:instance) { example_class.new(redis_key, redis: redis) }
+      subject(:instance) { example_class.new(redis_key: redis_key, redis: redis) }
 
       it_behaves_like "an instance" do
         let(:expected_redis_key) { redis_key }
@@ -79,7 +79,7 @@ RSpec.describe Tablesalt::RedisHash::Core, type: :module do
     end
 
     context "with only a default" do
-      subject(:instance) { example_class.new(default: :default) }
+      subject(:instance) { example_class.new(:default) }
 
       it_behaves_like "an instance"
 
@@ -102,7 +102,7 @@ RSpec.describe Tablesalt::RedisHash::Core, type: :module do
 
     context "with a default and block" do
       subject(:instance) do
-        example_class.new(default: :default) { :default }
+        example_class.new(:default) { :default }
       end
 
       it "raises" do
