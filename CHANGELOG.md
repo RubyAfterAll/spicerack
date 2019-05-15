@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.8.4
+
+*Release Date*: 5/15/2019
+
+### Rspice - [see changes](rspice/CHANGELOG.md#v084)
+
 ## v0.8.3
 
 *Release Date*: 5/12/2019
