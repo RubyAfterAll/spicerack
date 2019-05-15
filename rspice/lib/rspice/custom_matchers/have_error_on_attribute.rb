@@ -23,9 +23,9 @@ RSpec::Matchers.define :have_error_on_attribute do |attribute|
   match do |record|
     raise ArgumentError, "have_error_on_attribute matcher requires a detail_key" if @detail_key.blank?
 
-    errors = (record.errors.details[attribute.to_sym] || []).pluck(:error)
+    @errors = (record.errors.details[attribute.to_sym] || []).pluck(:error).map(&:to_sym)
 
-    expect(errors).to include(@detail_key)
+    expect(@errors).to include(@detail_key.to_sym)
   end
 
   chain :with_detail_key do |detail_key|
@@ -37,7 +37,7 @@ RSpec::Matchers.define :have_error_on_attribute do |attribute|
   end
 
   failure_message do |record|
-    "expected #{record} to have error on attribute #{attribute} with detail key #{@detail_key.inspect}"
+    "expected #{record} to have error on attribute #{attribute} with detail key #{@detail_key.inspect}, got #{@errors}"
   end
 
   failure_message_when_negated do |record|
