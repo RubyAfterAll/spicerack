@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.8.4
+
+*Release Date*: 5/12/2019
+
+- Make `have_error_on_attribute` string/symbol agnostic ([#108](https://github.com/Freshly/spicerack/pull/108))
+
 ## v0.8.3
 
 *Release Date*: 5/12/2019
