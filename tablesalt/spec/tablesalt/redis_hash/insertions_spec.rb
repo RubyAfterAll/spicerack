@@ -51,6 +51,8 @@ RSpec.describe Tablesalt::RedisHash::Insertions, type: :module do
       shared_examples_for "the values are assigned" do
         let(:expected_result) { expected_hash.merge(field2 => value2, field3 => value3) }
 
+        it { is_expected.to eq example_redis_hash }
+
         it "changes the value" do
           expect { merge! }.to change { redis.hgetall(redis_key) }.from(expected_hash).to(expected_result)
         end

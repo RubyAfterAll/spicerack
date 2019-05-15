@@ -15,4 +15,5 @@ RSpec.describe Tablesalt::RedisHashBase do
   it { is_expected.to include_module Tablesalt::RedisHash::Deletions }
   it { is_expected.to include_module Tablesalt::RedisHash::Enumerators }
   it { is_expected.to include_module Tablesalt::RedisHash::Mutations }
+  it { is_expected.to include_module Tablesalt::RedisHash::Converters }
 end

@@ -15,7 +15,7 @@ module Tablesalt
       end
 
       def to_hash
-        self
+        to_h
       end
 
       def to_h
