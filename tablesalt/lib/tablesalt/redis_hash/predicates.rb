@@ -27,7 +27,6 @@ module Tablesalt
         values.include? value
       end
       alias_method :has_value?, :value?
-
     end
   end
 end

@@ -20,7 +20,7 @@ RSpec.describe Tablesalt::RedisHash::Identity, type: :module do
   describe "#to_hash" do
     subject { example_redis_hash.to_hash }
 
-    it { is_expected.to eq example_redis_hash }
+    it { is_expected.to be_a Hash }
   end
 
   describe "#to_h" do
