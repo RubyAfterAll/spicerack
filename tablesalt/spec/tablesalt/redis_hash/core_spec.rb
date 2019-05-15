@@ -5,7 +5,12 @@ RSpec.describe Tablesalt::RedisHash::Core, type: :module do
 
   subject { example_class.new }
 
-  let(:example_class) { example_class_having_callback.include(described_class) }
+  let(:example_class) do
+    example_class_having_callback.tap do |klass|
+      klass.include Tablesalt::RedisHash::Default
+      klass.include described_class
+    end
+  end
 
   it { is_expected.to delegate_method(:del).to(:redis) }
   it { is_expected.to delegate_method(:hdel).to(:redis) }
@@ -48,8 +53,8 @@ RSpec.describe Tablesalt::RedisHash::Core, type: :module do
       it_behaves_like "an instance"
     end
 
-    context "with only a key" do
-      subject(:instance) { example_class.new(redis_key) }
+    context "with only a redis_key" do
+      subject(:instance) { example_class.new(redis_key: redis_key) }
 
       it_behaves_like "an instance" do
         let(:expected_redis_key) { redis_key }
@@ -65,11 +70,43 @@ RSpec.describe Tablesalt::RedisHash::Core, type: :module do
     end
 
     context "with key and connection" do
-      subject(:instance) { example_class.new(redis_key, redis: redis) }
+      subject(:instance) { example_class.new(redis_key: redis_key, redis: redis) }
 
       it_behaves_like "an instance" do
         let(:expected_redis_key) { redis_key }
         let(:expected_redis) { redis }
+      end
+    end
+
+    context "with only a default" do
+      subject(:instance) { example_class.new(:default) }
+
+      it_behaves_like "an instance"
+
+      it "has a default" do
+        expect(instance.default).to eq :default
+      end
+    end
+
+    context "with only a block" do
+      subject(:instance) do
+        example_class.new { :default }
+      end
+
+      it_behaves_like "an instance"
+
+      it "has a default" do
+        expect(instance.default_proc).to be_a Proc
+      end
+    end
+
+    context "with a default and block" do
+      subject(:instance) do
+        example_class.new(:default) { :default }
+      end
+
+      it "raises" do
+        expect { instance }.to raise_error ArgumentError, "cannot specify both block and static default"
       end
     end
   end

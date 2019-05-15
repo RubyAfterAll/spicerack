@@ -9,11 +9,21 @@ module Tablesalt
       included do
         attr_reader :redis_key, :redis
         delegate :del, :hdel, :hexists, :hget, :hgetall, :hkeys, :hlen, :hmget, :hmset, :hset, :hvals, to: :redis
+
+        private
+
+        def set_default(default, &block)
+          self.default = default if default.present?
+          self.default_proc = block if block_given?
+        end
       end
 
-      def initialize(redis_key = nil, redis: Redis.new)
+      def initialize(default = nil, redis_key: SecureRandom.hex, redis: Redis.new, &block)
+        raise ArgumentError, "cannot specify both block and static default" if block_given? && default.present?
+
         run_callbacks(:initialize) do
-          @redis_key = redis_key || SecureRandom.hex
+          set_default(default, &block)
+          @redis_key = redis_key
           @redis = redis
         end
       end
