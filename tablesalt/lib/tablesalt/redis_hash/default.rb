@@ -15,6 +15,12 @@ module Tablesalt
           @default.presence || (default_proc&.call(self, field) if !field.nil? || allow_nil_field)
         end
 
+        def validate_proc(proc)
+          raise TypeError, "wrong default_proc type #{proc.class.name} (expected Proc)" unless proc.is_a? Proc
+
+          validate_lambda_arity(proc.arity) if proc.lambda?
+        end
+
         def validate_lambda_arity(arity)
           raise TypeError, "default_proc takes two arguments (2 for #{arity})" if arity >= 0 && arity != 2
         end
@@ -26,11 +32,7 @@ module Tablesalt
       end
 
       def default_proc=(value)
-        unless value.nil?
-          raise TypeError, "wrong default_proc type #{value.class.name} (expected Proc)" unless value.is_a? Proc
-
-          validate_lambda_arity(value.arity) if value.lambda?
-        end
+        validate_proc(value) unless value.nil?
 
         @default = nil
         @default_proc = value
