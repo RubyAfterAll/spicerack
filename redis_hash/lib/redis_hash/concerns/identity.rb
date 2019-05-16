@@ -6,6 +6,7 @@ module RedisHash
     extend ActiveSupport::Concern
 
     included do
+      delegate :hgetall, to: :redis
       delegate :inspect, :to_proc, :to_s, to: :to_h
     end
 

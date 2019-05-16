@@ -5,6 +5,10 @@ module RedisHash
   module Predicates
     extend ActiveSupport::Concern
 
+    included do
+      delegate :hexists, to: :redis
+    end
+
     def any?(&block)
       return length > 0 unless block_given?
 

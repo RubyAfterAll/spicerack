@@ -7,6 +7,11 @@ RSpec.describe RedisHash::Accessors, type: :module do
     described_class,
   ]
 
+  it { is_expected.to delegate_method(:hget).to(:redis) }
+  it { is_expected.to delegate_method(:hkeys).to(:redis) }
+  it { is_expected.to delegate_method(:hlen).to(:redis) }
+  it { is_expected.to delegate_method(:hvals).to(:redis) }
+
   it { is_expected.to delegate_method(:assoc).to(:to_h) }
   it { is_expected.to delegate_method(:compact).to(:to_h) }
   it { is_expected.to delegate_method(:dig).to(:to_h) }
