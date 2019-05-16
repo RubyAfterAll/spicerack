@@ -14,6 +14,7 @@ require_relative "concerns/enumerators"
 require_relative "concerns/mutations"
 require_relative "concerns/converters"
 require_relative "concerns/counters"
+require_relative "concerns/expiration"
 
 module RedisHash
   class Base
@@ -31,5 +32,6 @@ module RedisHash
     include RedisHash::Mutations
     include RedisHash::Converters
     include RedisHash::Counters
+    include RedisHash::Expiration
   end
 end

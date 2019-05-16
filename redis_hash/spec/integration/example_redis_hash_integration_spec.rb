@@ -8,10 +8,12 @@ RSpec.describe ExampleRedisHash, type: :integration do
   let(:redis_hash_class) { described_class.dup }
   let(:redis) { redis_hash.redis }
   let(:redis_key) { redis_hash.redis_key }
+  let(:redis_ttl) { redis_hash.redis_ttl }
 
-  it "has a redis key and connection" do
+  it "has a redis key and connection but no ttl" do
     expect(redis).to be_an_instance_of Redis
     expect(redis_key).not_to be_nil
+    expect(redis_ttl).to be_nil
   end
 
   it "stores data in redis" do
@@ -140,5 +142,28 @@ RSpec.describe ExampleRedisHash, type: :integration do
     expect { redis_hash.delete(:foo) }.to change { deletion_hook_run }.from(false).to(true)
 
     expect(deletion_hook_run).to eq true
+  end
+
+  context "with a given TTL" do
+    subject(:redis_hash) { redis_hash_class.new(redis_ttl: redis_ttl) }
+
+    let(:redis_ttl) { rand(10..100) }
+
+    it "sets an expiration automatically only when the first key is inserted" do
+      expect(redis_hash.redis_ttl).to eq redis_ttl
+      expect(redis_hash).to be_empty
+
+      expect { redis_hash[:foo] = :foo }.to change { redis_hash.ttl }.from(-2).to(redis_ttl)
+      expect { redis_hash[:bar] = :bar }.not_to(change { redis_hash.ttl })
+    end
+  end
+
+  it "can set expiration directly after the fact" do
+    redis_hash[:foo] = :foo
+
+    expect(redis_hash.ttl).to eq(-1)
+
+    expiration = rand(10..100)
+    expect { redis_hash.expire(expiration) }.to change { redis_hash.ttl }.from(-1).to(expiration)
   end
 end

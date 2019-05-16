@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.shared_context "with an example redis hash" do |extra_redis_hash_modules = nil|
-  subject(:example_redis_hash) { example_redis_hash_class.new(redis_key: redis_key, redis: redis) }
+  subject(:example_redis_hash) do
+    example_redis_hash_class.new(redis: redis, redis_key: redis_key, redis_ttl: redis_ttl)
+  end
 
   let(:root_redis_hash_modules) do
     [ Technologic,
@@ -20,6 +22,7 @@ RSpec.shared_context "with an example redis hash" do |extra_redis_hash_modules =
     end
   end
 
-  let(:redis_key) { SecureRandom.hex }
   let(:redis) { Redis.new }
+  let(:redis_key) { SecureRandom.hex }
+  let(:redis_ttl) { nil }
 end
