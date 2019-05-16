@@ -157,4 +157,13 @@ RSpec.describe ExampleRedisHash, type: :integration do
       expect { redis_hash[:bar] = :bar }.not_to(change { redis_hash.ttl })
     end
   end
+
+  it "can set expiration directly after the fact" do
+    redis_hash[:foo] = :foo
+
+    expect(redis_hash.ttl).to eq(-1)
+
+    expiration = rand(10..100)
+    expect { redis_hash.expire(expiration) }.to change { redis_hash.ttl }.from(-1).to(expiration)
+  end
 end
