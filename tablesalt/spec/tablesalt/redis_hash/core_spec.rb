@@ -7,20 +7,11 @@ RSpec.describe Tablesalt::RedisHash::Core, type: :module do
 
   let(:example_class) do
     example_class_having_callback.tap do |klass|
+      klass.include Tablesalt::RedisHash::Adapter
       klass.include Tablesalt::RedisHash::Default
       klass.include described_class
     end
   end
-
-  it { is_expected.to delegate_method(:del).to(:redis) }
-  it { is_expected.to delegate_method(:hdel).to(:redis) }
-  it { is_expected.to delegate_method(:hexists).to(:redis) }
-  it { is_expected.to delegate_method(:hget).to(:redis) }
-  it { is_expected.to delegate_method(:hgetall).to(:redis) }
-  it { is_expected.to delegate_method(:hkeys).to(:redis) }
-  it { is_expected.to delegate_method(:hlen).to(:redis) }
-  it { is_expected.to delegate_method(:hset).to(:redis) }
-  it { is_expected.to delegate_method(:hvals).to(:redis) }
 
   describe "#initialize" do
     let(:redis_key) { SecureRandom.hex }

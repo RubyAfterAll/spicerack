@@ -5,6 +5,7 @@ RSpec.shared_context "with an example redis hash" do |extra_redis_hash_modules =
 
   let(:root_redis_hash_modules) do
     [ Technologic,
+      Tablesalt::RedisHash::Adapter,
       Tablesalt::RedisHash::Default,
       Tablesalt::RedisHash::Callbacks,
       Tablesalt::RedisHash::Core,

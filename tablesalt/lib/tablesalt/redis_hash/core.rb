@@ -6,25 +6,10 @@ module Tablesalt
     module Core
       extend ActiveSupport::Concern
 
-      included do
-        attr_reader :redis_key, :redis
-        delegate :del, :hdel, :hexists, :hget, :hgetall, :hkeys, :hlen, :hmget, :hmset, :hset, :hvals, to: :redis
-
-        private
-
-        def set_default(default, &block)
-          self.default = default if default.present?
-          self.default_proc = block if block_given?
-        end
-      end
-
-      def initialize(default = nil, redis_key: SecureRandom.hex, redis: Redis.new, &block)
-        raise ArgumentError, "cannot specify both block and static default" if block_given? && default.present?
-
+      def initialize(default = nil, redis_key: nil, redis: nil, &block)
         run_callbacks(:initialize) do
-          set_default(default, &block)
-          @redis_key = redis_key
-          @redis = redis
+          initialize_default(default, &block)
+          initialize_redis(redis, redis_key)
         end
       end
     end
