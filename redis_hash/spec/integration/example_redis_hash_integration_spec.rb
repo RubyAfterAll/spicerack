@@ -104,4 +104,13 @@ RSpec.describe ExampleRedisHash, type: :integration do
       end
     end
   end
+
+  it "supports incrementing and decrementing" do
+    expect { redis_hash.increment(:counter) }.to change { redis.hget(redis_key, "counter") }.from(nil).to("1")
+    expect { redis_hash.increment(:counter) }.to change { redis.hget(redis_key, "counter") }.from("1").to("2")
+    expect { redis_hash.increment(:counter, by: 2) }.to change { redis.hget(redis_key, "counter") }.from("2").to("4")
+    expect { redis_hash.decrement(:counter) }.to change { redis.hget(redis_key, "counter") }.from("4").to("3")
+    expect { redis_hash.decrement(:counter) }.to change { redis.hget(redis_key, "counter") }.from("3").to("2")
+    expect { redis_hash.decrement(:counter, by: 2) }.to change { redis.hget(redis_key, "counter") }.from("2").to("0")
+  end
 end
