@@ -6,16 +6,17 @@ module RedisHash
     extend ActiveSupport::Concern
 
     included do
-      attr_reader :redis_key, :redis
+      attr_reader :redis, :redis_key, :redis_ttl
 
       delegate :del, :hdel, :hexists, :hget, :hgetall, :hkeys, :hlen, :hmget, :hmset, :hset, :hvals, to: :redis
-      delegate :default_redis, :default_redis_key, to: :class
+      delegate :default_redis, :default_redis_key, :default_redis_ttl, to: :class
 
       private
 
-      def initialize_redis(redis, redis_key)
+      def initialize_redis(redis, redis_key, redis_ttl)
         @redis = redis || default_redis
         @redis_key = redis_key || default_redis_key
+        @redis_ttl = redis_ttl || default_redis_ttl
       end
     end
 
@@ -26,6 +27,10 @@ module RedisHash
 
       def default_redis_key
         SecureRandom.hex
+      end
+
+      def default_redis_ttl
+        nil
       end
     end
   end
