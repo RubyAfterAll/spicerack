@@ -3,8 +3,9 @@
 require_relative "../support/test_classes/example_redis_hash"
 
 RSpec.describe ExampleRedisHash, type: :integration do
-  subject(:redis_hash) { described_class.new }
+  subject(:redis_hash) { redis_hash_class.new }
 
+  let(:redis_hash_class) { described_class.dup }
   let(:redis) { redis_hash.redis }
   let(:redis_key) { redis_hash.redis_key }
 
@@ -106,11 +107,38 @@ RSpec.describe ExampleRedisHash, type: :integration do
   end
 
   it "supports incrementing and decrementing" do
-    expect { redis_hash.increment(:counter) }.to change { redis.hget(redis_key, "counter") }.from(nil).to("1")
-    expect { redis_hash.increment(:counter) }.to change { redis.hget(redis_key, "counter") }.from("1").to("2")
-    expect { redis_hash.increment(:counter, by: 2) }.to change { redis.hget(redis_key, "counter") }.from("2").to("4")
-    expect { redis_hash.decrement(:counter) }.to change { redis.hget(redis_key, "counter") }.from("4").to("3")
-    expect { redis_hash.decrement(:counter) }.to change { redis.hget(redis_key, "counter") }.from("3").to("2")
-    expect { redis_hash.decrement(:counter, by: 2) }.to change { redis.hget(redis_key, "counter") }.from("2").to("0")
+    expect { redis_hash.increment(:counter) }.to change { redis.hget(redis_key, :counter) }.from(nil).to("1")
+    expect { redis_hash.increment(:counter) }.to change { redis.hget(redis_key, :counter) }.from("1").to("2")
+    expect { redis_hash.increment(:counter, by: 2) }.to change { redis.hget(redis_key, :counter) }.from("2").to("4")
+    expect { redis_hash.decrement(:counter) }.to change { redis.hget(redis_key, :counter) }.from("4").to("3")
+    expect { redis_hash.decrement(:counter) }.to change { redis.hget(redis_key, :counter) }.from("3").to("2")
+    expect { redis_hash.decrement(:counter, by: 2) }.to change { redis.hget(redis_key, :counter) }.from("2").to("0")
+  end
+
+  it "supports setnx with raise" do
+    expect { redis_hash.setnx!(:field, :value) }.to change { redis.hget(redis_key, :field) }.from(nil).to("value")
+    expect { redis_hash.setnx!(:field, :value) }.to raise_error RedisHash::AlreadyDefinedError, "field already defined"
+  end
+
+  it "supports safe setnx" do
+    expect { redis_hash.setnx(:field, :value) }.to change { redis.hget(redis_key, :field) }.from(nil).to("value")
+    expect(redis_hash.setnx(:field, :value)).to eq false
+  end
+
+  it "supports insertion callbacks" do
+    insertion_hook_run = false
+    redis_hash_class.set_callback(:insertion, :after) { insertion_hook_run = true }
+
+    expect { redis_hash[:foo] = :foo }.to change { insertion_hook_run }.from(false).to(true)
+  end
+
+  it "supports deletion callbacks" do
+    deletion_hook_run = false
+    redis_hash_class.set_callback(:deletion, :after) { deletion_hook_run = true }
+
+    redis_hash[:foo] = :foo
+    expect { redis_hash.delete(:foo) }.to change { deletion_hook_run }.from(false).to(true)
+
+    expect(deletion_hook_run).to eq true
   end
 end

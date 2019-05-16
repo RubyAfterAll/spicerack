@@ -17,7 +17,6 @@ require_relative "concerns/counters"
 
 module RedisHash
   class Base
-    include Technologic
     include RedisHash::Adapter
     include RedisHash::Default
     include RedisHash::Callbacks

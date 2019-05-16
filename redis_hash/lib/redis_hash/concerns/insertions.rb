@@ -11,20 +11,23 @@ module RedisHash
     end
 
     def merge!(other_hash)
-      hmset(*other_hash.to_a.unshift(redis_key))
+      run_callbacks(:insertion) { hmset(*other_hash.to_a.unshift(redis_key)) }
+
       self
     end
     alias_method :update, :merge!
 
     def store(field, value)
-      hset(redis_key, field, value)
+      run_callbacks(:insertion) { hset(redis_key, field, value) }
     end
     alias_method :[]=, :store
 
     def setnx!(field, value)
-      success = hsetnx(redis_key, field, value)
+      run_callbacks(:insertion) do
+        success = hsetnx(redis_key, field, value)
 
-      raise RedisHash::AlreadyDefinedError, "#{field} already defined" unless success
+        raise RedisHash::AlreadyDefinedError, "#{field} already defined" unless success
+      end
 
       true
     end

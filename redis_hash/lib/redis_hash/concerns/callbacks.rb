@@ -7,7 +7,7 @@ module RedisHash
 
     included do
       include ActiveSupport::Callbacks
-      define_callbacks :initialize, :reload
+      define_callbacks :initialize, :insertion, :deletion
     end
   end
 end

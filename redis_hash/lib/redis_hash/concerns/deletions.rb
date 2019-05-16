@@ -14,9 +14,11 @@ module RedisHash
     end
 
     def delete(field)
-      value = self[field]
-      result = hdel(redis_key, field)
-      (result == 0 && block_given?) ? yield(field) : value
+      run_callbacks(:deletion) do
+        value = self[field]
+        result = hdel(redis_key, field)
+        (result == 0 && block_given?) ? yield(field) : value
+      end
     end
 
     def shift

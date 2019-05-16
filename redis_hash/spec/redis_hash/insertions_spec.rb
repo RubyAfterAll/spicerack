@@ -17,6 +17,15 @@ RSpec.describe RedisHash::Insertions, type: :module do
     let(:value3) { SecureRandom.hex }
 
     shared_examples_for "the values are merged" do
+      it_behaves_like "a class with callback" do
+        include_context "with callbacks", :insertion
+
+        subject(:callback_runner) { merge! }
+
+        let(:example) { example_redis_hash }
+        let(:example_class) { example.class }
+      end
+
       shared_examples_for "the values are assigned" do
         let(:expected_result) { expected_hash.merge(field2 => value2, field3 => value3) }
 
@@ -68,6 +77,15 @@ RSpec.describe RedisHash::Insertions, type: :module do
       end
     end
 
+    it_behaves_like "a class with callback" do
+      include_context "with callbacks", :insertion
+
+      subject(:callback_runner) { store }
+
+      let(:example) { example_redis_hash }
+      let(:example_class) { example.class }
+    end
+
     context "with existing data" do
       include_context "with data in redis"
 
@@ -94,6 +112,15 @@ RSpec.describe RedisHash::Insertions, type: :module do
     let(:value) { SecureRandom.hex }
     let(:expected_hash) { {} }
     let(:expected_result) { expected_hash.merge(field => value) }
+
+    it_behaves_like "a class with callback" do
+      include_context "with callbacks", :insertion
+
+      subject(:callback_runner) { setnx! }
+
+      let(:example) { example_redis_hash }
+      let(:example_class) { example.class }
+    end
 
     shared_examples_for "the value is assigned" do
       it { is_expected.to eq true }
@@ -131,6 +158,15 @@ RSpec.describe RedisHash::Insertions, type: :module do
     let(:value) { SecureRandom.hex }
     let(:expected_hash) { {} }
     let(:expected_result) { expected_hash.merge(field => value) }
+
+    it_behaves_like "a class with callback" do
+      include_context "with callbacks", :insertion
+
+      subject(:callback_runner) { setnx }
+
+      let(:example) { example_redis_hash }
+      let(:example_class) { example.class }
+    end
 
     shared_examples_for "the value is assigned" do
       it { is_expected.to eq true }
