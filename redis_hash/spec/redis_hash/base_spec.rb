@@ -17,4 +17,5 @@ RSpec.describe RedisHash::Base, type: :redis_hash do
   it { is_expected.to include_module RedisHash::Enumerators }
   it { is_expected.to include_module RedisHash::Mutations }
   it { is_expected.to include_module RedisHash::Converters }
+  it { is_expected.to include_module RedisHash::Counters }
 end
