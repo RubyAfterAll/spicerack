@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "An intelligent and feature rich memoization gem"
   spec.description   = "Memoize methods safely with parameter and dependency observation"
-  spec.homepage      = "https://www.freshly.com/"
+  spec.homepage      = "https://github.com/Freshly/spicerack/tree/master/short_circu_it"
   spec.license       = "MIT"
 
   spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]

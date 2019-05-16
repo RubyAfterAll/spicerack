@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "An `RSpec` utility gem of custom matchers, shared contexts and examples"
   spec.description   = "A dash of custom matchers, a pinch of shared contexts, and shared examples (to taste) for RSpec"
-  spec.homepage      = "https://www.freshly.com"
+  spec.homepage      = "https://github.com/Freshly/spicerack/tree/master/rspice"
   spec.license       = "MIT"
 
   spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]

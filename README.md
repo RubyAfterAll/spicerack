@@ -36,6 +36,7 @@ Or install it yourself as:
 
 * [AroundTheWorld](around_the_world/README.md) allows you to easily wrap methods with custom logic on any class.
 * [Instructor](instructor/README.md) allows you to clearly require and validate input with a base class for service object.
+* [RedisHash](redis_hash/README.md) provides a class that matches the Hash api by wrapping Redis.
 * [RSpice](rspice/README.md) is an `RSpec` utility gem of custom matchers, shared contexts and examples.
 * [ShortCircuIt](short_circu_it/README.md) is an intelligent and feature rich memoization gem.
 * [Spicerack::Styleguide](spicerack-styleguide/README.md) is [Freshly](https://www.freshly.com/)'s Rubocop Styleguide for Rails and RSpec.
