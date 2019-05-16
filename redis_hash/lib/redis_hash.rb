@@ -8,4 +8,6 @@ require "redis_hash/version"
 
 require "redis_hash/base"
 
-module RedisHash; end
+module RedisHash
+  class AlreadyDefinedError < StandardError; end
+end
