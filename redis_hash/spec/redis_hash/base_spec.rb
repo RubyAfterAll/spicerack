@@ -3,7 +3,6 @@
 RSpec.describe RedisHash::Base, type: :redis_hash do
   subject { described_class }
 
-  it { is_expected.to include_module Technologic }
   it { is_expected.to include_module RedisHash::Adapter }
   it { is_expected.to include_module RedisHash::Default }
   it { is_expected.to include_module RedisHash::Callbacks }

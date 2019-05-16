@@ -9,7 +9,6 @@ PATH
     redis_hash (0.9.0)
       activesupport (~> 5.2.1)
       redis (~> 4.0)
-      technologic (= 0.9.0)
     rspice (0.9.0)
       faker (~> 1.8)
       rspec (~> 3.0)

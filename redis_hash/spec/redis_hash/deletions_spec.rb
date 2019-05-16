@@ -47,6 +47,15 @@ RSpec.describe RedisHash::Deletions, type: :module do
       context "without matching field" do
         let(:field) { SecureRandom.hex }
 
+        it_behaves_like "a class with callback" do
+          include_context "with callbacks", :deletion
+
+          subject(:callback_runner) { delete }
+
+          let(:example) { example_redis_hash }
+          let(:example_class) { example.class }
+        end
+
         shared_examples_for "the hash is unchanged" do
           it "has expected hash" do
             expect(redis.hgetall(redis_key)).to eq expected_hash
@@ -74,6 +83,15 @@ RSpec.describe RedisHash::Deletions, type: :module do
     context "without existing data" do
       let(:field) { SecureRandom.hex }
 
+      it_behaves_like "a class with callback" do
+        include_context "with callbacks", :deletion
+
+        subject(:callback_runner) { delete }
+
+        let(:example) { example_redis_hash }
+        let(:example_class) { example.class }
+      end
+
       it { is_expected.to be_nil }
     end
   end
@@ -85,6 +103,15 @@ RSpec.describe RedisHash::Deletions, type: :module do
       include_context "with data in redis"
 
       let(:field) { field0 }
+
+      it_behaves_like "a class with callback" do
+        include_context "with callbacks", :deletion
+
+        subject(:callback_runner) { shift }
+
+        let(:example) { example_redis_hash }
+        let(:example_class) { example.class }
+      end
 
       it { is_expected.to eq [ field0, value0 ] }
 
