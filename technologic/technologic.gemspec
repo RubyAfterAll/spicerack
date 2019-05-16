@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Logging system built on an extensible event triggering system requiring minimal implementation"
   spec.description   = "A clean and terse way to produce standardized, highly actionable, and data-rich logs"
-  spec.homepage      = "https://www.freshly.com"
+  spec.homepage      = "https://github.com/Freshly/spicerack/tree/master/technologic"
   spec.license       = "MIT"
 
   spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]

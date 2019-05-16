@@ -11,6 +11,17 @@ module Tablesalt
 
         private
 
+        def initialize_default(default, &block)
+          raise ArgumentError, "cannot specify both block and static default" if block_given? && default.present?
+
+          set_default(default, &block)
+        end
+
+        def set_default(default, &block)
+          self.default = default if default.present?
+          self.default_proc = block if block_given?
+        end
+
         def to_default(field = nil, allow_nil_field: true)
           @default.presence || (default_proc&.call(self, field) if !field.nil? || allow_nil_field)
         end
