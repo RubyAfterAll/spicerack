@@ -5,10 +5,10 @@ module RedisHash
   module Core
     extend ActiveSupport::Concern
 
-    def initialize(default = nil, redis_key: nil, redis: nil, &block)
+    def initialize(default = nil, redis: nil, redis_key: nil, redis_ttl: nil, &block)
       run_callbacks(:initialize) do
         initialize_default(default, &block)
-        initialize_redis(redis, redis_key)
+        initialize_redis(redis, redis_key, redis_ttl)
       end
     end
   end
