@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Allows you to clearly require and validate input with a base class for service object"
   spec.description   = "Input structure base object for capturing and validating input with a nice DSL"
-  spec.homepage      = "https://www.freshly.com"
+  spec.homepage      = "https://github.com/Freshly/spicerack/tree/master/instructor"
   spec.license       = "MIT"
 
   spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]

@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Allows you to easily wrap methods with custom logic on any class"
   spec.description   = "A metaprogramming module which allows you to wrap any method easily"
-  spec.homepage      = "https://www.freshly.com"
+  spec.homepage      = "https://github.com/Freshly/spicerack/tree/master/around_the_world"
   spec.license       = "MIT"
 
   spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]

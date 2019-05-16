@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "../support/test_classes/redis_hash"
+require_relative "../support/test_classes/example_redis_hash"
 
-RSpec.describe RedisHash, type: :integration do
+RSpec.describe ExampleRedisHash, type: :integration do
   subject(:redis_hash) { described_class.new }
 
   let(:redis) { redis_hash.redis }

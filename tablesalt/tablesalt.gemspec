@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Miscellaneous helper modules, POROs, and more, that standardize common behavior"
   spec.description   = "A package of helpers that introduce some conventions and convenience for common behaviors"
-  spec.homepage      = "https://www.freshly.com"
+  spec.homepage      = "https://github.com/Freshly/spicerack/tree/master/tablesalt"
   spec.license       = "MIT"
 
   spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]
