@@ -6,7 +6,7 @@ module RedisHash
     extend ActiveSupport::Concern
 
     included do
-      delegate :hmset, :hset, to: :redis
+      delegate :hmset, :hset, :hsetnx, to: :redis
       delegate :merge, to: :to_h
     end
 
@@ -20,5 +20,19 @@ module RedisHash
       hset(redis_key, field, value)
     end
     alias_method :[]=, :store
+
+    def setnx!(field, value)
+      success = hsetnx(redis_key, field, value)
+
+      raise RedisHash::AlreadyDefinedError, "#{field} already defined" unless success
+
+      true
+    end
+
+    def setnx(field, value)
+      setnx!(field, value)
+    rescue RedisHash::AlreadyDefinedError
+      false
+    end
   end
 end
