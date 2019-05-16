@@ -5,4 +5,4 @@ require "spicerack"
 require "pry"
 
 root_directory = File.expand_path('../', File.dirname(__FILE__))
-Dir["#{root_directory}/{[!vendor/]**/spec/**/support/**/*}.rb"].each { |f| require f }
+Dir["#{root_directory}/**/spec/support/**/*.rb"].reject { |path| path.include? "vendor" }.each { |f| require f }
