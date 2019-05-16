@@ -6,6 +6,7 @@ module RedisHash
     extend ActiveSupport::Concern
 
     included do
+      delegate :hget, :hkeys, :hlen, :hmget, :hvals, to: :redis
       delegate :assoc, :compact, :dig, :fetch_values, :flatten, :key, :rassoc, :rehash, to: :to_h
     end
 

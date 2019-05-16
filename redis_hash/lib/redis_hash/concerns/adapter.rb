@@ -8,7 +8,6 @@ module RedisHash
     included do
       attr_reader :redis, :redis_key, :redis_ttl
 
-      delegate :del, :hdel, :hexists, :hget, :hgetall, :hkeys, :hlen, :hmget, :hmset, :hset, :hvals, to: :redis
       delegate :default_redis, :default_redis_key, :default_redis_ttl, to: :class
 
       private

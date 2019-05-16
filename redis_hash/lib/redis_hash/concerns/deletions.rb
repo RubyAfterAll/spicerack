@@ -5,6 +5,10 @@ module RedisHash
   module Deletions
     extend ActiveSupport::Concern
 
+    included do
+      delegate :del, :hdel, to: :redis
+    end
+
     def clear
       del(redis_key) and {}
     end

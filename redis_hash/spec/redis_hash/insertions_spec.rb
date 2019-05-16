@@ -3,6 +3,8 @@
 RSpec.describe RedisHash::Insertions, type: :module do
   include_context "with an example redis hash", described_class
 
+  it { is_expected.to delegate_method(:hmset).to(:redis) }
+  it { is_expected.to delegate_method(:hset).to(:redis) }
   it { is_expected.to delegate_method(:merge).to(:to_h) }
 
   it { is_expected.to alias_method(:update, :merge!) }

@@ -9,6 +9,9 @@ RSpec.describe RedisHash::Deletions, type: :module do
     described_class,
   ]
 
+  it { is_expected.to delegate_method(:del).to(:redis) }
+  it { is_expected.to delegate_method(:hdel).to(:redis) }
+
   describe "#clear" do
     subject(:clear) { example_redis_hash.clear }
 

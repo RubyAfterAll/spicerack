@@ -3,6 +3,8 @@
 RSpec.describe RedisHash::Identity, type: :module do
   include_context "with an example redis hash"
 
+  it { is_expected.to delegate_method(:hgetall).to(:redis) }
+
   it { is_expected.to delegate_method(:inspect).to(:to_h) }
   it { is_expected.to delegate_method(:to_proc).to(:to_h) }
   it { is_expected.to delegate_method(:to_s).to(:to_h) }

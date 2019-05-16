@@ -5,16 +5,6 @@ RSpec.describe RedisHash::Adapter, type: :module do
 
   let(:example_class) { Class.new(Hash).include(described_class) }
 
-  it { is_expected.to delegate_method(:del).to(:redis) }
-  it { is_expected.to delegate_method(:hdel).to(:redis) }
-  it { is_expected.to delegate_method(:hexists).to(:redis) }
-  it { is_expected.to delegate_method(:hget).to(:redis) }
-  it { is_expected.to delegate_method(:hgetall).to(:redis) }
-  it { is_expected.to delegate_method(:hkeys).to(:redis) }
-  it { is_expected.to delegate_method(:hlen).to(:redis) }
-  it { is_expected.to delegate_method(:hset).to(:redis) }
-  it { is_expected.to delegate_method(:hvals).to(:redis) }
-
   it { is_expected.to delegate_method(:default_redis).to(:class) }
   it { is_expected.to delegate_method(:default_redis_key).to(:class) }
   it { is_expected.to delegate_method(:default_redis_ttl).to(:class) }

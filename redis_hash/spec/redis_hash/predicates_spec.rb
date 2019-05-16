@@ -3,6 +3,8 @@
 RSpec.describe RedisHash::Predicates, type: :module do
   include_context "with an example redis hash", [ RedisHash::Accessors, described_class ]
 
+  it { is_expected.to delegate_method(:hexists).to(:redis) }
+
   it { is_expected.to alias_method(:has_key?, :include?) }
   it { is_expected.to alias_method(:key?, :include?) }
   it { is_expected.to alias_method(:member?, :include?) }
