@@ -2,10 +2,8 @@
 
 require "active_support"
 
-require "redis"
-
-require "technologic"
-
 require "tablesalt/version"
+
+require "tablesalt/hash_model"
 
 module Tablesalt; end
