@@ -27,7 +27,7 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  config.before(:each) { Redis.new.flushdb }
+  config.before(:each) { Redis.new.flushdb if defined?(Redis) }
 end
 
 Shoulda::Matchers.configure do |config|
