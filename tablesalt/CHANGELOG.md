@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.9.3
+
+*Release Date*: 5/19/2019
+
+- Added `Tablesalt::ArrayIndex` 
+
 ## v0.9.2
 
 *Release Date*: 5/17/2019
