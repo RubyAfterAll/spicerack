@@ -4,8 +4,8 @@ class ExampleHashModelBase
   include Tablesalt::HashModel
 
   class << self
-    def for(hash)
-      new.tap { |model| model.hash = hash }
+    def for(data)
+      new.tap { |model| model.data = data }
     end
   end
 end
