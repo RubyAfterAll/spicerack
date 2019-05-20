@@ -1,13 +1,19 @@
 # Changelog
 
-## v0.9.4
+## v0.9.5
+
+*Release Date*: 5/20/2019
+
+- Fix `ArrayIndex#freeze`
+
+## v0.9.4 [Yanked]
 
 *Release Date*: 5/20/2019
 
 - Modify `ArrayIndex` to match behavior of `Array#index`
 - Improve `ArrayIndex` specs
 
-## v0.9.3
+## v0.9.3 [Yanked]
 
 *Release Date*: 5/19/2019
 
