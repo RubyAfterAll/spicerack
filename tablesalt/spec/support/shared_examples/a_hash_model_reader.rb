@@ -3,7 +3,7 @@
 RSpec.shared_examples_for "a hash model reader" do |field|
   subject(:reader) { hash_model.public_send(field) }
 
-  let(:hash) { Hash[field, hash_value] }
+  let(:data) { Hash[field, hash_value] }
 
   let(:expected_nil_value) { nil }
   let(:expected_invalid_value) { expected_nil_value }

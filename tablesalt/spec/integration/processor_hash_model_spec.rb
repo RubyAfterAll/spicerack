@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe ProcessorHashModel, type: :integration do
-  subject(:hash_model) { described_class.for(hash) }
+  subject(:hash_model) { described_class.for(data) }
 
-  let(:hash) do
+  let(:data) do
     {}
   end
 
@@ -19,6 +19,9 @@ RSpec.describe ProcessorHashModel, type: :integration do
 
   describe "#count" do
     it_behaves_like "a hash model writer", :count
+    it_behaves_like "a hash model predicate", :count do
+      let(:hash_value) { rand(1..10) }
+    end
     it_behaves_like "a hash model reader", :count do
       let(:expected_value) { rand(1..10) }
       let(:coercible_hash_value) { expected_value.to_s }
@@ -31,6 +34,9 @@ RSpec.describe ProcessorHashModel, type: :integration do
 
   describe "#rate" do
     it_behaves_like "a hash model writer", :rate
+    it_behaves_like "a hash model predicate", :rate do
+      let(:hash_value) { rand }
+    end
     it_behaves_like "a hash model reader", :rate do
       let(:expected_value) { rand }
       let(:coercible_hash_value) { expected_value.to_s }

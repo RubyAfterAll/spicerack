@@ -29,6 +29,7 @@ module Tablesalt
       end
 
       def define_field_methods(name)
+        define_method("#{name}?".to_sym) { data[name].present? }
         define_method("#{name}=".to_sym) { |value| data[name] = value }
         define_method(name) do
           write_attribute(name, data[name] || attribute(name))

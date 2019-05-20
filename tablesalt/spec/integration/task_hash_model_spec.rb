@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe TaskHashModel, type: :integration do
-  subject(:hash_model) { described_class.for(hash) }
+  subject(:hash_model) { described_class.for(data) }
 
-  let(:hash) do
+  let(:data) do
     {}
   end
 
