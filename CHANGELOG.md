@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.9.4
+
+*Release Date*: 5/20/2019
+
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v094)
+
+## v0.9.3
+
+*Release Date*: 5/17/2019
+
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v093)
+
 ## v0.9.2
 
 *Release Date*: 5/16/2019
