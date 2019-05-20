@@ -10,31 +10,34 @@ RSpec.describe Tablesalt::ArrayIndex do
   describe "#initialze" do
     subject { array_index.array }
 
-    context "when the array is flat" do
-      it { is_expected.not_to equal array }
-      it { is_expected.to eq array }
-    end
-
-    context "when the array is nested" do
-      let(:nested_array) { Faker::Hipster.words }
-      let(:array) { [ nested_array ] }
-
-      it "deep_dups the array" do
-        expect(array_index.array).not_to equal array
-        expect(array_index.array).to eq array
-
-        expect(array_index.array[0]).not_to equal array[0]
-        expect(array_index.array[0]).to eq array[0]
-      end
-    end
+    it { is_expected.to eq array }
+    it { is_expected.to equal array }
   end
 
   describe "#index" do
-    subject { array_index.index }
+    subject(:index) { array_index.index }
 
     let(:expected_hash) do
       array.each_with_index.each_with_object({}) do |(element, index), hash|
         hash[element] = index unless hash.key?(element)
+      end
+    end
+
+    it { is_expected.to eq expected_hash }
+
+    it "memoizes the index" do
+      expect(index).to equal array_index.index
+    end
+
+    context "when the source array changes" do
+      let!(:index_before) { array_index.index }
+      let(:new_value) { rand }
+
+      before { array << new_value }
+
+      it "resets the index" do
+        expect(index_before).not_to equal array_index.index
+        expect(array_index[new_value]).to eq array.index(new_value)
       end
     end
   end
@@ -68,10 +71,29 @@ RSpec.describe Tablesalt::ArrayIndex do
   describe "#freeze" do
     before { array_index.freeze }
 
+    it "deep_dups the array" do
+      expect(array_index.array).not_to equal array
+      expect(array_index.array).to eq array
+    end
+
     it "freeze its attributes as well as itself" do
       expect(array_index.array).to be_frozen
       expect(array_index.index).to be_frozen
       expect(array_index).to be_frozen
+      expect(array_index.index).to eq described_class[array].index
+    end
+
+    context "when the source array changes" do
+      subject { array_index.array }
+
+      let(:new_value) { rand }
+
+      before { array << new_value }
+
+      it "doesn't update the index" do
+        expect(array_index[new_value]).to be_nil
+        expect(array_index.index).not_to eq described_class[array].index
+      end
     end
   end
 end
