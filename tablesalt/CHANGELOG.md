@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.9.6 [Upcoming]
+
+*Release Date*: ?
+
+- Allow `ArrayIndex` to update itself when its source array is modified
+
 ## v0.9.5
 
 *Release Date*: 5/20/2019
