@@ -10,5 +10,6 @@ require "technologic"
 require "tablesalt"
 
 require "spicerack/array_index"
+require "spicerack/hash_model"
 
 module Spicerack; end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ExampleHashModelBase
-  include Tablesalt::HashModel
+  include Spicerack::HashModel
 
   class << self
     def for(data)

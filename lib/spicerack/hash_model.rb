@@ -2,7 +2,7 @@
 
 require "active_model"
 
-module Tablesalt
+module Spicerack
   module HashModel
     extend ActiveSupport::Concern
 
