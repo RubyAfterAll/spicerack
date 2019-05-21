@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe RedisHash::Schema, type: :module do
-  include_context "with an example redis hash", described_class
+  include_context "with an example redis hash"
 
   describe ".allow_keys" do
     shared_examples_for "the keys are allowed" do

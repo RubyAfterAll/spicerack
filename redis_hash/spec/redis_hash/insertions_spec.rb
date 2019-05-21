@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe RedisHash::Insertions, type: :module do
-  include_context "with an example redis hash", [ RedisHash::Schema, described_class ]
+  include_context "with an example redis hash", described_class
 
   it { is_expected.to delegate_method(:hmset).to(:redis) }
   it { is_expected.to delegate_method(:hset).to(:redis) }
