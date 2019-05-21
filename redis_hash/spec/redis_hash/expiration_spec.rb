@@ -8,6 +8,30 @@ RSpec.describe RedisHash::Expiration, type: :module do
     described_class,
   ]
 
+  describe "#expire" do
+    subject(:expire) { example_redis_hash.expire(seconds) }
+
+    let(:seconds) { rand(10..100) }
+
+    context "with existing data" do
+      include_context "with data in redis"
+
+      it { is_expected.to eq true }
+
+      it "sets expiration" do
+        expect { expire }.to change { redis.ttl(redis_key) }.from(-1).to(seconds)
+      end
+    end
+
+    context "without existing data" do
+      it { is_expected.to eq false }
+
+      it "doesn't set expiration" do
+        expect { expire }.not_to change { redis.ttl(redis_key) }
+      end
+    end
+  end
+
   describe "#ttl" do
     subject { example_redis_hash.ttl }
 
@@ -32,26 +56,39 @@ RSpec.describe RedisHash::Expiration, type: :module do
     end
   end
 
-  describe "#expire" do
-    subject(:expire) { example_redis_hash.expire(seconds) }
+  describe "#persist" do
+    subject(:persist) { example_redis_hash.persist }
 
     let(:seconds) { rand(10..100) }
 
     context "with existing data" do
       include_context "with data in redis"
 
-      it { is_expected.to eq true }
+      context "without expiration" do
+        it { is_expected.to eq false }
+      end
 
-      it "sets expiration" do
-        expect { expire }.to change { redis.ttl(redis_key) }.from(-1).to(seconds)
+      context "with expiration" do
+        before { redis.expire(redis_key, seconds) }
+
+        it "unsets expiration" do
+          expect { persist }.to change { example_redis_hash.ttl }.from(seconds).to(-1)
+        end
+
+        it { is_expected.to eq true }
       end
     end
 
     context "without existing data" do
       it { is_expected.to eq false }
 
-      it "doesn't set expiration" do
-        expect { expire }.not_to change { redis.ttl(redis_key) }
+      context "with redis_ttl" do
+        let(:redis_ttl) { seconds }
+
+        it "prevents ttl if called before first insertion" do
+          persist
+          expect { example_redis_hash[:key] = :value }.to change { example_redis_hash.ttl }.from(-2).to(-1)
+        end
       end
     end
   end

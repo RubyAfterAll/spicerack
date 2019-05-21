@@ -9,6 +9,10 @@ RSpec.describe RedisHash::Adapter, type: :module do
   it { is_expected.to delegate_method(:default_redis_key).to(:class) }
   it { is_expected.to delegate_method(:default_redis_ttl).to(:class) }
 
+  it { is_expected.to delegate_method(:pipelined).to(:redis) }
+  it { is_expected.to delegate_method(:multi).to(:redis) }
+  it { is_expected.to delegate_method(:exec).to(:redis) }
+
   describe ".default_redis" do
     subject { example_class.default_redis }
 
