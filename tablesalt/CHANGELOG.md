@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.9.6 [Upcoming]
+
+*Release Date*: ?
+
+- Move `ArrayIndex` to spicerack gem
+
 ## v0.9.5
 
 *Release Date*: 5/20/2019
