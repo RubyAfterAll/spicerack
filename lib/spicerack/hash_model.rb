@@ -2,7 +2,7 @@
 
 require "active_model"
 
-module Tablesalt
+module Spicerack
   module HashModel
     extend ActiveSupport::Concern
 
@@ -11,7 +11,7 @@ module Tablesalt
 
       class_attribute :_fields, instance_writer: false, default: []
 
-      attr_accessor :hash
+      attr_accessor :data
     end
 
     class_methods do
@@ -29,9 +29,10 @@ module Tablesalt
       end
 
       def define_field_methods(name)
-        define_method("#{name}=".to_sym) { |value| hash[name] = value }
+        define_method("#{name}?".to_sym) { data[name].present? }
+        define_method("#{name}=".to_sym) { |value| data[name] = value }
         define_method(name) do
-          write_attribute(name, hash[name] || attribute(name))
+          write_attribute(name, data[name] || attribute(name))
           attribute(name)
         end
       end

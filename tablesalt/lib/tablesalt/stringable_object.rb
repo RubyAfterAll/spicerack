@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-# Formats the Instructor as a string.
-module Instructor
-  module String
+module Tablesalt
+  module StringableObject
     extend ActiveSupport::Concern
 
     def to_s
@@ -16,11 +15,11 @@ module Instructor
     private
 
     def stringable_attributes
-      self.class._attributes
+      []
     end
 
     def string_for(method)
-      "#<#{self.class.name} #{attribute_string(method)}>"
+      "#<#{self.class.name}#{" #{attribute_string(method)}" unless stringable_attributes.empty?}>"
     end
 
     def attribute_string(method)

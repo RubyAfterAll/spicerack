@@ -2,15 +2,12 @@
 
 require "bundler/setup"
 require "simplecov"
-require "faker"
 require "pry"
 
 require "shoulda-matchers"
-require "rspice"
 
 require_relative "../lib/spicerack/version"
-
-require_relative "../instructor/lib/instructor/spec_helper"
+require_relative "../lib/spicerack/spec_helper"
 
 SimpleCov.start do
   add_filter "/spec/"
