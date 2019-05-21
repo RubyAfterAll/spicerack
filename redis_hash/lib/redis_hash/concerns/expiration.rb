@@ -33,5 +33,10 @@ module RedisHash
     def ttl
       redis.ttl(redis_key)
     end
+
+    def persist
+      @redis_ttl = nil
+      redis.persist(redis_key)
+    end
   end
 end

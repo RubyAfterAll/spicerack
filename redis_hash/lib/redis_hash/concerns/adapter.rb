@@ -10,6 +10,8 @@ module RedisHash
 
       delegate :default_redis, :default_redis_key, :default_redis_ttl, to: :class
 
+      delegate :pipelined, :multi, :exec, to: :redis
+
       private
 
       def initialize_redis(redis, redis_key, redis_ttl)
