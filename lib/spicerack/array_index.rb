@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Tablesalt
+module Spicerack
   class ArrayIndex
     include ShortCircuIt
 

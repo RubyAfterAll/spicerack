@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Tablesalt::ArrayIndex do
+RSpec.describe Spicerack::ArrayIndex do
   subject(:array_index) { described_class.new(array) }
 
   let(:array) { Faker::Hipster.words }

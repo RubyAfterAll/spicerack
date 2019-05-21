@@ -29,7 +29,6 @@ PATH
     tablesalt (0.9.5)
       activemodel (~> 5.2.1)
       activesupport (~> 5.2.1)
-      short_circu_it (~> 0.9.5)
     technologic (0.9.5)
       activesupport (~> 5.2.1)
       railties (~> 5.2.1)

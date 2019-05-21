@@ -5,7 +5,6 @@ require "short_circu_it"
 
 require "tablesalt/version"
 
-require "tablesalt/array_index"
 require "tablesalt/hash_model"
 
 module Tablesalt; end
