@@ -36,4 +36,14 @@ RSpec.describe Instructor::Attributes, type: :module do
       let(:root_class) { example_instructor_class }
     end
   end
+
+  describe "#stringable_attributes" do
+    subject { example_instructor.__send__(:stringable_attributes) }
+
+    let(:attributes) { Faker::Lorem.words(rand(1..3)).map(&:to_sym) }
+
+    before { allow(example_instructor_class).to receive(:_attributes).and_return(attributes) }
+
+    it { is_expected.to eq attributes }
+  end
 end
