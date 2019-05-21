@@ -1,14 +1,19 @@
 # Changelog
 
-## v0.9.6 [Upcoming]
+## v0.9.6
 
-*Release Date*: ?
+*Release Date*: 5/21/2019
 
 ### Spicerack
 
+- Added `spec_helper` (which includes other spice's spec_helpers too)
 - Move `ArrayIndex` to spicerack gem
 - Allow `ArrayIndex` to update itself when its source array is modified
+- Move `HashModel` to spicerack gem
+- Fix `HashModel` naming collision with the `#hash` method (oopsie!)
 
+### Instructor - [see changes](instructor/CHANGELOG.md#v096)
+### RedisHash - [see changes](redis_hash/CHANGELOG.md#v096)
 ### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v096)
 
 ## v0.9.5

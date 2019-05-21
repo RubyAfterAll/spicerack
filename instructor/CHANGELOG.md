@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.9.6
+
+*Release Date*: 5/21/2019
+
+- Move `StringableObject` to tablesalt gem
+- Refactor to replace string module with `StringableObject`
+
 ## v0.9.5
 
 *Release Date*: 5/20/2019

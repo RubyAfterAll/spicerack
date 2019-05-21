@@ -1,10 +1,12 @@
 # Changelog
 
-## v0.9.6 [Upcoming]
+## v0.9.6
 
-*Release Date*: ?
+*Release Date*: 5/21/2019
 
 - Move `ArrayIndex` to spicerack gem
+- Move `HashModel` to spicerack gem
+- Move `StringableObject` to tablesalt gem
 
 ## v0.9.5
 
