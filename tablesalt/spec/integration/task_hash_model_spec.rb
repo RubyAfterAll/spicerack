@@ -8,6 +8,8 @@ RSpec.describe TaskHashModel, type: :integration do
   end
 
   it { is_expected.to inherit_from Tablesalt::HashModel }
+  it { is_expected.to define_field :started_at, :datetime }
+  it { is_expected.to define_field :finished_at, :datetime }
 
   describe "._fields" do
     subject { hash_model._fields }

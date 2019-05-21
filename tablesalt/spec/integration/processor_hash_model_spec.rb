@@ -8,6 +8,8 @@ RSpec.describe ProcessorHashModel, type: :integration do
   end
 
   it { is_expected.to inherit_from TaskHashModel }
+  it { is_expected.to define_field :count, :integer, default: 42 }
+  it { is_expected.to define_field :rate, :float, default: 3.14 }
 
   describe "._fields" do
     subject { hash_model._fields }

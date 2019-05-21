@@ -11,6 +11,7 @@ require "rspice"
 require_relative "../lib/spicerack/version"
 
 require_relative "../instructor/lib/instructor/spec_helper"
+require_relative "../tablesalt/lib/tablesalt/spec_helper"
 
 SimpleCov.start do
   add_filter "/spec/"
