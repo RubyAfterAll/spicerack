@@ -11,6 +11,7 @@ RSpec.shared_context "with an example redis hash" do |extra_redis_hash_modules =
       RedisHash::Default,
       RedisHash::Callbacks,
       RedisHash::Core,
+      RedisHash::Schema,
       RedisHash::Identity ]
   end
   let(:redis_hash_modules) { root_redis_hash_modules + Array.wrap(extra_redis_hash_modules) }

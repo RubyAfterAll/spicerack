@@ -11,6 +11,7 @@ module RedisHash
     end
 
     def merge!(other_hash)
+      assert_keys_allowed(other_hash.keys)
       run_callbacks(:insertion) { hmset(*other_hash.to_a.unshift(redis_key)) }
 
       self
@@ -18,11 +19,13 @@ module RedisHash
     alias_method :update, :merge!
 
     def store(field, value)
+      assert_keys_allowed(field)
       run_callbacks(:insertion) { hset(redis_key, field, value) }
     end
     alias_method :[]=, :store
 
     def setnx!(field, value)
+      assert_keys_allowed(field)
       run_callbacks(:insertion) do
         success = hsetnx(redis_key, field, value)
 

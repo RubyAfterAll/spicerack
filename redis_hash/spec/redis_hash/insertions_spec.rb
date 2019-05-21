@@ -10,6 +10,30 @@ RSpec.describe RedisHash::Insertions, type: :module do
   it { is_expected.to alias_method(:update, :merge!) }
   it { is_expected.to alias_method(:[]=, :store) }
 
+  shared_examples_for "schema enforced insertion" do
+    shared_examples_for "the value is assigned" do
+      it "changes the value" do
+        expect { subject }.to change { redis.hgetall(redis_key) }.from(expected_hash).to(expected_result)
+      end
+    end
+
+    shared_examples_for "allowed keys are enforced" do
+      context "when impermissible" do
+        before { example_redis_hash_class.__send__(:allow_keys, SecureRandom.hex) }
+
+        it "raises" do
+          expect { subject }.to raise_error ArgumentError
+        end
+      end
+
+      context "with allowed keys" do
+        before { example_redis_hash_class.__send__(:allow_keys, expected_result.keys) }
+
+        it_behaves_like "the value is assigned"
+      end
+    end
+  end
+
   describe "#merge!" do
     let(:field2) { SecureRandom.hex }
     let(:value2) { SecureRandom.hex }
@@ -26,27 +50,23 @@ RSpec.describe RedisHash::Insertions, type: :module do
         let(:example_class) { example.class }
       end
 
-      shared_examples_for "the values are assigned" do
+      context "with existing data" do
+        include_context "with data in redis"
+
         let(:expected_result) { expected_hash.merge(field2 => value2, field3 => value3) }
 
         it { is_expected.to eq example_redis_hash }
 
-        it "changes the value" do
-          expect { merge! }.to change { redis.hgetall(redis_key) }.from(expected_hash).to(expected_result)
-        end
-      end
-
-      context "with existing data" do
-        include_context "with data in redis"
-
-        it_behaves_like "the values are assigned"
+        it_behaves_like "schema enforced insertion"
       end
 
       context "without existing data" do
         let(:expected_hash) { {} }
         let(:expected_result) { Hash[field2, value2, field3, value3] }
 
-        it_behaves_like "the values are assigned"
+        it { is_expected.to eq example_redis_hash }
+
+        it_behaves_like "schema enforced insertion"
       end
     end
 
@@ -71,12 +91,6 @@ RSpec.describe RedisHash::Insertions, type: :module do
     let(:expected_hash) { {} }
     let(:expected_result) { expected_hash.merge(field => value) }
 
-    shared_examples_for "the value is assigned" do
-      it "changes the value" do
-        expect { store }.to change { redis.hgetall(redis_key) }.from(expected_hash).to(expected_result)
-      end
-    end
-
     it_behaves_like "a class with callback" do
       include_context "with callbacks", :insertion
 
@@ -92,16 +106,16 @@ RSpec.describe RedisHash::Insertions, type: :module do
       context "with matching field" do
         let(:field) { field0 }
 
-        it_behaves_like "the value is assigned"
+        it_behaves_like "schema enforced insertion"
       end
 
       context "without matching field" do
-        it_behaves_like "the value is assigned"
+        it_behaves_like "schema enforced insertion"
       end
     end
 
     context "without existing data" do
-      it_behaves_like "the value is assigned"
+      it_behaves_like "schema enforced insertion"
     end
   end
 
@@ -122,14 +136,6 @@ RSpec.describe RedisHash::Insertions, type: :module do
       let(:example_class) { example.class }
     end
 
-    shared_examples_for "the value is assigned" do
-      it { is_expected.to eq true }
-
-      it "changes the value" do
-        expect { setnx! }.to change { redis.hgetall(redis_key) }.from(expected_hash).to(expected_result)
-      end
-    end
-
     context "with existing data" do
       include_context "with data in redis"
 
@@ -142,12 +148,16 @@ RSpec.describe RedisHash::Insertions, type: :module do
       end
 
       context "without matching field" do
-        it_behaves_like "the value is assigned"
+        it { is_expected.to eq true }
+
+        it_behaves_like "schema enforced insertion"
       end
     end
 
     context "without existing data" do
-      it_behaves_like "the value is assigned"
+      it { is_expected.to eq true }
+
+      it_behaves_like "schema enforced insertion"
     end
   end
 
@@ -168,14 +178,6 @@ RSpec.describe RedisHash::Insertions, type: :module do
       let(:example_class) { example.class }
     end
 
-    shared_examples_for "the value is assigned" do
-      it { is_expected.to eq true }
-
-      it "changes the value" do
-        expect { setnx }.to change { redis.hgetall(redis_key) }.from(expected_hash).to(expected_result)
-      end
-    end
-
     context "with existing data" do
       include_context "with data in redis"
 
@@ -190,12 +192,16 @@ RSpec.describe RedisHash::Insertions, type: :module do
       end
 
       context "without matching field" do
-        it_behaves_like "the value is assigned"
+        it { is_expected.to eq true }
+
+        it_behaves_like "schema enforced insertion"
       end
     end
 
     context "without existing data" do
-      it_behaves_like "the value is assigned"
+      it { is_expected.to eq true }
+
+      it_behaves_like "schema enforced insertion"
     end
   end
 end
