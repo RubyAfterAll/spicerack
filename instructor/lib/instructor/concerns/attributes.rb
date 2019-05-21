@@ -27,5 +27,11 @@ module Instructor
       end
       alias_method :attribute, :define_attribute
     end
+
+    private
+
+    def stringable_attributes
+      self.class._attributes
+    end
   end
 end

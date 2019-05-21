@@ -6,7 +6,6 @@ require_relative "concerns/attributes"
 require_relative "concerns/arguments"
 require_relative "concerns/options"
 require_relative "concerns/core"
-require_relative "concerns/string"
 
 module Instructor
   class Base
@@ -14,12 +13,12 @@ module Instructor
     include Technologic
     include ActiveModel::Model
     include ActiveModel::Validations::Callbacks
+    include Tablesalt::StringableObject
     include Instructor::Callbacks
     include Instructor::Defaults
     include Instructor::Attributes
     include Instructor::Arguments
     include Instructor::Options
     include Instructor::Core
-    include Instructor::String
   end
 end
