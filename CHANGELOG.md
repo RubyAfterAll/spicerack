@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.9.6 [Upcoming]
+
+*Release Date*: ?
+
+- Move `ArrayIndex` to spicerack gem
+- Allow `ArrayIndex` to update itself when its source array is modified
+
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v096)
+
 ## v0.9.5
 
 *Release Date*: 5/20/2019

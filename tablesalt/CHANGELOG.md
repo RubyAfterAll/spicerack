@@ -4,7 +4,7 @@
 
 *Release Date*: ?
 
-- Allow `ArrayIndex` to update itself when its source array is modified
+- Move `ArrayIndex` to spicerack gem
 
 ## v0.9.5
 
