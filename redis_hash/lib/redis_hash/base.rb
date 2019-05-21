@@ -4,6 +4,7 @@ require_relative "concerns/adapter"
 require_relative "concerns/default"
 require_relative "concerns/callbacks"
 require_relative "concerns/core"
+require_relative "concerns/schema"
 require_relative "concerns/identity"
 require_relative "concerns/accessors"
 require_relative "concerns/comparisons"
@@ -22,6 +23,7 @@ module RedisHash
     include RedisHash::Default
     include RedisHash::Callbacks
     include RedisHash::Core
+    include RedisHash::Schema
     include RedisHash::Identity
     include RedisHash::Accessors
     include RedisHash::Comparisons

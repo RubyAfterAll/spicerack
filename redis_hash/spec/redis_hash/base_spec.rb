@@ -7,6 +7,7 @@ RSpec.describe RedisHash::Base, type: :redis_hash do
   it { is_expected.to include_module RedisHash::Default }
   it { is_expected.to include_module RedisHash::Callbacks }
   it { is_expected.to include_module RedisHash::Core }
+  it { is_expected.to include_module RedisHash::Schema }
   it { is_expected.to include_module RedisHash::Identity }
   it { is_expected.to include_module RedisHash::Accessors }
   it { is_expected.to include_module RedisHash::Comparisons }
