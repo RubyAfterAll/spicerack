@@ -1,6 +1,14 @@
 # Changelog
 
-## v0.9.6
+## v0.10.0
+
+*Release Date*: 5/22/2019
+
+- Added `piplined`, `multi/exec`, and `persist` methods
+- Added `schema` for enforcement of a whitelist on redis hash keys
+- Added a spec_helper for testing schema key allowance
+
+## v0.9.6 [Yanked]
 
 *Release Date*: 5/21/2019
 
