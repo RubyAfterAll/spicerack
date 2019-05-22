@@ -2,7 +2,7 @@
 
 # RSpec matcher that tests usage of `.field`
 #
-#     class Example < Tablesalt::HashModel
+#     class Example < Spicerack::HashModel
 #       field :foo, :datetime
 #       field :bar, :integer
 #     end
@@ -17,13 +17,13 @@
 #     end
 
 RSpec::Matchers.define :define_field do |field, type = nil, default: nil|
-  match do |instance|
-    expect(instance.class.attribute_types[field.to_s].type).to eq type unless type.nil?
-    expect(instance.class._default_attributes[field.to_s].value).to eq default unless default.nil?
-    expect(instance.class._fields).to include field
+  match do
+    expect(test_subject.attribute_types[field.to_s].type).to eq type unless type.nil?
+    expect(test_subject._default_attributes[field.to_s].value).to eq default unless default.nil?
+    expect(test_subject._fields).to include field
   end
   description { "define field #{field}" }
-  failure_message { |instance| "expected #{instance.class} to define field #{field} #{with_details(type, default)}" }
+  failure_message { "expected #{test_subject} to define field #{field} #{with_details(type, default)}" }
 
   def with_details(type, default)
     [ with_type(type), with_default(default) ].compact.join(" ")
@@ -35,5 +35,9 @@ RSpec::Matchers.define :define_field do |field, type = nil, default: nil|
 
   def with_default(default)
     "with default #{default}" unless default.nil?
+  end
+
+  def test_subject
+    subject.is_a?(Class) ? subject : subject.class
   end
 end
