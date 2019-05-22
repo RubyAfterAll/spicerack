@@ -1,6 +1,25 @@
 # Changelog
 
-## v0.9.6
+## v0.10.0
+
+*Release Date*: 5/21/2019
+
+### Spicerack
+
+- Added `spec_helper` (which includes other spice's spec_helpers too)
+- Move `ArrayIndex` to spicerack gem
+- Allow `ArrayIndex` to update itself when its source array is modified
+- Move `HashModel` to spicerack gem
+- Fix `HashModel` naming collision with the `#hash` method (oopsie!)
+- Added command `rake spicerack:yank_release[x.x.x]` for pruning
+
+### Instructor - [see changes](instructor/CHANGELOG.md#v0100)
+### RedisHash - [see changes](redis_hash/CHANGELOG.md#v0100)
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0100)
+
+## v0.9.6 [Yanked]
+
+This was yanked as the API changed enough to justify a minor release instead.
 
 *Release Date*: 5/21/2019
 
@@ -12,9 +31,9 @@
 - Move `HashModel` to spicerack gem
 - Fix `HashModel` naming collision with the `#hash` method (oopsie!)
 
-### Instructor - [see changes](instructor/CHANGELOG.md#v096)
-### RedisHash - [see changes](redis_hash/CHANGELOG.md#v096)
-### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v096)
+### Instructor - [see changes](instructor/CHANGELOG.md#v096) [Yanked]
+### RedisHash - [see changes](redis_hash/CHANGELOG.md#v096) [Yanked]
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v096) [Yanked]
 
 ## v0.9.5
 
@@ -22,13 +41,13 @@
 
 ### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v095)
 
-## v0.9.4
+## v0.9.4 [Yanked]
 
 *Release Date*: 5/20/2019
 
 ### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v094) [Yanked]
 
-## v0.9.3
+## v0.9.3 [Yanked]
 
 *Release Date*: 5/17/2019
 
