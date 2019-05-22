@@ -34,6 +34,11 @@ ALL_GEMS.each do |gem|
 end
 
 namespace :spicerack do
+  task :yank_release, %i[version] do |_, arguments|
+    version = arguments[:version] or raise ArgumentError, "version is required"
+    SPICERACK_GEMS.each { |gem| sh "gem yank #{gem} -v #{version}" }
+  end
+
   task :update_all_versions do
     ALL_GEMS.each { |gem| Rake::Task["#{gem}:update_version"].invoke }
     system "bundle"
