@@ -11,5 +11,6 @@ require "tablesalt"
 
 require "spicerack/array_index"
 require "spicerack/hash_model"
+require "spicerack/redis_model"
 
 module Spicerack; end
