@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.10.1
+
+*Release Date*: 5/23/2019
+
+### Spicerack
+
+- Added `RedisModel` which is a fusion of `RedisHash` and `HashModel`
+
 ## v0.10.0
 
 *Release Date*: 5/21/2019
