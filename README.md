@@ -38,7 +38,6 @@ Or install it yourself as:
 * [Ascriptor](ascriptor/README.md) facilitates attribute definition on classes to easily create service object.
 * [Instructor](instructor/README.md) allows you to clearly require and validate input with a base class for service object.
 * [RedisHash](redis_hash/README.md) provides a class that matches the Hash api by wrapping Redis.
-* [RootObject](root_object/README.md) is a generic baseplate object full of convenient utility methods.
 * [RSpice](rspice/README.md) is an `RSpec` utility gem of custom matchers, shared contexts and examples.
 * [ShortCircuIt](short_circu_it/README.md) is an intelligent and feature rich memoization gem.
 * [Spicerack::Styleguide](spicerack-styleguide/README.md) is [Freshly](https://www.freshly.com/)'s Rubocop Styleguide for Rails and RSpec.

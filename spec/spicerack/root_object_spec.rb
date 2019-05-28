@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RootObject::Base, type: :root_object do
+RSpec.describe Spicerack::RootObject do
   subject { described_class }
 
   it { is_expected.to include_module ActiveSupport::Callbacks }
