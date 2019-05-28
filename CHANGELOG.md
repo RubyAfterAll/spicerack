@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.11.0
+
+*Release Date*: 5/28/2019
+
+### Ascriptor - [see changes](ascriptor/CHANGELOG.md#v0110)
+
 ## v0.10.2
 
 *Release Date*: 5/28/2019
