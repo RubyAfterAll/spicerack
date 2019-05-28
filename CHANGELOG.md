@@ -1,10 +1,20 @@
 # Changelog
 
+## v0.13.0
+
+*Release Date*: 5/28/2019
+
+### Spicerack
+
+- Consolidated `RootObject` and abandoned gem
+
 ## v0.12.0
 
 *Release Date*: 5/28/2019
 
-### RootObject - [see changes](root_object/CHANGELOG.md#v0120)
+### RootObject
+
+- Claimed gem name
 
 ## v0.11.0
 

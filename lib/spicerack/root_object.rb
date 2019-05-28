@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module RootObject
-  class Base
+module Spicerack
+  class RootObject
     include ActiveSupport::Callbacks
     include ShortCircuIt
     include Technologic

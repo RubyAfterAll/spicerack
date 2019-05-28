@@ -9,8 +9,6 @@ require "short_circu_it"
 
 require "technologic"
 
-require "root_object"
-
 require "ascriptor"
 require "instructor"
 
@@ -19,5 +17,6 @@ require "redis_hash"
 require "spicerack/array_index"
 require "spicerack/hash_model"
 require "spicerack/redis_model"
+require "spicerack/root_object"
 
 module Spicerack; end
