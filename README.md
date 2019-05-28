@@ -38,6 +38,7 @@ Or install it yourself as:
 * [Ascriptor](ascriptor/README.md) facilitates attribute definition on classes to easily create service object.
 * [Instructor](instructor/README.md) allows you to clearly require and validate input with a base class for service object.
 * [RedisHash](redis_hash/README.md) provides a class that matches the Hash api by wrapping Redis.
+* [RootObject](root_object/README.md) is a generic baseplate object full of convenient utility methods.
 * [RSpice](rspice/README.md) is an `RSpec` utility gem of custom matchers, shared contexts and examples.
 * [ShortCircuIt](short_circu_it/README.md) is an intelligent and feature rich memoization gem.
 * [Spicerack::Styleguide](spicerack-styleguide/README.md) is [Freshly](https://www.freshly.com/)'s Rubocop Styleguide for Rails and RSpec.
@@ -83,7 +84,6 @@ Here's a checklist of some other tasks (see another gem as reference):
 - Add to the [Included Gems](#included-gems) section
 - Edit `lib/GEM/version.rb` to add the comment line
 - Edit `README.md` to add badges, update development & contributor sections, generate ToC
-- Edit `./Rakefile` to add GEM to the `SPICERACK_GEMS` constant
 - Copy over `GEM/Rakefile` from any other gem
 - Remove the failing spec in `spec/GEM_spec.rb` and replace it with the rspice shared example
 - Edit `spec/spec_helper.rb` to use the shared spec helper
@@ -91,6 +91,7 @@ Here's a checklist of some other tasks (see another gem as reference):
 
 Then in the base directory:
 
+- Edit `Rakefile` to add GEM to the `SPICERACK_GEMS` constant
 - Add a require for your new gem into `lib/spicerack.rb`
 - Add the new gem into `spicerack.gemspec`
 - Increment the version in `SPICERACK_VERSION`

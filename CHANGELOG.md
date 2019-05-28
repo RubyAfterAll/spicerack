@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.12.0
+
+*Release Date*: 5/28/2019
+
+### RootObject - [see changes](root_object/CHANGELOG.md#v0120)
+
 ## v0.11.0
 
 *Release Date*: 5/28/2019
