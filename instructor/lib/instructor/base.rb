@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative "concerns/callbacks"
-require_relative "concerns/defaults"
 require_relative "concerns/attributes"
 require_relative "concerns/arguments"
 require_relative "concerns/options"
@@ -14,8 +13,8 @@ module Instructor
     include ActiveModel::Model
     include ActiveModel::Validations::Callbacks
     include Tablesalt::StringableObject
+    include Tablesalt::Dsl::Defaults
     include Instructor::Callbacks
-    include Instructor::Defaults
     include Instructor::Attributes
     include Instructor::Arguments
     include Instructor::Options

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Instructor::Defaults::Value, type: :subclass do
+RSpec.describe Tablesalt::Dsl::Defaults::Value, type: :subclass do
   describe "#initialize" do
     subject { instance.instance_variable_get(:@value) }
 
