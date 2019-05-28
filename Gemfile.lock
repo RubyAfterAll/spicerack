@@ -4,7 +4,6 @@ PATH
     around_the_world (0.12.0)
       activesupport (~> 5.2.1)
     ascriptor (0.12.0)
-      activemodel (~> 5.2.1)
       activesupport (~> 5.2.1)
       root_object (= 0.12.0)
     instructor (0.12.0)
