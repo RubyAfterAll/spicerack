@@ -7,12 +7,13 @@
 ### Spicerack
 
 - Consolidated `RootObject` and abandoned gem
+- Consolidated `Ascriptor` and abandoned gem
 
 ## v0.12.0
 
 *Release Date*: 5/28/2019
 
-### RootObject
+### RootObject [Consolidated]
 
 - Claimed gem name
 
@@ -20,7 +21,9 @@
 
 *Release Date*: 5/28/2019
 
-### Ascriptor - [see changes](ascriptor/CHANGELOG.md#v0110)
+### Ascriptor [Consolidated]
+
+- Claimed gem name
 
 ## v0.10.2
 

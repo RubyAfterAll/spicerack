@@ -3,9 +3,6 @@ PATH
   specs:
     around_the_world (0.12.0)
       activesupport (~> 5.2.1)
-    ascriptor (0.12.0)
-      activesupport (~> 5.2.1)
-      root_object (= 0.12.0)
     instructor (0.12.0)
       activemodel (~> 5.2.1)
       activesupport (~> 5.2.1)
@@ -21,7 +18,6 @@ PATH
       around_the_world (= 0.12.0)
     spicerack (0.12.0)
       around_the_world (= 0.12.0)
-      ascriptor (= 0.12.0)
       instructor (= 0.12.0)
       redis_hash (= 0.12.0)
       short_circu_it (= 0.12.0)

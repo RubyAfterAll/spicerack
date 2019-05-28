@@ -7,7 +7,6 @@ require_relative "shared/rakefile"
 
 SPICERACK_GEMS = %w[
   around_the_world
-  ascriptor
   instructor
   redis_hash
   rspice
