@@ -16,6 +16,7 @@ Gem::Specification.new do |spec|
 
   # Spicerack Gems
   spec.add_dependency "around_the_world", version
+  spec.add_dependency "ascriptor", version
   spec.add_dependency "instructor", version
   spec.add_dependency "redis_hash", version
   spec.add_dependency "short_circu_it", version
