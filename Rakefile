@@ -10,6 +10,7 @@ SPICERACK_GEMS = %w[
   ascriptor
   instructor
   redis_hash
+  root_object
   rspice
   short_circu_it
   spicerack-styleguide
