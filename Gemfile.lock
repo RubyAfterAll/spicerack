@@ -6,6 +6,7 @@ PATH
     instructor (0.10.1)
       activemodel (~> 5.2.1)
       activesupport (~> 5.2.1)
+      tablesalt (= 0.10.1)
     redis_hash (0.10.1)
       activesupport (~> 5.2.1)
       redis (~> 4.0)
