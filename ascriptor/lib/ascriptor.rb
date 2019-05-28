@@ -2,9 +2,7 @@
 
 require "active_support"
 
-require "short_circu_it"
-require "tablesalt"
-require "technologic"
+require "root_object"
 
 require "ascriptor/version"
 

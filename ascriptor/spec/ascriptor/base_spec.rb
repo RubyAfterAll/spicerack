@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe Ascriptor::Base, type: :instructor do
+RSpec.describe Ascriptor::Base, type: :ascriptor do
   subject { described_class }
 
-  it { is_expected.to include_module ShortCircuIt }
-  it { is_expected.to include_module Technologic }
-  it { is_expected.to include_module Tablesalt::StringableObject }
+  it { is_expected.to inherit_from RootObject::Base }
 end
