@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.10.2
+
+*Release Date*: 5/28/2019
+
+### Instructor - [see changes](instructor/CHANGELOG.md#v0102)
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0102)
+
 ## v0.10.1
 
 *Release Date*: 5/23/2019

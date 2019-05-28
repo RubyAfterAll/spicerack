@@ -19,4 +19,6 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "activesupport", "~> 5.2.1"
   spec.add_runtime_dependency "activemodel", "~> 5.2.1"
+
+  spec.add_runtime_dependency "tablesalt", Instructor::VERSION
 end

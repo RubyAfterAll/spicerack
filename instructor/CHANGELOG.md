@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.10.2
+
+*Release Date*: 5/28/2019
+
+- Move `Instructor::Defaults` to `Tablesalt::Dsl::Defaults`
+- Refactor to replace string module with `Tablesalt::Dsl::Defaults`
+
 ## v0.10.1
 
 *Release Date*: 5/23/2019

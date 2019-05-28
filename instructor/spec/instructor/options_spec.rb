@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Instructor::Options, type: :module do
-  include_context "with an example instructor", [ Instructor::Defaults, described_class ]
+  include_context "with an example instructor", [ Tablesalt::Dsl::Defaults, described_class ]
 
   describe ".option" do
     it_behaves_like "an instructor with a class collection attribute", :option, :_options
@@ -18,8 +18,8 @@ RSpec.describe Instructor::Options, type: :module do
 
     let(:example_class) do
       Class.new do
+        include Tablesalt::Dsl::Defaults
         include Instructor::Callbacks
-        include Instructor::Defaults
         include Instructor::Attributes
         include Instructor::Core
         include Instructor::Options
