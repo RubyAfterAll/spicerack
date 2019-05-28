@@ -3,6 +3,7 @@
 require "spicerack/version"
 
 require "around_the_world"
+require "ascriptor"
 require "instructor"
 require "redis_hash"
 require "short_circu_it"
