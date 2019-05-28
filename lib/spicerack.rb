@@ -2,13 +2,19 @@
 
 require "spicerack/version"
 
+require "tablesalt"
+
 require "around_the_world"
+require "short_circu_it"
+
+require "technologic"
+
+require "root_object"
+
 require "ascriptor"
 require "instructor"
+
 require "redis_hash"
-require "short_circu_it"
-require "technologic"
-require "tablesalt"
 
 require "spicerack/array_index"
 require "spicerack/hash_model"

@@ -1,4 +1,4 @@
 module RedisHash
   # This constant is managed by spicerack
-  VERSION = "0.11.0"
+  VERSION = "0.12.0"
 end
