@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-require_relative "../support/test_classes/bottles_on_the_wall"
-
-RSpec.describe BottlesOnTheWall, type: :instructor do
-  subject(:instructor) { described_class.new(bottles_of: :test_fluid) }
+RSpec.describe ExampleInstructor, type: :instructor do
+  subject(:instructor) { described_class.new(bottles_of: :fluid) }
 
   it { is_expected.to define_argument :bottles_of, allow_nil: false }
   it { is_expected.to define_option :starting_bottles }
@@ -14,6 +12,6 @@ RSpec.describe BottlesOnTheWall, type: :instructor do
   describe "#to_s" do
     subject { instructor.to_s }
 
-    it { is_expected.to eq "#<BottlesOnTheWall bottles_of=test_fluid starting_bottles= number_to_take_down=1 unused=>" }
+    it { is_expected.to eq "#<ExampleInstructor bottles_of=fluid starting_bottles= number_to_take_down=1 unused=>" }
   end
 end

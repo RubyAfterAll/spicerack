@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BottlesOnTheWall < Instructor::Base
+class ExampleInstructor < Spicerack::InstructorBase
   argument :bottles_of, allow_nil: false
 
   option :starting_bottles
