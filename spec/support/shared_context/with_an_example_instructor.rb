@@ -3,12 +3,8 @@
 RSpec.shared_context "with an example instructor" do |extra_instructor_modules = nil|
   subject(:example_instructor) { example_instructor_class.new(**input) }
 
-  let(:root_instructor_modules) { [ Instructor::Core, Instructor::Attributes ] }
-  let(:last_instructor_modules) do
-    # These modules need to go last to override other methods
-    [ Instructor::Core ]
-  end
-  let(:instructor_modules) { root_instructor_modules + Array.wrap(extra_instructor_modules) + last_instructor_modules }
+  let(:root_instructor_modules) { [ Instructor::Core ] }
+  let(:instructor_modules) { root_instructor_modules + Array.wrap(extra_instructor_modules) }
 
   let(:root_instructor_class) { Class.new(Spicerack::AscriptorBase) }
   let(:example_instructor_class) do

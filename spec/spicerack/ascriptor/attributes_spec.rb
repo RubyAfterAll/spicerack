@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Instructor::Attributes, type: :module do
+RSpec.describe Spicerack::Ascriptor::Attributes, type: :module do
   include_context "with an example instructor"
 
   describe ".define_attribute" do
@@ -8,11 +8,8 @@ RSpec.describe Instructor::Attributes, type: :module do
 
     let(:attribute) { Faker::Lorem.word.to_sym }
 
-    before { allow(example_instructor_class).to receive(:define_attribute_methods) }
-
     it "adds to _attributes" do
       expect { define_attribute }.to change { example_instructor_class._attributes }.from([]).to([ attribute ])
-      expect(example_instructor_class).to have_received(:define_attribute_methods).with(attribute)
     end
 
     describe "accessors" do
