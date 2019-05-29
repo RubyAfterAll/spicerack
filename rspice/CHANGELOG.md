@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.13.0
+
+*Release Date*: 5/28/2019
+
+- Removed "versioned spicerack gem" shared example
+
 ## v0.12.0
 
 *Release Date*: 5/28/2019

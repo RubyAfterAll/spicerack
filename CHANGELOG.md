@@ -8,6 +8,9 @@
 
 - Consolidated `RootObject` and abandoned gem
 - Consolidated `Ascriptor` and abandoned gem
+- Consolidated `Instructor` and abandoned gem
+
+### Rspice - [see changes](rspice/CHANGELOG.md#v0130)
 
 ## v0.12.0
 
