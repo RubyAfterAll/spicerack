@@ -2,12 +2,12 @@
 
 # RSpec matcher that tests usage of `.argument`
 #
-#     class Example < Instructor::Base
+#     class Example < Spicerack::InputObject
 #       argument :foo
 #       argument :bar, allow_nil: false
 #     end
 #
-#     RSpec.describe Example, type: :instructor do
+#     RSpec.describe Example, type: :input_object do
 #       subject { described_class.new(**input) }
 #
 #       let(:input) { {} }

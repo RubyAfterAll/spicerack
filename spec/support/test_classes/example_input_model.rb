@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ExampleInstructor < Spicerack::InstructorBase
+class ExampleInputModel < Spicerack::InputModel
   argument :bottles_of, allow_nil: false
 
   option :starting_bottles

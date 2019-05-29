@@ -2,13 +2,13 @@
 
 # RSpec matcher that tests usage of `.option`
 #
-#     class Example < Instructor::Base
+#     class Example < Spicerack::InputObject
 #       option :foo
 #       option :bar, default: :baz
 #       option(:gaz) { :haz }
 #     end
 #
-#     RSpec.describe Example, type: :instructor do
+#     RSpec.describe Example, type: :input_object do
 #       subject { described_class.new(**input) }
 #
 #       let(:input) { {} }
