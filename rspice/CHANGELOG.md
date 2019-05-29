@@ -5,6 +5,7 @@
 *Release Date*: 5/28/2019
 
 - Removed "versioned spicerack gem" shared example
+- Added "with class callback" for testing initialize callbacks
 
 ## v0.12.0
 

@@ -5,6 +5,10 @@ module Instructor
   module Core
     extend ActiveSupport::Concern
 
+    included do
+      define_callbacks :initialize
+    end
+
     attr_reader :input
 
     def initialize(**input)

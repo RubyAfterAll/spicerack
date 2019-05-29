@@ -54,6 +54,7 @@ require 'rspice'
 
 * [with_an_example_descendant_class](lib/rspice/shared_context/with_an_example_descendant_class.rb) creates a named descendant of `described_class`
 * [with_callbacks](lib/rspice/shared_context/with_callbacks.rb) defines callbacks for [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks)
+* [with_class_callbacks](lib/rspice/shared_context/with_class_callbacks.rb) defines callbacks for [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks)
 * [with_example_class_having_callback](lib/rspice/shared_context/with_example_class_having_callback.rb) creates a class with 
 
 ## Shared Examples

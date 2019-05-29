@@ -17,9 +17,8 @@ RSpec.describe Instructor::Options, type: :module do
     subject(:instance) { example_class.new(**key_values) }
 
     let(:example_class) do
-      Class.new do
+      Class.new(Spicerack::AscriptorBase) do
         include Tablesalt::Dsl::Defaults
-        include Instructor::Callbacks
         include Instructor::Attributes
         include Instructor::Core
         include Instructor::Options
