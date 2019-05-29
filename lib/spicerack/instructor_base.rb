@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require_relative "concerns/callbacks"
-require_relative "concerns/attributes"
-require_relative "concerns/arguments"
-require_relative "concerns/options"
-require_relative "concerns/core"
+require_relative "instructor/callbacks"
+require_relative "instructor/attributes"
+require_relative "instructor/arguments"
+require_relative "instructor/options"
+require_relative "instructor/core"
 
-module Instructor
-  class Base
+module Spicerack
+  class InstructorBase
     include ShortCircuIt
     include Technologic
     include ActiveModel::Model

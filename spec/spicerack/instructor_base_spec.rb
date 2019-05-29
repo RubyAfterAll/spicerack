@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Instructor::Base, type: :instructor do
+RSpec.describe Spicerack::InstructorBase, type: :instructor do
   subject { described_class }
 
   it { is_expected.to include_module ShortCircuIt }
