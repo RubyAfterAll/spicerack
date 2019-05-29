@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 # Defaults allow for storing values to use when none are specified by the developer.
-module Tablesalt
-  module Dsl
+module Spicerack
+  module Ascriptor
     module Defaults
       extend ActiveSupport::Concern
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Tablesalt::Dsl::Defaults, type: :module do
+RSpec.describe Spicerack::Ascriptor::Defaults, type: :module do
   subject(:example_object) { example_dsl_class.new }
 
   let(:example_dsl_class) do
@@ -12,7 +12,7 @@ RSpec.describe Tablesalt::Dsl::Defaults, type: :module do
 
     describe "defines default" do
       let(:static) { Faker::Lorem.word }
-      let(:instance) { instance_double(Tablesalt::Dsl::Defaults::Value) }
+      let(:instance) { instance_double(Spicerack::Ascriptor::Defaults::Value) }
       let(:expected_defaults) { Hash[attribute, instance] }
 
       shared_examples_for "a default is defined" do
@@ -24,7 +24,9 @@ RSpec.describe Tablesalt::Dsl::Defaults, type: :module do
       context "when no block is given" do
         subject(:define_default) { example_dsl_class.__send__(:define_default, attribute, static: static) }
 
-        before { allow(Tablesalt::Dsl::Defaults::Value).to receive(:new).with(static: static).and_return(instance) }
+        before do
+          allow(Spicerack::Ascriptor::Defaults::Value).to receive(:new).with(static: static).and_return(instance)
+        end
 
         it_behaves_like "a default is defined"
       end
@@ -37,7 +39,10 @@ RSpec.describe Tablesalt::Dsl::Defaults, type: :module do
         end
 
         before do
-          allow(Tablesalt::Dsl::Defaults::Value).to receive(:new).with(static: static, &block).and_return(instance)
+          allow(Spicerack::Ascriptor::Defaults::Value).
+            to receive(:new).
+            with(static: static, &block).
+            and_return(instance)
         end
 
         it_behaves_like "a default is defined"
@@ -50,7 +55,7 @@ RSpec.describe Tablesalt::Dsl::Defaults, type: :module do
       let(:root_class) { example_dsl_class }
       let(:expected_attribute_value) do
         expected_property_value.each_with_object({}) do |option, hash|
-          hash[option] = instance_of(Tablesalt::Dsl::Defaults::Value)
+          hash[option] = instance_of(Spicerack::Ascriptor::Defaults::Value)
         end
       end
     end

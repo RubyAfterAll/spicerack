@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Instructor::Options, type: :module do
-  include_context "with an example instructor", [ Tablesalt::Dsl::Defaults, described_class ]
+  include_context "with an example instructor", described_class
 
   describe ".option" do
     it_behaves_like "an instructor with a class collection attribute", :option, :_options
@@ -14,20 +14,15 @@ RSpec.describe Instructor::Options, type: :module do
   end
 
   describe ".after_initialize" do
-    subject(:instance) { example_class.new(**key_values) }
-
-    let(:example_class) do
-      Class.new(Spicerack::AscriptorBase) do
-        include Tablesalt::Dsl::Defaults
-        include Instructor::Attributes
-        include Instructor::Core
-        include Instructor::Options
-
-        option :test_option1, default: :default_value1
-        option(:test_option2) { :default_value2 }
-      end
+    before do
+      example_instructor_class.__send__(:option, :test_option1, default: :default_value1)
+      example_instructor_class.__send__(:option, :test_option2) { :default_value2 }
     end
 
-    it_behaves_like "a class with attributes having default values"
+    it_behaves_like "a class with attributes having default values" do
+      subject(:instance) { example_instructor }
+
+      let(:input) { key_values }
+    end
   end
 end
