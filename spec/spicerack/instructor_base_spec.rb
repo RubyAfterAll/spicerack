@@ -3,10 +3,10 @@
 RSpec.describe Spicerack::InstructorBase, type: :instructor do
   subject { described_class }
 
-  it { is_expected.to inherit_from Spicerack::AttributeObject }
-  it { is_expected.to include_module ActiveModel::Model }
+  it { is_expected.to inherit_from Spicerack::InputObject }
+  it { is_expected.to extend_module ActiveModel::Naming }
+  it { is_expected.to extend_module ActiveModel::Translation }
+  it { is_expected.to include_module ActiveModel::Conversion }
+  it { is_expected.to include_module ActiveModel::Validations }
   it { is_expected.to include_module ActiveModel::Validations::Callbacks }
-  it { is_expected.to include_module Instructor::Core }
-  it { is_expected.to include_module Instructor::Arguments }
-  it { is_expected.to include_module Instructor::Options }
 end
