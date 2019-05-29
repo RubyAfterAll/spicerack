@@ -19,6 +19,7 @@ require "spicerack/hash_model"
 require "spicerack/redis_model"
 require "spicerack/root_object"
 require "spicerack/ascriptor_base"
+require "spicerack/input_object_base"
 require "spicerack/instructor_base"
 
 module Spicerack; end
