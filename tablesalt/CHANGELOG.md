@@ -2,7 +2,7 @@
 
 ## v0.13.0
 
-*Release Date*: 5/28/2019
+*Release Date*: 5/29/2019
 
 - Move `Tablesalt::Dsl::Defaults` to `Spicerack::Ascriptor::Defaults`
 
