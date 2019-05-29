@@ -7,7 +7,6 @@ RSpec.describe Spicerack::InstructorBase, type: :instructor do
   it { is_expected.to include_module ActiveModel::Model }
   it { is_expected.to include_module ActiveModel::Validations::Callbacks }
   it { is_expected.to include_module Instructor::Core }
-  it { is_expected.to include_module Instructor::Attributes }
   it { is_expected.to include_module Instructor::Arguments }
   it { is_expected.to include_module Instructor::Options }
 end

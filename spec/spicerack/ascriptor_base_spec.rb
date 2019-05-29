@@ -5,4 +5,5 @@ RSpec.describe Spicerack::AscriptorBase do
 
   it { is_expected.to inherit_from Spicerack::RootObject }
   it { is_expected.to include_module Spicerack::Ascriptor::Defaults }
+  it { is_expected.to include_module Spicerack::Ascriptor::Attributes }
 end
