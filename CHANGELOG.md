@@ -1,8 +1,18 @@
 # Changelog
 
+## v0.13.1
+
+*Release Date*: 5/29/2019
+
+### Spicerack
+
+- Added `.define_callbacks_with_handler` to `RootObject`
+
+### Rspice - [see changes](rspice/CHANGELOG.md#v0131)
+
 ## v0.13.0
 
-*Release Date*: 5/28/2019
+*Release Date*: 5/29/2019
 
 ### Spicerack
 
