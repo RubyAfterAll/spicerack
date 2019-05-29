@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 
-RSpec.describe ProcessorHashModel, type: :integration do
+RSpec.describe ExampleHashModel, type: :integration do
   subject(:hash_model) { described_class.for(data) }
 
   let(:data) do
     {}
   end
 
-  it { is_expected.to inherit_from TaskHashModel }
+  it { is_expected.to inherit_from ExampleHashModelParent }
+  it { is_expected.to inherit_from Spicerack::HashModel }
+  it { is_expected.to define_field :started_at, :datetime }
+  it { is_expected.to define_field :finished_at, :datetime }
   it { is_expected.to define_field :count, :integer, default: 42 }
   it { is_expected.to define_field :rate, :float, default: 3.14 }
 
@@ -17,7 +20,31 @@ RSpec.describe ProcessorHashModel, type: :integration do
     it { is_expected.to match_array %i[started_at finished_at count rate] }
   end
 
-  it_behaves_like "a task hash model"
+  describe "#started_at" do
+    it_behaves_like "a hash model writer", :started_at
+    it_behaves_like "a hash model predicate", :started_at do
+      let(:hash_value) { Time.now.utc.round }
+    end
+    it_behaves_like "a hash model reader", :started_at do
+      let(:expected_value) { Time.now.utc.round }
+      let(:coercible_hash_value) { expected_value.to_s }
+      let(:correct_hash_value) { expected_value }
+      let(:non_coercible_hash_value) { "foo" }
+    end
+  end
+
+  describe "#finished_at" do
+    it_behaves_like "a hash model writer", :finished_at
+    it_behaves_like "a hash model predicate", :finished_at do
+      let(:hash_value) { Time.now.utc.round }
+    end
+    it_behaves_like "a hash model reader", :finished_at do
+      let(:expected_value) { Time.now.utc.round }
+      let(:coercible_hash_value) { expected_value.to_s }
+      let(:correct_hash_value) { expected_value }
+      let(:non_coercible_hash_value) { "foo" }
+    end
+  end
 
   describe "#count" do
     it_behaves_like "a hash model writer", :count

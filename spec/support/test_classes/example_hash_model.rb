@@ -10,12 +10,12 @@ class ExampleHashModelBase
   end
 end
 
-class TaskHashModel < ExampleHashModelBase
+class ExampleHashModelParent < ExampleHashModelBase
   field :started_at, :datetime
   field :finished_at, :datetime
 end
 
-class ProcessorHashModel < TaskHashModel
+class ExampleHashModel < ExampleHashModelParent
   field :count, :integer, default: 42
   field :rate, :float, default: 3.14
 end
