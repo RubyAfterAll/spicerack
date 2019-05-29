@@ -9,7 +9,6 @@ module Spicerack
   class InstructorBase < Spicerack::AscriptorBase
     include ActiveModel::Model
     include ActiveModel::Validations::Callbacks
-    include Tablesalt::Dsl::Defaults
     include Instructor::Core
     include Instructor::Attributes
     include Instructor::Arguments

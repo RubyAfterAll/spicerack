@@ -7,10 +7,13 @@
 ### Spicerack
 
 - Consolidated `RootObject` and abandoned gem
-- Consolidated `Ascriptor` and abandoned gem
 - Consolidated `Instructor` and abandoned gem
+- Consolidated `Ascriptor` and abandoned gem
+- Refactored `Instructor` to be based on `Ascriptor`
+- Move `Tablesalt::Dsl::Defaults` to `Spicerack::Ascriptor::Defaults`
 
 ### Rspice - [see changes](rspice/CHANGELOG.md#v0130)
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0130)
 
 ## v0.12.0
 
