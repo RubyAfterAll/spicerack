@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Spicerack::InstructorBase, type: :instructor do
+RSpec.describe Spicerack::InputModel, type: :input_model do
   subject { described_class }
 
   it { is_expected.to inherit_from Spicerack::InputObject }

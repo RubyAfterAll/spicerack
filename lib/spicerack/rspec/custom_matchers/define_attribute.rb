@@ -2,11 +2,11 @@
 
 # RSpec matcher that tests usage of `.attribute`
 #
-#     class Example < Instructor::Base
+#     class Example < Spicerack::InputObject
 #       attribute :foo
 #     end
 #
-#     RSpec.describe Example, type: :instructor do
+#     RSpec.describe Example, type: :input_object do
 #       subject { described_class.new(**input) }
 #
 #       let(:input) { {} }

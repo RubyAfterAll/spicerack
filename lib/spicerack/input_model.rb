@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Spicerack
-  class InstructorBase < Spicerack::InputObject
+  class InputModel < Spicerack::InputObject
     extend ActiveModel::Naming
     extend ActiveModel::Translation
 

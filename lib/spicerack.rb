@@ -20,6 +20,6 @@ require "spicerack/redis_model"
 require "spicerack/root_object"
 require "spicerack/attribute_object"
 require "spicerack/input_object"
-require "spicerack/instructor_base"
+require "spicerack/input_model"
 
 module Spicerack; end

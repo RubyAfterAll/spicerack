@@ -7,10 +7,11 @@
 ### Spicerack
 
 - Consolidated `RootObject` and abandoned gem
-- Consolidated `Instructor` and abandoned gem
+- Consolidated `Instructor` as `InputModel` and abandoned gem
 - Consolidated `Ascriptor` as `AttributeObject` and abandoned gem
 - Refactored `Instructor` to be based on `AttributeObject`
 - Move `Tablesalt::Dsl::Defaults` to `Spicerack::Objects::Defaults`
+- Refactored `Instructor` into a `InputObject` and `InputModel`
 
 ### Rspice - [see changes](rspice/CHANGELOG.md#v0130)
 ### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0130)
