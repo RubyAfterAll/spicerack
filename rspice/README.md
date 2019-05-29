@@ -61,6 +61,7 @@ require 'rspice'
 
 * [a_class_pass_method](lib/rspice/shared_examples/a_class_pass_method.rb) tests class methods which take arguments that instantiate and call instance method of the same name
 * [a_class_with_callback](lib/rspice/shared_examples/a_class_with_callback.rb) tests usage of [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks)
+* [a_handler_for_the_callback](lib/rspice/shared_examples/a_handler_for_the_callback.rb) tests [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks) handler methods
 * [an_example_class_with_callbacks](lib/rspice/shared_examples/an_example_class_with_callbacks.rb) tests for defined [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks)
 * [an_inherited_property](lib/rspice/shared_examples/an_inherited_property.rb) tests usages of inherited [Class.class_attributes](https://apidock.com/rails/Class/class_attribute)
 * [an_instrumented_event](lib/rspice/shared_examples/an_instrumented_event.rb) tests usage of [ActiveSupport::Notification](https://apidock.com/rails/ActiveSupport/Notifications)
