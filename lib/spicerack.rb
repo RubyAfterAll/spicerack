@@ -18,7 +18,7 @@ require "spicerack/array_index"
 require "spicerack/hash_model"
 require "spicerack/redis_model"
 require "spicerack/root_object"
-require "spicerack/ascriptor_base"
+require "spicerack/attribute_object"
 require "spicerack/input_object_base"
 require "spicerack/instructor_base"
 

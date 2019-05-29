@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Spicerack::Ascriptor::Attributes, type: :module do
+RSpec.describe Spicerack::Objects::Attributes, type: :module do
   include_context "with an example instructor"
 
   describe ".define_attribute" do

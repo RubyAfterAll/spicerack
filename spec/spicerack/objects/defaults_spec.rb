@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Spicerack::Ascriptor::Defaults, type: :module do
+RSpec.describe Spicerack::Objects::Defaults, type: :module do
   subject(:example_object) { example_dsl_class.new }
 
   let(:example_dsl_class) do
@@ -12,7 +12,7 @@ RSpec.describe Spicerack::Ascriptor::Defaults, type: :module do
 
     describe "defines default" do
       let(:static) { Faker::Lorem.word }
-      let(:instance) { instance_double(Spicerack::Ascriptor::Defaults::Value) }
+      let(:instance) { instance_double(described_class::Value) }
       let(:expected_defaults) { Hash[attribute, instance] }
 
       shared_examples_for "a default is defined" do
@@ -24,9 +24,7 @@ RSpec.describe Spicerack::Ascriptor::Defaults, type: :module do
       context "when no block is given" do
         subject(:define_default) { example_dsl_class.__send__(:define_default, attribute, static: static) }
 
-        before do
-          allow(Spicerack::Ascriptor::Defaults::Value).to receive(:new).with(static: static).and_return(instance)
-        end
+        before { allow(described_class::Value).to receive(:new).with(static: static).and_return(instance) }
 
         it_behaves_like "a default is defined"
       end
@@ -38,12 +36,7 @@ RSpec.describe Spicerack::Ascriptor::Defaults, type: :module do
           ->(_) { :block }
         end
 
-        before do
-          allow(Spicerack::Ascriptor::Defaults::Value).
-            to receive(:new).
-            with(static: static, &block).
-            and_return(instance)
-        end
+        before { allow(described_class::Value).to receive(:new).with(static: static, &block).and_return(instance) }
 
         it_behaves_like "a default is defined"
       end
@@ -55,7 +48,7 @@ RSpec.describe Spicerack::Ascriptor::Defaults, type: :module do
       let(:root_class) { example_dsl_class }
       let(:expected_attribute_value) do
         expected_property_value.each_with_object({}) do |option, hash|
-          hash[option] = instance_of(Spicerack::Ascriptor::Defaults::Value)
+          hash[option] = instance_of(described_class::Value)
         end
       end
     end
