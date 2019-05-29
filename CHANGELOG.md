@@ -1,22 +1,46 @@
 # Changelog
 
+## v0.13.0
+
+*Release Date*: 5/28/2019
+
+### Spicerack
+
+- Consolidated `RootObject` and abandoned gem
+- Consolidated `Instructor` as `InputModel` and abandoned gem
+- Consolidated `Ascriptor` as `AttributeObject` and abandoned gem
+- Refactored `Instructor` to be based on `AttributeObject`
+- Move `Tablesalt::Dsl::Defaults` to `Spicerack::Objects::Defaults`
+- Refactored `Instructor` into a `InputObject` and `InputModel`
+
+### Rspice - [see changes](rspice/CHANGELOG.md#v0130)
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0130)
+
 ## v0.12.0
 
 *Release Date*: 5/28/2019
 
-### RootObject - [see changes](root_object/CHANGELOG.md#v0120)
+### RootObject [Consolidated]
+
+- Claimed gem name
 
 ## v0.11.0
 
 *Release Date*: 5/28/2019
 
-### Ascriptor - [see changes](ascriptor/CHANGELOG.md#v0110)
+### Ascriptor [Consolidated]
+
+- Claimed gem name
 
 ## v0.10.2
 
 *Release Date*: 5/28/2019
 
-### Instructor - [see changes](instructor/CHANGELOG.md#v0102)
+### Instructor [Consolidated]
+
+- Move `Instructor::Defaults` to `Tablesalt::Dsl::Defaults`
+- Refactor to replace string module with `Tablesalt::Dsl::Defaults`
+
 ### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0102)
 
 ## v0.10.1
@@ -40,7 +64,11 @@
 - Fix `HashModel` naming collision with the `#hash` method (oopsie!)
 - Added command `rake spicerack:yank_release[x.x.x]` for pruning
 
-### Instructor - [see changes](instructor/CHANGELOG.md#v0100)
+### Instructor [Consolidated]
+
+- Move `StringableObject` to tablesalt gem
+- Refactor to replace string module with `StringableObject`
+
 ### RedisHash - [see changes](redis_hash/CHANGELOG.md#v0100)
 ### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0100)
 
@@ -58,7 +86,11 @@ This was yanked as the API changed enough to justify a minor release instead.
 - Move `HashModel` to spicerack gem
 - Fix `HashModel` naming collision with the `#hash` method (oopsie!)
 
-### Instructor - [see changes](instructor/CHANGELOG.md#v096) [Yanked]
+### Instructor [Consolidated]
+
+- Move `StringableObject` to tablesalt gem
+- Refactor to replace string module with `StringableObject`
+
 ### RedisHash - [see changes](redis_hash/CHANGELOG.md#v096) [Yanked]
 ### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v096) [Yanked]
 
@@ -108,13 +140,18 @@ This was yanked as the API changed enough to justify a minor release instead.
 
 *Release Date*: 5/12/2019
 
-### Instructor - [see changes](instructor/CHANGELOG.md#v083)
+### Instructor [Consolidated]
+
+- Adding missing test for Default::Value subclass
+- Sharing an example useful to extension classes
 
 ## v0.8.2
 
 *Release Date*: 5/12/2019
 
-### Instructor - [see changes](instructor/CHANGELOG.md#v082)
+### Instructor [Consolidated]
+
+- Initial implementation (copied out of `Freshly/flow`)
 
 ## v0.8.1
 
@@ -130,7 +167,10 @@ Renamed a gem and otherwise this is 0.8.0.
 
 *Release Date*: 5/11/2019
 
-### Instructor - [see changes](instructor/CHANGELOG.md#v080)
+### Instructor [Consolidated]
+
+- Claimed gem name
+
 ### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v080)
 
 ## v0.7.4

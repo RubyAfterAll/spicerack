@@ -54,13 +54,13 @@ require 'rspice'
 
 * [with_an_example_descendant_class](lib/rspice/shared_context/with_an_example_descendant_class.rb) creates a named descendant of `described_class`
 * [with_callbacks](lib/rspice/shared_context/with_callbacks.rb) defines callbacks for [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks)
+* [with_class_callbacks](lib/rspice/shared_context/with_class_callbacks.rb) defines callbacks for [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks)
 * [with_example_class_having_callback](lib/rspice/shared_context/with_example_class_having_callback.rb) creates a class with 
 
 ## Shared Examples
 
 * [a_class_pass_method](lib/rspice/shared_examples/a_class_pass_method.rb) tests class methods which take arguments that instantiate and call instance method of the same name
 * [a_class_with_callback](lib/rspice/shared_examples/a_class_with_callback.rb) tests usage of [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks)
-* [a_versioned_spicerack_gem](lib/rspice/shared_examples/a_versioned_spicerack_gem.rb) ensures gem compliance with internal standard of [Spicerack](https://github.com/Freshly/spicerack/)
 * [an_example_class_with_callbacks](lib/rspice/shared_examples/an_example_class_with_callbacks.rb) tests for defined [ActiveSupport::Callbacks](https://apidock.com/rails/ActiveSupport/Callbacks)
 * [an_inherited_property](lib/rspice/shared_examples/an_inherited_property.rb) tests usages of inherited [Class.class_attributes](https://apidock.com/rails/Class/class_attribute)
 * [an_instrumented_event](lib/rspice/shared_examples/an_instrumented_event.rb) tests usage of [ActiveSupport::Notification](https://apidock.com/rails/ActiveSupport/Notifications)

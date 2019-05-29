@@ -7,10 +7,7 @@ require_relative "shared/rakefile"
 
 SPICERACK_GEMS = %w[
   around_the_world
-  ascriptor
-  instructor
   redis_hash
-  root_object
   rspice
   short_circu_it
   spicerack-styleguide

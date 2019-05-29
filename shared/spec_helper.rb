@@ -9,6 +9,8 @@ require "shoulda-matchers"
 require_relative "../lib/spicerack/version"
 require_relative "../lib/spicerack/spec_helper"
 
+require_relative "shared_examples/a_versioned_spicerack_gem"
+
 SimpleCov.start do
   add_filter "/spec/"
 end
