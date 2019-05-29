@@ -56,69 +56,59 @@ RSpec.describe Instructor::Arguments, type: :module do
   end
 
   describe ".after_initialize" do
-    subject(:init) { example_class.new(**arguments) }
-
-    let(:example_class) do
-      Class.new do
-        include Instructor::Callbacks
-        include Instructor::Attributes
-        include Instructor::Core
-
-        include Instructor::Arguments
-
-        argument :test_argument1
-        argument :test_argument2
-        argument :test_argument3, allow_nil: false
-      end
+    before do
+      example_instructor_class.__send__(:argument, :test_argument1)
+      example_instructor_class.__send__(:argument, :test_argument2)
+      example_instructor_class.__send__(:argument, :test_argument3, allow_nil: false)
     end
 
     context "when required nil arguments are provided" do
-      let(:arguments) do
+      let(:input) do
         { test_argument1: nil, test_argument2: nil, test_argument3: nil }
       end
 
       it "raises" do
-        expect { init }.to raise_error ArgumentError, "Missing argument: test_argument3"
+        expect { example_instructor }.to raise_error ArgumentError, "Missing argument: test_argument3"
       end
     end
 
     context "when nil arguments are provided" do
-      let(:arguments) do
+      let(:input) do
         { test_argument1: nil, test_argument2: nil, test_argument3: :test_value3 }
       end
 
       it "does not raise" do
-        expect { init }.not_to raise_error
+        expect { example_instructor }.not_to raise_error
       end
     end
 
     context "when arguments are provided" do
-      let(:arguments) do
+      let(:input) do
         { test_argument1: :test_value1, test_argument2: :test_value2, test_argument3: :test_value3 }
       end
 
       it "does not raise" do
-        expect { init }.not_to raise_error
+        expect { example_instructor }.not_to raise_error
       end
     end
 
     context "when one argument is omitted" do
-      let(:arguments) do
+      let(:input) do
         { test_argument1: :test_value1, test_argument3: :test_value3 }
       end
 
       it "raises" do
-        expect { init }.to raise_error ArgumentError, "Missing argument: test_argument2"
+        expect { example_instructor }.to raise_error ArgumentError, "Missing argument: test_argument2"
       end
     end
 
     context "when multiple arguments are omitted" do
-      let(:arguments) do
+      let(:input) do
         { test_argument3: :test_value3 }
       end
 
       it "does not raise" do
-        expect { init }.to raise_error ArgumentError, "Missing arguments: test_argument1, test_argument2"
+        expect { example_instructor }.to raise_error ArgumentError, "Missing arguments: test_argument1, test_argument2"
       end
     end
   end

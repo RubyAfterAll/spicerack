@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module Spicerack
-  class AscriptorBase < RootObject; end
+  class AscriptorBase < Spicerack::RootObject; end
 end

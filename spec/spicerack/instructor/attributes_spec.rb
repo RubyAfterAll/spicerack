@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Instructor::Attributes, type: :module do
-  include_context "with an example instructor", Instructor::Options
+  include_context "with an example instructor"
 
   describe ".define_attribute" do
     subject(:define_attribute) { example_instructor_class.__send__(:define_attribute, attribute) }
