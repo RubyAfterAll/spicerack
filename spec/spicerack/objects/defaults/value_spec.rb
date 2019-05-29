@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Spicerack::Ascriptor::Defaults::Value, type: :subclass do
+RSpec.describe Spicerack::Objects::Defaults::Value, type: :subclass do
   describe "#initialize" do
     subject { instance.instance_variable_get(:@value) }
 

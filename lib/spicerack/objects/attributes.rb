@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# Ascriptors ascribe attributes
+# Attributes are structured data within an object.
 module Spicerack
-  module Ascriptor
+  module Objects
     module Attributes
       extend ActiveSupport::Concern
 

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# Defaults allow for storing values to use when none are specified by the developer.
+# Defaults are used as the value when then attribute is unspecified.
 module Spicerack
-  module Ascriptor
+  module Objects
     module Defaults
       extend ActiveSupport::Concern
 
