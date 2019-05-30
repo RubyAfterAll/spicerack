@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.13.2
+
+*Release Date*: 5/30/2019
+
+### Spicerack
+
+- Added `technologic/spec_helper` to `spec_helper`
+
+### Technologic - [see changes](technologic/CHANGELOG.md#v0131)
+
 ## v0.13.1
 
 *Release Date*: 5/29/2019
