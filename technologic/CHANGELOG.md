@@ -2,6 +2,12 @@
 
 ## v0.13.1
 
+*Release Date*: 5/30/2019
+
+- Add frequency to surveiled helper
+
+## v0.13.1
+
 *Release Date*: 5/29/2019
 
 - No changes
