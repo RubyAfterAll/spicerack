@@ -36,7 +36,8 @@ RSpec.shared_examples_for "a surveiled event" do |expected_event|
   let(:expected_data) do
     {}
   end
+  let(:frequency) { :once }
 
-  it { is_expected.to have_received(:instrument).with(*expected_args_start) }
-  it { is_expected.to have_received(:instrument).with(*expected_args_finished) }
+  it { is_expected.to have_received(:instrument).with(*expected_args_start).exactly(frequency) }
+  it { is_expected.to have_received(:instrument).with(*expected_args_finished).exactly(frequency) }
 end
