@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.13.3
+
+*Release Date*: 6/3/2019
+
+- Bump nested group limit to 8
+
 ## v0.13.2
 
 *Release Date*: 5/30/2019
