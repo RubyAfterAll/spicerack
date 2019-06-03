@@ -2,6 +2,22 @@
 
 require_relative "configurable/config"
 
+# A utility for creating read-only gem configurations.
+#
+# Usage:
+#   # In your gem:
+#   class SomeGem::Configuration
+#     include Spicerack::Configurable
+#
+#     option :some_config_option
+#     option :some_option_with_a_default, default: "I probably know what's best"
+#   end
+#
+#   # Then, in the application using the gem:
+#   SomeGem.configure do |config|
+#     config.some_config_option = 12345
+#     config.some_option_with_a_default = "Nope, you really don't"
+#   end
 module Spicerack
   module Configurable
     extend ActiveSupport::Concern
