@@ -5,7 +5,6 @@ require_relative "configurable/config"
 module Spicerack
   module Configurable
     extend ActiveSupport::Concern
-    include ActiveSupport::Callbacks
 
     class_methods do
       def configure
@@ -13,15 +12,19 @@ module Spicerack
       end
 
       def option(name, *args)
-        attr_reader name
+        delegate name, to: :config
 
-        config.option(name, *args)
+        config_class.__send__(:option, name, *args)
       end
 
       private
 
+      def config_class
+        @config_class ||= Class.new(Config)
+      end
+
       def config
-        @config ||= Config.new
+        @config ||= config_class.new
       end
     end
   end
