@@ -1249,7 +1249,7 @@ RSpec/NamedSubject:
   Enabled: true
 RSpec/NestedGroups:
   Enabled: true
-  Max: 6
+  Max: 8
 RSpec/NotToNot:
   Enabled: true
   EnforcedStyle: not_to
