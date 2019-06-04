@@ -3,13 +3,13 @@
 require_relative "configurable/config_builder"
 require_relative "configurable/reader"
 
-# A utility for creating read-only gem configurations.
+# A utility for creating read-only gem configuration singletons.
 #
 # Usage:
 #   # In your gem:
 #   module SomeGem
-#     class Configuration
-#       include Spicerack::Configurable
+#     module Configuration
+#       extend Spicerack::Configurable
 #
 #       configuration_options do
 #         option :some_config_option
@@ -29,24 +29,20 @@ require_relative "configurable/reader"
 #   => 12345
 module Spicerack
   module Configurable
-    extend ActiveSupport::Concern
+    delegate :configure, to: :_config_builder
 
-    class_methods do
-      delegate :configure, to: :_config_builder
+    def config
+      _config_builder.reader
+    end
 
-      def config
-        _config_builder.reader
-      end
+    private
 
-      private
+    def configuration_options(&block)
+      _config_builder.instance_exec(&block)
+    end
 
-      def configuration_options(&block)
-        _config_builder.instance_exec(&block)
-      end
-
-      def _config_builder
-        @_config_builder ||= ConfigBuilder.new
-      end
+    def _config_builder
+      @_config_builder ||= ConfigBuilder.new
     end
   end
 end

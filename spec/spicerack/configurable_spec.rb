@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 RSpec.describe Spicerack::Configurable, type: :integration do
-  subject(:configurable) { example_configurable.new }
+  subject(:configurable) { example_configurable }
 
   let(:has_default_default_value) { "A default value" }
-  let(:example_configurable) { Class.new }
+  let(:example_configurable) { Module.new }
 
   before do
     example_configurable.instance_exec(self) do |spec_context|
-      include spec_context.described_class
+      extend spec_context.described_class
 
       configuration_options do
         option :no_default
@@ -17,8 +17,7 @@ RSpec.describe Spicerack::Configurable, type: :integration do
     end
   end
 
-
-  it { is_expected.to include_module Spicerack::Configurable }
+  it { is_expected.to define_config_option :no_default }
 
   describe ".configure" do
     it "defines options" do
