@@ -1,12 +1,18 @@
 # Changelog
 
-## v0.13.3 [Upcoming]
+## v0.14.0 [Upcoming]
 
 *Release Date*: 6/3/2019
 
 ### Spicerack
 
 - Added `Configurable` module
+
+## v0.13.3
+
+*Release Date*: 6/3/2019
+
+### Spicerack-Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0133)
 
 ## v0.13.2
 
@@ -16,7 +22,7 @@
 
 - Added `technologic/spec_helper` to `spec_helper`
 
-### Technologic - [see changes](technologic/CHANGELOG.md#v0131)
+### Technologic - [see changes](technologic/CHANGELOG.md#v0132)
 
 ## v0.13.1
 
