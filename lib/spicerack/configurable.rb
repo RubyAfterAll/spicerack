@@ -1,16 +1,19 @@
 # frozen_string_literal: true
 
-require_relative "configurable/config"
+require_relative "configurable/config_builder"
+require_relative "configurable/reader"
 
 # A utility for creating read-only gem configurations.
 #
 # Usage:
 #   # In your gem:
-#   class SomeGem::Configuration
+#   class SomeGem
 #     include Spicerack::Configurable
 #
-#     option :some_config_option
-#     option :some_option_with_a_default, default: "I probably know what's best"
+#     configuration_options do
+#       option :some_config_option
+#       option :some_option_with_a_default, default: "I probably know what's best"
+#     end
 #   end
 #
 #   # Then, in the application using the gem:
@@ -26,24 +29,20 @@ module Spicerack
     extend ActiveSupport::Concern
 
     class_methods do
-      def configure
-        yield config
-      end
+      delegate :configure, to: :_config_builder
 
-      def option(name, *args)
-        config_class.__send__(:option, name, *args)
-
-        define_singleton_method(name) { config.public_send(name) }
+      def configuration
+        _config_builder.reader
       end
 
       private
 
-      def config_class
-        @config_class ||= const_set("Config", Class.new(Config))
+      def configuration_options(&block)
+        _config_builder.instance_exec(&block)
       end
 
-      def config
-        @config ||= config_class.new
+      def _config_builder
+        @_config_builder ||= ConfigBuilder.new
       end
     end
   end
