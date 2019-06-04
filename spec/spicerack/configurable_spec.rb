@@ -7,12 +7,12 @@ RSpec.describe Spicerack::Configurable, type: :integration do
   let(:example_configurable) { Class.new }
 
   before do
-    example_configurable.instance_exec(has_default_default_value) do |has_default_default_value|
-      include Spicerack::Configurable
+    example_configurable.instance_exec(self) do |spec_context|
+      include spec_context.described_class
 
       configuration_options do
         option :no_default
-        option :has_default, default: has_default_default_value
+        option :has_default, default: spec_context.has_default_default_value
       end
     end
   end

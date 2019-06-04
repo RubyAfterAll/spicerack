@@ -7,22 +7,25 @@ require_relative "configurable/reader"
 #
 # Usage:
 #   # In your gem:
-#   class SomeGem
-#     include Spicerack::Configurable
+#   module SomeGem
+#     class Configuration
+#       include Spicerack::Configurable
 #
-#     configuration_options do
-#       option :some_config_option
-#       option :some_option_with_a_default, default: "I probably know what's best"
+#       configuration_options do
+#         option :some_config_option
+#         option :some_option_with_a_default, default: "I probably know what's best"
+#       end
 #     end
 #   end
 #
 #   # Then, in the application using the gem:
-#   SomeGem.configure do |config|
+#   SomeGem::Configuration.configure do |config|
 #     config.some_config_option = 12345
 #     config.some_option_with_a_default = "Nope, you really don't"
 #   end
 #
-#   puts SomeGem.config.some_config_option
+#   # Then, back in your gem code:
+#   puts Configuration.config.some_config_option
 #   => 12345
 module Spicerack
   module Configurable
