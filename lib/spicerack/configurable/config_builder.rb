@@ -11,6 +11,7 @@ module Spicerack
         yield configuration
       end
 
+      # NOTE: options must be set up before {#configure} is called
       def option(*args)
         config_class.__send__(:option, *args)
       end
