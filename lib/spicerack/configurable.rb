@@ -34,7 +34,7 @@ module Spicerack
     class_methods do
       delegate :configure, to: :_config_builder
 
-      def configuration
+      def config
         _config_builder.reader
       end
 

@@ -29,7 +29,7 @@ RSpec.describe Spicerack::Configurable, type: :integration do
     end
   end
 
-  describe ".configuration" do
+  describe ".config" do
     context "when values are set" do
       let(:has_default_value) { Faker::Lorem.word }
       let(:no_default_value) { Faker::Lorem.word }
@@ -42,15 +42,15 @@ RSpec.describe Spicerack::Configurable, type: :integration do
       end
 
       it "sets the config variables" do
-        expect(example_configurable.configuration.no_default).to eq no_default_value
-        expect(example_configurable.configuration.has_default).to eq has_default_value
+        expect(example_configurable.config.no_default).to eq no_default_value
+        expect(example_configurable.config.has_default).to eq has_default_value
       end
     end
 
     context "when no values are set" do
       it "has the default values, or nil" do
-        expect(example_configurable.configuration.no_default).to eq nil
-        expect(example_configurable.configuration.has_default).to eq has_default_default_value
+        expect(example_configurable.config.no_default).to eq nil
+        expect(example_configurable.config.has_default).to eq has_default_default_value
       end
     end
   end
