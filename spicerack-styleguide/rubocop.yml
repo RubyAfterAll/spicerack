@@ -6,11 +6,9 @@ AllCops:
   TargetRubyVersion: 2.6
   Exclude:
     - bin/**/*
-    - Gemfile*
     - Rakefile
     - spec/*_helper.rb
     - db/**/*
-    - "**/*.gemspec"
 
 Layout/AccessModifierIndentation:
   Enabled: true
@@ -100,6 +98,8 @@ Layout/ExtraSpacing:
   Enabled: true
   AllowForAlignment: false
   ForceEqualSignAlignment: false
+  Exclude:
+    - "**/*.gemspec"
 Layout/FirstArrayElementLineBreak:
   Enabled: false
 Layout/FirstHashElementLineBreak:
@@ -399,6 +399,7 @@ Metrics/BlockLength:
     - "**/concerns/*"
     - config/environments/*
     - spec/**/*
+    - "**/*.gemspec"
 Metrics/BlockNesting:
   Enabled: true
   Max: 3
@@ -1153,6 +1154,9 @@ Bundler/InsecureProtocolSource:
 Bundler/OrderedGems:
   Enabled: true
   TreatCommentsAsGroupSeparators: false
+
+Gemspec/OrderedDependencies:
+  Enabled: false
 
 RSpec/AlignRightLetBrace:
   Enabled: false
