@@ -9,6 +9,7 @@ AllCops:
     - Rakefile
     - spec/*_helper.rb
     - db/**/*
+    - Gemfile.lock
 
 Layout/AccessModifierIndentation:
   Enabled: true
@@ -1152,7 +1153,7 @@ Bundler/DuplicatedGem:
 Bundler/InsecureProtocolSource:
   Enabled: true
 Bundler/OrderedGems:
-  Enabled: true
+  Enabled: false
   TreatCommentsAsGroupSeparators: false
 
 Gemspec/OrderedDependencies:
