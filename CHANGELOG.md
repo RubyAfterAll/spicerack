@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.14.0
+
+*Release Date*: 6/5/2019
+
+### Spicerack
+
+- Added `Configurable` module
+
 ## v0.13.5
 
 *Release Date*: 6/5/2019
