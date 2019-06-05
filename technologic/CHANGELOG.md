@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.13.4
+
+*Release Date*: 6/5/2019
+
+- Linted and updated gemspec
+
 ## v0.13.3
 
 *Release Date*: 6/3/2019
