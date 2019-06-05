@@ -1,5 +1,6 @@
-# coding: utf-8
-lib = File.expand_path("../lib", __FILE__)
+# frozen_string_literal: true
+
+lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "spicerack/styleguide/version"
 
@@ -13,6 +14,10 @@ Gem::Specification.new do |spec|
   spec.description   = "Wanna write code the Freshly way? Inherit this gem in your rubocop.yml and keep your code fresh"
   spec.homepage      = "https://github.com/Freshly/spicerack/tree/master/spicerack-styleguide"
   spec.license       = "MIT"
+
+  spec.metadata["homepage_uri"] = spec.homepage
+  spec.metadata["source_code_uri"] = spec.homepage
+  spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/master/spicerack-styleguide/CHANGELOG.md"
 
   spec.files         = Dir["rubocop.yml", "README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]
   spec.require_paths = "lib"

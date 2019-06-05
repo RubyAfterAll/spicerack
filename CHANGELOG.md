@@ -1,12 +1,19 @@
 # Changelog
 
-## v0.14.0 [Upcoming]
+## v0.14.0
 
-*Release Date*: 6/3/2019
+*Release Date*: 6/5/2019
 
 ### Spicerack
 
 - Added `Configurable` module
+
+## v0.13.4
+
+*Release Date*: 6/5/2019
+
+- Removed gemfiles and gemspecs from global Rubocop ignore
+- Linted and updated all gemspecs
 
 ## v0.13.3
 
