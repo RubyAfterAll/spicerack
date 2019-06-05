@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.13.5
+
+*Release Date*: 6/5/2019
+
+### Spicerack-Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0135)
+
 ## v0.13.4
 
 *Release Date*: 6/5/2019
