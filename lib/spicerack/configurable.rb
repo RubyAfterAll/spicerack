@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "configurable/config_builder"
+require_relative "configurable/config"
 require_relative "configurable/reader"
 
 # A utility for creating read-only gem configuration singletons.
