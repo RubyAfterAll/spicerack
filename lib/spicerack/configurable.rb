@@ -3,6 +3,8 @@
 require_relative "configurable/config_builder"
 require_relative "configurable/reader"
 
+# NOTE: This is still a pre-release feature! Use at your own risk - it may change before being released.
+#
 # A utility for creating read-only gem configuration singletons.
 #
 # Usage:
