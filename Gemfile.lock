@@ -5,7 +5,7 @@ PATH
       activesupport (~> 5.2.1)
     redis_hash (0.14.0)
       activesupport (~> 5.2.1)
-      redis (~> 4.0)
+      redis (>= 3.0)
     rspice (0.14.0)
       faker (~> 1.8)
       rspec (~> 3.0)
