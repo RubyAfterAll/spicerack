@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.14.1
+
+*Release Date*: 6/7/2019
+
+### RedisHash - [see changes](redis-hash/CHANGELOG.md#v0141)
+
 ## v0.14.0
 
 *Release Date*: 6/5/2019
