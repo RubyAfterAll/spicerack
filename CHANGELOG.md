@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.14.2
+
+*Release Date*: 6/26/2019
+
+### Rspice - [see changes](rspice/CHANGELOG.md#v0142)
+### Technologic - [see changes](technologic/CHANGELOG.md#v0142)
+
 ## v0.14.1
 
 *Release Date*: 6/7/2019
