@@ -25,7 +25,7 @@
 #       end
 #     end
 
-RSpec.shared_examples_for "an instrumented event" do |event_name|
+RSpec.shared_examples_for "an instrumented event" do |event_name = nil|
   subject { ActiveSupport::Notifications }
 
   let(:expected_event) { event_name }
