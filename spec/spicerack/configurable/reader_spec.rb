@@ -4,7 +4,7 @@ RSpec.describe Spicerack::Configurable::Reader do
   subject(:reader) { described_class.new(config) }
 
   let(:config_class) { Class.new(Spicerack::Configurable::ConfigObject) }
-  let(:config) { config_class.new }
+  let(:config) { config_class.instance }
 
   let(:config_attributes) { Faker::Lorem.words(3).map(&:to_sym) }
   let(:attribute_with_default) { config_attributes.sample }
@@ -30,7 +30,10 @@ RSpec.describe Spicerack::Configurable::Reader do
 
   describe "#method_missing" do
     let(:config_values) { [ config_attributes.map(&:to_sym), Array.new(3) { double } ].transpose.to_h }
-    let(:config) { config_class.new(**config_values) }
+
+    before do
+      config_values.each { |key, value| config.public_send("#{key}=", value) }
+    end
 
     it "responds to attr_readers from config" do
       config_attributes.each do |attr|
