@@ -11,12 +11,6 @@ module Spicerack
         yield configuration
       end
 
-      # TODO: Switch to this so we can dump __send__
-      # NOTE: options must be set up before {#configure} is called
-      # def options(&block)
-      #   config_class.instance_exec(&block)
-      # end
-
       # NOTE: options must be set up before {#configure} is called
       def option(*args, &block)
         config_class.__send__(:option, *args, &block)
