@@ -12,7 +12,10 @@ module Spicerack
       attr_reader :config
 
       def method_missing(method_name, *)
-        return config.public_send(method_name) if config._options.map(&:to_sym).include?(method_name.to_sym)
+        name = method_name.to_sym
+
+        return config.public_send(name) if config._options.map(&:to_sym).include?(name)
+        return config._nested_readers[name] if config._nested_options.include?(name)
 
         super
       end
