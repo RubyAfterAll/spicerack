@@ -18,8 +18,8 @@ module Spicerack
       # end
 
       # NOTE: options must be set up before {#configure} is called
-      def option(*args)
-        config_class.__send__(:option, *args)
+      def option(*args, &block)
+        config_class.__send__(:option, *args, &block)
       end
 
       def nested(*args, &block)
@@ -29,7 +29,7 @@ module Spicerack
       private
 
       def configuration
-        @configuration ||= config_class.new
+        config_class.instance
       end
 
       def config_class

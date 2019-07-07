@@ -15,7 +15,7 @@ module Spicerack
         name = method_name.to_sym
 
         return config.public_send(name) if config._options.map(&:to_sym).include?(name)
-        return config._nested_readers[name] if config._nested_options.include?(name)
+        return config._nested_builders[name].reader if config._nested_builders.key?(name)
 
         super
       end
