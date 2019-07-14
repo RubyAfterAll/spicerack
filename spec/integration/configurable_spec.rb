@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Spicerack::Configurable do
+RSpec.describe Spicerack::Configurable, type: :configuration do
   subject(:configurable_module) do
     Module.new do
       extend Spicerack::Configurable
