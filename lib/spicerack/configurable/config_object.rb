@@ -5,6 +5,7 @@ module Spicerack
     class ConfigObject < InputObject
       include Singleton
 
+      class_attribute :_nested_options, instance_writer: false, default: []
       class_attribute :_nested_builders, instance_writer: false, default: {}
 
       class << self
@@ -21,6 +22,8 @@ module Spicerack
         def nested(namespace, &block)
           nested_config_builder_for(namespace).tap do |builder|
             builder.instance_exec(&block)
+
+            _nested_options << namespace
             define_method(namespace) { builder.__send__ :configuration }
           end
         end
