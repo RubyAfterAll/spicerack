@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe Spicerack::Configurable, type: :configuration do
+module ExampleConfigurableClass; end
+
+RSpec.describe ExampleConfigurableClass, type: :configuration do
   subject(:configurable_module) do
     Module.new do
       extend Spicerack::Configurable
@@ -20,10 +22,17 @@ RSpec.describe Spicerack::Configurable, type: :configuration do
   end
 
   let(:config) { configurable_module.config }
+  let(:described_class) { configurable_module }
 
   it { is_expected.to define_config_option(:option_without_default) }
   it { is_expected.to define_config_option(:option_with_default, default: "default value") }
   it { is_expected.to define_config_option(:option_with_default_block, default: "default value from block") }
+
+  nested_config_option :nested_config do
+    it { is_expected.to define_config_option(:nested_option_without_default) }
+    it { is_expected.to define_config_option(:nested_option_with_default, default: "nested default value") }
+    it { is_expected.to define_config_option(:nested_option_with_default_block, default: "nested default value from block") }
+  end
 
   it "doesn't define accessors outside of configure block" do
     expect { config.option_without_default = double }.to raise_error NoMethodError
