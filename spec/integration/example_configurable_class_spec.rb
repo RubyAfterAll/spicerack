@@ -46,25 +46,60 @@ RSpec.describe ExampleConfigurableClass, type: :configuration do
     end
   end
 
-  it "doesn't define accessors outside of configure block" do
-    expect { config.option_without_default = double }.to raise_error NoMethodError
-    expect { config.option_with_default = double }.to raise_error NoMethodError
-    expect { config.option_with_default_block = double }.to raise_error NoMethodError
+  describe "config writers" do
+    describe "root config vars" do
+      it "doesn't define accessors outside of configure block" do
+        expect { config.option_without_default = double }.to raise_error NoMethodError
+        expect { config.option_with_default = double }.to raise_error NoMethodError
+        expect { config.option_with_default_block = double }.to raise_error NoMethodError
+      end
+    end
 
-    expect { config.nested_config.nested_option_without_default = double }.to raise_error NoMethodError
-    expect { config.nested_config.nested_option_with_default = double }.to raise_error NoMethodError
-    expect { config.nested_config.nested_option_with_default_block = double }.to raise_error NoMethodError
+    describe "nested config vars" do
+      it "doesn't define accessors outside of configure block" do
+        expect { config.nested_config.nested_option_without_default = double }.to raise_error NoMethodError
+        expect { config.nested_config.nested_option_with_default = double }.to raise_error NoMethodError
+        expect { config.nested_config.nested_option_with_default_block = double }.to raise_error NoMethodError
+      end
+    end
+
+    describe "deeply nested config vars" do
+      it "doesn't define accessors outside of configure block" do
+        expect { config.nested_config.double_nested.double_nested_option_without_default = double }.
+          to raise_error NoMethodError
+        expect { config.nested_config.double_nested.double_nested_option_with_default = double }.
+          to raise_error NoMethodError
+        expect { config.nested_config.double_nested.double_nested_option_with_default_block = double }.
+          to raise_error NoMethodError
+      end
+    end
   end
 
   context "when runtime configuration has not been set up" do
-    it "uses the default values" do
-      expect(config.option_without_default).to be_nil
-      expect(config.option_with_default).to eq "default value"
-      expect(config.option_with_default_block).to eq "default value from block"
+    describe "root config vars" do
+      it "uses the default values" do
+        expect(config.option_without_default).to be_nil
+        expect(config.option_with_default).to eq "default value"
+        expect(config.option_with_default_block).to eq "default value from block"
+      end
+    end
 
-      expect(config.nested_config.nested_option_without_default).to be_nil
-      expect(config.nested_config.nested_option_with_default).to eq "nested default value"
-      expect(config.nested_config.nested_option_with_default_block).to eq "nested default value from block"
+    describe "nested config vars" do
+      it "uses the default values" do
+        expect(config.nested_config.nested_option_without_default).to be_nil
+        expect(config.nested_config.nested_option_with_default).to eq "nested default value"
+        expect(config.nested_config.nested_option_with_default_block).to eq "nested default value from block"
+      end
+    end
+
+    describe "deeply nested config vars" do
+      it "uses the default values" do
+        expect(config.nested_config.double_nested.double_nested_option_without_default).to be_nil
+        expect(config.nested_config.double_nested.double_nested_option_with_default).
+          to eq "double nested default value"
+        expect(config.nested_config.double_nested.double_nested_option_with_default_block).
+          to eq "double nested default value from block"
+      end
     end
   end
 
@@ -97,24 +132,34 @@ RSpec.describe ExampleConfigurableClass, type: :configuration do
       end
     end
 
-    it "sets the override values" do
-      expect(configurable_module.config.option_without_default).to eq option_without_default_override
-      expect(configurable_module.config.option_with_default).to eq option_with_default_override
-      expect(configurable_module.config.option_with_default_block).to eq option_with_default_block_override
+    describe "root config vars" do
+      it "sets the override values" do
+        expect(configurable_module.config.option_without_default).to eq option_without_default_override
+        expect(configurable_module.config.option_with_default).to eq option_with_default_override
+        expect(configurable_module.config.option_with_default_block).to eq option_with_default_block_override
+      end
+    end
 
-      expect(configurable_module.config.nested_config.nested_option_without_default).
-        to eq nested_option_without_default_override
-      expect(configurable_module.config.nested_config.nested_option_with_default).
-        to eq nested_option_with_default_override
-      expect(configurable_module.config.nested_config.nested_option_with_default_block).
-        to eq nested_option_with_default_block_override
+    describe "nested config vars" do
+      it "sets the override values" do
+        expect(configurable_module.config.nested_config.nested_option_without_default).
+          to eq nested_option_without_default_override
+        expect(configurable_module.config.nested_config.nested_option_with_default).
+          to eq nested_option_with_default_override
+        expect(configurable_module.config.nested_config.nested_option_with_default_block).
+          to eq nested_option_with_default_block_override
+      end
+    end
 
-      expect(configurable_module.config.nested_config.double_nested.double_nested_option_without_default).
-        to eq double_nested_option_without_default_override
-      expect(configurable_module.config.nested_config.double_nested.double_nested_option_with_default).
-        to eq double_nested_option_with_default_override
-      expect(configurable_module.config.nested_config.double_nested.double_nested_option_with_default_block).
-        to eq double_nested_option_with_default_block_override
+    describe "deeply nested config vars" do
+      it "sets the override values" do
+        expect(configurable_module.config.nested_config.double_nested.double_nested_option_without_default).
+          to eq double_nested_option_without_default_override
+        expect(configurable_module.config.nested_config.double_nested.double_nested_option_with_default).
+          to eq double_nested_option_with_default_override
+        expect(configurable_module.config.nested_config.double_nested.double_nested_option_with_default_block).
+          to eq double_nested_option_with_default_block_override
+      end
     end
   end
 end
