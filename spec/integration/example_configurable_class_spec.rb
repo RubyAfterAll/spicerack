@@ -81,6 +81,10 @@ RSpec.describe ExampleConfigurableClass, type: :configuration do
         expect(config.option_without_default).to be_nil
         expect(config.option_with_default).to eq "default value"
         expect(config.option_with_default_block).to eq "default value from block"
+
+        expect(configurable_module.config_eval(:option_without_default).read).to be_nil
+        expect(configurable_module.config_eval(:option_with_default).read).to eq "default value"
+        expect(configurable_module.config_eval(:option_with_default_block).read).to eq "default value from block"
       end
     end
 
@@ -89,6 +93,13 @@ RSpec.describe ExampleConfigurableClass, type: :configuration do
         expect(config.nested_config.nested_option_without_default).to be_nil
         expect(config.nested_config.nested_option_with_default).to eq "nested default value"
         expect(config.nested_config.nested_option_with_default_block).to eq "nested default value from block"
+
+        expect(configurable_module.config_eval(:nested_config, :nested_option_without_default).read).
+          to be_nil
+        expect(configurable_module.config_eval(:nested_config, :nested_option_with_default).read).
+          to eq "nested default value"
+        expect(configurable_module.config_eval(:nested_config, :nested_option_with_default_block).read).
+          to eq "nested default value from block"
       end
     end
 
@@ -98,6 +109,15 @@ RSpec.describe ExampleConfigurableClass, type: :configuration do
         expect(config.nested_config.double_nested.double_nested_option_with_default).
           to eq "double nested default value"
         expect(config.nested_config.double_nested.double_nested_option_with_default_block).
+          to eq "double nested default value from block"
+      end
+
+      it "is accessible via evaluators" do
+        expect(configurable_module.config_eval(:nested_config, :double_nested, :double_nested_option_without_default).read).
+          to be_nil
+        expect(configurable_module.config_eval(:nested_config, :double_nested, :double_nested_option_with_default).read).
+          to eq "double nested default value"
+        expect(configurable_module.config_eval(:nested_config, :double_nested, :double_nested_option_with_default_block).read).
           to eq "double nested default value from block"
       end
     end
@@ -138,6 +158,12 @@ RSpec.describe ExampleConfigurableClass, type: :configuration do
         expect(configurable_module.config.option_with_default).to eq option_with_default_override
         expect(configurable_module.config.option_with_default_block).to eq option_with_default_block_override
       end
+
+      it "is accessible via evaluators" do
+        expect(configurable_module.config_eval(:option_without_default).read).to eq option_without_default_override
+        expect(configurable_module.config_eval(:option_with_default).read).to eq option_with_default_override
+        expect(configurable_module.config_eval(:option_with_default_block).read).to eq option_with_default_block_override
+      end
     end
 
     describe "nested config vars" do
@@ -149,6 +175,15 @@ RSpec.describe ExampleConfigurableClass, type: :configuration do
         expect(configurable_module.config.nested_config.nested_option_with_default_block).
           to eq nested_option_with_default_block_override
       end
+
+      it "is accessible via evaluators" do
+        expect(configurable_module.config_eval(:nested_config, :nested_option_without_default).read).
+          to eq nested_option_without_default_override
+        expect(configurable_module.config_eval(:nested_config, :nested_option_with_default).read).
+          to eq nested_option_with_default_override
+        expect(configurable_module.config_eval(:nested_config, :nested_option_with_default_block).read).
+          to eq nested_option_with_default_block_override
+      end
     end
 
     describe "deeply nested config vars" do
@@ -158,6 +193,15 @@ RSpec.describe ExampleConfigurableClass, type: :configuration do
         expect(configurable_module.config.nested_config.double_nested.double_nested_option_with_default).
           to eq double_nested_option_with_default_override
         expect(configurable_module.config.nested_config.double_nested.double_nested_option_with_default_block).
+          to eq double_nested_option_with_default_block_override
+      end
+
+      it "is accessible via evaluators" do
+        expect(configurable_module.config_eval(:nested_config, :double_nested, :double_nested_option_without_default).read).
+          to eq double_nested_option_without_default_override
+        expect(configurable_module.config_eval(:nested_config, :double_nested, :double_nested_option_with_default).read).
+          to eq double_nested_option_with_default_override
+        expect(configurable_module.config_eval(:nested_config, :double_nested, :double_nested_option_with_default_block).read).
           to eq double_nested_option_with_default_block_override
       end
     end

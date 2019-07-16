@@ -5,6 +5,8 @@ module Spicerack
     class ConfigObject < InputObject
       include Singleton
 
+      RESERVED_WORDS = %i[config_eval].freeze
+
       class_attribute :_nested_options, instance_writer: false, default: []
       class_attribute :_nested_builders, instance_writer: false, default: {}
 
@@ -18,6 +20,12 @@ module Spicerack
         end
 
         private
+
+        def option(name, *)
+          raise ArgumentError, "#{name.inspect} is reserved and cannot be used at a config option" if name.to_sym.in? RESERVED_WORDS
+
+          super
+        end
 
         def nested(namespace, &block)
           nested_config_builder_for(namespace).tap do |builder|

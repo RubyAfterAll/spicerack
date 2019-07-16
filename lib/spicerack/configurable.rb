@@ -2,6 +2,7 @@
 
 require_relative "configurable/config_builder"
 require_relative "configurable/config_object"
+require_relative "configurable/evaluator"
 require_relative "configurable/reader"
 
 # NOTE: This is still a pre-release feature! Use at your own risk - it may change before being released.
@@ -32,7 +33,7 @@ require_relative "configurable/reader"
 #   => 12345
 module Spicerack
   module Configurable
-    delegate :configure, to: :_config_builder
+    delegate :configure, :config_eval, to: :_config_builder
 
     def config
       _config_builder.reader
