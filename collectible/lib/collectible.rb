@@ -2,6 +2,8 @@
 
 require "active_support"
 
+require "around_the_world"
+
 require "tablesalt/stringable_object"
 require "tablesalt/uses_hash_for_equality"
 

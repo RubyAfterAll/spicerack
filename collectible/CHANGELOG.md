@@ -4,7 +4,7 @@
 
 *Release Date*: 8/8/2019
 
-- Refactored comparison to use `Tablesalt::UsesHashForEquality`
+- Initial release
 
 ## v0.15.0
 
