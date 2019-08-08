@@ -66,7 +66,7 @@ module Collectible
         #                       or a proc that validates each item as it is inserted.
         def ensure_item_validity_with
           item_enforcement ||
-          (superclass.ensure_item_validity_with if superclass.respond_to?(:ensure_item_validity_with, true))
+            (superclass.ensure_item_validity_with if superclass.respond_to?(:ensure_item_validity_with, true))
         end
 
         protected
@@ -117,8 +117,6 @@ module Collectible
         # @param *methods [Array<Symbol>]
         def ensure_item_validity_before(*methods)
           methods.each do |method_name|
-            next unless method_defined?(method_name)
-
             around_method(method_name, prevent_double_wrapping_for: "EnsureItemValidity") do |*items|
               ensure_allowed_in_collection!(items)
 
