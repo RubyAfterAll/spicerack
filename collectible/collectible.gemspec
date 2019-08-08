@@ -5,8 +5,8 @@ require "collectible/version"
 Gem::Specification.new do |spec|
   spec.name          = "collectible"
   spec.version       = Collectible::VERSION
-  spec.authors       = [ "Allen Rettberg" ]
-  spec.email         = [ "allen.rettberg@freshly.com" ]
+  spec.authors       = [ "Allen Rettberg", "Eric Garside" ]
+  spec.email         = %w[allen.rettberg@freshly.com eric.garside@freshly.com]
 
   spec.summary       = "Provides an extensible framework for building array-like object collections"
   spec.description   = "Perform operations on and pass around explicit collections of objects"

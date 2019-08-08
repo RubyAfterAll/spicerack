@@ -3,6 +3,7 @@
 require "active_support"
 
 require "tablesalt/stringable_object"
+require "tablesalt/uses_hash_for_equality"
 
 require "collectible/version"
 
