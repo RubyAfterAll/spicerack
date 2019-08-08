@@ -18,7 +18,7 @@ Perform operations on and pass around explicit collections of objects
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'redis_hash'
+gem 'collectible'
 ```
 
 And then execute:
