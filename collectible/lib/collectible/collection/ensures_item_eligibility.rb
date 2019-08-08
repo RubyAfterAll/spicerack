@@ -117,8 +117,6 @@ module Collectible
         # @param *methods [Array<Symbol>]
         def ensure_item_validity_before(*methods)
           methods.each do |method_name|
-            next unless method_defined?(method_name)
-
             around_method(method_name, prevent_double_wrapping_for: "EnsureItemValidity") do |*items|
               ensure_allowed_in_collection!(items)
 
