@@ -5,8 +5,8 @@ require "collectible/version"
 Gem::Specification.new do |spec|
   spec.name          = "collectible"
   spec.version       = Collectible::VERSION
-  spec.authors       = [ "Allen Rettberg" ]
-  spec.email         = [ "allen.rettberg@freshly.com" ]
+  spec.authors       = [ "Allen Rettberg", "Eric Garside" ]
+  spec.email         = %w[allen.rettberg@freshly.com eric.garside@freshly.com]
 
   spec.summary       = "Provides an extensible framework for building array-like object collections"
   spec.description   = "Perform operations on and pass around explicit collections of objects"
@@ -21,4 +21,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = "lib"
 
   spec.add_runtime_dependency "activesupport", "~> 5.2.1"
+  spec.add_runtime_dependency "short_circu_it", Collectible::VERSION
+  spec.add_runtime_dependency "tablesalt", Collectible::VERSION
 end

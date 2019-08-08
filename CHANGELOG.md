@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.15.1
+
+*Release Date*: 8/8/2019
+
+### Collectible - [see changes](collectible/CHANGELOG.md#v0151)
+### RedisHash - [see changes](redis_hash/CHANGELOG.md#v0151)
+### Rspice - [see changes](rspice/CHANGELOG.md#v0151)
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0151)
+
 ## v0.15.0
 
 *Release Date*: 8/8/2019
@@ -11,7 +20,7 @@
 
 *Release Date*: 8/5/2019
 
-- Make faker req less restrictive
+### Rspice - [see changes](rspice/CHANGELOG.md#v0143)
 
 ## v0.14.2
 
