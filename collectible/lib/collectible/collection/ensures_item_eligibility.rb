@@ -24,7 +24,7 @@ module Collectible
         invalid_items = new_items.flatten.reject { |item| allows_item?(item) }
         return if invalid_items.empty?
 
-        raise ItemNotAllowedError,
+        raise Collectible::ItemNotAllowedError,
               "not allowed: #{invalid_items.first(3).map(&:inspect).join(", ")}#{"..." if invalid_items.length > 3}"
       end
 
@@ -52,7 +52,7 @@ module Collectible
         new_items.each do |item|
           next if item.class == first_item.class
 
-          raise ItemTypeMismatchError, "item mismatch: #{first_item.inspect}, #{item.inspect}"
+          raise Collectible::ItemTypeMismatchError, "item mismatch: #{first_item.inspect}, #{item.inspect}"
         end
       end
 
@@ -80,7 +80,7 @@ module Collectible
         #            the collection if the block resolves to a truthy value; otherwise, an error is raised.
         #            The block shares the context of the collection +instance+, not the class.
         def allow_item(&block)
-          raise TypeEnforcementAlreadyDefined if item_enforcement.present?
+          raise Collectible::TypeEnforcementAlreadyDefined if item_enforcement.present?
           raise ArgumentError, "must provide a block" unless block_given?
 
           self.item_enforcement = block
@@ -93,7 +93,7 @@ module Collectible
         # @param klass [Class] A specific class all items are expected to be. Items of this type will be
         #                      allowed into collection; otherwise, an error is raised.
         def ensures_item_class(klass)
-          raise TypeEnforcementAlreadyDefined if item_enforcement.present?
+          raise Collectible::TypeEnforcementAlreadyDefined if item_enforcement.present?
 
           self.item_enforcement = klass
         end
@@ -105,9 +105,9 @@ module Collectible
         #   => #<ApplicationCollection items: [ #<Meal id: 1> ]
         #
         #   collection << User.first
-        #   => ItemNotAllowedError: not allowed: #<User id: 1>
+        #   => Collectible::ItemNotAllowedError: not allowed: #<User id: 1>
         def ensures_type_equality
-          raise TypeEnforcementAlreadyDefined if item_enforcement.present?
+          raise Collectible::TypeEnforcementAlreadyDefined if item_enforcement.present?
 
           self.item_enforcement = ENSURE_TYPE_EQUALITY
         end
@@ -117,7 +117,9 @@ module Collectible
         # @param *methods [Array<Symbol>]
         def ensure_item_validity_before(*methods)
           methods.each do |method_name|
-            around_method(method_name, "EnsureItemValidity") do |*items|
+            next unless method_defined?(method_name)
+
+            around_method(method_name, prevent_double_wrapping_for: "EnsureItemValidity") do |*items|
               ensure_allowed_in_collection!(items)
 
               super(*items)
