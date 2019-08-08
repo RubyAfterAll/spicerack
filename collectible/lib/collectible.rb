@@ -16,4 +16,5 @@ module Collectible
   class ItemNotAllowedError < StandardError; end
   class ItemTypeMismatchError < ItemNotAllowedError; end
   class TypeEnforcementAlreadyDefined < StandardError; end
+  class MethodNotAllowedError < StandardError; end
 end

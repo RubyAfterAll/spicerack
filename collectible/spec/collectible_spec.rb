@@ -14,4 +14,8 @@ RSpec.describe Collectible do
   describe Collectible::TypeEnforcementAlreadyDefined do
     it { is_expected.to inherit_from StandardError }
   end
+
+  describe Collectible::MethodNotAllowedError do
+    it { is_expected.to inherit_from StandardError }
+  end
 end
