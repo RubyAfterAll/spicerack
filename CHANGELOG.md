@@ -7,6 +7,12 @@
 ### Collectible - [see changes](collectible/CHANGELOG.md#v0150)
 ### Rspice - [see changes](rspice/CHANGELOG.md#v0150)
 
+## v0.14.3
+
+*Release Date*: 8/5/2019
+
+- Make faker req less restrictive
+
 ## v0.14.2
 
 *Release Date*: 6/26/2019
