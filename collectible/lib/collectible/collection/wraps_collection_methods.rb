@@ -8,6 +8,11 @@ module Collectible
       PROXY_MODULE_NAME = "WrapCollectionMethods"
 
       included do
+        collection_wrap_delegate :shift, :pop, :find, :index, :at, :[], :first, :last, :uniq, :uniq!,
+                                 :unshift, :insert, :prepend, :push, :<<, :concat, :+, :-,
+                                 :any?, :empty?, :present?, :blank?, :length, :count,
+                                 :each, :reverse_each, :cycle
+
         collection_wrap_on :collection_wrap, :select
         collection_wrap_values_on :group_by, :partition
       end
@@ -19,7 +24,17 @@ module Collectible
       end
 
       class_methods do
-        protected # rubocop:disable Lint/UselessAccessModifier
+        private
+
+        def collection_wrap_delegate(*methods)
+          methods.each do |method_name|
+            next if method_defined?(method_name)
+
+            define_method(method_name) do |*arguments, &block|
+              collection_wrap { items.public_send(method_name, *arguments, &block) }
+            end
+          end
+        end
 
         def collection_wrap_on(*methods)
           methods.each do |method_name|

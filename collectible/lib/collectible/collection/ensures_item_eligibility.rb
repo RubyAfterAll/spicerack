@@ -66,7 +66,7 @@ module Collectible
         #                       or a proc that validates each item as it is inserted.
         def ensure_item_validity_with
           item_enforcement ||
-          (superclass.ensure_item_validity_with if superclass.respond_to?(:ensure_item_validity_with, true))
+            (superclass.ensure_item_validity_with if superclass.respond_to?(:ensure_item_validity_with, true))
         end
 
         protected
