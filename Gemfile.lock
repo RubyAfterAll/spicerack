@@ -9,6 +9,7 @@ PATH
     redis_hash (0.15.0)
       activesupport (~> 5.2.1)
       redis (>= 3.0)
+      tablesalt (= 0.15.0)
     rspice (0.15.0)
       faker (>= 1.8, < 2.0)
       rspec (~> 3.0)
