@@ -34,7 +34,7 @@ module Collectible
           methods.each do |method_name|
             around_method(method_name, prevent_double_wrapping_for: "MaintainSortingOrder") do |*items|
               super(*items).tap do
-                sort!
+                sort! if maintain_sort_order?
               end
             end
           end

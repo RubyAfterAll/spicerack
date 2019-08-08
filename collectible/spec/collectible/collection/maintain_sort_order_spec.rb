@@ -59,6 +59,8 @@ RSpec.describe Collectible::Collection::MaintainSortOrder, type: :concern do
     before do
       raise ArgumentError, "items parameter must contain at least 3 items" unless items.length >= 3
 
+      example_collection_class.__send__(:maintain_sort_order)
+
       allow(example_collection).to receive(:sort!).and_call_original
     end
 
@@ -167,8 +169,6 @@ RSpec.describe Collectible::Collection::MaintainSortOrder, type: :concern do
     describe "#unshift" do
       subject(:unshift) { example_collection.unshift(items.sample) }
 
-      before { example_collection_class.__send__(:maintain_sort_order) }
-
       it "raises an error" do
         expect { unshift }.to raise_error Collectible::MethodNotAllowedError, "cannot call unshift when sorted"
       end
@@ -177,8 +177,6 @@ RSpec.describe Collectible::Collection::MaintainSortOrder, type: :concern do
     describe "#insert" do
       subject(:insert) { example_collection.insert(items.sample, 0) }
 
-      before { example_collection_class.__send__(:maintain_sort_order) }
-
       it "raises an error" do
         expect { insert }.to raise_error Collectible::MethodNotAllowedError, "cannot call insert when sorted"
       end
@@ -186,8 +184,6 @@ RSpec.describe Collectible::Collection::MaintainSortOrder, type: :concern do
 
     describe "#prepend" do
       subject(:prepend) { example_collection.prepend(items.sample(2)) }
-
-      before { example_collection_class.__send__(:maintain_sort_order) }
 
       it "raises an error" do
         expect { prepend }.to raise_error Collectible::MethodNotAllowedError, "cannot call prepend when sorted"
