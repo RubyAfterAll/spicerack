@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.15.0
+
+*Release Date*: 8/8/2019
+
+- Make class pass a bit more flexible
+
 ## v0.14.2
 
 *Release Date*: 6/26/2019

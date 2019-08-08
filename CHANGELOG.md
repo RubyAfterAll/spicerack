@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.15.0
+
+*Release Date*: 8/8/2019
+
+### Collectible - [see changes](collectible/CHANGELOG.md#v0150)
+### Rspice - [see changes](rspice/CHANGELOG.md#v0150)
+
 ## v0.14.2
 
 *Release Date*: 6/26/2019
