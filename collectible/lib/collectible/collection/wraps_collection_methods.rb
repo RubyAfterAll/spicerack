@@ -8,7 +8,7 @@ module Collectible
       PROXY_MODULE_NAME = "WrapCollectionMethods"
 
       included do
-        collection_wrap_delegate :shift, :pop, :find, :index, :at, :[], :first, :last, :uniq, :uniq!,
+        collection_wrap_delegate :shift, :pop, :find, :index, :at, :[], :first, :last, :uniq, :uniq!, :sort!,
                                  :unshift, :insert, :prepend, :push, :<<, :concat, :+, :-,
                                  :any?, :empty?, :present?, :blank?, :length, :count,
                                  :each, :reverse_each, :cycle
