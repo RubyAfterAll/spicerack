@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Technologic
+module Collectible
   # This constant is managed by spicerack
   VERSION = "0.15.0"
 end
