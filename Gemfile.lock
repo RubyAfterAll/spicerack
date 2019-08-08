@@ -5,6 +5,7 @@ PATH
       activesupport (~> 5.2.1)
     collectible (0.15.0)
       activesupport (~> 5.2.1)
+      short_circu_it (= 0.15.0)
       tablesalt (= 0.15.0)
     redis_hash (0.15.0)
       activesupport (~> 5.2.1)

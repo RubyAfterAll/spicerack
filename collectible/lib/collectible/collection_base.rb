@@ -8,7 +8,6 @@ require_relative "collection/finder"
 
 module Collectible
   class CollectionBase
-    include AroundTheWorld
     include ShortCircuIt
 
     include Tablesalt::StringableObject

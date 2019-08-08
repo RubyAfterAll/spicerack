@@ -3,7 +3,6 @@
 require "active_support"
 require "active_support/core_ext/module"
 
-require "around_the_world"
 require "short_circu_it"
 
 require "tablesalt/stringable_object"
