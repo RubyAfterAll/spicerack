@@ -344,8 +344,6 @@ Lint/SafeNavigationWithEmpty:
   Enabled: true
 Lint/ScriptPermission:
   Enabled: true
-Lint/SendWithMixinArgument:
-  Enabled: true
 Lint/ShadowedArgument:
   Enabled: true
 Lint/ShadowedException:
