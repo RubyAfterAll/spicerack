@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.15.2
+
+*Release Date*: 8/15/2019
+
+- Upgrade rubocop to 0.74.0
+
 ## v0.15.1
 
 *Release Date*: 8/5/2019
