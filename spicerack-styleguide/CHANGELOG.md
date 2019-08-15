@@ -4,7 +4,7 @@
 
 *Release Date*: 8/15/2019
 
-- Upgrade rubocop to 0.74.0
+- Upgrade rubocop to 0.74.0 ([#223](https://github.com/Freshly/spicerack/pull/223))
 
 ## v0.15.1
 
