@@ -1,6 +1,7 @@
 require:
  - rubocop-rspec
  - rubocop-performance
+ - rubocop-rails
 
 AllCops:
   TargetRubyVersion: 2.6
@@ -72,6 +73,7 @@ Layout/EmptyLines:
   Enabled: false
 Layout/EmptyLinesAroundAccessModifier:
   Enabled: true
+  EnforcedStyle: around
 Layout/EmptyLinesAroundArguments:
   Enabled: true
 Layout/EmptyLinesAroundBeginBody:
@@ -341,6 +343,8 @@ Lint/SafeNavigationChain:
 Lint/SafeNavigationWithEmpty:
   Enabled: true
 Lint/ScriptPermission:
+  Enabled: true
+Lint/SendWithMixinArgument:
   Enabled: true
 Lint/ShadowedArgument:
   Enabled: true
@@ -812,6 +816,8 @@ Style/EvenOdd:
   Enabled: true
 Style/ExpandPathArguments:
   Enabled: true
+Style/FloatDivision:
+  Enabled: true
 Style/For:
   Enabled: true
   EnforcedStyle: each
@@ -896,11 +902,16 @@ Style/MultilineMemoization:
   EnforcedStyle: keyword
 Style/MultilineTernaryOperator:
   Enabled: true
+Style/MultilineWhenThen:
+  Enabled: true
 Style/MultipleComparison:
   Enabled: true
 Style/MutableConstant:
   Enabled: true
 Style/NegatedIf:
+  Enabled: true
+  EnforcedStyle: both
+Style/NegatedUnless:
   Enabled: true
   EnforcedStyle: both
 Style/NegatedWhile:
@@ -1156,8 +1167,14 @@ Bundler/OrderedGems:
   Enabled: false
   TreatCommentsAsGroupSeparators: false
 
+Gemspec/DuplicatedAssignment:
+  Enabled: true
 Gemspec/OrderedDependencies:
   Enabled: false
+Gemspec/RequiredRubyVersion:
+  Enabled: true
+Gemspec/RubyVersionGlobalsUsage:
+  Enabled: true
 
 RSpec/AlignRightLetBrace:
   Enabled: false
