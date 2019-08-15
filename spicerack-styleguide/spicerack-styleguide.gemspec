@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.files         = Dir["rubocop.yml", "README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]
   spec.require_paths = "lib"
 
-  spec.add_dependency "rubocop", "0.68.1"
-  spec.add_dependency "rubocop-rspec", "1.32.0"
-  spec.add_dependency "rubocop-performance", "1.1.0"
+  spec.add_dependency "rubocop", "0.74"
+  spec.add_dependency "rubocop-rspec", "1.35.0"
+  spec.add_dependency "rubocop-performance", "1.4.1"
 end
