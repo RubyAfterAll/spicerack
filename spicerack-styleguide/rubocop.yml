@@ -574,6 +574,8 @@ Rails/DelegateAllowBlank:
   Enabled: true
 Rails/DynamicFindBy:
   Enabled: true
+Rails/EnumHash:
+  Enabled: true
 Rails/EnumUniqueness:
   Enabled: true
 Rails/EnvironmentComparison:
@@ -596,6 +598,8 @@ Rails/HasAndBelongsToMany:
     - app/models/**/*.rb
 Rails/HasManyOrHasOneDependent:
   Enabled: false
+Rails/HelperInstanceVariable:
+  Enabled: true
 Rails/HttpPositionalArguments:
   Enabled: true
   Include:
