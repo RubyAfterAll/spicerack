@@ -2,6 +2,39 @@
 
 require "active_support/core_ext/module/attr_internal"
 
+# Utility for creating DSL class variables - great for base classes with many child classes.
+#
+# class Vehicle
+#   include Tablesalt::DSLAccessor
+#
+#   dsl_accessor :this_many_wheels
+#
+#   def self.inspect
+#     "I have #{this_many_wheels} wheels"
+#   end
+# end
+#
+# class Car < Vehicle
+#   this_many_wheels 4
+# end
+#
+# class Motorcycle < Vehicle
+#   this_many_wheels 2
+# end
+#
+# class Semi < Vehicle
+#   this_many_wheels 18
+# end
+#
+# Car.inspect
+# => "I have 4 wheels"
+#
+# Motorcycle.inspect
+# => "I have 2 wheels"
+#
+# Semi.inspect
+# => "I have 18 wheels"
+#
 module Tablesalt
   module DSLAccessor
     extend ActiveSupport::Concern
