@@ -1,6 +1,7 @@
 require:
- - rubocop-rspec
- - rubocop-performance
+  - rubocop-rspec
+  - rubocop-performance
+  - rubocop-rails
 
 AllCops:
   TargetRubyVersion: 2.6
@@ -72,6 +73,7 @@ Layout/EmptyLines:
   Enabled: false
 Layout/EmptyLinesAroundAccessModifier:
   Enabled: true
+  EnforcedStyle: around
 Layout/EmptyLinesAroundArguments:
   Enabled: true
 Layout/EmptyLinesAroundBeginBody:
@@ -127,7 +129,7 @@ Layout/IndentFirstParameter:
   Enabled: true
 Layout/IndentHeredoc:
   Enabled: true
-  EnforcedStyle: auto_detection
+  EnforcedStyle: squiggly
 Layout/IndentationConsistency:
   Enabled: true
   EnforcedStyle: normal
@@ -400,6 +402,7 @@ Metrics/BlockLength:
     - "**/concerns/*"
     - config/environments/*
     - spec/**/*
+    - "**/*_spec.rb"
     - "**/*.gemspec"
 Metrics/BlockNesting:
   Enabled: true
@@ -570,6 +573,8 @@ Rails/DelegateAllowBlank:
   Enabled: true
 Rails/DynamicFindBy:
   Enabled: true
+Rails/EnumHash:
+  Enabled: true
 Rails/EnumUniqueness:
   Enabled: true
 Rails/EnvironmentComparison:
@@ -592,6 +597,8 @@ Rails/HasAndBelongsToMany:
     - app/models/**/*.rb
 Rails/HasManyOrHasOneDependent:
   Enabled: false
+Rails/HelperInstanceVariable:
+  Enabled: true
 Rails/HttpPositionalArguments:
   Enabled: true
   Include:
@@ -812,6 +819,8 @@ Style/EvenOdd:
   Enabled: true
 Style/ExpandPathArguments:
   Enabled: true
+Style/FloatDivision:
+  Enabled: true
 Style/For:
   Enabled: true
   EnforcedStyle: each
@@ -896,11 +905,16 @@ Style/MultilineMemoization:
   EnforcedStyle: keyword
 Style/MultilineTernaryOperator:
   Enabled: true
+Style/MultilineWhenThen:
+  Enabled: true
 Style/MultipleComparison:
   Enabled: true
 Style/MutableConstant:
   Enabled: true
 Style/NegatedIf:
+  Enabled: true
+  EnforcedStyle: both
+Style/NegatedUnless:
   Enabled: true
   EnforcedStyle: both
 Style/NegatedWhile:
@@ -1156,8 +1170,14 @@ Bundler/OrderedGems:
   Enabled: false
   TreatCommentsAsGroupSeparators: false
 
+Gemspec/DuplicatedAssignment:
+  Enabled: true
 Gemspec/OrderedDependencies:
   Enabled: false
+Gemspec/RequiredRubyVersion:
+  Enabled: true
+Gemspec/RubyVersionGlobalsUsage:
+  Enabled: true
 
 RSpec/AlignRightLetBrace:
   Enabled: false
@@ -1183,6 +1203,8 @@ RSpec/DescribedClass:
   Enabled: true
   SkipBlocks: false
   EnforcedStyle: described_class
+RSpec/Dialect:
+  Enabled: false
 RSpec/EmptyExampleGroup:
   Enabled: true
 RSpec/EmptyLineAfterFinalLet:
@@ -1216,6 +1238,10 @@ RSpec/Focus:
 RSpec/HookArgument:
   Enabled: true
   EnforcedStyle: implicit
+RSpec/HooksBeforeExamples:
+ Enabled: true
+RSpec/ImplicitBlockExpectation:
+ Enabled: true
 RSpec/ImplicitExpect:
   Enabled: true
   EnforcedStyle: is_expected
@@ -1233,6 +1259,8 @@ RSpec/IteratedExpectation:
   Enabled: true
 RSpec/LeadingSubject:
   Enabled: false
+RSpec/LeakyConstantDeclaration:
+ Enabled: true
 RSpec/LetBeforeExamples:
   Enabled: true
 RSpec/LetSetup:
@@ -1289,6 +1317,8 @@ RSpec/VerifiedDoubles:
   Enabled: true
   IgnoreSymbolicNames: false
 RSpec/VoidExpect:
+  Enabled: true
+RSpec/Yield:
   Enabled: true
 
 FactoryBot/CreateList:

@@ -1,5 +1,33 @@
 # Changelog
 
+## Upcoming
+
+- Ignore block length for all spec files [#207](https://github.com/Freshly/spicerack/pull/207/files#diff-8fc4a68b4ba6d01144ef47c836a9aae9)
+
+## v0.15.2
+
+*Release Date*: 8/15/2019
+
+- Upgrade rubocop to 0.74.0 ([#223](https://github.com/Freshly/spicerack/pull/223))
+
+## v0.15.1
+
+*Release Date*: 8/5/2019
+
+- No changes
+
+## v0.15.0
+
+*Release Date*: 8/8/2019
+
+- No changes
+
+## v0.14.3
+
+*Release Date*: 8/5/2019
+
+- No changes
+
 ## v0.14.2
 
 *Release Date*: 6/26/2019
