@@ -38,7 +38,6 @@ require "active_support/core_ext/module/attr_internal"
 module Tablesalt
   module DSLAccessor
     extend ActiveSupport::Concern
-    include Technologic
 
     class_methods do
       private
