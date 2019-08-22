@@ -18,6 +18,12 @@ require_relative "configurable/reader"
 #       configuration_options do
 #         option :some_config_option
 #         option :some_option_with_a_default, default: "I probably know what's best"
+#
+#         nested :whats_behind do
+#           option :door_one, default: "It's a goat"
+#           option :door_two, default: "Another goat"
+#           option :door_three, default: "It's a car!"
+#         end
 #       end
 #     end
 #   end
@@ -26,11 +32,24 @@ require_relative "configurable/reader"
 #   SomeGem::Configuration.configure do |config|
 #     config.some_config_option = 12345
 #     config.some_option_with_a_default = "Nope, you really don't"
+#
+#     config.whats_behind do |nested|
+#       nested.door_one = "It's a boat!"
+#       nested.door_three = "The teletubbies on repeat 😱"
+#     end
 #   end
 #
 #   # Then, back in your gem code:
 #   puts Configuration.config.some_config_option
 #   => 12345
+#   puts Configuration.config.whats_behind.door_one
+#   => "It's a boat!"
+#
+#   # Or, if you want to select dynamically:
+#   doors = %i[door_one door_two door_three]
+#   Configuration.config.config_eval(whats_behind, doors.sample).read
+#   => "The teletubbies on repeat 😱"
+#
 module Spicerack
   module Configurable
     delegate :configure, :config_eval, to: :_config_builder
