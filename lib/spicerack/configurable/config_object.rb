@@ -46,6 +46,12 @@ module Spicerack
           raise ArgumentError, "#{name.inspect} is reserved and cannot be used at a config option" if name.to_sym.in? RESERVED_WORDS
           raise ArgumentError, "#{name.inspect} is already in use" if _nested_options.include?(name.to_sym)
         end
+
+        def inherited(base)
+          base._nested_options = _nested_options.dup
+          base._nested_builders = _nested_builders.dup
+          super
+        end
       end
     end
   end
