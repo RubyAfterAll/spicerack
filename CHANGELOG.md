@@ -1,5 +1,10 @@
 # Changelog
 
+## Upcoming
+
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#Upcoming)
+### SpicerackStyleguide - [see changes](spicerack-styleguide/CHANGELOG.md#Upcoming)
+
 ## v0.15.2
 
 *Release Date*: 8/15/2019
