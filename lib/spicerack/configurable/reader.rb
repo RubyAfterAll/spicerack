@@ -7,6 +7,10 @@ module Spicerack
         @config = config
       end
 
+      def config_eval(*path)
+        Evaluator.new(path, self)
+      end
+
       private
 
       attr_reader :config

@@ -3,6 +3,8 @@
 module Spicerack
   module Configurable
     class ConfigBuilder
+      delegate :config_eval, to: :reader
+
       def reader
         @reader ||= Reader.new(configuration)
       end
