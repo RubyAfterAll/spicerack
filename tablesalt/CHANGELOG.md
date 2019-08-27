@@ -1,6 +1,6 @@
 # Changelog
 
-## Upcoming
+## v0.16.0
 
 - `DSLAccessor` [#207](https://github.com/Freshly/spicerack/pull/207)
 
