@@ -4,8 +4,9 @@
 
 *Release Date*: 8/27/2019
 
-### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0160)
+### Facet - [see changes](facet/CHANGELOG.md#v0160)
 ### SpicerackStyleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0160)
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0160)
 
 - Add rubocop to codeclimate [#225](https://github.com/Freshly/spicerack/pull/225)
 
