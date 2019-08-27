@@ -1,9 +1,11 @@
 # Changelog
 
-## Upcoming
+## v0.16.0
 
-### Tablesalt - [see changes](tablesalt/CHANGELOG.md#Upcoming)
-### SpicerackStyleguide - [see changes](spicerack-styleguide/CHANGELOG.md#Upcoming)
+*Release Date*: 8/27/2019
+
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0160)
+### SpicerackStyleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0160)
 
 - Add rubocop to codeclimate [#225](https://github.com/Freshly/spicerack/pull/225)
 
