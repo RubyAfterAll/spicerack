@@ -36,6 +36,7 @@ Gem::Specification.new do |spec|
   # Spicerack Gems
   spec.add_dependency "around_the_world", version
   spec.add_dependency "collectible", version
+  spec.add_dependency "facet", version
   spec.add_dependency "redis_hash", version
   spec.add_dependency "short_circu_it", version
   spec.add_dependency "technologic", version

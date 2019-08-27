@@ -1,6 +1,12 @@
 # Changelog
 
-## v0.16.0
+## v0.16.1
+
+*Release Date*: 8/27/2019
+
+- No changes
+
+## v0.16.0 [Yanked]
 
 - Ignore block length for all spec files [#207](https://github.com/Freshly/spicerack/pull/207/files#diff-8fc4a68b4ba6d01144ef47c836a9aae9)
 
