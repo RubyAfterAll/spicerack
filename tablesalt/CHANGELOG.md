@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+
+- `DSLAccessor` [#207](https://github.com/Freshly/spicerack/pull/207)
+
 ## v0.15.2
 
 *Release Date*: 8/15/2019

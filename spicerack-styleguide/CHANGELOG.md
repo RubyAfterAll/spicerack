@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+
+- Ignore block length for all spec files [#207](https://github.com/Freshly/spicerack/pull/207/files#diff-8fc4a68b4ba6d01144ef47c836a9aae9)
+
 ## v0.15.2
 
 *Release Date*: 8/15/2019

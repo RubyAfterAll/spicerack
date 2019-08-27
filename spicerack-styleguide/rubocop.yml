@@ -402,6 +402,7 @@ Metrics/BlockLength:
     - "**/concerns/*"
     - config/environments/*
     - spec/**/*
+    - "**/*_spec.rb"
     - "**/*.gemspec"
 Metrics/BlockNesting:
   Enabled: true
