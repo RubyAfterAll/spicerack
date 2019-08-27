@@ -36,6 +36,7 @@ Or install it yourself as:
 
 * [AroundTheWorld](around_the_world/README.md) allows you to easily wrap methods with custom logic on any class.
 * [Collectible](collectible/README.md) provides an extensible framework for building array-like object collections.
+* [Facet](facet/README.md) is a filterable, sortable, pageable, and Rails cacheable `ActiveRecord::Relation`.
 * [RedisHash](redis_hash/README.md) provides a class that matches the Hash api by wrapping Redis.
 * [RSpice](rspice/README.md) is an `RSpec` utility gem of custom matchers, shared contexts and examples.
 * [ShortCircuIt](short_circu_it/README.md) is an intelligent and feature rich memoization gem.
@@ -85,6 +86,7 @@ Here's a checklist of some other tasks (see another gem as reference):
 - Copy over `GEM/Rakefile` from any other gem
 - Remove the failing spec in `spec/GEM_spec.rb` and replace it with the rspice shared example
 - Edit `spec/spec_helper.rb` to use the shared spec helper
+- Remove the default error in `lib/GEM/GEM.rb`
 - Edit `GEM.gemspec` and clean up the boilerplate
 
 Then in the base directory:
