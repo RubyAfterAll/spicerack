@@ -1,6 +1,12 @@
 # Changelog
 
-## v0.16.0
+## v0.16.1
+
+*Release Date*: 8/27/2019
+
+- No changes
+
+## v0.16.0 [Yanked]
 
 - `DSLAccessor` [#207](https://github.com/Freshly/spicerack/pull/207)
 
