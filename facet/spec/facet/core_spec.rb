@@ -79,5 +79,33 @@ RSpec.describe Facet::Core do
         end
       end
     end
+
+    context "with .default_sort" do
+      let(:default_sort) { double }
+
+      before { example_facet_class.__send__(:sort_default, default_sort) }
+
+      context "with no arguments" do
+        subject(:example_facet) { example_facet_class.new }
+
+        it "uses defaults" do
+          expect(example_facet.current_page).to eq 0
+          expect(example_facet.filter_by).to be_nil
+          expect(example_facet.sort_by).to eq default_sort
+        end
+      end
+
+      context "with arguments" do
+        let(:current_page) { rand(1..2) }
+        let(:filter_by) { Faker::Internet.domain_word.to_sym }
+        let(:sort_by) { Faker::Internet.domain_word.to_sym }
+
+        it "uses arguments" do
+          expect(example_facet.current_page).to eq current_page
+          expect(example_facet.filter_by).to eq filter_by
+          expect(example_facet.sort_by).to eq sort_by
+        end
+      end
+    end
   end
 end

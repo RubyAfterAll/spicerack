@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Filters allow you to pare down a collection of records into a meaningful subset.
 module Facet
   module Filter
     extend ActiveSupport::Concern

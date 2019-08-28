@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Facet::Filter do
+RSpec.describe Facet::Filter, type: :concern do
   include_context "with an example facet"
 
   it { is_expected.to delegate_method(:default_filter).to(:class) }
