@@ -2,7 +2,7 @@
 
 RSpec.shared_context "with an example facet" do
   subject(:example_facet) do
-    example_facet_class.new(current_page: current_page, filter_by: filter_by, sort_by: sort_by)
+    example_facet_class.new(current_page: current_page, filter_by: filter_by, sort_by: sort_by, all: all)
   end
 
   let(:example_facet_class) { Class.new(Facet::Base) }
@@ -10,4 +10,5 @@ RSpec.shared_context "with an example facet" do
   let(:current_page) { 0 }
   let(:filter_by) { nil }
   let(:sort_by) { nil }
+  let(:all) { false }
 end
