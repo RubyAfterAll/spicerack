@@ -53,6 +53,10 @@ module Spicerack
           super
         end
       end
+
+      def to_h
+
+      end
     end
   end
 end
