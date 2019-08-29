@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.16.2
+
+*Release Date*: 8/27/2019
+
+### Facet - [see changes](facet/CHANGELOG.md#v0162)
+
 ## v0.16.1
 
 *Release Date*: 8/27/2019
