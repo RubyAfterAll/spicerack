@@ -6,12 +6,12 @@ module Facet
     extend ActiveSupport::Concern
 
     included do
-      delegate :default_page, :default_page?, :paginated?, to: :class
+      delegate :default_page, :default_page?, :pagination?, to: :class
     end
 
     class_methods do
       def default_page
-        default_page? ? @default_page : 0
+        default_page? ? @default_page : 1
       end
 
       def inherited(base)
@@ -23,10 +23,10 @@ module Facet
         @default_page.present?
       end
 
-      def paginated?
+      def pagination?
         return true unless defined?(@default_page)
 
-        @default_page >= 0
+        @default_page >= 1
       end
 
       private

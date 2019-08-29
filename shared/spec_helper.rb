@@ -6,6 +6,10 @@ require "pry"
 
 require "shoulda-matchers"
 
+require "active_record"
+require "will_paginate"
+require "will_paginate/active_record"
+
 require_relative "../lib/spicerack/version"
 require_relative "../lib/spicerack/spec_helper"
 
@@ -15,7 +19,12 @@ SimpleCov.start do
   add_filter "/spec/"
 end
 
+ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
+
 RSpec.configure do |config|
+  config.include(Shoulda::Matchers::ActiveModel, type: :model)
+  config.include(Shoulda::Matchers::ActiveRecord, type: :model)
+
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
 

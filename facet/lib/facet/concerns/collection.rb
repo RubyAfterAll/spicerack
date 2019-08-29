@@ -19,7 +19,7 @@ module Facet
     end
 
     def output
-      return sorted_filtered_collection unless current_page >= 0
+      return sorted_filtered_collection unless current_page.present? && current_page >= 0
 
       sorted_filtered_collection.paginate(page: current_page)
     end

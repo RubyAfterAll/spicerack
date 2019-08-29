@@ -9,7 +9,7 @@ RSpec.describe Facet::Core do
         subject(:example_facet) { example_facet_class.new }
 
         it "uses defaults" do
-          expect(example_facet.current_page).to eq 0
+          expect(example_facet.current_page).to eq 1
           expect(example_facet.filter_by).to be_nil
           expect(example_facet.sort_by).to be_nil
         end
@@ -50,6 +50,28 @@ RSpec.describe Facet::Core do
       end
     end
 
+    context "with disabled pagination" do
+      context "with no arguments" do
+        subject(:example_facet) { example_facet_class.new(paginate: false) }
+
+        it "uses defaults" do
+          expect(example_facet.current_page).to be_nil
+          expect(example_facet.filter_by).to be_nil
+          expect(example_facet.sort_by).to be_nil
+        end
+      end
+
+      context "with also a current_page argument" do
+        subject(:example_facet) { example_facet_class.new(paginate: false, current_page: current_page) }
+
+        let(:current_page) { 0 }
+
+        it "raises" do
+          expect { example_facet }.to raise_error ArgumentError, "pagination is disabled for this facet."
+        end
+      end
+    end
+
     context "with .default_filter" do
       let(:default_filter) { double }
 
@@ -59,7 +81,7 @@ RSpec.describe Facet::Core do
         subject(:example_facet) { example_facet_class.new }
 
         it "uses defaults" do
-          expect(example_facet.current_page).to eq 0
+          expect(example_facet.current_page).to eq 1
           expect(example_facet.filter_by).to eq default_filter
           expect(example_facet.sort_by).to be_nil
         end
@@ -111,7 +133,7 @@ RSpec.describe Facet::Core do
         subject(:example_facet) { example_facet_class.new }
 
         it "uses defaults" do
-          expect(example_facet.current_page).to eq 0
+          expect(example_facet.current_page).to eq 1
           expect(example_facet.filter_by).to be_nil
           expect(example_facet.sort_by).to eq default_sort
         end
@@ -128,6 +150,27 @@ RSpec.describe Facet::Core do
           expect(example_facet.sort_by).to eq sort_by
         end
       end
+    end
+  end
+
+  describe "#paginated?" do
+    subject { example_facet }
+
+    context "with default" do
+      it { is_expected.to be_paginated }
+    end
+
+    context "when specified" do
+      let(:current_page) { 2 }
+
+      it { is_expected.to be_paginated }
+    end
+
+    context "without pagination" do
+      let(:paginate) { false }
+      let(:current_page) { nil }
+
+      it { is_expected.not_to be_paginated }
     end
   end
 
