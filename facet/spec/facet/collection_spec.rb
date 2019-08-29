@@ -6,6 +6,9 @@ RSpec.describe Facet::Collection, type: :concern do
   it { is_expected.to alias_method :to_ary, :output }
   it { is_expected.to alias_method :to_a, :to_ary }
 
+  it { is_expected.to delegate_method(:to_model).to(:collection) }
+  it { is_expected.to delegate_method(:to_partial_path).to(:collection) }
+
   describe "#collection" do
     subject { example_facet.collection }
 

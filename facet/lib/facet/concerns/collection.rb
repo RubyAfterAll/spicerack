@@ -9,6 +9,9 @@ module Facet
       memoize :collection
       memoize :filtered_collection
       memoize :sorted_filtered_collection
+
+      # Supports transparent rendering with Rails of a facet in place of a collection
+      delegate :to_model, :to_partial_path, to: :collection
     end
 
     def collection
