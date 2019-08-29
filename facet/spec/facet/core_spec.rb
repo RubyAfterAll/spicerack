@@ -153,6 +153,27 @@ RSpec.describe Facet::Core do
     end
   end
 
+  describe "#paginated?" do
+    subject { example_facet }
+
+    context "with default" do
+      it { is_expected.to be_paginated }
+    end
+
+    context "when specified" do
+      let(:current_page) { 2 }
+
+      it { is_expected.to be_paginated }
+    end
+
+    context "without pagination" do
+      let(:paginate) { false }
+      let(:current_page) { nil }
+
+      it { is_expected.not_to be_paginated }
+    end
+  end
+
   describe "#filtered?" do
     subject { example_facet }
 

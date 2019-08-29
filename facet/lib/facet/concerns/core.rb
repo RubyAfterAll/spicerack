@@ -15,6 +15,10 @@ module Facet
       @sort_by = sort_for(sort_by)
     end
 
+    def paginated?
+      current_page.present?
+    end
+
     def filtered?
       filter_by.present?
     end
@@ -26,7 +30,7 @@ module Facet
     private
 
     def page_for(current_page, paginate)
-      return current_page.presence || default_page if paginate && paginated?
+      return current_page.presence || default_page if paginate && pagination?
 
       raise ArgumentError, "pagination is disabled for this facet." if current_page.present?
     end

@@ -5,7 +5,7 @@ RSpec.describe Facet::Paginate, type: :concern do
 
   it { is_expected.to delegate_method(:default_page).to(:class) }
   it { is_expected.to delegate_method(:default_page?).to(:class) }
-  it { is_expected.to delegate_method(:paginated?).to(:class) }
+  it { is_expected.to delegate_method(:pagination?).to(:class) }
 
   describe ".default_page" do
     subject { example_facet_class.default_page }
@@ -61,11 +61,11 @@ RSpec.describe Facet::Paginate, type: :concern do
     end
   end
 
-  describe ".paginated?" do
+  describe ".pagination?" do
     subject { example_facet_class }
 
     context "with default" do
-      it { is_expected.to be_paginated }
+      it { is_expected.to be_pagination }
     end
 
     context "when specified" do
@@ -73,13 +73,13 @@ RSpec.describe Facet::Paginate, type: :concern do
 
       let(:default_page) { 1 }
 
-      it { is_expected.to be_paginated }
+      it { is_expected.to be_pagination }
     end
 
     context "without pagination" do
       before { example_facet_class.__send__(:disable_pagination!) }
 
-      it { is_expected.not_to be_paginated }
+      it { is_expected.not_to be_pagination }
     end
   end
 
