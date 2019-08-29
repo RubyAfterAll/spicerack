@@ -6,6 +6,10 @@ require "pry"
 
 require "shoulda-matchers"
 
+require "active_record"
+require "will_paginate"
+require "will_paginate/active_record"
+
 require_relative "../lib/spicerack/version"
 require_relative "../lib/spicerack/spec_helper"
 
@@ -14,6 +18,8 @@ require_relative "shared_examples/a_versioned_spicerack_gem"
 SimpleCov.start do
   add_filter "/spec/"
 end
+
+ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
 
 RSpec.configure do |config|
   config.include(Shoulda::Matchers::ActiveModel, type: :model)

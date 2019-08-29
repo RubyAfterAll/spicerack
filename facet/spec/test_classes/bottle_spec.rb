@@ -5,9 +5,6 @@ RSpec.describe Bottle, type: :model do
 
   it { is_expected.to inherit_from ActiveRecord::Base }
 
-  it { is_expected.to validate_presence_of(:name) }
-  it { is_expected.to define_enum_for(:status).with_values(on_the_wall: 0, taken_down: 1, passed_around: 2) }
-
   describe "#paginate" do
     subject { described_class.all.paginate(page: 1) }
 
