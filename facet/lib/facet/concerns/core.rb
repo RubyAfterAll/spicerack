@@ -7,19 +7,12 @@ module Facet
 
     included do
       attr_reader :current_page, :filter_by, :sort_by
-      delegate :default_page, to: :class
     end
 
-    class_methods do
-      def default_page
-        0
-      end
-    end
-
-    def initialize(current_page: default_page, filter_by: nil, sort_by: nil, all: false)
-      @current_page = current_page
-      @filter_by = filter_by.presence || ((default_filter? && !all) ? default_filter : nil)
-      @sort_by = sort_by.presence || (default_sort? ? default_sort : nil)
+    def initialize(current_page: nil, filter_by: nil, sort_by: nil, all: false)
+      @current_page = page_for(current_page)
+      @filter_by = filter_for(filter_by, all)
+      @sort_by = sort_for(sort_by)
     end
 
     def filtered?
@@ -28,6 +21,22 @@ module Facet
 
     def sorted?
       sort_by.present?
+    end
+
+    private
+
+    def page_for(current_page)
+      return current_page.presence || default_page if paginated?
+
+      raise ArgumentError, "pagination is disabled for this facet." if current_page.present?
+    end
+
+    def filter_for(filter_by, all)
+      filter_by.presence || ((default_filter? && !all) ? default_filter : nil)
+    end
+
+    def sort_for(sort_by)
+      sort_by.presence || (default_sort? ? default_sort : nil)
     end
   end
 end
