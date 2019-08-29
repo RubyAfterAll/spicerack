@@ -62,29 +62,19 @@ RSpec.describe Facet::Record, type: :concern do
     end
   end
 
-  describe ".inherited"
+  describe ".inherited"  do
+    subject { Class.new(example_facet_class).record_scope }
 
-  describe "#collection" do
-    subject { example_facet.collection }
-
-    before { stub_const("SomeRecord", record_class) }
-
-    let(:example_facet_class) do
-      Class.new(Facet::Base) do
-        def self.record_class
-          SomeRecord
-        end
-      end
+    context "with default" do
+      it { is_expected.to be :all }
     end
 
-    let(:record_class) do
-      Class.new do
-        def self.all
-          :mock_collection
-        end
-      end
-    end
+    context "with default" do
+      before { example_facet_class.__send__(:scope, record_scope) }
 
-    it { is_expected.to eq :mock_collection }
+      let(:record_scope) { Faker::Internet.domain_word.to_sym }
+
+      it { is_expected.to eq record_scope }
+    end
   end
 end

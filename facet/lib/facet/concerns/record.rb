@@ -7,7 +7,6 @@ module Facet
 
     included do
       delegate :record_class, :record_scope, to: :class
-      memoize :collection
     end
 
     class_methods do
@@ -33,10 +32,6 @@ module Facet
       def scope(value)
         @record_scope = value
       end
-    end
-
-    def collection
-      record_class.public_send(record_scope)
     end
   end
 end
