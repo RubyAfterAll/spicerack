@@ -108,4 +108,32 @@ RSpec.describe Facet::Core do
       end
     end
   end
+
+  describe "#filtered?" do
+    subject { example_facet }
+
+    context "without filter_by" do
+      it { is_expected.not_to be_filtered }
+    end
+
+    context "with filter_by" do
+      let(:filter_by) { Faker::Internet.domain_word.to_sym }
+
+      it { is_expected.to be_filtered }
+    end
+  end
+
+  describe "#sorted?" do
+    subject { example_facet }
+
+    context "without sort_by" do
+      it { is_expected.not_to be_sorted }
+    end
+
+    context "with sort_by" do
+      let(:sort_by) { Faker::Internet.domain_word.to_sym }
+
+      it { is_expected.to be_sorted }
+    end
+  end
 end
