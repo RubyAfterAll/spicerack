@@ -28,6 +28,28 @@ RSpec.describe Facet::Core do
       end
     end
 
+    context "without pagination" do
+      before { example_facet_class.__send__(:disable_pagination!) }
+
+      context "with no arguments" do
+        subject(:example_facet) { example_facet_class.new }
+
+        it "uses defaults" do
+          expect(example_facet.current_page).to be_nil
+          expect(example_facet.filter_by).to be_nil
+          expect(example_facet.sort_by).to be_nil
+        end
+      end
+
+      context "with current_page argument" do
+        let(:current_page) { 0 }
+
+        it "raises" do
+          expect { example_facet }.to raise_error ArgumentError, "pagination is disabled for this facet."
+        end
+      end
+    end
+
     context "with .default_filter" do
       let(:default_filter) { double }
 
