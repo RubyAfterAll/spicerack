@@ -9,6 +9,7 @@ PATH
       tablesalt (= 0.16.1)
     facet (0.16.1)
       activesupport (~> 5.2.1)
+      short_circu_it (= 0.16.1)
       tablesalt (= 0.16.1)
     redis_hash (0.16.1)
       activesupport (~> 5.2.1)
