@@ -9,7 +9,7 @@ RSpec.shared_context "with an example facet" do
   let(:example_facet_root_name) { Faker::Internet.domain_word.capitalize }
   let(:example_facet_name) { "#{example_facet_root_name}Facet" }
 
-  let(:current_page) { 0 }
+  let(:current_page) { 1 }
   let(:filter_by) { nil }
   let(:sort_by) { nil }
   let(:all) { false }

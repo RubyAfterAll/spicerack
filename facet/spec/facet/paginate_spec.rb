@@ -11,7 +11,7 @@ RSpec.describe Facet::Paginate, type: :concern do
     subject { example_facet_class.default_page }
 
     context "with default" do
-      it { is_expected.to eq 0 }
+      it { is_expected.to eq 1 }
     end
 
     context "when specified" do
@@ -35,7 +35,7 @@ RSpec.describe Facet::Paginate, type: :concern do
     let(:value) { double }
 
     it "defines .default_page" do
-      expect { page_default }.to change { example_facet_class.default_page }.from(0).to(value)
+      expect { page_default }.to change { example_facet_class.default_page }.from(1).to(value)
     end
   end
 

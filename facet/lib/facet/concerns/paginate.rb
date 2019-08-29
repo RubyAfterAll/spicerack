@@ -11,7 +11,7 @@ module Facet
 
     class_methods do
       def default_page
-        default_page? ? @default_page : 0
+        default_page? ? @default_page : 1
       end
 
       def inherited(base)
@@ -26,7 +26,7 @@ module Facet
       def paginated?
         return true unless defined?(@default_page)
 
-        @default_page >= 0
+        @default_page >= 1
       end
 
       private
