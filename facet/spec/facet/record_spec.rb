@@ -3,6 +3,9 @@
 RSpec.describe Facet::Record, type: :concern do
   include_context "with an example facet"
 
+  it { is_expected.to delegate_method(:record_class).to(:class) }
+  it { is_expected.to delegate_method(:record_scope).to(:class) }
+
   describe ".record_class" do
     subject { example_facet_class.record_class }
 
@@ -15,12 +18,12 @@ RSpec.describe Facet::Record, type: :concern do
     end
 
     context "when explicit" do
-      before { stub_const("ExplicitClass", record_class) }
+      before { stub_const("SomeRecord", record_class) }
 
       let(:example_facet_class) do
         Class.new(Facet::Base) do
           def self.record_class
-            ExplicitClass
+            SomeRecord
           end
         end
       end
@@ -59,19 +62,29 @@ RSpec.describe Facet::Record, type: :concern do
     end
   end
 
-  describe ".inherited" do
-    subject { Class.new(example_facet_class).record_scope }
+  describe ".inherited"
 
-    context "with default" do
-      it { is_expected.to be :all }
+  describe "#collection" do
+    subject { example_facet.collection }
+
+    before { stub_const("SomeRecord", record_class) }
+
+    let(:example_facet_class) do
+      Class.new(Facet::Base) do
+        def self.record_class
+          SomeRecord
+        end
+      end
     end
 
-    context "with default" do
-      before { example_facet_class.__send__(:scope, record_scope) }
-
-      let(:record_scope) { Faker::Internet.domain_word.to_sym }
-
-      it { is_expected.to eq record_scope }
+    let(:record_class) do
+      Class.new do
+        def self.all
+          :mock_collection
+        end
+      end
     end
+
+    it { is_expected.to eq :mock_collection }
   end
 end
