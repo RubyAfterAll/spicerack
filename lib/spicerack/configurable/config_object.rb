@@ -30,7 +30,7 @@ module Spicerack
         def nested(namespace, &block)
           _ensure_safe_option_name(namespace)
 
-          nested_config_builder_for(namespace).tap do |builder|
+          _nested_config_builder_for(namespace).tap do |builder|
             builder.instance_exec(&block)
 
             _nested_options << namespace.to_sym
@@ -38,7 +38,7 @@ module Spicerack
           end
         end
 
-        def nested_config_builder_for(namespace)
+        def _nested_config_builder_for(namespace)
           _nested_builders[namespace.to_sym] ||= ConfigBuilder.new
         end
 
@@ -55,7 +55,15 @@ module Spicerack
       end
 
       def to_h
+        {}.tap do |hash|
+          _options.each { |option| hash[option] = public_send(option) }
 
+          _nested_options { |option| hash[option] = public_send(option).to_h }
+        end
+
+        _options.inject({}) do |hash, option|
+          hash.tap { |h| h[option] = public_send(option) }
+        end
       end
     end
   end
