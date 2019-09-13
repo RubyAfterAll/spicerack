@@ -10,7 +10,9 @@ module Spicerack
       end
 
       def configure
-        yield configuration
+        mutex.synchronize do
+          yield configuration
+        end
       end
 
       # NOTE: options must be set up before {#configure} is called
@@ -30,6 +32,10 @@ module Spicerack
 
       def config_class
         @config_class ||= Class.new(ConfigObject)
+      end
+
+      def mutex
+        @mutex = Mutex.new
       end
     end
   end
