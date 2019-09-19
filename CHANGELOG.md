@@ -2,9 +2,11 @@
 
 ## v0.17.0
 
-*Release Date*: Unreleased
+*Release Date*: 9/19/2019
 
-- Added Stockpot
+### StockPot [Consolidated]
+
+- Claimed gem name
 
 ## v0.16.3
 
