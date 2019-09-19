@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Spicerack::Objects::Isolation, type: :module do
+RSpec.describe Tablesalt::Isolation, type: :module do
   subject { example_dsl_object.__send__(:isolate, example_target) }
 
   let(:duped_object) { example_target.dup }
