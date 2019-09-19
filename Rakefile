@@ -15,6 +15,7 @@ SPICERACK_GEMS = %w[
   spicerack-styleguide
   technologic
   tablesalt
+  stockpot
 ].freeze
 ALL_GEMS = %w[spicerack] + SPICERACK_GEMS
 
