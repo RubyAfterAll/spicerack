@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.16.3
+
+*Release Date*: 9/18/2019
+
+- Loosened dependency requirements to allow for the Rails 6 suite
+
 ## v0.16.2
 
 *Release Date*: 8/29/2019
