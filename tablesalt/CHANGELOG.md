@@ -1,6 +1,24 @@
 # Changelog
 
-## Upcoming
+## v0.16.3
+
+*Release Date*: 9/18/2019
+
+- Loosened dependency requirements to allow for the Rails 6 suite
+
+## v0.16.2
+
+*Release Date*: 8/29/2019
+
+- No changes
+
+## v0.16.1
+
+*Release Date*: 8/27/2019
+
+- No changes
+
+## v0.16.0 [Yanked]
 
 - `DSLAccessor` [#207](https://github.com/Freshly/spicerack/pull/207)
 

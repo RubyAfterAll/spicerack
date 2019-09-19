@@ -1,9 +1,30 @@
 # Changelog
 
-## Upcoming
+## v0.16.3
 
-### Tablesalt - [see changes](tablesalt/CHANGELOG.md#Upcoming)
-### SpicerackStyleguide - [see changes](spicerack-styleguide/CHANGELOG.md#Upcoming)
+*Release Date*: 9/18/2019
+
+- Loosened dependency requirements to allow for the Rails 6 suite
+
+## v0.16.2
+
+*Release Date*: 8/27/2019
+
+### Facet - [see changes](facet/CHANGELOG.md#v0162)
+
+## v0.16.1
+
+*Release Date*: 8/27/2019
+
+- Fix Facet dependency
+
+## v0.16.0 [Yanked]
+
+*Release Date*: 8/27/2019
+
+### Facet - [see changes](facet/CHANGELOG.md#v0160)
+### SpicerackStyleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0160)
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0160)
 
 - Add rubocop to codeclimate [#225](https://github.com/Freshly/spicerack/pull/225)
 

@@ -36,6 +36,7 @@ Gem::Specification.new do |spec|
   # Spicerack Gems
   spec.add_dependency "around_the_world", version
   spec.add_dependency "collectible", version
+  spec.add_dependency "facet", version
   spec.add_dependency "redis_hash", version
   spec.add_dependency "short_circu_it", version
   spec.add_dependency "technologic", version
@@ -53,4 +54,9 @@ Gem::Specification.new do |spec|
   # Spicerack Development Gems
   spec.add_development_dependency "rspice", version
   spec.add_development_dependency "spicerack-styleguide", version
+
+  # ActiveRecord Testing
+  spec.add_development_dependency "will_paginate", "~> 3.1.1"
+  spec.add_development_dependency "activerecord", ">= 5.2.1"
+  spec.add_development_dependency "sqlite3", ">= 1.3.6", "< 2.0.0"
 end
