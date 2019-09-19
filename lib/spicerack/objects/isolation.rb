@@ -12,8 +12,8 @@ module Spicerack
         delegate :isolate, to: :class
       end
 
-      class_methods do
-        # dups an item if possible. Classes/modules can have unpredictable effects when duped, so they are not.
+      module ClassMethods
+        # Dupes an item if possible. Classes/modules can have unpredictable effects when duped, so they are not.
         def isolate(obj)
           return obj if obj.is_a?(Module)
 
