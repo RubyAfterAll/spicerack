@@ -57,6 +57,6 @@ Gem::Specification.new do |spec|
 
   # ActiveRecord Testing
   spec.add_development_dependency "will_paginate", "~> 3.1.1"
-  spec.add_development_dependency "activerecord", "~> 5.2.1"
-  spec.add_development_dependency "sqlite3", "~> 1.3.6"
+  spec.add_development_dependency "activerecord", ">= 5.2.1"
+  spec.add_development_dependency "sqlite3", ">= 1.3.6", "< 2.0.0"
 end
