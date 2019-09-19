@@ -18,14 +18,20 @@ module Spicerack
       def method_missing(method_name, *)
         name = method_name.to_sym
 
-        return config.public_send(name) if config._options.map(&:to_sym).include?(name)
+        return mutex.synchronize { config.public_send(name) } if config._options.map(&:to_sym).include?(name)
         return config._nested_builders[name].reader if config._nested_builders.key?(name)
 
         super
       end
 
       def respond_to_missing?(method_name, *)
-        config._options.map(&:to_sym).include?(method_name.to_sym) || super
+        config._options.map(&:to_sym).include?(method_name.to_sym) ||
+          config._nested_builders.key?(name) ||
+          super
+      end
+
+      def mutex
+        @mutex ||= Mutex.new
       end
     end
   end
