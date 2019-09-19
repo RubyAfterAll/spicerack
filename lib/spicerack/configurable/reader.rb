@@ -19,7 +19,7 @@ module Spicerack
         name = method_name.to_sym
 
         return mutex.synchronize { config.public_send(name) } if config._options.map(&:to_sym).include?(name)
-        return mutex.synchronize { config._nested_builders[name].reader } if config._nested_builders.key?(name)
+        return config._nested_builders[name].reader if config._nested_builders.key?(name)
 
         super
       end
