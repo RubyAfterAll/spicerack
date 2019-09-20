@@ -1,10 +1,8 @@
 # Changelog
 
-## v0.17.0
+## Upcoming
 
-*Release Date*: 9/19/2019
-
-### StockPot [Consolidated]
+### StockPot - [see changes](stockpot/CHANGELOG.md#v0163pre)
 
 - Claimed gem name
 
