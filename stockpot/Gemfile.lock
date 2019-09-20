@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    stockpot (0.16.3)
+    stockpot (0.16.3.pre)
 
 GEM
   remote: https://rubygems.org/
