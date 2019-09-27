@@ -15,11 +15,13 @@ RSpec.describe Tablesalt::Isolation, type: :module do
   shared_examples_for "it dupes the object" do
     it { is_expected.to equal duped_object }
     it { is_expected.not_to equal example_target }
+    it { is_expected.to isolate example_target }
   end
 
   shared_examples_for "it doesn't dup the object" do
     it { is_expected.to equal example_target }
     it { is_expected.not_to equal duped_object }
+    it { is_expected.to isolate example_target }
   end
 
   context "when the receiver is a class" do
