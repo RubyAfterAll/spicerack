@@ -55,10 +55,6 @@ RSpec.describe Spicerack::Objects::Defaults::Value, type: :subclass do
         proc { eval_value }
       end
 
-      before do
-        allow(eval_value).to receive(:dup).and_return(eval_value.dup)
-      end
-
       context "when evaulated object is a module" do
         let(:eval_value) { Module.new }
 
