@@ -51,7 +51,7 @@ RSpec.describe Spicerack::Configurable::ConfigObject do
 
       it "defines a nested config object" do
         expect(config.public_send(namespace)).to inherit_from described_class
-        expect(config.public_send(namespace).public_send(nested_option)).to eq nested_default_value
+        expect(config.public_send(namespace).public_send(nested_option)).to isolate nested_default_value
       end
 
       context "when a nested config is used twice" do
