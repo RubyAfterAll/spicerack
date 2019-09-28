@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Tablesalt::Isolation, type: :module do
-  subject(:isolated) { example_dsl_object.__send__(:isolate, example_target) }
+  subject { example_dsl_object.__send__(:isolate, example_target) }
 
   let(:example_dsl_class) do
     Class.new.tap { |klass| klass.include described_class }
