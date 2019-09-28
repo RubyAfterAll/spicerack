@@ -52,10 +52,30 @@ RSpec.describe Spicerack::Objects::Defaults::Value, type: :subclass do
     context "with a block" do
       let(:instance) { described_class.new(&block) }
       let(:block) do
-        proc { :duplicated_object_from_block }
+        proc { eval_value }
       end
 
-      it { is_expected.to eq :duplicated_object_from_block }
+      before do
+        allow(eval_value).to receive(:dup).and_return(eval_value.dup)
+      end
+
+      context "when evaulated object is a module" do
+        let(:eval_value) { Module.new }
+
+        it { is_expected.to isolate eval_value }
+      end
+
+      context "when evaulated object is a class" do
+        let(:eval_value) { Class.new }
+
+        it { is_expected.to isolate eval_value }
+      end
+
+      context "when evaluated object is an instance" do
+        let(:eval_value) { Faker::ChuckNorris.fact }
+
+        it { is_expected.to isolate eval_value }
+      end
     end
   end
 end
