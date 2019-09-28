@@ -25,6 +25,8 @@
 
 RSpec::Matchers.define :isolate do |argument|
   match do |isolated|
+    expect(isolated.frozen?).to eq argument.frozen?
+
     if argument.is_a?(Module)
       expect(argument).to equal isolated
     else

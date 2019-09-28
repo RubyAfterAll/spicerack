@@ -16,7 +16,7 @@ module Tablesalt
       def isolate(obj)
         return obj if obj.is_a?(Module)
 
-        obj.dup
+        obj.clone
       end
     end
   end
