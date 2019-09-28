@@ -45,6 +45,8 @@ module Spicerack
         def _ensure_safe_option_name(name)
           raise ArgumentError, "#{name.inspect} is reserved and cannot be used at a config option" if name.to_sym.in? RESERVED_WORDS
           raise ArgumentError, "#{name.inspect} is already in use" if _nested_options.include?(name.to_sym)
+
+          puts "Warning: the config option #{name} is already defined" if _options.include?(name.to_sym) # rubocop:disable Rails/Output
         end
 
         def inherited(base)
