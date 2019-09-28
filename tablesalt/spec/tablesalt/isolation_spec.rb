@@ -3,18 +3,8 @@
 RSpec.describe Tablesalt::Isolation, type: :module do
   subject(:isolated) { example_dsl_object.__send__(:isolate, example_target) }
 
-  # let(:cloned_object) { example_target.clone }
   let(:example_dsl_class) do
     Class.new.tap { |klass| klass.include described_class }
-  end
-  let(:frozen?) { false }
-
-  before do
-    # allow(example_target).to receive(:clone) do
-    #   cloned_object
-    # end
-
-    example_target.freeze if frozen?
   end
 
   shared_examples_for "it preserves mutability" do
@@ -40,7 +30,7 @@ RSpec.describe Tablesalt::Isolation, type: :module do
   end
 
   shared_context "when the object is frozen" do
-    let(:frozen?) { true }
+    before { example_target.freeze }
   end
 
   context "when the receiver is a class" do
