@@ -28,7 +28,7 @@ RSpec.describe Tablesalt::Isolation, type: :module do
     let(:example_dsl_object) { example_dsl_class }
 
     context "when the object is an instance" do
-      let(:example_target) { Object.new }
+      let(:example_target) { Faker::Hipster.sentence }
 
       it_behaves_like "it dupes the object"
     end
@@ -50,7 +50,7 @@ RSpec.describe Tablesalt::Isolation, type: :module do
     let(:example_dsl_object) { example_dsl_class.new }
 
     context "when the object is an instance" do
-      let(:example_target) { Object.new }
+      let(:example_target) { Faker::Hipster.sentence }
 
       it_behaves_like "it dupes the object"
     end
