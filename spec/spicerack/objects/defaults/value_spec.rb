@@ -44,7 +44,7 @@ RSpec.describe Spicerack::Objects::Defaults::Value, type: :subclass do
     context "without a block" do
       let(:instance) { described_class.new(static: static) }
       let(:duplicate) { double }
-      let(:static) { double(dup: duplicate) }
+      let(:static) { double(clone: duplicate) }
 
       it { is_expected.to eq duplicate }
     end
