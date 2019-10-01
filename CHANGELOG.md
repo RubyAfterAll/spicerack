@@ -1,8 +1,10 @@
 # Changelog
 
-## Upcoming
+## v0.17.0
 
-### Tablesalt - [see changes](tablesalt/CHANGELOG.md#Upcoming)
+*Release Date*: 10/1/2019
+
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0170)
 
 ### Spicerack::Configurable v2 [#200](https://github.com/Freshly/spicerack/pull/200)
 - Added `nested_config` functionality and spec helper
