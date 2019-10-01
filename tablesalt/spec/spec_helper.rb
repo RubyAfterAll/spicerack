@@ -3,3 +3,4 @@
 require_relative "../../shared/spec_helper"
 
 require "tablesalt"
+require "tablesalt/spec_helper"

@@ -54,4 +54,31 @@ RSpec.describe Spicerack::Configurable::ConfigBuilder do
       end
     end
   end
+
+  describe "#nested" do
+    let(:nested_parent) { Faker::Superhero.name.parameterize.underscore.to_sym }
+    let(:nested_options) { Faker::Lorem.words(5).map(&:to_sym).uniq }
+    let!(:nested_option) { nested_options.pop }
+    let!(:nested_option_with_default) { nested_options.pop }
+    let(:nested_default_value) { Faker::Hipster.sentence }
+
+    before do
+      builder.instance_exec(self) do |spec_context|
+        nested(spec_context.nested_parent) do
+          option spec_context.nested_option
+          option spec_context.nested_option_with_default, default: spec_context.nested_default_value
+        end
+      end
+    end
+
+    it "defines a nested ConfigObject" do
+      builder.configure do |config|
+        nested_config = config.public_send(nested_parent)
+
+        expect(nested_config).to be_a Spicerack::Configurable::ConfigObject
+        expect(nested_config).to define_option nested_option
+        expect(nested_config).to define_option(nested_option_with_default, default: nested_default_value)
+      end
+    end
+  end
 end

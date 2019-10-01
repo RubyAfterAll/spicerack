@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.17.0
+
+*Release Date*: 10/1/2019
+
+- Added `Isolation` module [#244](https://github.com/Freshly/spicerack/pull/244/files#diff-86752fcff7fe02e82aae4ac3acae3ab8)
+- Added `isolate` custom matcher and Tablesalt spec helper [#244](https://github.com/Freshly/spicerack/pull/244/files#diff-93efe0ac3e1fc1bbf95e93824e6a03bf)
+
 ## v0.16.3
 
 *Release Date*: 9/18/2019

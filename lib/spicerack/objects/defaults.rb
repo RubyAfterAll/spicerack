@@ -25,12 +25,14 @@ module Spicerack
       end
 
       class Value
+        include Tablesalt::Isolation
+
         def initialize(static: nil, &block)
           @value = (static.nil? && block_given?) ? block : static
         end
 
         def value
-          (@value.respond_to?(:call) ? instance_eval(&@value) : @value).dup
+          isolate(@value.respond_to?(:call) ? instance_eval(&@value) : @value)
         end
       end
     end

@@ -44,7 +44,7 @@ RSpec.describe Spicerack::Objects::Defaults::Value, type: :subclass do
     context "without a block" do
       let(:instance) { described_class.new(static: static) }
       let(:duplicate) { double }
-      let(:static) { double(dup: duplicate) }
+      let(:static) { double(clone: duplicate) }
 
       it { is_expected.to eq duplicate }
     end
@@ -52,10 +52,28 @@ RSpec.describe Spicerack::Objects::Defaults::Value, type: :subclass do
     context "with a block" do
       let(:instance) { described_class.new(&block) }
       let(:block) do
-        proc { :duplicated_object_from_block }
+        proc { computed_value }
       end
 
-      it { is_expected.to eq :duplicated_object_from_block }
+      before { allow(instance).to receive(:computed_value).and_return(computed_value) }
+
+      context "when evaulated object is a module" do
+        let(:computed_value) { Module.new }
+
+        it { is_expected.to isolate computed_value }
+      end
+
+      context "when evaulated object is a class" do
+        let(:computed_value) { Class.new }
+
+        it { is_expected.to isolate computed_value }
+      end
+
+      context "when evaluated object is an instance" do
+        let(:computed_value) { Faker::ChuckNorris.fact }
+
+        it { is_expected.to isolate computed_value }
+      end
     end
   end
 end

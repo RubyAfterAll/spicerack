@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.17.0
+
+*Release Date*: 10/1/2019
+
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0170)
+
+### Spicerack::Configurable v2 [#200](https://github.com/Freshly/spicerack/pull/200)
+- Added `nested_config` functionality and spec helper
+- Added `config_eval` for runtime config evaluation ([#206](https://github.com/Freshly/spicerack/pull/206))
+- Added mutexes for thread safety ([#246](https://github.com/Freshly/spicerack/pull/246))
+- Added `assign` method for multi-assignment ([#253](https://github.com/Freshly/spicerack/pull/253))
+
+
+### Other Changes
+- Fixed issue in `Spicerack::Objects::Defaults` when modules/classes are provided as default values ([#251](https://github.com/Freshly/spicerack/pull/251))
+
 ## v0.16.3
 
 *Release Date*: 9/18/2019
