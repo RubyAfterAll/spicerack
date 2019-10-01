@@ -7,7 +7,7 @@ module Spicerack
     module ConfigDelegation
       extend ActiveSupport::Concern
 
-      CONFIGURATION_MODULE_NAME = "Configuration"
+      DEFAULT_CONFIGURATION_MODULE_NAME = "Configuration"
 
       module ClassMethods
         delegate :config, :configure, to: :_configuration_module
@@ -33,7 +33,7 @@ module Spicerack
         #
         # @param config_class [Spicerack::Configurable] A module that extends Spicerack::Configurable. Defaults to the module +YourGem::Configuration+
         def delegates_to_configuration(config_class = nil)
-          @_configuration_module = config_class || "#{self}::#{CONFIGURATION_MODULE_NAME}".constantize
+          @_configuration_module = config_class || "#{self}::#{DEFAULT_CONFIGURATION_MODULE_NAME}".constantize
         end
 
         def _configuration_module
