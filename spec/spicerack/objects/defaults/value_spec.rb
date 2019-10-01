@@ -52,25 +52,27 @@ RSpec.describe Spicerack::Objects::Defaults::Value, type: :subclass do
     context "with a block" do
       let(:instance) { described_class.new(&block) }
       let(:block) do
-        proc { eval_value }
+        proc { computed_value }
       end
 
-      context "when evaulated object is a module" do
-        let(:eval_value) { Module.new }
+      before { allow(instance).to receive(:computed_value).and_return(computed_value) }
 
-        it { is_expected.to isolate eval_value }
+      context "when evaulated object is a module" do
+        let(:computed_value) { Module.new }
+
+        it { is_expected.to isolate computed_value }
       end
 
       context "when evaulated object is a class" do
-        let(:eval_value) { Class.new }
+        let(:computed_value) { Class.new }
 
-        it { is_expected.to isolate eval_value }
+        it { is_expected.to isolate computed_value }
       end
 
       context "when evaluated object is an instance" do
-        let(:eval_value) { Faker::ChuckNorris.fact }
+        let(:computed_value) { Faker::ChuckNorris.fact }
 
-        it { is_expected.to isolate eval_value }
+        it { is_expected.to isolate computed_value }
       end
     end
   end

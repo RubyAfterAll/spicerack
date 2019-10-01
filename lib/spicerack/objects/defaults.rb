@@ -32,7 +32,7 @@ module Spicerack
         end
 
         def value
-          isolate(@value.respond_to?(:call) ? @value.call : @value)
+          isolate(@value.respond_to?(:call) ? instance_eval(&@value) : @value)
         end
       end
     end
