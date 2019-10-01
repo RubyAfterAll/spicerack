@@ -6,7 +6,7 @@ module Spicerack
       include Singleton
       include ActiveModel::AttributeAssignment
 
-      alias_method :update, :assign_attributes
+      alias_method :assign, :assign_attributes
 
       RESERVED_WORDS = %i[config_eval].freeze
 
