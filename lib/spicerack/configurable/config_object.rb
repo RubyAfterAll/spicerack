@@ -4,6 +4,9 @@ module Spicerack
   module Configurable
     class ConfigObject < InputObject
       include Singleton
+      include ActiveModel::AttributeAssignment
+
+      alias_method :update, :assign_attributes
 
       RESERVED_WORDS = %i[config_eval].freeze
 

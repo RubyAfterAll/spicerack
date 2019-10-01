@@ -7,6 +7,9 @@ RSpec.describe Spicerack::Configurable::ConfigObject do
 
   it { is_expected.to inherit_from Spicerack::InputObject }
   it { is_expected.to include_module Singleton }
+  it { is_expected.to include_module ActiveModel::AttributeAssignment }
+
+  # it { is_expected.to alias_method :update, :assign_attributes }
 
   describe ".option" do
     let(:name) { Faker::Lorem.word }
