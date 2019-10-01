@@ -21,15 +21,15 @@ module Spicerack
         #     include Spicerack::Configurable::ConfigDelegation
         #
         #     delegates_to_configuration
-        # end
+        #   end
         #
-        # module SomeClass::Configuration
-        #   include Spicerack::Configurable
-        # end
+        #   module SomeClass::Configuration
+        #     include Spicerack::Configurable
+        #   end
         #
-        # SomeClass.config
-        # => returns SomeClass::Configuration.config
-        # SomeClass.configure do { |config| # config is the yielded config object from SomeClass::Configuration.configure }
+        #   SomeClass.config
+        #   => returns SomeClass::Configuration.config
+        #   SomeClass.configure do { |config| # config is the yielded config object from SomeClass::Configuration.configure }
         #
         # @param config_class [Spicerack::Configurable] A module that extends Spicerack::Configurable. Defaults to the module +YourGem::Configuration+
         def delegates_to_configuration(config_class = nil)
