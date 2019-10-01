@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "configurable/config_builder"
+require_relative "configurable/config_delegation"
 require_relative "configurable/config_object"
 require_relative "configurable/evaluator"
 require_relative "configurable/reader"
