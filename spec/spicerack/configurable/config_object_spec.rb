@@ -9,8 +9,6 @@ RSpec.describe Spicerack::Configurable::ConfigObject do
   it { is_expected.to include_module Singleton }
   it { is_expected.to include_module ActiveModel::AttributeAssignment }
 
-  # it { is_expected.to alias_method :assign, :assign_attributes }
-
   describe ".option" do
     let(:name) { Faker::Lorem.word }
     let(:default_value) { Faker::Hipster.sentence }
@@ -72,6 +70,13 @@ RSpec.describe Spicerack::Configurable::ConfigObject do
         expect(nested_config_setup).
           to raise_error ArgumentError, "\"config_eval\" is reserved and cannot be used at a config option"
       end
+    end
+  end
+
+  describe "#assign" do
+    it "aliases assign_attributes" do
+      expect(described_class.instance_method(:assign).original_name).
+        to eq described_class.instance_method(:assign_attributes).original_name
     end
   end
 end
