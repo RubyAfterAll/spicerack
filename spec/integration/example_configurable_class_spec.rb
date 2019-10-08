@@ -272,4 +272,81 @@ RSpec.describe ExampleConfigurableClass, type: :configuration do
       end
     end
   end
+
+  describe "ConfigDelegation" do
+    let(:delegating_configurable_class) do
+      Class.new do
+        include Spicerack::Configurable::ConfigDelegation
+      end
+    end
+    let(:delegating_class_name) { Faker::Lorem.sentence.titleize.delete(" .") }
+    let(:configurable_module_name) { "Configuration" }
+
+    before do
+      stub_const(delegating_class_name, delegating_configurable_class)
+      stub_const("#{delegating_class_name}::#{configurable_module_name}", configurable_module)
+    end
+
+    shared_examples_for "it delegates to the configurable module" do
+      before { allow(configurable_module).to receive(:configure).and_call_original }
+
+      it "delegates to the Configuration module" do
+        expect(delegating_configurable_class.config).to eq configurable_module.config
+
+        delegating_configurable_class.configure do |config|
+          expect(config).to eq configurable_module.config.__send__(:config)
+        end
+      end
+    end
+
+    context "when the configuration module is named Configuration" do
+      context "when the confiration module is not provided" do
+        before do
+          delegating_configurable_class.instance_exec { delegates_to_configuration }
+        end
+
+        it_behaves_like "it delegates to the configurable module"
+      end
+
+      context "when the confiration module is provided" do
+        before do
+          delegating_configurable_class.instance_exec(self) do |spec_context|
+            delegates_to_configuration spec_context.configurable_module
+          end
+        end
+
+        it_behaves_like "it delegates to the configurable module"
+      end
+    end
+
+    context "when the configuration module is not named Configuration" do
+      let(:configurable_module_name) { Faker::Lorem.sentence.titleize.delete(" .") }
+
+      context "when the confiration module is not provided" do
+        it "raises" do
+          expect { delegating_configurable_class.instance_exec { delegates_to_configuration } }.
+            to raise_error NameError, "uninitialized constant #{delegating_configurable_class}::Configuration"
+        end
+      end
+
+      context "when the confiration module is provided" do
+        before do
+          delegating_configurable_class.instance_exec(self) do |spec_context|
+            delegates_to_configuration spec_context.configurable_module
+          end
+        end
+
+        it_behaves_like "it delegates to the configurable module"
+      end
+    end
+
+    context "when config delegation is not set up" do
+      it "raises" do
+        expect { delegating_configurable_class.config }.
+          to raise_error NoMethodError, "Configuration not set up for #{delegating_configurable_class}. Did you forget to call delegates_to_configuration?"
+        expect { delegating_configurable_class.configure }.
+          to raise_error NoMethodError, "Configuration not set up for #{delegating_configurable_class}. Did you forget to call delegates_to_configuration?"
+      end
+    end
+  end
 end
