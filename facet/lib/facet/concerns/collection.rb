@@ -15,7 +15,7 @@ module Facet
     end
 
     def collection
-      record_class.public_send(record_scope)
+      (source? ? source.public_send(self_scope) : record_class).public_send(record_scope)
     end
 
     def output
