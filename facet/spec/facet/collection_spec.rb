@@ -39,10 +39,8 @@ RSpec.describe Facet::Collection, type: :concern do
     end
 
     context "with source" do
-      let(:source) { double }
+      let(:source) { double(some_records: source_records) }
       let(:source_records) { double(all: :mock_source_collection) }
-
-      before { allow(source).to receive(:some_records).and_return(source_records) }
 
       it { is_expected.to eq :mock_source_collection }
     end
