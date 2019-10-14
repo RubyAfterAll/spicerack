@@ -3,6 +3,8 @@
 module Spicerack
   module Configurable
     class Reader
+      include Tablesalt::StringableObject
+
       def initialize(config)
         @config = config
       end
@@ -32,6 +34,10 @@ module Spicerack
 
       def mutex
         @mutex ||= Mutex.new
+      end
+
+      def stringable_attributes
+        config._options + config._nested_options
       end
     end
   end

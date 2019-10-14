@@ -12,6 +12,7 @@ RSpec.describe Facet::Core do
           expect(example_facet.current_page).to eq 1
           expect(example_facet.filter_by).to be_nil
           expect(example_facet.sort_by).to be_nil
+          expect(example_facet.source).to be_nil
         end
       end
 
@@ -19,11 +20,13 @@ RSpec.describe Facet::Core do
         let(:current_page) { rand(1..2) }
         let(:filter_by) { Faker::Internet.domain_word.to_sym }
         let(:sort_by) { Faker::Internet.domain_word.to_sym }
+        let(:source) { double }
 
         it "uses arguments" do
           expect(example_facet.current_page).to eq current_page
           expect(example_facet.filter_by).to eq filter_by
           expect(example_facet.sort_by).to eq sort_by
+          expect(example_facet.source).to eq source
         end
       end
     end
@@ -38,6 +41,7 @@ RSpec.describe Facet::Core do
           expect(example_facet.current_page).to be_nil
           expect(example_facet.filter_by).to be_nil
           expect(example_facet.sort_by).to be_nil
+          expect(example_facet.source).to be_nil
         end
       end
 
@@ -58,6 +62,7 @@ RSpec.describe Facet::Core do
           expect(example_facet.current_page).to be_nil
           expect(example_facet.filter_by).to be_nil
           expect(example_facet.sort_by).to be_nil
+          expect(example_facet.source).to be_nil
         end
       end
 
@@ -84,6 +89,7 @@ RSpec.describe Facet::Core do
           expect(example_facet.current_page).to eq 1
           expect(example_facet.filter_by).to eq default_filter
           expect(example_facet.sort_by).to be_nil
+          expect(example_facet.source).to be_nil
         end
       end
 
@@ -96,6 +102,7 @@ RSpec.describe Facet::Core do
           expect(example_facet.current_page).to eq current_page
           expect(example_facet.filter_by).to eq filter_by
           expect(example_facet.sort_by).to eq sort_by
+          expect(example_facet.source).to be_nil
         end
 
         context "without filter_by" do
@@ -108,6 +115,7 @@ RSpec.describe Facet::Core do
               expect(example_facet.current_page).to eq current_page
               expect(example_facet.filter_by).to eq default_filter
               expect(example_facet.sort_by).to eq sort_by
+              expect(example_facet.source).to be_nil
             end
           end
 
@@ -118,6 +126,7 @@ RSpec.describe Facet::Core do
               expect(example_facet.current_page).to eq current_page
               expect(example_facet.filter_by).to be_nil
               expect(example_facet.sort_by).to eq sort_by
+              expect(example_facet.source).to be_nil
             end
           end
         end
@@ -136,6 +145,7 @@ RSpec.describe Facet::Core do
           expect(example_facet.current_page).to eq 1
           expect(example_facet.filter_by).to be_nil
           expect(example_facet.sort_by).to eq default_sort
+          expect(example_facet.source).to be_nil
         end
       end
 
@@ -148,6 +158,7 @@ RSpec.describe Facet::Core do
           expect(example_facet.current_page).to eq current_page
           expect(example_facet.filter_by).to eq filter_by
           expect(example_facet.sort_by).to eq sort_by
+          expect(example_facet.source).to be_nil
         end
       end
     end
@@ -199,6 +210,20 @@ RSpec.describe Facet::Core do
       let(:sort_by) { Faker::Internet.domain_word.to_sym }
 
       it { is_expected.to be_sorted }
+    end
+  end
+
+  describe "#source?" do
+    subject { example_facet }
+
+    context "without source" do
+      it { is_expected.not_to be_source }
+    end
+
+    context "with source" do
+      let(:source) { double }
+
+      it { is_expected.to be_source }
     end
   end
 end

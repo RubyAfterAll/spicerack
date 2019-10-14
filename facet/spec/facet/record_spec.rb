@@ -32,6 +32,17 @@ RSpec.describe Facet::Record, type: :concern do
     end
   end
 
+  describe ".self_scope" do
+    subject { example_facet_class.self_scope }
+
+    let(:collection) { Faker::Internet.domain_word }
+    let(:record_class) { double(model_name: double(collection: collection)) }
+
+    before { allow(example_facet_class).to receive(:record_class).and_return(record_class) }
+
+    it { is_expected.to eq collection.to_sym }
+  end
+
   describe ".record_scope" do
     subject { example_facet_class.record_scope }
 

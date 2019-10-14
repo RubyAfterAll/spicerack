@@ -6,13 +6,14 @@ module Facet
     extend ActiveSupport::Concern
 
     included do
-      attr_reader :current_page, :filter_by, :sort_by
+      attr_reader :current_page, :filter_by, :sort_by, :source
     end
 
-    def initialize(current_page: nil, filter_by: nil, sort_by: nil, all: false, paginate: true)
+    def initialize(current_page: nil, filter_by: nil, sort_by: nil, all: false, paginate: true, source: nil)
       @current_page = page_for(current_page, paginate)
       @filter_by = filter_for(filter_by, all)
       @sort_by = sort_for(sort_by)
+      @source = source
     end
 
     def paginated?
@@ -25,6 +26,10 @@ module Facet
 
     def sorted?
       sort_by.present?
+    end
+
+    def source?
+      source.present?
     end
 
     private

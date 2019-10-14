@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.17.1
+
+*Release Date*: 10/14/2019
+
+- Added support for `source`
+
 ## v0.17.0
 
 *Release Date*: 10/1/2019

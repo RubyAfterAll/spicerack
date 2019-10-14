@@ -24,13 +24,26 @@ RSpec.describe Facet::Collection, type: :concern do
 
     let(:record_class) do
       Class.new do
+        def self.model_name
+          OpenStruct.new(collection: "some_records")
+        end
+
         def self.all
           :mock_collection
         end
       end
     end
 
-    it { is_expected.to eq :mock_collection }
+    context "without source" do
+      it { is_expected.to eq :mock_collection }
+    end
+
+    context "with source" do
+      let(:source) { double(some_records: source_records) }
+      let(:source_records) { double(all: :mock_source_collection) }
+
+      it { is_expected.to eq :mock_source_collection }
+    end
   end
 
   describe "#output" do
