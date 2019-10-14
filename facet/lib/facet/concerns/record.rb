@@ -6,12 +6,16 @@ module Facet
     extend ActiveSupport::Concern
 
     included do
-      delegate :record_class, :record_scope, to: :class
+      delegate :record_class, :record_scope, :self_scope, to: :class
     end
 
     class_methods do
       def record_class
         name.chomp("Facet").constantize
+      end
+
+      def self_scope
+        record_class.model_name.collection.to_sym
       end
 
       def record_scope

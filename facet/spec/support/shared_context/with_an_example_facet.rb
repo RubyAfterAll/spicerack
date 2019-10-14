@@ -8,6 +8,7 @@ RSpec.shared_context "with an example facet" do
       sort_by: sort_by,
       all: all,
       paginate: paginate,
+      source: source,
     )
   end
 
@@ -20,6 +21,7 @@ RSpec.shared_context "with an example facet" do
   let(:sort_by) { nil }
   let(:all) { false }
   let(:paginate) { true }
+  let(:source) { nil }
 
   before { stub_const(example_facet_name, example_facet_class) }
 end
