@@ -35,8 +35,10 @@ RSpec.shared_examples_for "a class pass method" do |method|
   subject do
     if accepts_block?
       call_class.public_send(method, *arguments, **options, &block)
-    else
+    elsif arguments.any? || options.any?
       call_class.public_send(method, *arguments, **options)
+    else
+      call_class.public_send(method)
     end
   end
 
