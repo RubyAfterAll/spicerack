@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.17.2
+
+*Release Date*: 10/18/2019
+
+- Fix class pass method shared example ([#259](https://github.com/Freshly/spicerack/pull/259))
+
 ## v0.17.1
 
 *Release Date*: 10/14/2019
