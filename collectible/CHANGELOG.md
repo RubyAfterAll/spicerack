@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.17.3
+
+*Release Date*: 10/28/2019
+
+- Delegate `include?`
+
 ## v0.17.2
 
 *Release Date*: 10/18/2019

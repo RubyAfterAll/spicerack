@@ -9,7 +9,7 @@ module Collectible
         attr_reader :items
 
         delegate :name, to: :class, prefix: true
-        delegate :to_a, :to_ary, :select, :map, :group_by, :partition, :as_json, to: :items
+        delegate :include?, :to_a, :to_ary, :select, :map, :group_by, :partition, :as_json, to: :items
       end
 
       def initialize(*items)

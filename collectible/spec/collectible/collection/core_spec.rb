@@ -6,6 +6,7 @@ RSpec.describe Collectible::Collection::Core, type: :concern do
   include_context "with an example collection"
 
   it { is_expected.to delegate_method(:name).to(:class).with_prefix(true) }
+  it { is_expected.to delegate_method(:include?).to(:items) }
   it { is_expected.to delegate_method(:to_a).to(:items) }
   it { is_expected.to delegate_method(:to_ary).to(:items) }
   it { is_expected.to delegate_method(:select).to(:items) }
