@@ -4,7 +4,7 @@
 
 *Release Date*: 11/4/2019
 
-- Ignore `*.gemspec` files
+- Ignore `*.gemspec` and `bin/**` files
 
 ## v0.17.3
 
