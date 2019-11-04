@@ -14,14 +14,6 @@ module Spicerack
       class_attribute :_nested_builders, instance_writer: false, default: {}
 
       class << self
-        def name
-          super.presence || "#{superclass}:0x#{object_id.to_s(16)}"
-        end
-
-        def inspect
-          "#<#{name}>"
-        end
-
         private
 
         def option(name, *)
@@ -57,6 +49,10 @@ module Spicerack
           base._nested_builders = _nested_builders.dup
           super
         end
+      end
+
+      def inspect
+        "#<#{self.class.superclass} #{super}>"
       end
     end
   end
