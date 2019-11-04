@@ -11,6 +11,7 @@ AllCops:
     - spec/*_helper.rb
     - db/**/*
     - Gemfile.lock
+    - "*.gemspec"
 
 Layout/AccessModifierIndentation:
   Enabled: true

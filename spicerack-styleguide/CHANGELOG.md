@@ -4,7 +4,7 @@
 
 *Release Date*: 11/4/2019
 
-- No changes
+- Ignore `*.gemspec` files
 
 ## v0.17.3
 

@@ -5,6 +5,7 @@
 *Release Date*: 11/4/2019
 
 ### Conjunction - [see changes](conjunction/CHANGELOG.md#v0180)
+### SpicerackStyleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0180)
 
 ## v0.17.3
 
