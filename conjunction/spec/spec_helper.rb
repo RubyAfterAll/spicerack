@@ -9,8 +9,4 @@ require_relative "support/shared_context/with_an_example_junction"
 
 require "conjunction"
 
-require "support/test_classes/junctions"
-require "support/test_classes/conjunctions"
-
-require "support/test_classes/models"
-require "support/test_classes/poros"
+require "support/test_classes"
