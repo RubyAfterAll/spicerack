@@ -21,4 +21,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = "lib"
 
   spec.add_runtime_dependency "activesupport", ">= 5.2.1"
+
+  spec.add_dependency "activemodel", ">= 5.2.1"
 end

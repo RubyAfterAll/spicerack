@@ -8,6 +8,7 @@ PATH
       short_circu_it (= 0.18.0)
       tablesalt (= 0.18.0)
     conjunction (0.18.0)
+      activemodel (>= 5.2.1)
       activesupport (>= 5.2.1)
     facet (0.18.0)
       activesupport (>= 5.2.1)

@@ -4,6 +4,7 @@ require "rspice"
 require "redis_hash/spec_helper"
 require "technologic/spec_helper"
 require "tablesalt/spec_helper"
+require "conjunction/spec_helper"
 
 require_relative "rspec/custom_matchers"
 require_relative "rspec/shared_examples"
