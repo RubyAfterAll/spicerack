@@ -13,7 +13,7 @@ RSpec.describe Conjunction::Conjunctive, type: :conjunctive do
     let(:conjunction) { Class.new }
 
     before do
-      allow(example_conjunctive_class).to receive(:conjunction_for).with(junction, method_name).and_return(conjunction)
+      allow(example_conjunctive_class).to receive(:conjugate_with).with(junction, method_name).and_return(conjunction)
     end
 
     it { is_expected.to eq conjunction }
@@ -45,8 +45,8 @@ RSpec.describe Conjunction::Conjunctive, type: :conjunctive do
     end
   end
 
-  describe ".conjunction_for" do
-    subject(:conjoins) { example_conjunctive_class.__send__(:conjunction_for, junction, method_name) }
+  describe ".conjugate_with" do
+    subject(:conjoins) { example_conjunctive_class.__send__(:conjugate_with, junction, method_name) }
 
     let(:junction_key) { Faker::Internet.domain_word.to_sym }
     let(:method_name) { Faker::Internet.domain_word.to_sym }

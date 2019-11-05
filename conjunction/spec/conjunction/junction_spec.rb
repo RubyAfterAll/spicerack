@@ -21,6 +21,33 @@ RSpec.describe Conjunction::Junction, type: :junction do
     it { is_expected.to be_nil }
   end
 
+  describe ".junction_key" do
+    subject { example_junction_class.junction_key }
+
+    context "without configuration" do
+      let(:junction_prefix) { nil }
+      let(:junction_suffix) { nil }
+
+      it { is_expected.to eq :"" }
+    end
+
+    context "with only prefix" do
+      let(:junction_suffix) { nil }
+
+      it { is_expected.to eq junction_prefix.downcase.to_sym }
+    end
+
+    context "with only suffix" do
+      let(:junction_prefix) { nil }
+
+      it { is_expected.to eq junction_suffix.downcase.to_sym }
+    end
+
+    context "with both prefix and suffix" do
+      it { is_expected.to eq "#{junction_prefix.downcase}_#{junction_suffix.downcase}".to_sym }
+    end
+  end
+
   describe ".prototype_name" do
     subject { example_junction_class.prototype_name }
 
@@ -42,34 +69,9 @@ RSpec.describe Conjunction::Junction, type: :junction do
 
       it { is_expected.to eq prototype_name }
     end
-  end
 
-  describe ".prototype" do
-    subject { example_junction_class.prototype }
-
-    let(:prototype) { Class.new }
-    let(:prototype_name) do
-      Array.new(2) { Faker::Internet.domain_word }.map(&:capitalize).join
-    end
-
-    context "when defined" do
-      before { allow(example_junction_class).to receive(:prototype_name).and_return(prototype_name) }
-
-      context "without class" do
-        it { is_expected.to be_nil }
-      end
-
-      context "with class" do
-        before { stub_const(prototype_name, prototype) }
-
-        it { is_expected.to eq prototype }
-      end
-    end
-
-    context "when undefined" do
-      before { allow(example_junction_class).to receive(:prototype_name).and_return(nil) }
-
-      it { is_expected.to be_nil }
+    context "with both prefix and suffix" do
+      it { is_expected.to eq prototype_name }
     end
   end
 

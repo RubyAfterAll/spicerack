@@ -15,11 +15,11 @@ module Conjunction
 
     class_methods do
       def conjugate(junction)
-        conjunction_for(junction, :conjunction_for)
+        conjugate_with(junction, :conjunction_for)
       end
 
       def conjugate!(junction)
-        conjunction_for(junction, :conjunction_for!)
+        conjugate_with(junction, :conjunction_for!)
       end
 
       def inherited(base)
@@ -29,7 +29,7 @@ module Conjunction
 
       private
 
-      def conjunction_for(junction, method_name)
+      def conjugate_with(junction, method_name)
         junction_key = junction.try(:junction_key)
         return explicit_conjunctions[junction_key] if junction_key.present? && explicit_conjunctions.key?(junction_key)
 

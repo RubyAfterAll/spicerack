@@ -26,7 +26,27 @@ RSpec.describe Conjunction::Prototype, type: :prototype do
   describe ".prototype" do
     subject { example_prototype_class.prototype }
 
-    it { is_expected.to eq example_prototype_class }
+    context "when defined" do
+      before { allow(example_prototype_class).to receive(:prototype_name).and_return(prototype_name) }
+
+      context "without class" do
+        let(:prototype_name) { SecureRandom.hex }
+
+        it { is_expected.to be_nil }
+      end
+
+      context "with class" do
+        let(:prototype_name) { example_prototype_name }
+
+        it { is_expected.to eq example_prototype_class }
+      end
+    end
+
+    context "when undefined" do
+      before { allow(example_prototype_class).to receive(:prototype_name).and_return(nil) }
+
+      it { is_expected.to be_nil }
+    end
   end
 
   describe ".prototype_name" do

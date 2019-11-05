@@ -15,7 +15,7 @@ module Conjunction
       end
 
       def prototype
-        self
+        prototype_name&.safe_constantize
       end
 
       def prototype_name

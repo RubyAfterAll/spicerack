@@ -10,15 +10,15 @@ module Conjunction
     class_methods do
       attr_reader :conjunction_prefix, :conjunction_suffix
 
+      def junction_key
+        [ conjunction_prefix, conjunction_suffix ].compact.join.underscore.to_sym
+      end
+
       def prototype_name
         output = name
         output.slice!(conjunction_prefix) if conjunction_prefix
         output.chomp!(conjunction_suffix) if conjunction_suffix
         output unless output == name
-      end
-
-      def prototype
-        prototype_name&.safe_constantize
       end
 
       def inherited(base)
