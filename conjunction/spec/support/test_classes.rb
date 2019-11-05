@@ -34,7 +34,8 @@ class ApplicationDingleBop
     end
 
     def prototype_name
-      name.chomp("Fiddlesticks")
+      chomped_name = name.chomp("Fiddlesticks")
+      chomped_name unless chomped_name == name
     end
 
     private
@@ -90,6 +91,17 @@ class FroodStarlightNoop < ApplicationFroodNoop; end
 class FroodMartianNoop < ApplicationFroodNoop; end
 
 # ================================= #
+#      CONJUNCTIONS: DingleBop      #
+# ================================= #
+
+module GalacticFederation
+  class SatelliteFiddlesticks < ApplicationDingleBop; end
+end
+
+class GenericDingleBop < ApplicationDingleBop; end
+class MartianFiddlesticks < ApplicationDingleBop; end
+
+# ================================= #
 #               MODELS              #
 # ================================= #
 
@@ -127,6 +139,7 @@ class HighFrequencyRadioBurst < ApplicationPoro
   conjoins GenericFleeb
   conjoins Chumble::Generic
   conjoins CommonFroodNoop
+  conjoins GenericDingleBop
 end
 
 class Luna

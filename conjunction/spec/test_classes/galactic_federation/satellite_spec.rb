@@ -8,4 +8,5 @@ RSpec.describe GalacticFederation::Satellite, type: :poro do
 
   it { is_expected.to conjugate_into GalacticFederation::SatelliteFleeb }
   it { is_expected.to conjugate_into Chumble::GalacticFederation::Satellite }
+  it { is_expected.to conjugate_into GalacticFederation::SatelliteFiddlesticks }
 end
