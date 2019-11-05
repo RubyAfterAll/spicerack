@@ -60,6 +60,23 @@ class StarlightFleeb < ApplicationFleeb; end
 class GenericFleeb < ApplicationFleeb; end
 
 # ================================= #
+#       CONJUNCTIONS: Chumble       #
+# ================================= #
+
+module Chumble
+  module GalacticFederation
+    class Earthling < ApplicationChumble; end
+    class Satellite < ApplicationChumble; end
+  end
+
+  class Generic < ApplicationChumble; end
+
+  class Starlight < ApplicationChumble; end
+  class Martian < ApplicationChumble; end
+  class Luna < ApplicationChumble; end
+end
+
+# ================================= #
 #               MODELS              #
 # ================================= #
 
@@ -74,7 +91,10 @@ module GalacticFederation
 end
 
 class Martian < ApplicationSchmodel; end
-class PlanetaryAddress < ApplicationSchmodel; end
+
+class PlanetaryAddress < ApplicationSchmodel
+  conjoins Chumble::Generic
+end
 
 # ================================= #
 #               POROS               #
@@ -91,6 +111,7 @@ end
 class Starlight < ApplicationPoro; end
 class HighFrequencyRadioBurst < ApplicationPoro
   conjoins GenericFleeb
+  conjoins Chumble::Generic
 end
 
 class Luna
