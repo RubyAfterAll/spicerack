@@ -11,3 +11,4 @@ require "conjunction"
 
 require "support/test_classes/models"
 require "support/test_classes/poros"
+require "support/test_classes/junctions"

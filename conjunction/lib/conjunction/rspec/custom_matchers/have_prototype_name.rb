@@ -14,6 +14,6 @@
 
 RSpec::Matchers.define :have_prototype_name do |prototype_name|
   match { |subject| expect(subject.prototype_name).to eq prototype_name }
-  description { "have prototype name #{prototype_name}" }
-  failure_message { |prototype| "expected #{prototype} to have prototype name #{prototype_name}" }
+  description { "have prototype name `#{prototype_name}'" }
+  failure_message { |subject| "expected #{subject} to have prototype name `#{prototype_name}'" }
 end

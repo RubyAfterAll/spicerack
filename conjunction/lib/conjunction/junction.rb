@@ -14,7 +14,7 @@ module Conjunction
 
     class_methods do
       def junction_key
-        [ conjunction_prefix, conjunction_suffix ].compact.join.underscore.to_sym if conjunctive?
+        key_parts.join.underscore.parameterize(separator: "_").to_sym if conjunctive?
       end
 
       def prototype_name
@@ -33,6 +33,10 @@ module Conjunction
       end
 
       private
+
+      def key_parts
+        [ conjunction_prefix, conjunction_suffix ].compact
+      end
 
       def conjunction_name_for(other_prototype)
         raise TypeError, "invalid prototype #{other_prototype}" unless other_prototype.respond_to?(:prototype_name)
