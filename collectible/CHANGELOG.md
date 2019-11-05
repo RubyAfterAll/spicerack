@@ -6,6 +6,12 @@
 
 - No changes
 
+## v0.17.4
+
+*Release Date*: 11/4/2019
+
+- No changes
+
 ## v0.17.3
 
 *Release Date*: 10/28/2019

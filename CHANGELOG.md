@@ -7,6 +7,11 @@
 ### Conjunction - [see changes](conjunction/CHANGELOG.md#v0180)
 ### SpicerackStyleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0180)
 
+## v.0.17.4
+*Release Date*: 11/4/2019
+
+- [BUGFIX] Fix a critical bug in Configurable introduced in 0.17.0 ([#268](https://github.com/Freshly/spicerack/pull/268))
+
 ## v0.17.3
 
 *Release Date*: 10/28/2019
