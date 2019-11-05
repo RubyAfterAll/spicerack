@@ -77,6 +77,19 @@ module Chumble
 end
 
 # ================================= #
+#      CONJUNCTIONS: FroodNoop      #
+# ================================= #
+
+module FroodGalacticFederation
+  class EarthlingNoop < ApplicationFroodNoop; end
+end
+
+class CommonFroodNoop < ApplicationFroodNoop; end
+
+class FroodStarlightNoop < ApplicationFroodNoop; end
+class FroodMartianNoop < ApplicationFroodNoop; end
+
+# ================================= #
 #               MODELS              #
 # ================================= #
 
@@ -94,6 +107,7 @@ class Martian < ApplicationSchmodel; end
 
 class PlanetaryAddress < ApplicationSchmodel
   conjoins Chumble::Generic
+  conjoins CommonFroodNoop
 end
 
 # ================================= #
@@ -112,6 +126,7 @@ class Starlight < ApplicationPoro; end
 class HighFrequencyRadioBurst < ApplicationPoro
   conjoins GenericFleeb
   conjoins Chumble::Generic
+  conjoins CommonFroodNoop
 end
 
 class Luna

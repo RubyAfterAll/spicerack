@@ -8,4 +8,5 @@ RSpec.describe GalacticFederation::Earthling, type: :schmodel do
 
   it { is_expected.to conjugate_into GalacticFederation::EarthlingFleeb }
   it { is_expected.to conjugate_into Chumble::GalacticFederation::Earthling }
+  it { is_expected.to conjugate_into FroodGalacticFederation::EarthlingNoop }
 end
