@@ -11,8 +11,12 @@ module GalacticFederation
 end
 
 class Starlight < ApplicationPoro; end
-class HighFrequencyRadioBurst < ApplicationPoro; end
+class HighFrequencyRadioBurst < ApplicationPoro
+  conjoins GenericFleeb
+end
 
 class Luna
   include Conjunction::Conjunctive
+
+  conjoins GenericFleeb
 end
