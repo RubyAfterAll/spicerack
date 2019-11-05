@@ -6,11 +6,12 @@ require:
 AllCops:
   TargetRubyVersion: 2.6
   Exclude:
-    - bin/**/*
+    - "**/bin/**/*"
     - Rakefile
     - spec/*_helper.rb
-    - db/**/*
+    - "**/db/**/*"
     - Gemfile.lock
+    - "*.gemspec"
 
 Layout/AccessModifierIndentation:
   Enabled: true

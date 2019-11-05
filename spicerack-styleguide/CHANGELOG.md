@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.18.0
+
+*Release Date*: 11/4/2019
+
+- Ignore `*.gemspec` and `bin/**` files
+
 ## v0.17.4
 
 *Release Date*: 11/4/2019
