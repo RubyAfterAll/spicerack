@@ -19,6 +19,61 @@ RSpec.describe Conjunction::NamingConvention, type: :concern do
     it { is_expected.to be_nil }
   end
 
+  describe ".conjunction_prefix?" do
+    subject { example_naming_convention_class }
+
+    context "with conjunction_prefix" do
+      it { is_expected.to be_conjunction_prefix }
+    end
+
+    context "without conjunction_prefix" do
+      let(:prefix) { nil }
+
+      it { is_expected.not_to be_conjunction_prefix }
+    end
+  end
+
+  describe ".conjunction_suffix?" do
+    subject { example_naming_convention_class }
+
+    context "with conjunction_suffix" do
+      it { is_expected.to be_conjunction_suffix }
+    end
+
+    context "without conjunction_suffix" do
+      let(:suffix) { nil }
+
+      it { is_expected.not_to be_conjunction_suffix }
+    end
+  end
+
+  describe ".conjunctive?" do
+    subject { example_naming_convention_class }
+
+    context "with neither" do
+      let(:prefix) { nil }
+      let(:suffix) { nil }
+
+      it { is_expected.not_to be_conjunctive }
+    end
+
+    context "with only prefix" do
+      let(:suffix) { nil }
+
+      it { is_expected.to be_conjunctive }
+    end
+
+    context "with only suffix" do
+      let(:prefix) { nil }
+
+      it { is_expected.to be_conjunctive }
+    end
+
+    context "with both" do
+      it { is_expected.to be_conjunctive }
+    end
+  end
+
   describe ".inherited" do
     subject(:inherited_naming_convention_class) { Class.new(example_naming_convention_class) }
 

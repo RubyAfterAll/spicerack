@@ -6,15 +6,15 @@ RSpec.shared_context "with an example junction" do
   let(:example_junction_class) do
     Class.new.tap do |klass|
       klass.include Conjunction::Junction
-      klass.__send__(:prefixed_with, junction_prefix)
-      klass.__send__(:suffixed_with, junction_suffix)
+      klass.__send__(:prefixed_with, prefix)
+      klass.__send__(:suffixed_with, suffix)
     end
   end
 
-  let(:junction_prefix) { Faker::Internet.domain_word.capitalize }
-  let(:junction_suffix) { Faker::Internet.domain_word.capitalize }
+  let(:prefix) { Faker::Internet.domain_word.capitalize }
+  let(:suffix) { Faker::Internet.domain_word.capitalize }
   let(:prototype_name) { Faker::Internet.domain_word.capitalize }
-  let(:example_junction_name) { [ junction_prefix, prototype_name, junction_suffix ].compact.join }
+  let(:example_junction_name) { [ prefix, prototype_name, suffix ].compact.join }
 
   before { stub_const(example_junction_name, example_junction_class) }
 end

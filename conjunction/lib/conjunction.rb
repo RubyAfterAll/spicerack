@@ -9,4 +9,6 @@ require "conjunction/naming_convention"
 require "conjunction/junction"
 
 module Conjunction
+  class Error < StandardError; end
+  class DisjointedError < Error; end
 end
