@@ -4,12 +4,14 @@ RSpec.describe Conjunction::Prototype, type: :prototype do
   include_context "with an example prototype"
 
   it { is_expected.to delegate_method(:prototype_name).to(:class) }
+  it { is_expected.to delegate_method(:prototype).to(:class) }
+  it { is_expected.to delegate_method(:prototype!).to(:class) }
 
   describe "#prototype!" do
-    subject(:prototype!) { example_prototype.prototype! }
+    subject(:prototype!) { example_prototype_class.prototype! }
 
     context "when prototype returns nil" do
-      before { allow(example_prototype).to receive(:prototype).and_return(nil) }
+      before { allow(example_prototype_class).to receive(:prototype).and_return(nil) }
 
       it "raises" do
         expect { prototype! }.to raise_error NameError, "#{example_prototype_name} is not defined"
@@ -21,8 +23,8 @@ RSpec.describe Conjunction::Prototype, type: :prototype do
     end
   end
 
-  describe "#prototype" do
-    subject { example_prototype.prototype }
+  describe ".prototype" do
+    subject { example_prototype_class.prototype }
 
     it { is_expected.to eq example_prototype_class }
   end

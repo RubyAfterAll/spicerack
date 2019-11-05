@@ -5,9 +5,9 @@ module Conjunction
   module Conjunctive
     extend ActiveSupport::Concern
 
-    included do
-      include Conjunction::Prototype
+    include Conjunction::Prototype
 
+    included do
       class_attribute :explicit_conjunctions, instance_writer: false, default: {}
 
       delegate :conjugate, :conjugate!, to: :class

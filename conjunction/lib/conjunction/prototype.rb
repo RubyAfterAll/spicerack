@@ -6,18 +6,18 @@ module Conjunction
     extend ActiveSupport::Concern
 
     included do
-      delegate :prototype_name, to: :class
-    end
-
-    def prototype!
-      prototype or raise NameError, "#{prototype_name} is not defined"
-    end
-
-    def prototype
-      self.class
+      delegate :prototype_name, :prototype, :prototype!, to: :class
     end
 
     class_methods do
+      def prototype!
+        prototype or raise NameError, "#{prototype_name} is not defined"
+      end
+
+      def prototype
+        self
+      end
+
       def prototype_name
         try(:model_name)&.name || name
       end
