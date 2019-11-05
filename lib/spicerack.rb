@@ -9,6 +9,7 @@ require "tablesalt"
 
 require "around_the_world"
 require "short_circu_it"
+require "conjunction"
 
 require "technologic"
 

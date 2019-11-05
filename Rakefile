@@ -8,6 +8,7 @@ require_relative "shared/rakefile"
 SPICERACK_GEMS = %w[
   around_the_world
   collectible
+  conjunction
   facet
   redis_hash
   rspice
