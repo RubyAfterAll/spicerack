@@ -9,8 +9,12 @@ module Conjunction
       delegate :prototype_name, to: :class
     end
 
+    def prototype!
+      prototype or raise NameError, "#{prototype_name} is not defined"
+    end
+
     def prototype
-      self
+      self.class
     end
 
     class_methods do
