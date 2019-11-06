@@ -12,25 +12,25 @@
 
 - [BUGFIX] Fix a critical bug in Configurable introduced in 0.17.0 ([#268](https://github.com/Freshly/spicerack/pull/268))
 
-## v0.17.3
+## v0.17.3 [Yanked - Upgrade to >= 0.17.4]
 
 *Release Date*: 10/28/2019
 
 ### Collectible - [see changes](collectible/CHANGELOG.md#v0173)
 
-## v0.17.2
+## v0.17.2 [Yanked - Upgrade to >= 0.17.4]
 
 *Release Date*: 10/18/2019
 
 ### RSpice - [see changes](rspice/CHANGELOG.md#v0172)
 
-## v0.17.1
+## v0.17.1 [Yanked - Upgrade to >= 0.17.4]
 
 *Release Date*: 10/14/2019
 
 ### Facet - [see changes](facet/CHANGELOG.md#v0171)
 
-## v0.17.0
+## v0.17.0 [Yanked - Upgrade to >= 0.17.4]
 
 *Release Date*: 10/1/2019
 
