@@ -54,7 +54,12 @@ RSpec.describe Conjunction::Conjunctive, type: :conjunctive do
 
     shared_examples_for "the expected conjunction is returned" do
       context "when respond_to?" do
-        before { allow(junction).to receive(method_name).with(example_conjunctive_class).and_return(conjunction) }
+        before do
+          allow(junction).
+            to receive(method_name).
+            with(example_conjunctive_class, example_conjunctive_name).
+            and_return(conjunction)
+        end
 
         it { is_expected.to eq conjunction }
       end

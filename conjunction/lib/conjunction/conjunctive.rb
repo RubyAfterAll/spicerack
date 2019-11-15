@@ -33,7 +33,7 @@ module Conjunction
         junction_key = junction.try(:junction_key)
         return explicit_conjunctions[junction_key] if junction_key.present? && explicit_conjunctions.key?(junction_key)
 
-        junction.try(method_name, prototype)
+        junction.try(method_name, prototype, prototype_name)
       end
 
       def conjoins(junction)

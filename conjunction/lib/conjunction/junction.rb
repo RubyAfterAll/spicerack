@@ -24,12 +24,12 @@ module Conjunction
         output unless output == name
       end
 
-      def conjunction_for!(other_prototype)
-        conjunction_for(other_prototype) or raise DisjointedError, "#{other_prototype} disjointed with #{name}"
+      def conjunction_for!(other_prototype, prototype_name)
+        conjunction_for(other_prototype, prototype_name) or raise DisjointedError, "#{other_prototype} #{name} unknown"
       end
 
-      def conjunction_for(other_prototype)
-        conjunction_name_for(other_prototype)&.safe_constantize
+      def conjunction_for(other_prototype, prototype_name)
+        conjunction_name_for(other_prototype, prototype_name)&.safe_constantize
       end
 
       private
@@ -38,10 +38,12 @@ module Conjunction
         [ conjunction_prefix, conjunction_suffix ].compact
       end
 
-      def conjunction_name_for(other_prototype)
-        raise TypeError, "invalid prototype #{other_prototype}" unless other_prototype.respond_to?(:prototype_name)
+      def conjunction_name_for(other_prototype, other_prototype_name)
+        other_prototype_name = other_prototype.prototype_name if other_prototype.respond_to?(:prototype_name)
 
-        [ conjunction_prefix, other_prototype.prototype_name, conjunction_suffix ].compact.join if conjunctive?
+        raise TypeError, "invalid prototype `#{other_prototype_name.presence || "nil"}'" if other_prototype_name.blank?
+
+        [ conjunction_prefix, other_prototype_name, conjunction_suffix ].compact.join if conjunctive?
       end
     end
   end

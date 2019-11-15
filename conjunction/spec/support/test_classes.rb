@@ -40,8 +40,8 @@ class ApplicationDingleBop
 
     private
 
-    def conjunction_name_for(other_prototype)
-      "#{other_prototype.prototype_name}Fiddlesticks"
+    def conjunction_name_for(other_prototype, other_prototype_name)
+      "#{other_prototype.prototype_name || other_prototype_name}Fiddlesticks"
     end
   end
 end

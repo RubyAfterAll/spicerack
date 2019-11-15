@@ -65,29 +65,14 @@ RSpec.describe Conjunction::Junction, type: :junction do
   end
 
   describe ".conjunction_name_for" do
-    subject(:conjunction_for) { example_junction_class.__send__(:conjunction_name_for, other_prototype) }
-
-    shared_examples_for "an invalid prototype" do
-      it "raises" do
-        expect { conjunction_for }.to raise_error TypeError, "invalid prototype #{other_prototype}"
-      end
+    subject(:conjunction_for) do
+      example_junction_class.__send__(:conjunction_name_for, other_prototype, prototype_name)
     end
 
-    context "when nil" do
-      let(:other_prototype) { nil }
+    let(:prototype_name) { Faker::Internet.domain_word.capitalize }
 
-      it_behaves_like "an invalid prototype"
-    end
-
-    context "when invalid" do
-      let(:other_prototype) { Faker::Lorem.word }
-
-      it_behaves_like "an invalid prototype"
-    end
-
-    context "when valid" do
+    shared_examples_for "a valid prototype" do
       let(:other_prototype) { double(prototype_name: prototype_name) }
-      let(:prototype_name) { Faker::Internet.domain_word.capitalize }
 
       context "with neither" do
         let(:prefix) { nil }
@@ -112,15 +97,38 @@ RSpec.describe Conjunction::Junction, type: :junction do
         it { is_expected.to eq "#{prefix}#{prototype_name}#{suffix}" }
       end
     end
+
+    context "when both are nil" do
+      let(:other_prototype) { nil }
+      let(:prototype_name) { nil }
+
+      it "raises" do
+        expect { conjunction_for }.to raise_error TypeError, "invalid prototype `nil'"
+      end
+    end
+
+    context "when other_prototype is nil" do
+      let(:other_prototype) { nil }
+
+      it_behaves_like "a valid prototype"
+    end
+
+    context "when valid" do
+      it_behaves_like "a valid prototype"
+    end
   end
 
   describe ".conjunction_for" do
-    subject(:conjunction_for) { example_junction_class.conjunction_for(other_prototype) }
+    subject(:conjunction_for) { example_junction_class.conjunction_for(other_prototype, prototype_name) }
 
+    let(:prototype_name) { Faker::Internet.domain_word.capitalize }
     let(:other_prototype) { double }
 
     before do
-      allow(example_junction_class).to receive(:conjunction_name_for).with(other_prototype).and_return(conjunction_name)
+      allow(example_junction_class).
+        to receive(:conjunction_name_for).
+        with(other_prototype, prototype_name).
+        and_return(conjunction_name)
     end
 
     context "when nil" do
@@ -147,12 +155,16 @@ RSpec.describe Conjunction::Junction, type: :junction do
   end
 
   describe ".conjunction_for!" do
-    subject(:conjunction_for!) { example_junction_class.conjunction_for!(other_prototype) }
+    subject(:conjunction_for!) { example_junction_class.conjunction_for!(other_prototype, other_prototype_name) }
 
     let(:other_prototype) { double }
+    let(:other_prototype_name) { Faker::Internet.domain_word.capitalize }
 
     before do
-      allow(example_junction_class).to receive(:conjunction_for).with(other_prototype).and_return(conjunction_for)
+      allow(example_junction_class).
+        to receive(:conjunction_for).
+        with(other_prototype, other_prototype_name).
+        and_return(conjunction_for)
     end
 
     context "when nil" do
@@ -160,7 +172,7 @@ RSpec.describe Conjunction::Junction, type: :junction do
 
       it "raises" do
         expect { conjunction_for! }.
-          to raise_error Conjunction::DisjointedError, "#{other_prototype} disjointed with #{example_junction_name}"
+          to raise_error Conjunction::DisjointedError, "#{other_prototype} #{example_junction_name} unknown"
       end
     end
 
