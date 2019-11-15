@@ -3,7 +3,7 @@ name: RSpec
 on: [push]
 
 jobs:
-  "Ruby 2.5":
+  ruby_2_5:
 
     runs-on: ubuntu-latest
 
@@ -18,7 +18,7 @@ jobs:
         gem install bundler
         bundle install --jobs 4 --retry 3
         bundle exec rspec
-  "Ruby 2.6":
+  ruby_2_6:
 
     runs-on: ubuntu-latest
 
