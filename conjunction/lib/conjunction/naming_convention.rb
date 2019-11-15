@@ -11,6 +11,7 @@ module Conjunction
       def inherited(base)
         base.prefixed_with(conjunction_prefix)
         base.suffixed_with(conjunction_suffix)
+        super
       end
 
       protected
