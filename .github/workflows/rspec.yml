@@ -64,7 +64,7 @@ jobs:
       run: |
         bundle exec rspec
 
-  ruby_2_6_rails_5_2:
+  ruby_2_6_rails_6_0:
     runs-on: ubuntu-latest
 
     steps:
