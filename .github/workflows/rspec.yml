@@ -15,7 +15,7 @@ jobs:
         ruby-version: 2.5.x
     - name: Set up sqlite
       run: |
-        apt-get install libsqlite3-dev
+        sudo apt-get install libsqlite3-dev
     - name: Build and test with RSpec
       run: |
         gem install bundler
@@ -33,7 +33,7 @@ jobs:
         ruby-version: 2.6.x
     - name: Set up sqlite
       run: |
-        apt-get install libsqlite3-dev
+        sudo apt-get install libsqlite3-dev
     - name: Build and test with RSpec
       run: |
         gem install bundler
