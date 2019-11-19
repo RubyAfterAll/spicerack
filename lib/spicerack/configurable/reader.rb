@@ -27,7 +27,9 @@ module Spicerack
       end
 
       def respond_to_missing?(method_name, *)
-        config._options.map(&:to_sym).include?(method_name.to_sym) ||
+        name = method_name.to_sym
+
+        config._options.map(&:to_sym).include?(name) ||
           config._nested_builders.key?(name) ||
           super
       end
