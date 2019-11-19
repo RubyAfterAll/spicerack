@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.18.1
+*Release Date*: 11/19/2019
+- Fix a bug in `Configurable` ([#282](https://github.com/Freshly/spicerack/pull/282))
+
 ## v0.18.0
 
 *Release Date*: 11/4/2019
