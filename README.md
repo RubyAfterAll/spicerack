@@ -21,7 +21,7 @@ This collection of gems will spice up your rails and kick your rubies up a notch
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "spices"
+gem "spicery"
 ```
 
 And then execute:
@@ -30,7 +30,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install spices
+    $ gem install spicery
 
 ## Included Gems
 
@@ -94,7 +94,9 @@ Here's a checklist of some other tasks (see another gem as reference):
 Then in the base directory:
 
 - Edit `Rakefile` to add GEM to the `SPICERACK_GEMS` constant
-- Add a require for your new gem into `lib/spices/spices.rb`
+- Add a require for your new gem into:
+  - `lib/spicerack.rb` if its necessary for a Spicerack Utility object
+  - `lib/spicery/spicery.rb` otherwise
 - Add the new gem into `spicerack.gemspec`
 - Increment the version in `SPICERACK_VERSION`
 - Run `rake spicerack:update_all_versions` to the correct version

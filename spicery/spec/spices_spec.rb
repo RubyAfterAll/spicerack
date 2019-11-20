@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe Spices do
+RSpec.describe Spicery do
   it "has a version number" do
-    expect(Spices::VERSION).not_to be nil
+    expect(Spicery::VERSION).not_to be nil
   end
 end

@@ -4,13 +4,13 @@
 
 *Release Date*: 11/20/2019
 
-🚨 *Breaking Changes*: Some gem requirements were moved out of `Spicerack` and into `Spices`.
+🚨 *Breaking Changes*: Some gem requirements were moved out of `Spicerack` and into `Spicery`.
 
 This was intended to break a circular dependency for gems which require the utility objects in Spicerack but want to be included along for the ride.
 
-From this version onwards, you should almost certainly be including the gem `spices` rather than `spicerack` directly.
+From this version onwards, you should almost certainly be including the gem `spicery` rather than `spicerack` directly.
 
-### Spices - [see changes](spices/CHANGELOG.md#v0190)
+### Spicery - [see changes](spicery/CHANGELOG.md#v0190)
 
 ## v0.18.1
 

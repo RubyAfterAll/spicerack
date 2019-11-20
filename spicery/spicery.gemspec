@@ -2,11 +2,11 @@
 
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "spices/version"
+require "spicery/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "spices"
-  spec.version       = Spices::VERSION
+  spec.name          = "spicery"
+  spec.version       = Spicery::VERSION
 
   spec.summary       = "A suite of utility gems for Ruby on Rails."
   spec.description   = "This collection of gems will spice up your rails and kick your rubies up a notch. Bam!"
@@ -34,8 +34,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = "lib"
 
   # Spicerack Gems
-  spec.add_dependency "spicerack", Spices::VERSION
-  spec.add_dependency "collectible", Spices::VERSION
-  spec.add_dependency "conjunction", Spices::VERSION
-  spec.add_dependency "facet", Spices::VERSION
+  spec.add_dependency "spicerack", Spicery::VERSION
+  spec.add_dependency "collectible", Spicery::VERSION
+  spec.add_dependency "conjunction", Spicery::VERSION
+  spec.add_dependency "facet", Spicery::VERSION
 end

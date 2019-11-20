@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "spices/version"
+require "spicery/version"
 
 require "spicerack"
 
@@ -8,4 +8,4 @@ require "conjunction"
 require "collectible"
 require "facet"
 
-module Spices; end
+module Spicery; end

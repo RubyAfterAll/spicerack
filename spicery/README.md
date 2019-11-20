@@ -1,8 +1,8 @@
-# Spices
+# Spicery
 
 This collection of gems will spice up your rails and kick your rubies up a notch. Bam!
 
-[![Gem Version](https://badge.fury.io/rb/spices.svg)](https://badge.fury.io/rb/spices)
+[![Gem Version](https://badge.fury.io/rb/spicery.svg)](https://badge.fury.io/rb/spicery)
 [![Build Status](https://semaphoreci.com/api/v1/freshly/spicerack/branches/master/badge.svg)](https://semaphoreci.com/freshly/spicerack)
 [![Maintainability](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/maintainability)](https://codeclimate.com/github/Freshly/spicerack/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/test_coverage)](https://codeclimate.com/github/Freshly/spicerack/test_coverage)
@@ -18,7 +18,7 @@ This collection of gems will spice up your rails and kick your rubies up a notch
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'spices'
+gem 'spicery'
 ```
 
 And then execute:
@@ -27,7 +27,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install spices
+    $ gem install spicery
 
 ## Usage
 
