@@ -21,7 +21,7 @@ This collection of gems will spice up your rails and kick your rubies up a notch
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "spicerack"
+gem "spicery"
 ```
 
 And then execute:
@@ -30,7 +30,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install spicerack
+    $ gem install spicery
 
 ## Included Gems
 
@@ -41,6 +41,7 @@ Or install it yourself as:
 * [RedisHash](redis_hash/README.md) provides a class that matches the Hash api by wrapping Redis.
 * [RSpice](rspice/README.md) is an `RSpec` utility gem of custom matchers, shared contexts and examples.
 * [ShortCircuIt](short_circu_it/README.md) is an intelligent and feature rich memoization gem.
+* [Spicerack](README.md) itself is a set of utility classes and concerns to write better Rails apps.
 * [Spicerack::Styleguide](spicerack-styleguide/README.md) is [Freshly](https://www.freshly.com/)'s Rubocop Styleguide for Rails and RSpec.
 * [Technologic](technologic/README.md) is a logging system built on an extensible event triggering system requiring minimal implementation.
 * [Tablesalt](tablesalt/README.md) is full of miscellaneous helper modules, POROs, and more, that standardize common behavior.
@@ -93,7 +94,9 @@ Here's a checklist of some other tasks (see another gem as reference):
 Then in the base directory:
 
 - Edit `Rakefile` to add GEM to the `SPICERACK_GEMS` constant
-- Add a require for your new gem into `lib/spicerack.rb`
+- Add a require for your new gem into:
+  - `lib/spicerack.rb` if its necessary for a Spicerack Utility object
+  - `lib/spicery/spicery.rb` otherwise
 - Add the new gem into `spicerack.gemspec`
 - Increment the version in `SPICERACK_VERSION`
 - Run `rake spicerack:update_all_versions` to the correct version

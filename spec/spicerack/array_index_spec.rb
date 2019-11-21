@@ -3,7 +3,7 @@
 RSpec.describe Spicerack::ArrayIndex do
   subject(:array_index) { described_class.new(array) }
 
-  let(:array) { Faker::Hipster.words }
+  let(:array) { Faker::Hipster.words.uniq }
 
   it { is_expected.to delegate_method(:[]).to(:index) }
 

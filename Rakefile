@@ -14,6 +14,7 @@ SPICERACK_GEMS = %w[
   rspice
   short_circu_it
   spicerack-styleguide
+  spicery
   technologic
   tablesalt
 ].freeze
@@ -47,6 +48,7 @@ namespace :spicerack do
   end
 
   task :release_all do
+    system "bundle"
     Rake::Task["release"].invoke
     SPICERACK_GEMS.each { |gem| sh "cd #{gem} && bundle exec rake release" }
   end
