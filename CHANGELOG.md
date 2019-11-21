@@ -1,8 +1,24 @@
 # Changelog
 
+## v0.19.0
+
+*Release Date*: 11/20/2019
+
+🚨 *Breaking Changes*: Some gem requirements were moved out of `Spicerack` and into `Spicery`.
+
+This was intended to break a circular dependency for gems which require the utility objects in Spicerack but want to be included along for the ride.
+
+From this version onwards, you should almost certainly be including the gem `spicery` rather than `spicerack` directly.
+
+### Spicery - [see changes](spicery/CHANGELOG.md#v0190)
+
+- Adds a forgotten feature to Configurable allowing nested configuration setting within a block ([#286](https://github.com/Freshly/spicerack/pull/286))
+
 ## v0.18.1
+
 *Release Date*: 11/19/2019
-- Fix a bug in `Configurable` ([#282](https://github.com/Freshly/spicerack/pull/282))
+
+- [BUGFIX] Fix a bug in `Configurable` ([#282](https://github.com/Freshly/spicerack/pull/282))
 
 ## v0.18.0
 
@@ -12,6 +28,7 @@
 ### SpicerackStyleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0180)
 
 ## v.0.17.4
+
 *Release Date*: 11/4/2019
 
 - [BUGFIX] Fix a critical bug in Configurable introduced in 0.17.0 ([#268](https://github.com/Freshly/spicerack/pull/268))
