@@ -78,9 +78,7 @@ RSpec.describe Conjunction::Nexus, type: :nexus do
     context "with invalid junction" do
       let(:junction_class) { double }
 
-      it "raises" do
-        expect { conjugate }.to raise_error TypeError, "#{junction_class} is not a valid junction"
-      end
+      it { is_expected.to be_nil }
     end
 
     context "without coupling" do

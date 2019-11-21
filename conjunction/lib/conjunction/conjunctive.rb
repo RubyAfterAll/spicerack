@@ -30,8 +30,8 @@ module Conjunction
       private
 
       def conjugate_with(junction, method_name)
-        junction_key = junction.try(:junction_key)
-        return explicit_conjunctions[junction_key] if junction_key.present? && explicit_conjunctions.key?(junction_key)
+        conjunction = explicit_conjunctions[junction.try(:junction_key)] || Nexus.conjugate(self, junction: junction)
+        return conjunction if conjunction.present?
 
         junction.try(method_name, prototype, prototype_name)
       end

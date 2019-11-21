@@ -86,6 +86,15 @@ RSpec.describe Conjunction::Conjunctive, type: :conjunctive do
         it { is_expected.to eq explicit_junction }
       end
 
+      context "with nexus conjunction" do
+        let(:nexus_junction) { double(junction_key: junction_key) }
+
+        before { Conjunction::Nexus.__send__(:couple, example_conjunctive_class, to: nexus_junction) }
+        after { Conjunction::Nexus._couplings.clear }
+
+        it { is_expected.to eq nexus_junction }
+      end
+
       it_behaves_like "the expected conjunction is returned"
     end
   end

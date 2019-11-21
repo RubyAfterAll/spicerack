@@ -17,13 +17,11 @@ module Conjunction
 
     class << self
       def conjugate(conjunctive, junction:)
-        _couplings[junction.junction_key][conjunctive] if couples?(junction)
+        _couplings[junction.try(:junction_key)][conjunctive] if couples?(junction)
       end
 
       def couples?(junction)
-        raise TypeError, "#{junction} is not a valid junction" unless junction.respond_to?(:junction_key)
-
-        _couplings.key?(junction.junction_key)
+        _couplings.key?(junction.try(:junction_key))
       end
 
       private
