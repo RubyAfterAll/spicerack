@@ -37,12 +37,14 @@ RSpec.describe Spicerack::Configurable::Reader do
 
     it "responds to attr_readers from config" do
       config_attributes.each do |attr|
+        expect(reader).to respond_to attr
         expect(reader.public_send(attr)).to eq config.public_send(attr)
       end
     end
 
     it "doesn't respond to attr_writers from config" do
       config_attributes.each do |attr|
+        expect(reader).not_to respond_to "#{attr}="
         expect { reader.public_send("#{attr}=", double) }.to raise_error NoMethodError
       end
     end
@@ -60,6 +62,8 @@ RSpec.describe Spicerack::Configurable::Reader do
           end
         end
       end
+
+      it { is_expected.to respond_to(nested_parent) }
 
       it "returns a nested reader" do
         expect(nested_reader).to be_a described_class
