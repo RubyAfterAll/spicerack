@@ -33,7 +33,9 @@ module Conjunction
         conjunction = explicit_conjunctions[junction.try(:junction_key)] || Nexus.conjugate(self, junction: junction)
         return conjunction if conjunction.present?
 
-        junction.try(method_name, prototype, prototype_name)
+        return if Conjunction.config.nexus_use_disables_implicit_lookup && Nexus.couples?(junction)
+
+        junction.try(method_name, prototype, prototype_name) unless Conjunction.config.disable_all_implicit_lookup
       end
 
       def conjoins(junction)

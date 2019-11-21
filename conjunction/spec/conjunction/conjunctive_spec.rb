@@ -87,15 +87,89 @@ RSpec.describe Conjunction::Conjunctive, type: :conjunctive do
       end
 
       context "with nexus conjunction" do
+        let(:conjunctive) { example_conjunctive_class }
         let(:nexus_junction) { double(junction_key: junction_key) }
 
-        before { Conjunction::Nexus.__send__(:couple, example_conjunctive_class, to: nexus_junction) }
+        before { Conjunction::Nexus.__send__(:couple, conjunctive, to: nexus_junction) }
+
         after { Conjunction::Nexus._couplings.clear }
 
-        it { is_expected.to eq nexus_junction }
+        context "with a matching nexus_junction" do
+          it { is_expected.to eq nexus_junction }
+        end
+
+        context "without a matching nexus_junction" do
+          let(:conjunctive) do
+            Class.new.tap { |klass| klass.include described_class }
+          end
+
+          before do
+            allow(Conjunction.config).
+              to receive(:nexus_use_disables_implicit_lookup).
+              and_return(nexus_use_disables_implicit_lookup)
+          end
+
+          context "when nexus_use_disables_implicit_lookup" do
+            let(:nexus_use_disables_implicit_lookup) { true }
+
+            it { is_expected.to be_nil }
+          end
+
+          context "when not nexus_use_disables_implicit_lookup" do
+            let(:nexus_use_disables_implicit_lookup) { false }
+
+            before do
+              allow(Conjunction.config).to receive(:disable_all_implicit_lookup).and_return(disable_all_implicit_lookup)
+            end
+
+            context "when disable_all_implicit_lookup" do
+              let(:disable_all_implicit_lookup) { true }
+
+              it { is_expected.to be_nil }
+            end
+
+            context "when not disable_all_implicit_lookup" do
+              let(:disable_all_implicit_lookup) { false }
+
+              it_behaves_like "the expected conjunction is returned"
+            end
+          end
+        end
       end
 
-      it_behaves_like "the expected conjunction is returned"
+      context "with no explicit couplings" do
+        before do
+          allow(Conjunction.config).
+            to receive(:nexus_use_disables_implicit_lookup).
+            and_return(nexus_use_disables_implicit_lookup)
+        end
+
+        context "when nexus_use_disables_implicit_lookup" do
+          let(:nexus_use_disables_implicit_lookup) { true }
+
+          it_behaves_like "the expected conjunction is returned"
+        end
+
+        context "when not nexus_use_disables_implicit_lookup" do
+          let(:nexus_use_disables_implicit_lookup) { false }
+
+          before do
+            allow(Conjunction.config).to receive(:disable_all_implicit_lookup).and_return(disable_all_implicit_lookup)
+          end
+
+          context "when disable_all_implicit_lookup" do
+            let(:disable_all_implicit_lookup) { true }
+
+            it { is_expected.to be_nil }
+          end
+
+          context "when not disable_all_implicit_lookup" do
+            let(:disable_all_implicit_lookup) { false }
+
+            it_behaves_like "the expected conjunction is returned"
+          end
+        end
+      end
     end
   end
 
