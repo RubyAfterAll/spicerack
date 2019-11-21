@@ -12,6 +12,8 @@ From this version onwards, you should almost certainly be including the gem `spi
 
 ### Spicery - [see changes](spicery/CHANGELOG.md#v0190)
 
+- Adds a forgotten feature to Configurable allowing nested configuration setting within a block ([#286](https://github.com/Freshly/spicerack/pull/286))
+
 ## v0.18.1
 
 *Release Date*: 11/19/2019
