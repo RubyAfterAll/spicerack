@@ -1,7 +1,12 @@
 # frozen_string_literal: true
 
 require "active_support"
+
+require "spicerack"
+
 require "conjunction/version"
+
+require "conjunction/configuration"
 
 require "conjunction/nexus"
 
@@ -11,6 +16,9 @@ require "conjunction/naming_convention"
 require "conjunction/junction"
 
 module Conjunction
+  include Spicerack::Configurable::ConfigDelegation
+  delegates_to_configuration
+
   class Error < StandardError; end
   class DisjointedError < Error; end
 end

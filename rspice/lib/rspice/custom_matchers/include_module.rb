@@ -18,6 +18,6 @@ RSpec::Matchers.define :include_module do |module_class|
   failure_message_when_negated { |described_class| "expected #{described_class} not to include module #{module_class}" }
 
   def test_subject
-    subject.is_a?(Class) ? subject : subject.class
+    subject.is_a?(Module) ? subject : subject.class
   end
 end
