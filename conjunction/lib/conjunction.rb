@@ -3,6 +3,8 @@
 require "active_support"
 require "conjunction/version"
 
+require "conjunction/nexus"
+
 require "conjunction/prototype"
 require "conjunction/conjunctive"
 require "conjunction/naming_convention"
