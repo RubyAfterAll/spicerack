@@ -25,9 +25,9 @@ module AroundTheWorld
     #       things_happened = super
     #
     #       if things_happened
-    #         puts "Something happened!"
+    #         "Something happened!"
     #       else
-    #         puts "Nothing to see here..."
+    #         "Nothing to see here..."
     #       end
     #     end
     #
@@ -55,6 +55,23 @@ module AroundTheWorld
     #     super
     #   end
     #   # => no error raised
+    #
+    # @example
+    #   class SomeClass
+    #     include AroundTheWorld
+    #
+    #     class << self
+    #       def a_singleton_method; end
+    #
+    #       around_method :a_singleton_method do
+    #         super
+    #         "It works for class methods too!"
+    #       end
+    #     end
+    #   end
+    #
+    #   SomeClass.a_singleton_method
+    #   => "It works for class methods too!"
     #
     # @param method_name [Symbol]
     # @param :prevent_double_wrapping_for [Object]
