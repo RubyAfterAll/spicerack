@@ -10,11 +10,7 @@ require "active_support/descendants_tracker"
 module AroundTheWorld
   extend ActiveSupport::Concern
 
-  included do
-    extend ActiveSupport::DescendantsTracker
-  end
-
-  class_methods do
+  module ClassMethods
     protected
 
     # Defines a method that gets called +around+ the given instance method.
