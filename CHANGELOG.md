@@ -4,6 +4,8 @@
 
 *Release Date*: 11/27/2019
 
+### AroundTheWorld - [see changes](around_the_worrld/CHANGELOG.md#v0191)
+
 - [BUGFIX] Fix a bug in `Spicerack` internals ([#294](https://github.com/Freshly/spicerack/pull/294))
 
 ## v0.19.0

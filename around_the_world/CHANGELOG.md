@@ -4,7 +4,7 @@
 
 *Release Date*: 11/27/2019
 
-- No changes
+- Support wrapping singleton methods ([#297](https://github.com/Freshly/spicerack/pull/297))
 
 ## v0.19.0
 
