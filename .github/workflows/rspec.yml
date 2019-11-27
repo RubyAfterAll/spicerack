@@ -20,6 +20,7 @@ jobs:
         echo "gem \"activesupport\", \"~> 5.2.0\"" > Gemfile
         echo "gem \"activerecord\", \"~> 5.2.0\"" > Gemfile
         echo "gem \"railties\", \"~> 5.2.0\"" > Gemfile
+        cat Gemfile
         bundle update activesupport activerecord railties
         bundle install --jobs 4 --retry 3
     - name: Run RSpec
