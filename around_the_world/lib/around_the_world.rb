@@ -10,6 +10,10 @@ require "active_support/descendants_tracker"
 module AroundTheWorld
   extend ActiveSupport::Concern
 
+  included do
+    singleton_class.extend(AroundTheWorld::ClassMethods)
+  end
+
   module ClassMethods
     protected
 
