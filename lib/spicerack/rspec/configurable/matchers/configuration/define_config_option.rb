@@ -21,9 +21,11 @@ module Spicerack
         #     end
         define :define_config_option do |option, default: nil|
           description { "define config option #{option}" }
-          failure_message { "expected #{subject} to define config option #{option} #{with_default(default)}".strip }
+          failure_message { "expected #{@obj} to define config option #{option} #{with_default(default)}".strip }
 
           match do |obj|
+            @obj = obj
+
             if obj.is_a? Spicerack::Configurable::ConfigObject
               expect(obj).to define_option option, default: default
             else
