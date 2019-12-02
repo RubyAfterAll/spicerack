@@ -5,7 +5,7 @@
 #     class Example < Spicerack::InputObject
 #       argument :foo
 #       argument :bar, allow_nil: false
-#        argument :bar, allow_blank: false
+#       argument :bar, allow_blank: false
 #     end
 #
 #     RSpec.describe Example, type: :input_object do
