@@ -15,6 +15,7 @@
 #
 #       it { is_expected.to define_argument :foo }
 #       it { is_expected.to define_argument :bar, allow_nil: false }
+#       it { is_expected.to define_argument :bar, allow_blank: false }
 #     end
 
 RSpec::Matchers.define :define_argument do |argument, allow_nil: true, allow_blank: true|
