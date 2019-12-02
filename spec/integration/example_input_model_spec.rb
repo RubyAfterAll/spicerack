@@ -14,6 +14,6 @@ RSpec.describe ExampleInputModel, type: :input_model do
   describe "#to_s" do
     subject { input_model.to_s }
 
-    it { is_expected.to eq "#<ExampleInputModel bottles_of=fluid starting_bottles= number_to_take_down=1 unused=>" }
+    it { is_expected.to eq "#<ExampleInputModel user=a bottles_of=b proof=c starting_bottles= take_down=1 unused=>" }
   end
 end
