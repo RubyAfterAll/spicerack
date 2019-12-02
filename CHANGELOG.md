@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.19.2
+
+*Release Date*: 12/2/2019
+
+- Add `delegate_config_to` matcher ([#300](https://github.com/Freshly/spicerack/pull/300))
+
+## v0.19.1
+
+*Release Date*: 11/27/2019
+
+### AroundTheWorld - [see changes](around_the_worrld/CHANGELOG.md#v0191)
+
+- [BUGFIX] Fix a bug in `Spicerack` internals ([#294](https://github.com/Freshly/spicerack/pull/294))
+
 ## v0.19.0
 
 *Release Date*: 11/20/2019
@@ -11,6 +25,8 @@ This was intended to break a circular dependency for gems which require the util
 From this version onwards, you should almost certainly be including the gem `spicery` rather than `spicerack` directly.
 
 ### Spicery - [see changes](spicery/CHANGELOG.md#v0190)
+
+- Adds a forgotten feature to Configurable allowing nested configuration setting within a block ([#286](https://github.com/Freshly/spicerack/pull/286))
 
 ## v0.18.1
 
