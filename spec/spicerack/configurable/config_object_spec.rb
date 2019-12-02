@@ -52,7 +52,24 @@ RSpec.describe Spicerack::Configurable::ConfigObject do
 
       it "defines a nested config object" do
         expect(config.public_send(namespace)).to inherit_from described_class
+      end
+
+      it "defines the nested option" do
         expect(config.public_send(namespace).public_send(nested_option)).to isolate nested_default_value
+      end
+
+      context "when configured inside a block" do
+        subject { config.public_send(namespace).public_send(nested_option) }
+
+        let(:nested_option_override) { SecureRandom.hex }
+
+        before do
+          config_object_class.instance.public_send(namespace) do |nested_config|
+            nested_config.public_send("#{nested_option}=", nested_option_override)
+          end
+        end
+
+        it { is_expected.to eq nested_option_override }
       end
 
       context "when a nested config is used twice" do
