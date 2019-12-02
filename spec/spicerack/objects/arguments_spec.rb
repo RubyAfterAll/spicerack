@@ -43,20 +43,19 @@ RSpec.describe Spicerack::Objects::Arguments, type: :module do
         it_behaves_like "an argument is defined"
       end
     end
+
+    context "with allow_blank" do
+      context "with allow_blank: true" do
+        it_behaves_like "an argument is defined"
+      end
+
+      context "with allow_blank: false" do
+        let(:allow_blank) { false }
+
+        it_behaves_like "an argument is defined"
+      end
+    end
   end
-
-  context "with allow_blank" do
-     context "with allow_blank: true" do
-       it_behaves_like "an argument is defined"
-     end
-
-     context "with allow_blank: false" do
-       let(:allow_blank) { false }
-
-       it_behaves_like "an argument is defined"
-     end
-   end
- end
 
   describe ".inherited" do
     it_behaves_like "an inherited property", :argument do
@@ -137,3 +136,4 @@ RSpec.describe Spicerack::Objects::Arguments, type: :module do
       end
     end
   end
+end
