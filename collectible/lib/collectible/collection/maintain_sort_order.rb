@@ -2,6 +2,10 @@
 
 module Collectible
   module Collection
+    #
+    # A module for wrapping collection method with callbacks
+    # allowing to maintain collection's order
+    #
     module MaintainSortOrder
       extend ActiveSupport::Concern
 

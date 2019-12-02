@@ -2,9 +2,13 @@
 
 module Collectible
   module Collection
+    #
+    # @todo Document this
+    #
     module WrapsCollectionMethods
       extend ActiveSupport::Concern
 
+      # :nodoc:
       PROXY_MODULE_NAME = "WrapCollectionMethods"
 
       included do
