@@ -5,6 +5,7 @@
 #     class Example < Spicerack::InputObject
 #       argument :foo
 #       argument :bar, allow_nil: false
+#        argument :bar, allow_blank: false
 #     end
 #
 #     RSpec.describe Example, type: :input_object do
@@ -16,8 +17,8 @@
 #       it { is_expected.to define_argument :bar, allow_nil: false }
 #     end
 
-RSpec::Matchers.define :define_argument do |argument, allow_nil: true|
-  match { |instance| expect(instance._arguments[argument]).to eq(allow_nil: allow_nil) }
+RSpec::Matchers.define :define_argument do |argument, allow_nil: true, allow_blank: true|
+  match { |instance| expect(instance._arguments[argument]).to eq(allow_nil: allow_nil, allow_blank: allow_blank) }
   description { "define argument #{argument}" }
   failure_message do
     "expected #{described_class} to define argument #{argument} #{prohibit_nil_description unless allow_nil}"
