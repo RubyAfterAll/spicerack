@@ -2,6 +2,7 @@
 
 require "active_support"
 require "active_support/core_ext/class/attribute"
+require "active_support/core_ext/object/inclusion"
 
 require "spicerack/version"
 
