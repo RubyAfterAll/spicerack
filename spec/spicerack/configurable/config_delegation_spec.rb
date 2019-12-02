@@ -57,6 +57,18 @@ RSpec.describe Spicerack::Configurable::ConfigDelegation do
     end
   end
 
+  shared_examples_for "it delegates configuration methods" do
+    it "delegates configuration methods to the configurable module" do
+      expect(configurable_class).to delegate_config_to expected_configurable_module
+    end
+  end
+
+  shared_examples_for "it does not delegate configuration methods" do
+    it "does not delegate configuration methods to the configurable module" do
+      expect(configurable_class).not_to delegate_config_to expected_configurable_module
+    end
+  end
+
   describe "#config" do
     subject(:konfig) { configurable_class.config }
 
@@ -64,17 +76,41 @@ RSpec.describe Spicerack::Configurable::ConfigDelegation do
       include_context "when delegates_to_configuration is called without a module"
 
       it { is_expected.to eq inferred_name_config }
+
+      it_behaves_like "it delegates configuration methods" do
+        let(:expected_configurable_module) { inferred_configuration_module }
+      end
+
+      it_behaves_like "it does not delegate configuration methods" do
+        let(:expected_configurable_module) { explicit_configuration_module }
+      end
     end
 
     context "when delegates_to_configuration is called with an explicit module" do
       include_context "when delegates_to_configuration is called with an explicit module"
 
       it { is_expected.to eq explicit_name_config }
+
+      it_behaves_like "it delegates configuration methods" do
+        let(:expected_configurable_module) { explicit_configuration_module }
+      end
+
+      it_behaves_like "it does not delegate configuration methods" do
+        let(:expected_configurable_module) { inferred_configuration_module }
+      end
     end
 
     context "when delegates_to_configuration is not called" do
       it "raises" do
         expect { konfig }.to raise_error NoMethodError
+      end
+
+      it_behaves_like "it does not delegate configuration methods" do
+        let(:expected_configurable_module) { inferred_configuration_module }
+      end
+
+      it_behaves_like "it does not delegate configuration methods" do
+        let(:expected_configurable_module) { explicit_configuration_module }
       end
     end
   end
@@ -88,6 +124,14 @@ RSpec.describe Spicerack::Configurable::ConfigDelegation do
           expect(konfig).to eq inferred_name_configuration
         end
       end
+
+      it_behaves_like "it delegates configuration methods" do
+        let(:expected_configurable_module) { inferred_configuration_module }
+      end
+
+      it_behaves_like "it does not delegate configuration methods" do
+        let(:expected_configurable_module) { explicit_configuration_module }
+      end
     end
 
     context "when delegates_to_configuration is called with an explicit module" do
@@ -98,11 +142,28 @@ RSpec.describe Spicerack::Configurable::ConfigDelegation do
           expect(konfig).to eq explicit_name_configuration
         end
       end
+
+      it_behaves_like "it delegates configuration methods" do
+        let(:expected_configurable_module) { explicit_configuration_module }
+      end
+
+
+      it_behaves_like "it does not delegate configuration methods" do
+        let(:expected_configurable_module) { inferred_configuration_module }
+      end
     end
 
     context "when delegates_to_configuration is not called" do
       it "raises" do
         expect { configurable_class.configure }.to raise_error NoMethodError
+      end
+
+      it_behaves_like "it does not delegate configuration methods" do
+        let(:expected_configurable_module) { inferred_configuration_module }
+      end
+
+      it_behaves_like "it does not delegate configuration methods" do
+        let(:expected_configurable_module) { explicit_configuration_module }
       end
     end
   end
