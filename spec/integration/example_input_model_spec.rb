@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe ExampleInputModel, type: :input_model do
-  subject(:input_model) { described_class.new(bottles_of: :fluid) }
+  subject(:input_model) { described_class.new(user: :a, bottles_of: :b, proof: :c) }
 
   it { is_expected.to define_argument :user }
   it { is_expected.to define_argument :bottles_of, allow_nil: false }
