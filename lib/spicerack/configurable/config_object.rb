@@ -29,7 +29,11 @@ module Spicerack
             builder.instance_exec(&block)
 
             _nested_options << namespace.to_sym
-            define_method(namespace) { builder.__send__ :configuration }
+            define_method(namespace) do |&nested_configure_block|
+              builder.__send__(:configuration).tap do |nested_config|
+                nested_configure_block.call(nested_config) if nested_configure_block.respond_to?(:call)
+              end
+            end
           end
         end
 
