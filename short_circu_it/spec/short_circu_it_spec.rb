@@ -6,19 +6,18 @@ RSpec.describe ShortCircuIt do
   it_behaves_like "a versioned spicerack gem"
 
   describe ".memoize" do
-    let(:base_class) do
-      Class.new do
-        include ShortCircuIt
-
-        def method_without_arguments
+    let(:base_class) { Class.new.tap { |klass| klass.include described_class } }
+    let(:define_methods_proc) do
+      lambda do |spec_context|
+        define_method spec_context.memoized_method_without_args do
           expensive_method(rand(100))
         end
 
-        def method_with_arguments(*args)
+        define_method spec_context.memoized_method_with_args do |*args|
           expensive_method(args.first)
         end
 
-        def expensive_method(nth)
+        define_method :expensive_method do |nth|
           last_value = 0
           current_value = 1
 
@@ -31,11 +30,11 @@ RSpec.describe ShortCircuIt do
           current_value
         end
 
-        def observed_value_one
+        define_method :observed_value_one do
           @observed_value_one ||= 1
         end
 
-        def observed_value_two
+        define_method :observed_value_two do
           @observed_value_two ||= 2
         end
       end
@@ -45,10 +44,6 @@ RSpec.describe ShortCircuIt do
     let(:memoized_method_without_args) { :method_without_arguments }
     let(:memoized_methods) { [ memoized_method_with_args, memoized_method_without_args ] }
 
-    let(:target_class) { base_class }
-    let(:memoized_class) { base_class }
-
-    let(:target_instance) { target_class.new }
     let(:all_observer_methods) { %i[observed_value_one observed_value_two] }
 
     let(:target_change) { nil }
@@ -58,6 +53,9 @@ RSpec.describe ShortCircuIt do
     before do
       stub_const("BaseClass", base_class)
       stub_const("TargetClass", target_class)
+
+      base_class.instance_exec(self, &define_methods_proc)
+
       allow(target_instance).to receive(:expensive_method).and_call_original
     end
 
@@ -349,31 +347,37 @@ RSpec.describe ShortCircuIt do
       end
     end
 
-    context "when only one method is memoized at a time" do
-      before { memoized_class.__send__(:memoize, memoized_method, **memoization_options) }
+    context "when the memoization target is an instance" do
+      let(:target_class) { base_class }
+      let(:memoized_class) { base_class }
+      let(:target_instance) { target_class.new }
 
-      it_behaves_like "a class with memoized methods"
-    end
+      context "when only one method is memoized at a time" do
+        before { memoized_class.__send__(:memoize, memoized_method, **memoization_options) }
 
-    context "when multiple methods are memoized at a time" do
-      before { memoized_class.__send__(:memoize, *memoized_methods, **memoization_options) }
+        it_behaves_like "a class with memoized methods"
+      end
 
-      it_behaves_like "a class with memoized methods"
-    end
+      context "when multiple methods are memoized at a time" do
+        before { memoized_class.__send__(:memoize, *memoized_methods, **memoization_options) }
 
-    context "when the method is memoized in the parent class after the child class is defined" do
-      let(:target_class) do
-        Class.new(base_class) do
-          def inconsequential_method; end
-          memoize :inconsequential_method
+        it_behaves_like "a class with memoized methods"
+      end
+
+      context "when the method is memoized in the parent class after the child class is defined" do
+        let(:target_class) do
+          Class.new(base_class) do
+            def inconsequential_method; end
+            memoize :inconsequential_method
+          end
         end
-      end
 
-      before do
-        memoized_class.__send__(:memoize, memoized_method, **memoization_options)
-      end
+        before do
+          memoized_class.__send__(:memoize, memoized_method, **memoization_options)
+        end
 
-      it_behaves_like "a class with memoized methods"
+        it_behaves_like "a class with memoized methods"
+      end
     end
   end
 end

@@ -25,10 +25,18 @@ RSpec.describe ExampleConfigurableClass, type: :configuration do
           option :nested_option_with_default_to_assign, default: "nested default value to assign"
           option(:nested_option_with_default_block_to_assign) { "nested default value from block to assign" }
 
+          option :nested_option_without_default_override_in_nested_block
+          option :nested_option_with_default_override_in_nested_block, default: "nested option with default override in nested block"
+          option(:nested_option_with_default_block_override_in_nested_block) { "nested option with default block override in nested block" }
+
           nested :double_nested do
             option :double_nested_option_without_default
             option :double_nested_option_with_default, default: "double nested default value"
             option(:double_nested_option_with_default_block) { "double nested default value from block" }
+
+            option :double_nested_option_without_default_override_in_nested_block
+            option :double_nested_option_with_default_override_in_nested_block, default: "double nested option with default override in nested block"
+            option(:double_nested_option_with_default_block_override_in_nested_block) { "double nested option with default block override in nested block" }
           end
         end
       end
@@ -55,10 +63,18 @@ RSpec.describe ExampleConfigurableClass, type: :configuration do
     it { is_expected.to define_config_option(:nested_option_with_default_to_assign, default: "nested default value to assign") }
     it { is_expected.to define_config_option(:nested_option_with_default_block_to_assign, default: "nested default value from block to assign") }
 
+    it { is_expected.to define_config_option(:nested_option_without_default_override_in_nested_block) }
+    it { is_expected.to define_config_option(:nested_option_with_default_override_in_nested_block, default: "nested option with default override in nested block") }
+    it { is_expected.to define_config_option(:nested_option_with_default_block_override_in_nested_block, default: "nested option with default block override in nested block" ) }
+
     nested_config_option :double_nested do
       it { is_expected.to define_config_option(:double_nested_option_without_default) }
       it { is_expected.to define_config_option(:double_nested_option_with_default, default: "double nested default value") }
       it { is_expected.to define_config_option(:double_nested_option_with_default_block, default: "double nested default value from block") }
+
+      it { is_expected.to define_config_option(:double_nested_option_without_default_override_in_nested_block) }
+      it { is_expected.to define_config_option(:double_nested_option_with_default_override_in_nested_block, default: "double nested option with default override in nested block") }
+      it { is_expected.to define_config_option(:double_nested_option_with_default_block_override_in_nested_block, default: "double nested option with default block override in nested block" ) }
     end
   end
 
@@ -171,9 +187,17 @@ RSpec.describe ExampleConfigurableClass, type: :configuration do
     let(:option_with_default_override_to_assign) { "option with default override on assign" }
     let(:option_with_default_block_override_to_assign) { "option with default block override on assign" }
 
-    let(:nested_option_without_default_override_to_assign) { "nested option without default override on assign" }
-    let(:nested_option_with_default_override_to_assign) { "nested option with default override on assign" }
-    let(:nested_option_with_default_block_override_to_assign) { "nested option with default block override on assign" }
+    let(:nested_option_without_default_override_to_assign) { SecureRandom.hex }
+    let(:nested_option_with_default_override_to_assign) { SecureRandom.hex }
+    let(:nested_option_with_default_block_override_to_assign) { SecureRandom.hex }
+
+    let(:override_nested_option_without_default_override_in_nested_block) { SecureRandom.hex }
+    let(:override_nested_option_with_default_override_in_nested_block) { SecureRandom.hex }
+    let(:override_nested_option_with_default_block_override_in_nested_block) { SecureRandom.hex }
+
+    let(:override_double_nested_option_without_default_override_in_nested_block) { SecureRandom.hex }
+    let(:override_double_nested_option_with_default_override_in_nested_block) { SecureRandom.hex }
+    let(:override_double_nested_option_with_default_block_override_in_nested_block) { SecureRandom.hex }
 
     before do
       configurable_module.configure do |konfig|
@@ -200,6 +224,18 @@ RSpec.describe ExampleConfigurableClass, type: :configuration do
           nested_option_with_default_to_assign: nested_option_with_default_override_to_assign,
           nested_option_with_default_block_to_assign: nested_option_with_default_block_override_to_assign,
         )
+
+        konfig.nested_config do |nested|
+          nested.nested_option_without_default_override_in_nested_block = override_nested_option_without_default_override_in_nested_block
+          nested.nested_option_with_default_override_in_nested_block = override_nested_option_with_default_override_in_nested_block
+          nested.nested_option_with_default_block_override_in_nested_block = override_nested_option_with_default_block_override_in_nested_block
+
+          nested.double_nested do |double_nested|
+            double_nested.double_nested_option_without_default_override_in_nested_block = override_double_nested_option_without_default_override_in_nested_block
+            double_nested.double_nested_option_with_default_override_in_nested_block = override_double_nested_option_with_default_override_in_nested_block
+            double_nested.double_nested_option_with_default_block_override_in_nested_block = override_double_nested_option_with_default_block_override_in_nested_block
+          end
+        end
       end
     end
 
@@ -240,6 +276,15 @@ RSpec.describe ExampleConfigurableClass, type: :configuration do
           to eq nested_option_with_default_override_to_assign
         expect(configurable_module.config.nested_config.nested_option_with_default_block_to_assign).
           to eq nested_option_with_default_block_override_to_assign
+      end
+
+      it "sets the override values with doubly nested block" do
+        expect(configurable_module.config.nested_config.double_nested.double_nested_option_without_default_override_in_nested_block).
+          to eq override_double_nested_option_without_default_override_in_nested_block
+        expect(configurable_module.config.nested_config.double_nested.double_nested_option_with_default_override_in_nested_block).
+          to eq override_double_nested_option_with_default_override_in_nested_block
+        expect(configurable_module.config.nested_config.double_nested.double_nested_option_with_default_block_override_in_nested_block).
+          to eq override_double_nested_option_with_default_block_override_in_nested_block
       end
 
       it "is accessible via evaluators" do
