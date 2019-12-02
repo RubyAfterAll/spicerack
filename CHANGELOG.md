@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.19.2
+
+*Release Date*: 12/2/2019
+
+- Add `delegate_config_to` matcher ([#300](https://github.com/Freshly/spicerack/pull/300))
+
 ## v0.19.1
 
 *Release Date*: 11/27/2019
