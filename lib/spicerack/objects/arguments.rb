@@ -10,10 +10,10 @@ module Spicerack
         class_attribute :_arguments, instance_writer: false, default: {}
         set_callback :initialize, :after do
           missing_arguments = _arguments.reject do |argument, options|
-            if options[:allow_blank] == false
-              input[argument].present?
-            else
+            if options[:allow_blank]
               options[:allow_nil] ? input.key?(argument) : !input[argument].nil?
+            else
+              input[argument].present?
             end
           end
 
