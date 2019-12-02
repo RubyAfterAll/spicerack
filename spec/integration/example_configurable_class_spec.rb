@@ -43,21 +43,8 @@ RSpec.describe ExampleConfigurableClass, type: :configuration do
     end
   end
 
-  let(:configurable_wrapper) do
-    Class.new.tap do |klass|
-      klass.instance_exec(self) do |spec_context|
-        include Spicerack::Configurable::ConfigDelegation
-        delegates_to_configuration spec_context.configurable_module
-      end
-    end
-  end
-
   let(:described_class) { configurable_module }
   let(:config) { configurable_module.config }
-
-  it "delegates configuration to the configurable module" do
-    expect(configurable_wrapper).to delegate_config_to configurable_module
-  end
 
   it { is_expected.to define_config_option(:option_without_default) }
   it { is_expected.to define_config_option(:option_with_default, default: "default value") }

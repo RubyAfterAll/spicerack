@@ -26,9 +26,11 @@ module Spicerack
             attr_reader :obj, :config_module
 
             description { "delegates configuration methods to #{config_module}" }
-            failure_message { "expected #{target} to delegate configuration methods to #{config_module}" }
 
-            match do |obj|
+            failure_message { "expected #{target} to delegate configuration methods to #{config_module}" }
+            failure_message_when_negated { "expected #{target} not to delegate configuration methods to #{config_module}" }
+
+            match_unless_raises do |obj|
               @obj = obj
               @config_module = config_module
 
