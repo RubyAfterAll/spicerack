@@ -102,9 +102,7 @@ RSpec.describe Conjunction::Junction, type: :junction do
       let(:other_prototype) { nil }
       let(:prototype_name) { nil }
 
-      it "raises" do
-        expect { conjunction_for }.to raise_error TypeError, "invalid prototype `nil'"
-      end
+      it { is_expected.to be_nil }
     end
 
     context "when other_prototype is nil" do
