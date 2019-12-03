@@ -14,6 +14,7 @@ jobs:
         ruby-version: 2.5.x
     - name: Set up dependencies
       run: |
+        sudo apt-get update
         sudo apt-get install libsqlite3-dev
         sudo apt-get install redis-server
         gem install bundler
@@ -37,6 +38,7 @@ jobs:
         ruby-version: 2.5.x
     - name: Set up dependencies
       run: |
+        sudo apt-get update
         sudo apt-get install libsqlite3-dev
         sudo apt-get install redis-server
         gem install bundler
@@ -61,6 +63,7 @@ jobs:
         ruby-version: 2.6.x
     - name: Set up dependencies
       run: |
+        sudo apt-get update
         sudo apt-get install libsqlite3-dev
         sudo apt-get install redis-server
         gem install bundler
@@ -84,6 +87,7 @@ jobs:
         ruby-version: 2.6.x
     - name: Set up dependencies
       run: |
+        sudo apt-get update
         sudo apt-get install libsqlite3-dev
         sudo apt-get install redis-server
         gem install bundler
