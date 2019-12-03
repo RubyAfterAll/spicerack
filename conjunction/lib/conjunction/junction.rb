@@ -40,7 +40,6 @@ module Conjunction
 
       def conjunction_name_for(other_prototype, other_prototype_name)
         other_prototype_name = other_prototype.prototype_name if other_prototype.respond_to?(:prototype_name)
-
         return if other_prototype_name.blank?
 
         [ conjunction_prefix, other_prototype_name, conjunction_suffix ].compact.join if conjunctive?
