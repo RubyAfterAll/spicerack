@@ -32,27 +32,31 @@ RSpec.describe Spicerack::Objects::Arguments, type: :module do
       it_behaves_like "an argument is defined"
     end
 
-    context "with allow_nil" do
-      context "with allow_nil: true" do
-        it_behaves_like "an argument is defined"
-      end
-
-      context "with allow_nil: false" do
-        let(:allow_nil) { true }
-
-        it_behaves_like "an argument is defined"
-      end
-    end
-
     context "with allow_blank" do
       context "with allow_blank: true" do
-        it_behaves_like "an argument is defined"
+        context "with allow_nil: true" do
+          it_behaves_like "an argument is defined"
+        end
+
+        context "with allow_nil: false" do
+          let(:allow_nil) { true }
+
+          it_behaves_like "an argument is defined"
+        end
       end
 
       context "with allow_blank: false" do
         let(:allow_blank) { false }
 
-        it_behaves_like "an argument is defined"
+        context "with allow_nil: true" do
+          it_behaves_like "an argument is defined"
+        end
+
+        context "with allow_nil: false" do
+          let(:allow_nil) { true }
+
+          it_behaves_like "an argument is defined"
+        end
       end
     end
   end
