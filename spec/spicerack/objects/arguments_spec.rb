@@ -39,7 +39,7 @@ RSpec.describe Spicerack::Objects::Arguments, type: :module do
         end
 
         context "with allow_nil: false" do
-          let(:allow_nil) { true }
+          let(:allow_nil) { false }
 
           it_behaves_like "an argument is defined"
         end
@@ -53,7 +53,7 @@ RSpec.describe Spicerack::Objects::Arguments, type: :module do
         end
 
         context "with allow_nil: false" do
-          let(:allow_nil) { true }
+          let(:allow_nil) { false }
 
           it_behaves_like "an argument is defined"
         end
@@ -74,11 +74,12 @@ RSpec.describe Spicerack::Objects::Arguments, type: :module do
 
   describe ".after_initialize" do
     before do
-      example_input_object_class.__send__(:argument, :test_argument1)
-      example_input_object_class.__send__(:argument, :test_argument2)
-      example_input_object_class.__send__(:argument, :test_argument3, allow_nil: false)
-      example_input_object_class.__send__(:argument, :test_argument4, allow_blank: false)
+      example_input_object_class.__send__(:argument, :argument1)
+      example_input_object_class.__send__(:argument, :argument2)
+      example_input_object_class.__send__(:argument, :argument3, allow_nil: false)
+      example_input_object_class.__send__(:argument, :argument4, allow_blank: false)
     end
+
 
     context "when nil arguments are provided with non_nil fields" do
       let(:input) do
@@ -110,7 +111,7 @@ RSpec.describe Spicerack::Objects::Arguments, type: :module do
       end
     end
 
-    context "when arguments are provided" do
+    context "when all arguments are provided" do
       let(:input) do
         { test_argument1: :test_value1, test_argument2: :test_value2, test_argument3: :test_value3, test_argument4: :test_value4 }
       end
