@@ -74,10 +74,10 @@ RSpec.describe Spicerack::Objects::Arguments, type: :module do
 
   describe ".after_initialize" do
     before do
-      example_input_object_class.__send__(:argument, :argument1)
-      example_input_object_class.__send__(:argument, :argument2)
-      example_input_object_class.__send__(:argument, :argument3, allow_nil: false)
-      example_input_object_class.__send__(:argument, :argument4, allow_blank: false)
+      example_input_object_class.__send__(:argument, :test_argument1)
+      example_input_object_class.__send__(:argument, :test_argument2)
+      example_input_object_class.__send__(:argument, :test_argument3, allow_nil: false)
+      example_input_object_class.__send__(:argument, :test_argument4, allow_blank: false)
     end
 
 
