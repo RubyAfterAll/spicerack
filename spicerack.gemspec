@@ -18,12 +18,14 @@ Gem::Specification.new do |spec|
     "Allen Rettberg",
     "Jordan Minneti",
     "Aleksei Kharkov",
+    "Michelle Mikhalevsky",
   ]
   spec.email = %w[
     garside@gmail.com
     allen.rettberg@freshly.com
     jordan.minneti@freshly.com
     aliaksei.kharkou@freshly.com
+    michelle.mikhalevsky@freshly.com
   ]
 
   spec.metadata["homepage_uri"] = spec.homepage
