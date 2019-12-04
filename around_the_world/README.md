@@ -22,12 +22,15 @@ gem "around_the_world"
 ```
 
 And then execute:
-
-    $ bundle
+```bash
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install around_the_world
+```bash
+$ gem install around_the_world
+```
 
 ## Usage
 
@@ -35,21 +38,21 @@ Define a method that gets called _around_ the given instance method:
 
 ```ruby
 class SomeClass
-    include AroundTheWorld
+  include AroundTheWorld
 
-    def did_something_happened?
-        true
+  def did_something_happened?
+    true
+  end
+
+  around_method :did_something_happened? do
+    things_happened = super()
+
+    if things_happened
+      "Something happened!"
+    else
+      "Nothing to see here..."
     end
-
-    around_method :did_something_happened? do
-        things_happened = super()
-
-        if things_happened
-            "Something happened!"
-        else
-            "Nothing to see here..."
-        end
-    end
+  end
 end
 ```
 
@@ -63,19 +66,19 @@ end
 
 ```ruby
 class SomeClass
-    include AroundTheWorld
+  include AroundTheWorld
 
-    def some_method
-        "method behavior"
-    end
+  def some_method
+    "method behavior"
+  end
 
-    around_method :some_method, prevent_double_wrapping_for: :memoization do
-        @memoized ||= super()
-    end
+  around_method :some_method, prevent_double_wrapping_for: :memoization do
+    @memoized ||= super()
+  end
 
-    around_method :some_method, prevent_double_wrapping_for: :memoization do
-        @memoized ||= super()
-    end
+  around_method :some_method, prevent_double_wrapping_for: :memoization do
+    @memoized ||= super()
+  end
 end
 ```
 
@@ -83,25 +86,25 @@ Results in:
 
 ```
 # => AroundTheWorld::DoubleWrapError:
-        "Module AroundTheWorld:ProxyModule:memoization already defines the method :some_method"
+     "Module AroundTheWorld:ProxyModule:memoization already defines the method :some_method"
 ```
 
 It works for class methods too:
 
 ```ruby
-  class SomeClass
-    class << self
-        include AroundTheWorld
+class SomeClass
+  class << self
+    include AroundTheWorld
 
-        def a_singleton_method; end
+    def a_singleton_method; end
 
-        around_method :a_singleton_method do
-            super()
+    around_method :a_singleton_method do
+      super()
 
-            "It works for class methods too!"
-        end
+      "It works for class methods too!"
     end
   end
+end
 ```
 
 ```
