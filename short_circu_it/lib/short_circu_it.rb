@@ -66,6 +66,7 @@ module ShortCircuIt
     #   * database stuff *
     #   => #<SomeAssociation:2468 id: 2>
     #
+    # @api public
     # @param *method_names [Symbol] The name(s) of one or more methods to be memoized
     # @param :observes [Symbol, Array<Symbol>]
     #   A method or array of methods to be observed to determine memoization cache validity.

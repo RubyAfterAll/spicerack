@@ -73,6 +73,7 @@ module AroundTheWorld
     #   SomeClass.a_singleton_method
     #   => "It works for class methods too!"
     #
+    # @api public
     # @param method_name [Symbol]
     # @param :prevent_double_wrapping_for [Object]
     #   If defined, this prevents wrapping the method twice for a given purpose. Accepts any argument.
