@@ -31,7 +31,83 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Define a method that gets called _around_ the given instance method:
+
+```ruby
+class SomeClass
+    include AroundTheWorld
+
+    def did_something_happened?
+        true
+    end
+
+    around_method :did_something_happened? do
+        things_happened = super()
+
+        if things_happened
+            "Something happened!"
+        else
+            "Nothing to see here..."
+        end
+    end
+end
+```
+
+```
+> SomeClass.new.did_something_happened?
+=> "Something happened!"
+```
+
+`around_method` accepts an option hash `prevent_double_wrapping_for: [Object]`. If defined, this prevents wrapping the method twice for a given purpose. It accepts any value:
+
+
+```ruby
+class SomeClass
+    include AroundTheWorld
+
+    def some_method
+        "method behavior"
+    end
+
+    around_method :some_method, prevent_double_wrapping_for: :memoization do
+        @memoized ||= super()
+    end
+
+    around_method :some_method, prevent_double_wrapping_for: :memoization do
+        @memoized ||= super()
+    end
+end
+```
+
+Results in:
+
+```
+# => AroundTheWorld::DoubleWrapError:
+        "Module AroundTheWorld:ProxyModule:memoization already defines the method :some_method"
+```
+
+It works for class methods too:
+
+```ruby
+  class SomeClass
+    class << self
+        include AroundTheWorld
+
+        def a_singleton_method; end
+
+        around_method :a_singleton_method do
+            super()
+
+            "It works for class methods too!"
+        end
+    end
+  end
+```
+
+```
+> SomeClass.a_singleton_method
+=> "It works for class methods too!"
+```
 
 ## Development
 
