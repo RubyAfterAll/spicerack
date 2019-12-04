@@ -44,8 +44,8 @@ class SomeClass
     true
   end
 
-  around_method :did_something_happened? do
-    things_happened = super()
+  around_method :did_something_happened? do |*args|
+    things_happened = super(*args)
 
     if things_happened
       "Something happened!"
@@ -72,12 +72,12 @@ class SomeClass
     "method behavior"
   end
 
-  around_method :some_method, prevent_double_wrapping_for: :memoization do
-    @memoized ||= super()
+  around_method :some_method, prevent_double_wrapping_for: :memoization do |*args|
+    @memoized ||= super(*args)
   end
 
-  around_method :some_method, prevent_double_wrapping_for: :memoization do
-    @memoized ||= super()
+  around_method :some_method, prevent_double_wrapping_for: :memoization do |*args|
+    @memoized ||= super(*args)
   end
 end
 ```
@@ -98,8 +98,8 @@ class SomeClass
 
     def a_singleton_method; end
 
-    around_method :a_singleton_method do
-      super()
+    around_method :a_singleton_method do |*args|
+      super(*args)
 
       "It works for class methods too!"
     end
