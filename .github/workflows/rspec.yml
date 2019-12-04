@@ -1,6 +1,6 @@
 name: RSpec
 
-on: [push]
+on: push
 
 jobs:
   ruby_2_5_rails_5_2:

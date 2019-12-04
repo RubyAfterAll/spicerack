@@ -5,6 +5,7 @@ require_relative "around_the_world/method_wrapper"
 require_relative "around_the_world/proxy_module"
 require_relative "around_the_world/version"
 require "active_support/concern"
+require "active_support/core_ext/object/blank"
 require "active_support/descendants_tracker"
 
 module AroundTheWorld
