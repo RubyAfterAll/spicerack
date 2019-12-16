@@ -17,7 +17,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install libsqlite3-dev
         sudo apt-get install redis-server
-        gem install bundler:2.0.1
+        gem install bundler -v "~> 2.0.1"
         echo "gem 'activesupport', '~> 5.2.0'" >> Gemfile
         echo "gem 'activerecord', '~> 5.2.0'" >> Gemfile
         echo "gem 'railties', '~> 5.2.0'" >> Gemfile
@@ -41,7 +41,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install libsqlite3-dev
         sudo apt-get install redis-server
-        gem install bundler:2.0.1
+        gem install bundler -v "~> 2.0.1"
         echo "gem 'activesupport', '~> 6.0.0'" >> Gemfile
         echo "gem 'activerecord', '~> 6.0.0'" >> Gemfile
         echo "gem 'railties', '~> 6.0.0'" >> Gemfile
@@ -66,7 +66,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install libsqlite3-dev
         sudo apt-get install redis-server
-        gem install bundler:2.0.1
+        gem install bundler -v "~> 2.0.1"
         echo "gem 'activesupport', '~> 5.2.0'" >> Gemfile
         echo "gem 'activerecord', '~> 5.2.0'" >> Gemfile
         echo "gem 'railties', '~> 5.2.0'" >> Gemfile
@@ -90,7 +90,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install libsqlite3-dev
         sudo apt-get install redis-server
-        gem install bundler:2.0.1
+        gem install bundler -v "~> 2.0.1"
         echo "gem 'activesupport', '~> 6.0.0'" >> Gemfile
         echo "gem 'activerecord', '~> 6.0.0'" >> Gemfile
         echo "gem 'railties', '~> 6.0.0'" >> Gemfile
