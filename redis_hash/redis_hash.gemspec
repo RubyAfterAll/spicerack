@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/master/redis_hash/CHANGELOG.md"
   spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/redis_hash/#{RedisHash::VERSION}"
 
-  spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]
+  spec.files         = Dir["README.md", "LICENSE.txt", ".yardopts", "lib/**/{*,.[a-z]*}"]
   spec.require_paths = "lib"
 
   spec.add_runtime_dependency "activesupport", ">= 5.2.1"
