@@ -50,7 +50,6 @@ require_relative "configurable/reader"
 #   doors = %i[door_one door_two door_three]
 #   Configuration.config.config_eval(whats_behind, doors.sample).read
 #   => "The teletubbies on repeat 😱"
-#
 module Spicerack
   module Configurable
     delegate :configure, :config_eval, to: :_config_builder
