@@ -3,97 +3,30 @@ name: RSpec
 on: push
 
 jobs:
-  ruby_2_5_rails_5_2:
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: [ "2.5.x", "2.6.x" ]
+        rails: [ "5.2", "6.0" ]
 
     steps:
     - uses: actions/checkout@v1
-    - name: Set up Ruby 2.5
+    - name: Set up Ruby ${{ matrix.ruby }}
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.5.x
+        ruby-version: ${{ matrix.ruby }}
+    - name: Apply Rails ${{ matrix.rails }} dependencies
+      run: |
+        echo "gem 'activesupport', '~> ${{ matrix.rails }}'" >> Gemfile
+        echo "gem 'activerecord', '~> ${{ matrix.rails }}'" >> Gemfile
+        echo "gem 'railties', '~> ${{ matrix.rails }}'" >> Gemfile
     - name: Set up dependencies
       run: |
         sudo apt-get update
         sudo apt-get install libsqlite3-dev
         sudo apt-get install redis-server
-        gem install bundler -v "~> 2.0.1"
-        echo "gem 'activesupport', '~> 5.2.0'" >> Gemfile
-        echo "gem 'activerecord', '~> 5.2.0'" >> Gemfile
-        echo "gem 'railties', '~> 5.2.0'" >> Gemfile
-        bundle update activesupport activerecord railties
-        bundle install --jobs 4 --retry 3
-    - name: Run RSpec
-      run: |
-        bundle exec rspec
-
-  ruby_2_5_rails_6_0:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v1
-    - name: Set up Ruby 2.5
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.5.x
-    - name: Set up dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install libsqlite3-dev
-        sudo apt-get install redis-server
-        gem install bundler -v "~> 2.0.1"
-        echo "gem 'activesupport', '~> 6.0.0'" >> Gemfile
-        echo "gem 'activerecord', '~> 6.0.0'" >> Gemfile
-        echo "gem 'railties', '~> 6.0.0'" >> Gemfile
-        bundle update activesupport activerecord railties
-        bundle install --jobs 4 --retry 3
-    - name: Run RSpec
-      run: |
-        bundle exec rspec
-
-
-  ruby_2_6_rails_5_2:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v1
-    - name: Set up Ruby 2.6
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.6.x
-    - name: Set up dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install libsqlite3-dev
-        sudo apt-get install redis-server
-        gem install bundler -v "~> 2.0.1"
-        echo "gem 'activesupport', '~> 5.2.0'" >> Gemfile
-        echo "gem 'activerecord', '~> 5.2.0'" >> Gemfile
-        echo "gem 'railties', '~> 5.2.0'" >> Gemfile
-        bundle update activesupport activerecord railties
-        bundle install --jobs 4 --retry 3
-    - name: Run RSpec
-      run: |
-        bundle exec rspec
-
-  ruby_2_6_rails_6_0:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v1
-    - name: Set up Ruby 2.6
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.6.x
-    - name: Set up dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install libsqlite3-dev
-        sudo apt-get install redis-server
-        gem install bundler -v "~> 2.0.1"
-        echo "gem 'activesupport', '~> 6.0.0'" >> Gemfile
-        echo "gem 'activerecord', '~> 6.0.0'" >> Gemfile
-        echo "gem 'railties', '~> 6.0.0'" >> Gemfile
+        gem install bundler
         bundle update activesupport activerecord railties
         bundle install --jobs 4 --retry 3
     - name: Run RSpec
