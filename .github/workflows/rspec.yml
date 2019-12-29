@@ -3,7 +3,7 @@ name: RSpec
 on: push
 
 jobs:
-  build_rails_5_2:
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
