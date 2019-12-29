@@ -16,7 +16,7 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
-    - name: Apply Rails ${{ matrix.ruby }} dependencies
+    - name: Apply Rails ${{ matrix.rails }} dependencies
       run: |
         echo "gem 'activesupport', '~> ${{ matrix.rails }}'" >> Gemfile
         echo "gem 'activerecord', '~> ${{ matrix.rails }}'" >> Gemfile
