@@ -3,6 +3,10 @@
 module Spicerack
   module Configurable
     class ConfigBuilder
+      include ActiveSupport::Callbacks
+
+      define_callbacks :configure
+
       delegate :config_eval, to: :reader
 
       def reader
@@ -10,8 +14,10 @@ module Spicerack
       end
 
       def configure
-        mutex.synchronize do
-          yield configuration
+        run_callbacks :configure do
+          mutex.synchronize do
+            yield configuration
+          end
         end
       end
 
