@@ -2,12 +2,16 @@
 
 require "technologic"
 
+require_relative "config_builder/warnings"
+
 module Spicerack
   module Configurable
     class ConfigBuilder
       include ActiveSupport::Callbacks
-
       define_callbacks :configure
+
+      # This concern uses the configure callback, so it needs to be included after the callback is defined
+      include Warnings
 
       delegate :config_eval, to: :reader
 
