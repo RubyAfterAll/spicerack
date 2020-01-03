@@ -2,7 +2,7 @@
 
 require "technologic"
 
-require_relative "config_builder/warnings"
+require_relative "config_builder/double_configure"
 
 module Spicerack
   module Configurable
@@ -11,7 +11,7 @@ module Spicerack
       define_callbacks :configure
 
       # This concern uses the configure callback, so it needs to be included after the callback is defined
-      include Warnings
+      include DoubleConfigure
 
       delegate :config_eval, to: :reader
 

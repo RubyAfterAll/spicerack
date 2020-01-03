@@ -4,7 +4,7 @@ require "technologic"
 
 module Spicerack
   module Configurable
-    module Warnings
+    module DoubleConfigure
       extend ActiveSupport::Concern
 
       include Technologic
