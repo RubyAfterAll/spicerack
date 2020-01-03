@@ -69,7 +69,7 @@ module Spicerack
     end
 
     def _config_builder_class
-      Class.new(ConfigBuilder).tap do |klass|
+      @_config_builder_class ||= Class.new(ConfigBuilder).tap do |klass|
         const_set(:ConfigBuilder, klass)
       end
     end
