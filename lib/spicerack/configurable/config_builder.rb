@@ -1,11 +1,17 @@
 # frozen_string_literal: true
 
+require "technologic"
+
+require_relative "config_builder/double_configure"
+
 module Spicerack
   module Configurable
     class ConfigBuilder
       include ActiveSupport::Callbacks
-
       define_callbacks :configure
+
+      # This concern uses the configure callback, so it needs to be included after the callback is defined
+      include DoubleConfigure
 
       delegate :config_eval, to: :reader
 
@@ -31,6 +37,8 @@ module Spicerack
       end
 
       private
+
+      attr_writer :configure_called
 
       def configuration
         config_class.instance
