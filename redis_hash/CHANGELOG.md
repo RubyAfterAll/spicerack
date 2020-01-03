@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.20.0
+
+*Release Date*: 1/3/2020
+
+- No changes
+
 ## v0.19.3
 
 *Release Date*: 12/16/2019
