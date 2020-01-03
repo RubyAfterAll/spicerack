@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "technologic"
-require "pry"
+
 module Spicerack
   module Configurable
     module Warnings
@@ -10,11 +10,7 @@ module Spicerack
       include Technologic
 
       included do
-        set_callback :configure, :before do
-          warn_on_multiple_configure_calls
-
-          @configure_called = true
-        end
+        set_callback :configure, :after, :warn_on_multiple_configure_calls
       end
 
       private
@@ -24,7 +20,12 @@ module Spicerack
       end
 
       def warn_on_multiple_configure_calls
-        warn <<~WARNING
+        unless configure_called?
+          @configure_called = true
+          return
+        end
+
+        puts <<~WARNING
           Spicerack::Configurable.configure has been called more than once, which can lead to unexpected consequences.
           For the most predictable behavior, configure should only be called once per library.
         WARNING
