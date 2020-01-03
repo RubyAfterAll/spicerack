@@ -26,9 +26,15 @@ module Spicerack
         end
 
         puts <<~WARNING
-          Spicerack::Configurable.configure has been called more than once, which can lead to unexpected consequences.
+          #{self.class._configurable_module_name}.configure has been called more than once, which can lead to unexpected consequences.
           For the most predictable behavior, configure should only be called once per library.
         WARNING
+      end
+
+      module ClassMethods
+        def _configurable_module_name
+          name.gsub("::#{name.demodulize}", "")
+        end
       end
     end
   end
