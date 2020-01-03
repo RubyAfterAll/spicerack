@@ -14,9 +14,6 @@ module Spicerack
       end
 
       def configure
-        # note to self: on second thought, add the callbacks first then do this in a concern
-        warn_on_multiple_configure_calls
-
         mutex.synchronize do
           yield configuration
         end
@@ -45,17 +42,6 @@ module Spicerack
 
       def mutex
         @mutex = Mutex.new
-      end
-
-      def configure_called?
-        @configure_called
-      end
-
-      def warn_on_multiple_configure_calls
-        warn <<~WARNING
-          Spicerack::Configurable.configure has been called more than once, which can lead to unexpected consequences.
-          For the most predictable behavior, configure should only be called once per library.
-        WARNING
       end
     end
   end
