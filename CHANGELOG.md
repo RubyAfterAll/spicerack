@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.20.0.1
+
+*Release Date*: 1/3/2020
+
+- Add missing require statement
+
 ## 0.20.0
 
 *Release Date*: 1/3/2020
