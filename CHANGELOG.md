@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.20.1
+
+*Release Date*: 1/6/2020
+
+### Rspice - [see changes](rspice/CHANGELOG.md#v0201)
+
 ## 0.20.0.1
 
 *Release Date*: 1/3/2020

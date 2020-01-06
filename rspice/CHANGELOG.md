@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.20.1
+
+*Release Date*: 1/6/2020
+
+- Fix include_module matcher for explicit test subjects
+
 ## v0.20.0
 
 *Release Date*: 1/3/2020
