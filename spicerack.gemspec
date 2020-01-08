@@ -29,6 +29,7 @@ Gem::Specification.new do |spec|
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/Freshly/spicerack"
   spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/master/CHANGELOG.md"
+  spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/spicerack"
 
   spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]
   spec.require_paths = "lib"
@@ -40,7 +41,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "technologic", version
   spec.add_dependency "tablesalt", version
 
-  spec.add_development_dependency "bundler", "~> 2.0.1"
+  spec.add_development_dependency "bundler", ">= 2.0.1"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "simplecov", "~> 0.16"
