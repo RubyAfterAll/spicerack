@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.20.3
+
+### Conjunction - [see changes](conjunction/CHANGELOG.md#v0203)
+
+- Add `.to_h` method to AttributeObjects ([#326](https://github.com/Freshly/spicerack/pull/326))
+- Improve failure message for `define_config_option` matcher ([#327](https://github.com/Freshly/spicerack/pull/327))
+
+
 ## v0.20.2
 
 *Release Date*: 1/6/2020
