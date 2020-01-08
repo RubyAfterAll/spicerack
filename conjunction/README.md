@@ -42,7 +42,45 @@ Or install it yourself as:
 
 ## QuickStart Guide
 
-Setting up an application to work with `Conjunction`? Just add this to your base model:
+Let's say you have an `Order`:
+
+```ruby
+class Order < ApplicationRecord
+  def self.service_class
+    OrderService
+  end
+end
+```
+
+Which descends from an `ApplicationRecord`:
+
+```ruby
+class ApplicationRecord
+  def to_service
+    self.class.service_class.new(self)
+  end
+end
+```
+
+And you have an `OrderService`:
+
+```ruby
+class OrderService < ApplicationService
+  # ...software be here...
+end
+```
+
+Which descends from an `ApplicationService`:
+      
+```ruby
+class ApplicationService
+  def initialize(object)
+    @object = object
+  end
+end
+```
+
+Use `Conjunction` to tell your Records they can be related (called a Conjunctive):
 
 ```ruby
 class ApplicationRecord < ActiveRecord::Base
@@ -50,7 +88,64 @@ class ApplicationRecord < ActiveRecord::Base
 end
 ```
 
-And you should be good to go! You may also be interested in reading through the [Configuration](#configuration) docs.
+And your services that they are a kind of relation with a naming convention (called a Junction):
+
+```ruby
+class ApplicationService
+  include Conjunction::Junction
+  prefixed_with "Service"
+end
+```
+
+Now your can look up related objects (like services) implicitly from your objects:
+
+```ruby
+class ApplicationRecord
+  def to_service
+    conjugate(ApplicationService)&.new(self)
+  end
+end
+```
+
+And remove all the implicit boilerplate which could be assumed:
+
+```ruby
+class Order < ApplicationRecord; end
+
+Order.conjugate(ApplicationService) # => OrderService
+```
+
+And then in the future, any new objects you create which follow convention "just work":
+
+```ruby
+class Foo < ApplicationRecord; end
+class FooService < ApplicationService; end
+
+Foo.conjugate(ApplicationService) # => FooService
+```
+
+You can also quickly an easily configure relationships explicitly, either directly:
+
+```ruby
+class Foo < ApplicationRecord
+  conjoins BarService
+end
+
+Foo.conjugate(ApplicationService) # => BarService
+```
+
+Or through a central routing file called a `Nexus`:
+
+```ruby
+# config/initializers/conjunction_nexus.rb
+class Conjunction::Nexus
+  couple Foo, to: GazService
+end
+
+Foo.conjugate(ApplicationService) # => GazService
+```
+
+You may also be interested in reading through the [Configuration](#configuration) docs.
 
 ## Gem Developer Usage
 
