@@ -22,5 +22,6 @@ require "spicerack/attribute_object"
 require "spicerack/input_object"
 require "spicerack/input_model"
 require "spicerack/configurable"
+require "spicerack/stateful_object"
 
 module Spicerack; end
