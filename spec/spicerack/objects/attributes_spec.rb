@@ -55,6 +55,16 @@ RSpec.describe Spicerack::Objects::Attributes, type: :module do
     let(:input) { attributes.zip(values).to_h }
 
     it { is_expected.to eq input }
+
+    context "when contain a nested input object" do
+      let(:nested_input_object) { example_input_object_class.new(**nested_input) }
+      let(:nested_values) { values.map(&:reverse) }
+      let(:nested_input) { attributes.zip(nested_values).to_h }
+
+      before { input[attributes.sample] = nested_input_object }
+
+      it { is_expected.to eq input }
+    end
   end
 
   describe "#stringable_attributes" do
