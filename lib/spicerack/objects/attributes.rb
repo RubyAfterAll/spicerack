@@ -26,10 +26,7 @@ module Spicerack
       end
 
       def to_h
-        _attributes.each_with_object({}) do |attr, hash|
-          hash[attr] = public_send(attr)
-          hash
-        end
+        _attributes.each_with_object({}) { |attr, hash| hash[attr] = public_send(attr) }
       end
 
       private
