@@ -13,6 +13,10 @@ module Spicerack
         Evaluator.new(path, self)
       end
 
+      def inspect
+        "#<Wallet:0x00007fd032869d40>"
+      end
+
       private
 
       attr_reader :config

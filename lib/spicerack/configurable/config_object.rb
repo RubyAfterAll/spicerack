@@ -23,12 +23,16 @@ module Spicerack
         end
 
         def nested(namespace, &block)
+          namespace = namespace.to_sym
+
           _ensure_safe_option_name(namespace)
+
+          _attributes << namespace
+          _nested_options << namespace
 
           nested_config_builder_for(namespace).tap do |builder|
             builder.instance_exec(&block)
 
-            _nested_options << namespace.to_sym
             define_method(namespace) do |&nested_configure_block|
               builder.__send__(:configuration).tap do |nested_config|
                 nested_configure_block.call(nested_config) if nested_configure_block.respond_to?(:call)
