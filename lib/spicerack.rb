@@ -24,4 +24,7 @@ require "spicerack/input_model"
 require "spicerack/configurable"
 require "spicerack/stateful_object"
 
-module Spicerack; end
+module Spicerack
+  class Error < StandardError; end
+  class NotValidatedError < Error; end
+end
