@@ -4,7 +4,7 @@ require_relative "objects/status"
 require_relative "objects/output"
 
 module Spicerack
-  class StatefulObject < InputModel
+  class OutputObject < InputModel
     include Objects::Status
     include Objects::Output
   end
