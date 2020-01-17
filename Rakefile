@@ -9,6 +9,7 @@ SPICERACK_GEMS = %w[
   around_the_world
   collectible
   conjunction
+  directive
   facet
   redis_hash
   rspice
