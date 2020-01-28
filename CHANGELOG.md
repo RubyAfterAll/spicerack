@@ -7,6 +7,7 @@
 - Deprecated `Spicerack::Configurable`, to be replaced by `Directive` ([#344](https://github.com/Freshly/spicerack/pull/344))
 
 ### Directive - [see changes](directive/CHANGELOG.md#v0220)
+### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0220)
 
 ## v0.21.0
 

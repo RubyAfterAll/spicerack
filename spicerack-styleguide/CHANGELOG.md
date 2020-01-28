@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.22.0
+
+*Release Date*: xx/xx/2020
+
+- Fix Rails/FilePath cop ([#343](https://github.com/Freshly/spicerack/pull/343))
+
 ## v0.21.0
 
 *Release Date*: 1/10/2020
