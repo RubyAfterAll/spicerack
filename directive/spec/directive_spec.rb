@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Spicerack::Configurable, type: :configuration do
+RSpec.describe Directive, type: :configuration do
   subject(:configurable) { example_configurable }
 
   let(:has_default_default_value) { "A default value" }

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-RSpec.describe Spicerack::Configurable::Reader do
+RSpec.describe Directive::Reader do
   subject(:reader) { described_class.new(config) }
 
-  let(:config_class) { Class.new(Spicerack::Configurable::ConfigObject) }
+  let(:config_class) { Class.new(Directive::ConfigObject) }
   let(:config) { config_class.instance }
 
   let(:config_attributes) { Faker::Lorem.words(3).map(&:to_sym) }

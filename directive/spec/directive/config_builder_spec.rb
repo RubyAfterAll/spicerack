@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Spicerack::Configurable::ConfigBuilder do
+RSpec.describe Directive::ConfigBuilder do
   subject(:builder) { described_class.new }
 
   let(:all_options) { Faker::Lorem.words(4).map(&:to_sym) }
@@ -26,7 +26,7 @@ RSpec.describe Spicerack::Configurable::ConfigBuilder do
   describe "#reader" do
     subject(:reader) { builder.reader }
 
-    it { is_expected.to be_a Spicerack::Configurable::Reader }
+    it { is_expected.to be_a Directive::Reader }
     it "returns all config values" do
       options_without_defaults.each do |opt|
         expect(reader.public_send(opt)).to eq nil
@@ -83,7 +83,7 @@ RSpec.describe Spicerack::Configurable::ConfigBuilder do
       builder.configure do |config|
         nested_config = config.public_send(nested_parent)
 
-        expect(nested_config).to be_a Spicerack::Configurable::ConfigObject
+        expect(nested_config).to be_a Directive::ConfigObject
         expect(nested_config).to define_option nested_option
         expect(nested_config).to define_option(nested_option_with_default, default: nested_default_value)
       end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Spicerack::Configurable::ConfigObject do
+RSpec.describe Directive::ConfigObject do
   subject(:config) { config_object_class.instance }
 
   let(:config_object_class) { Class.new(described_class) }

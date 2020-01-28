@@ -5,7 +5,7 @@ module ExampleConfigurableClass; end
 RSpec.describe ExampleConfigurableClass, type: :configuration do
   subject(:configurable_module) do
     Module.new do
-      extend Spicerack::Configurable
+      extend Directive
 
       configuration_options do
         option :option_without_default
@@ -349,7 +349,7 @@ RSpec.describe ExampleConfigurableClass, type: :configuration do
   describe "ConfigDelegation" do
     let(:delegating_configurable_class) do
       Class.new do
-        include Spicerack::Configurable::ConfigDelegation
+        include Directive::ConfigDelegation
       end
     end
     let(:delegating_class_name) { Faker::Lorem.sentence.titleize.delete(" .") }

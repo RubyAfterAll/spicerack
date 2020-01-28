@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Spicerack::Configurable::ConfigDelegation do
+RSpec.describe Directive::ConfigDelegation do
   let(:configurable_class_name) { Faker::Lorem.sentence.parameterize.underscore.camelize }
   let(:inferred_configuration_module_name) { "Configuration" }
   let(:explicit_configuration_module_name) { Faker::Lorem.sentence.parameterize.underscore.camelize }
@@ -14,20 +14,20 @@ RSpec.describe Spicerack::Configurable::ConfigDelegation do
   end
   let(:inferred_configuration_module) do
     Module.new do
-      extend Spicerack::Configurable
+      extend Directive
     end
   end
   let(:explicit_configuration_module) do
     Module.new do
-      extend Spicerack::Configurable
+      extend Directive
     end
   end
 
   let(:inferred_name_config) { double }
-  let(:inferred_name_configuration) { class_double(Spicerack::Configurable) }
+  let(:inferred_name_configuration) { class_double(Directive) }
 
   let(:explicit_name_config) { double }
-  let(:explicit_name_configuration) { class_double(Spicerack::Configurable) }
+  let(:explicit_name_configuration) { class_double(Directive) }
 
   before do
     stub_const(configurable_class_name, configurable_class)
