@@ -8,6 +8,7 @@
 
 ### Directive - [see changes](directive/CHANGELOG.md#v0220)
 ### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0220)
+### Technologic - [see changes](technologic/CHANGELOG.md#v0220)
 
 ## v0.21.0
 
