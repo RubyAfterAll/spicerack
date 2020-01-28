@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.22.0
+
+*Release Date*: 1/28/2020
+
+- Deprecated `Spicerack::Configurable`, to be replaced by `Directive` ([#344](https://github.com/Freshly/spicerack/pull/344))
+
+### Directive - [see changes](directive/CHANGELOG.md#v0220)
+
 ## v0.21.0
 
 *Release Date*: 1/10/2020
