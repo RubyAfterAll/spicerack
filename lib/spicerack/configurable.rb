@@ -3,10 +3,16 @@
 require "directive"
 
 module Spicerack
-  include ActiveSupport::Deprecation::DeprecatedConstantAccessor
-
   # Deprecation support for Directive cutover.
-  Configurable = Directive
+  module Configurable
+    include Directive
 
-  deprecate_constant("Spicerack::Configurable", Directive)
+    def configuration_options(*args)
+      puts "DEPRECATION NOTICE: Spicerack::Configurable (used by #{self}) has been deprecated " \
+           "and will be removed in Spicerack #{Gem::Version.new(VERSION)}. " \
+           "Please use Directive instead."
+
+      super(*args)
+    end
+  end
 end
