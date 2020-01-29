@@ -7,11 +7,11 @@ module Directive
         # RSpec matcher to test options of a Configurable class
         #
         #     module MyGem
-        #       include Spicerack::Configurable::ConfigDelegation
+        #       include Directive::ConfigDelegation
         #       delegates_to_configuration
         #
         #       class MyGem::Configuration
-        #         include Spicerack::Configurable
+        #         extend Directive
         #         ...
         #       end
         #     end
