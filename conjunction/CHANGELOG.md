@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.22.1
+
+*Release Date*: 1/28/2020
+
+- Use `Directive` instead of `Spicerack::Styleguide` ([#350](https://github.com/Freshly/spicerack/pull/350))
+
 ## v0.22.0
 
 *Release Date*: 1/28/2020
