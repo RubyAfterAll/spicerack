@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative "matchers"
-require_relative "dsl"
+require_relative "spec_helper/matchers"
+require_relative "spec_helper/dsl"
 
 RSpec.configure do |config|
   config.include(Spicerack::RSpec::Configurable::Matchers::Global)
