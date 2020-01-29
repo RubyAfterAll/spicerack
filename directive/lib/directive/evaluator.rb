@@ -3,7 +3,7 @@
 module Directive
   class Evaluator
     # @param path [Array<Symbol, String>] A message path for the desired config
-    # @param configuration [Spicerack::Configurable::Reader]
+    # @param configuration [Directive::Reader]
     def initialize(path, configuration)
       @path = path
       @configuration = configuration

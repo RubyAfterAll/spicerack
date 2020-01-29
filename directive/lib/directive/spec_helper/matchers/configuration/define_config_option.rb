@@ -7,7 +7,7 @@ module Directive
         # RSpec matcher to test options of a Configurable class
         #
         #     class ExampleConfiguration
-        #       include Spicerack::Configurable
+        #       extend Directive
         #
         #       option :foo
         #       option :bar, default: :baz
@@ -26,7 +26,7 @@ module Directive
           match do |obj|
             @obj = obj
 
-            if obj.is_a? Spicerack::Configurable::ConfigObject
+            if obj.is_a? Directive::ConfigObject
               expect(obj).to define_option option, default: default
             else
               expect(obj).to respond_to :config

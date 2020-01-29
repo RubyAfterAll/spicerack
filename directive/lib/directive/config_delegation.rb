@@ -17,20 +17,20 @@ module Directive
       #
       # @example
       #   class SomeClass
-      #     include Spicerack::Configurable::ConfigDelegation
+      #     include Directive::ConfigDelegation
       #
       #     delegates_to_configuration
       #   end
       #
       #   module SomeClass::Configuration
-      #     include Spicerack::Configurable
+      #     extend Directive
       #   end
       #
       #   SomeClass.config
       #   => returns SomeClass::Configuration.config
       #   SomeClass.configure do { |config| # config is the yielded config object from SomeClass::Configuration.configure }
       #
-      # @param config_class [Spicerack::Configurable] A module that extends Spicerack::Configurable. Defaults to the module +YourGem::Configuration+
+      # @param config_class [Directive] A module that extends Directive. Defaults to the module +YourGem::Configuration+
       def delegates_to_configuration(config_class = nil)
         @_configuration_module = config_class || "#{self}::#{DEFAULT_CONFIGURATION_MODULE_NAME}".constantize
       end
