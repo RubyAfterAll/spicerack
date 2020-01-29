@@ -16,7 +16,7 @@ module Directive
             it "defines nested config object #{config_name}" do
               expect(parent_config).to respond_to config_name
               expect(parent_config._nested_options).to include config_name.to_sym
-              expect(parent_config.public_send(config_name)).to be_a Spicerack::Configurable::ConfigObject
+              expect(parent_config.public_send(config_name)).to be_a Directive::ConfigObject
             end
 
             instance_eval(&block)

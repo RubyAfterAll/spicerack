@@ -1,6 +1,14 @@
 # Changelog
 
-## v0.22.1
+## v0.22.2
+
+*Release Date*: 1/28/2020
+
+- Remove all references to `Spicerack::Configurable` except deprecation support
+
+### Conjunction - [see changes](conjunction/CHANGELOG.md#v0222)
+
+## v0.22.1 [Yanked]
 
 *Release Date*: 1/28/2020
 

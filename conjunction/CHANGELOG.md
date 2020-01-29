@@ -1,10 +1,17 @@
 # Changelog
 
-## v0.22.1
+## v0.22.2
 
 *Release Date*: 1/28/2020
 
-- Use `Directive` instead of `Spicerack::Styleguide` ([#350](https://github.com/Freshly/spicerack/pull/350))
+- Use `Directive` instead of `Spicerack::Configurable` ([#350](https://github.com/Freshly/spicerack/pull/350))
+- Use `Directive::ConfigDelegation` instead of `Spicerack::Configurable::ConfigDelegation` ([#352](https://github.com/Freshly/spicerack/pull/352))
+
+## v0.22.1 [Yanked]
+
+*Release Date*: 1/28/2020
+
+- Use `Directive` instead of `Spicerack::Configurable` ([#350](https://github.com/Freshly/spicerack/pull/350))
 
 ## v0.22.0
 
