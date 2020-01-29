@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.22.1
+
+*Release Date*: 1/28/2020
+
+### Conjunction - [see changes](conjunction/CHANGELOG.md#v0221)
+
 ## v0.22.0
 
 *Release Date*: 1/28/2020
