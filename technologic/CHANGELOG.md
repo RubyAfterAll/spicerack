@@ -2,7 +2,7 @@
 
 ## v0.22.0
 
-*Release Date*: xx/xx/2020
+*Release Date*: 1/28/2020
 
 - Preserve hash formatting instead of converting to arrays ([#346](https://github.com/Freshly/spicerack/pull/346))
 
