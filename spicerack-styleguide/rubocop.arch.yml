@@ -1,7 +1,7 @@
 inherit_from: rubocop.base.yml
 
- # Cop overrides specific to the ARCH pod:
- Metrics/LineLength:
+# Cop overrides specific to the ARCH pod:
+Metrics/LineLength:
   Enabled: true
   Max: 120
 RSpec/ImplicitBlockExpectation:
