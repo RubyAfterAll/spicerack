@@ -5,6 +5,7 @@
 *Release Date*: 2/5/2020
 
 - Add team-specific rubocop ([#355](https://github.com/Freshly/spicerack/pull/355))
+- Add generator for spicerack-styleguide ([#357](https://github.com/Freshly/spicerack/pull/357))
 
 ## v0.22.2
 
