@@ -1,6 +1,12 @@
 # Changelog
 
-## v0.22.3
+## v0.22.3.1
+
+*Release Date*: 2/5/2020
+
+### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v02231)
+
+## v0.22.3 [Yanked]
 
 *Release Date*: 2/5/2020
 

@@ -1,6 +1,12 @@
 # Changelog
 
-## v0.22.3
+## v0.22.3.1
+
+*Release Date*: 2/5/2020
+
+- Fix rubocop files ([#358](https://github.com/Freshly/spicerack/pull/358))
+
+## v0.22.3 [Yanked]
 
 *Release Date*: 2/5/2020
 
