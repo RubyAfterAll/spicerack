@@ -1,7 +1,5 @@
 # Cop overrides specific to the Service Architecture team
 
-inherit_from: rubocop.base.yml
-
 Metrics/LineLength:
   Enabled: true
   Max: 120
