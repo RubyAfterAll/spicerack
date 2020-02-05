@@ -1,0 +1,8 @@
+Description:
+    Generate the derived Spicerack::Styleguide rubocop file
+
+Example:
+    `rails generate spicerack:styleguide:rubocop`
+
+    Generates:
+      Rubocop: .rubocop.yml
