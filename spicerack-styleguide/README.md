@@ -31,6 +31,12 @@ Or install it yourself as:
 
 ## Usage
 
+If your project doesn't have a rubocop file yet (and it's a Rails project), this generator will your life a little easier:
+```
+$ rails g spicerack:spicerack
+      create  .rubocop.yml
+```
+
 Add the following to the top of your rubocop.yml file - this will set your default Rubocop rules to anything we've set (which is most everything).
 
 ```yaml
