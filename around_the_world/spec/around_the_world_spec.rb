@@ -2,6 +2,7 @@
 
 RSpec.describe AroundTheWorld do
   let(:prevent_double_wrapping_purpose) { nil }
+  let(:allow_undefined_method) { false }
   let(:proxy_module) { wrapped_class.ancestors.find { |mod| mod.is_a?(described_class::ProxyModule) } }
   let(:wrapped_method_name) { :sample_method }
   let(:private_method_name) { :some_private_method }
@@ -30,6 +31,7 @@ RSpec.describe AroundTheWorld do
       :around_method,
       wrapped_method_name,
       prevent_double_wrapping_for: prevent_double_wrapping_purpose,
+      allow_undefined_method: allow_undefined_method,
       &wrapper_proc
     )
   end
@@ -46,8 +48,22 @@ RSpec.describe AroundTheWorld do
     context "when the target does not define the wrapped method" do
       before { wrapped_class.undef_method(wrapped_method_name) }
 
-      it "raises" do
-        expect { around }.to raise_error AroundTheWorld::MethodNotDefinedError
+      context "when allow_undefined_method is false" do
+        it "raises" do
+          expect { around }.to raise_error AroundTheWorld::MethodNotDefinedError
+
+          expect(wrapped_instance).not_to respond_to wrapped_method_name
+        end
+      end
+
+      context "when allow_undefined_method is true" do
+        let(:allow_undefined_method) { true }
+
+        it "doesn't raise and wraps the method" do
+          expect { around }.not_to raise_error
+
+          expect(wrapped_instance).to respond_to wrapped_method_name
+        end
       end
     end
 

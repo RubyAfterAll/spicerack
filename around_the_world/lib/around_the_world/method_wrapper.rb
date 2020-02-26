@@ -23,14 +23,17 @@ module AroundTheWorld
     #   An identifier to define the proxy module's purpose in the ancestor tree.
     #   A method can only be wrapped once for a given purpose, though it can be wrapped
     #   again for other purposes, or for no given purpose.
+    # @param :allow_undefined_method [Boolean] When false, an error is raised if the wrapped method is not
+    #   explicitly defined by the target. Default: false
     # @block The block that will be executed when the method is invoked.
     #        Should always call super, at least conditionally.
-    def initialize(method_name:, target:, prevent_double_wrapping_for: nil, &block)
+    def initialize(method_name:, target:, prevent_double_wrapping_for: nil, allow_undefined_method: false, &block)
       raise TypeError, "target must be a module or a class" unless target.is_a?(Module)
 
       @method_name = method_name.to_sym
       @target = target
       @prevent_double_wrapping_for = prevent_double_wrapping_for || nil
+      @allow_undefined_method = allow_undefined_method
       @block = block
     end
 
@@ -45,13 +48,14 @@ module AroundTheWorld
 
     private
 
-    attr_reader :prevent_double_wrapping_for, :block
+    attr_reader :prevent_double_wrapping_for, :allow_undefined_method, :block
 
     def prevent_double_wrapping?
       prevent_double_wrapping_for.present?
     end
 
     def ensure_method_defined!
+      return if allow_undefined_method
       return if target.instance_methods(true).include?(method_name) || target.private_method_defined?(method_name)
 
       raise MethodNotDefinedError, "#{target} does not define :#{method_name}"

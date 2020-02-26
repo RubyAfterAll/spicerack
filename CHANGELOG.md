@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.22.4
+
+*Release Date*: 2/25/2020
+
+### AroundTheWorld - [see changes](around_the_world/CHANGELOG.md#v0224)
+
 ## v0.22.3.1
 
 *Release Date*: 2/5/2020
