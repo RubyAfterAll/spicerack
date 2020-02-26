@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
+require "active_support/concern"
+require "active_support/core_ext/object/blank"
+require "active_support/descendants_tracker"
+
 require_relative "around_the_world/errors"
 require_relative "around_the_world/method_wrapper"
 require_relative "around_the_world/proxy_module"
 require_relative "around_the_world/version"
-require "active_support/concern"
-require "active_support/core_ext/object/blank"
-require "active_support/descendants_tracker"
 
 module AroundTheWorld
   extend ActiveSupport::Concern
@@ -78,11 +79,14 @@ module AroundTheWorld
     # @param method_name [Symbol]
     # @param :prevent_double_wrapping_for [Object]
     #   If defined, this prevents wrapping the method twice for a given purpose. Accepts any argument.
-    def around_method(method_name, prevent_double_wrapping_for: nil, &block)
+    # @param :allow_undefined_method [Boolean] When false, an error is raised if the wrapped method is not
+    #   explicitly defined by the target module or class. Default: false
+    def around_method(method_name, prevent_double_wrapping_for: nil, allow_undefined_method: false, &block)
       MethodWrapper.wrap(
         method_name: method_name,
         target: self,
         prevent_double_wrapping_for: prevent_double_wrapping_for,
+        allow_undefined_method: allow_undefined_method,
         &block
       )
     end
