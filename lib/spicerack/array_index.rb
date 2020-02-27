@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "short_circu_it"
+
 module Spicerack
   class ArrayIndex
     include ShortCircuIt
@@ -12,8 +14,8 @@ module Spicerack
 
     delegate :[], to: :index
 
-    def initialize(array)
-      @array = array
+    def initialize(*array)
+      @array = array.flatten
     end
 
     def index

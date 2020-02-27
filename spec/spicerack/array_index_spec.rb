@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe Spicerack::ArrayIndex do
-  subject(:array_index) { described_class.new(array) }
+  subject(:array_index) { described_class.new(*input) }
 
+  let(:input) { [ array ] }
   let(:array) { Faker::Hipster.words.uniq }
 
   it { is_expected.to delegate_method(:[]).to(:index) }
@@ -39,6 +40,18 @@ RSpec.describe Spicerack::ArrayIndex do
         expect(index_before).not_to equal array_index.index
         expect(array_index[new_value]).to eq array.index(new_value)
       end
+    end
+
+    context "when input is a flat list of arguments" do
+      let(:array) { [  ] }
+    end
+
+    context "when input is an array" do
+
+    end
+
+    context "when input is a list of arrays" do
+
     end
   end
 
