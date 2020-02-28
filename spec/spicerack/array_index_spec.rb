@@ -17,7 +17,24 @@ RSpec.describe Spicerack::ArrayIndex do
   describe "#initialze" do
     subject { array_index.array }
 
-    it { is_expected.to eq array }
+    context "when input is a flat list of arguments" do
+      let(:input) { array }
+
+      it { is_expected.to eq array }
+    end
+
+    context "when input is an array" do
+      let(:input) { [ array ] }
+
+      it { is_expected.to eq array }
+    end
+
+    context "when input is a list of arrays" do
+      let(:another_array) { Faker::ChuckNorris.fact.split(" ") }
+      let(:input) { [ array, another_array ] }
+
+      it { is_expected.to eq input }
+    end
   end
 
   describe "#index" do

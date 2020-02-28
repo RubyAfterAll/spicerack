@@ -16,7 +16,11 @@ module Spicerack
     delegate :<<, :push, :unshift, :concat, :to_ary, to: :array
 
     def initialize(*array)
-      @array = array.flatten
+      if array.length == 1 && array[0].respond_to?(:to_ary)
+        @array = array[0].to_a
+      else
+        @array = array
+      end
     end
 
     def index
