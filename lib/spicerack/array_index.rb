@@ -13,6 +13,7 @@ module Spicerack
     attr_reader :array
 
     delegate :[], to: :index
+    delegate :<<, :push, :unshift, :concat, :to_ary, to: :array
 
     def initialize(*array)
       @array = array.flatten
