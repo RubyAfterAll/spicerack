@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "short_circu_it"
+
 module Spicerack
   class ArrayIndex
     include ShortCircuIt
@@ -11,9 +13,14 @@ module Spicerack
     attr_reader :array
 
     delegate :[], to: :index
+    delegate :<<, :push, :unshift, :concat, :to_ary, to: :array
 
-    def initialize(array)
-      @array = array
+    def initialize(*array)
+      if array.length == 1 && array[0].respond_to?(:to_ary)
+        @array = array[0].to_a
+      else
+        @array = array
+      end
     end
 
     def index
