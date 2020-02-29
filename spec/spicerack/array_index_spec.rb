@@ -1,17 +1,40 @@
 # frozen_string_literal: true
 
 RSpec.describe Spicerack::ArrayIndex do
-  subject(:array_index) { described_class.new(array) }
+  subject(:array_index) { described_class.new(*input) }
 
+  let(:input) { [ array ] }
   let(:array) { Faker::Hipster.words.uniq }
 
   it { is_expected.to delegate_method(:[]).to(:index) }
 
+  it { is_expected.to delegate_method(:to_ary).to(:array) }
+  it { is_expected.to delegate_method(:<<).to(:array) }
+  it { is_expected.to delegate_method(:push).to(:array) }
+  it { is_expected.to delegate_method(:unshift).to(:array) }
+  it { is_expected.to delegate_method(:concat).to(:array) }
+
   describe "#initialze" do
     subject { array_index.array }
 
-    it { is_expected.to eq array }
-    it { is_expected.to equal array }
+    context "when input is a flat list of arguments" do
+      let(:input) { array }
+
+      it { is_expected.to eq array }
+    end
+
+    context "when input is an array" do
+      let(:input) { [ array ] }
+
+      it { is_expected.to eq array }
+    end
+
+    context "when input is a list of arrays" do
+      let(:another_array) { Faker::ChuckNorris.fact.split(" ") }
+      let(:input) { [ array, another_array ] }
+
+      it { is_expected.to eq input }
+    end
   end
 
   describe "#index" do
@@ -33,11 +56,11 @@ RSpec.describe Spicerack::ArrayIndex do
       let!(:index_before) { array_index.index }
       let(:new_value) { rand }
 
-      before { array << new_value }
+      before { array_index << new_value }
 
       it "resets the index" do
         expect(index_before).not_to equal array_index.index
-        expect(array_index[new_value]).to eq array.index(new_value)
+        expect(array_index[new_value]).to eq array_index.array.index(new_value)
       end
     end
   end
@@ -61,7 +84,7 @@ RSpec.describe Spicerack::ArrayIndex do
       let(:requested_item) { array.sample }
       let!(:repeated_item_index_before) { array.index(requested_item) }
 
-      before { array << requested_item }
+      before { array_index << requested_item }
 
       it { is_expected.to eq repeated_item_index_before }
       it { is_expected.to eq array.index(requested_item) }
@@ -88,11 +111,8 @@ RSpec.describe Spicerack::ArrayIndex do
 
       let(:new_value) { rand }
 
-      before { array << new_value }
-
-      it "doesn't update the index" do
-        expect(array_index[new_value]).to be_nil
-        expect(array_index.index).not_to eq described_class[array].index
+      it "raises" do
+        expect { array_index.array << new_value }.to raise_error(FrozenError)
       end
     end
   end

@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.22.5
+
+*Release Date*: 2/29/2020
+
+- `Spicerack::ArrayIndex`: Fix missing require statement, make constructor parameters more flexible ([#264](https://github.com/Freshly/spicerack/pull/264))
+
 ## v0.22.4
 
 *Release Date*: 2/25/2020
