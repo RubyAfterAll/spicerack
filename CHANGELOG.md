@@ -1,10 +1,16 @@
 # Changelog
 
-## v0.22.5
+## v0.22.6
 
 *Release Date*: 2/29/2020
 
-- `Spicerack::ArrayIndex`: Fix missing require statement, make constructor parameters more flexible ([#264](https://github.com/Freshly/spicerack/pull/264))
+- Add missing require statement in `ArrayIndex` ([#367](https://github.com/Freshly/spicerack/pull/367))
+
+## v0.22.5 [Yanked]
+
+*Release Date*: 2/29/2020
+
+- `Spicerack::ArrayIndex`: Fix missing require statement, make constructor parameters more flexible ([#364](https://github.com/Freshly/spicerack/pull/364))
 
 ## v0.22.4
 

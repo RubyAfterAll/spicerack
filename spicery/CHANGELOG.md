@@ -1,6 +1,12 @@
 # Changelog
 
-## v0.22.5
+## v0.22.6
+
+*Release Date*: 2/29/2020
+
+- No changes
+
+## v0.22.5 [Yanked]
 
 *Release Date*: 2/29/2020
 
