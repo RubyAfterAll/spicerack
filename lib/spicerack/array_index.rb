@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "active_support/core_ext/object/deep_dup"
 require "short_circu_it"
 
 module Spicerack
