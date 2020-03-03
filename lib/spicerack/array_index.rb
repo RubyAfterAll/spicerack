@@ -14,7 +14,7 @@ module Spicerack
     attr_reader :array
 
     delegate :[], to: :index
-    delegate :<<, :push, :unshift, :concat, :to_ary, to: :array
+    delegate_missing_to :array
 
     def initialize(*array)
       if array.length == 1 && array[0].respond_to?(:to_ary)
@@ -32,10 +32,24 @@ module Spicerack
     memoize :index, observes: :array
 
     def freeze
-      @array = array.deep_dup.freeze
+      @array = _deep_freeze_and_dup_object(array).freeze
       index.freeze
 
       super
+    end
+
+    private
+
+    def _deep_freeze_and_dup_object(obj)
+      if obj.is_a?(Module)
+        obj
+      elsif obj.respond_to?(:transform_values)
+        obj.transform_values(&method(:_deep_freeze_and_dup_object)).freeze
+      elsif obj.respond_to?(:map)
+        obj.map(&method(:_deep_freeze_and_dup_object)).freeze
+      else
+        obj.dup.freeze
+      end
     end
   end
 end

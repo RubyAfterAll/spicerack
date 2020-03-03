@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.22.7
+
+*Release Date*: 3/2/2020
+
+- Don't dup classes and modules on `ArrayIndex#freeze` ([#369](https://github.com/Freshly/spicerack/pull/369))
+
 ## v0.22.6
 
 *Release Date*: 2/29/2020
