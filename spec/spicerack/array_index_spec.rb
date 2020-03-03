@@ -9,12 +9,6 @@ RSpec.describe Spicerack::ArrayIndex do
 
   it { is_expected.to delegate_method(:[]).to(:index) }
 
-  it { is_expected.to delegate_method(:to_ary).to(:array) }
-  it { is_expected.to delegate_method(:<<).to(:array) }
-  it { is_expected.to delegate_method(:push).to(:array) }
-  it { is_expected.to delegate_method(:unshift).to(:array) }
-  it { is_expected.to delegate_method(:concat).to(:array) }
-
   describe "#initialze" do
     subject { array_index.array }
 
