@@ -105,6 +105,7 @@ RSpec.describe Spicerack::ArrayIndex do
       expect(array_index.index).to be_frozen
       expect(array_index).to be_frozen
       expect(array_index.index).to eq described_class[array].index
+      expect(array_index).to all be_frozen
     end
 
     context "when the array contains a hash" do
