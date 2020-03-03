@@ -5,6 +5,7 @@ RSpec.describe Spicerack::ArrayIndex do
 
   let(:input) { [ array ] }
   let(:array) { Faker::Hipster.words.uniq }
+  let(:example_hash) { Hash[*Faker::Lorem.unique.words(rand(2..4) * 2)] }
 
   it { is_expected.to delegate_method(:[]).to(:index) }
 
@@ -34,6 +35,12 @@ RSpec.describe Spicerack::ArrayIndex do
       let(:input) { [ array, another_array ] }
 
       it { is_expected.to eq input }
+    end
+
+    context "when input contains a hash" do
+      let(:input) { [ example_hash ] }
+
+      it { is_expected.to eq([ example_hash ]) }
     end
   end
 
@@ -104,6 +111,27 @@ RSpec.describe Spicerack::ArrayIndex do
       expect(array_index.index).to be_frozen
       expect(array_index).to be_frozen
       expect(array_index.index).to eq described_class[array].index
+    end
+
+    context "when the array contains a hash" do
+      let(:input) { [ example_hash ] }
+
+      it "dups and freezes the hash" do
+        expect(array_index.first).to eq example_hash
+        expect(array_index.first).not_to equal example_hash
+        expect(array_index.first.values).to all be_frozen
+      end
+    end
+
+    context "when the array contains a class" do
+      let(:example_class) { Class.new }
+      let(:example_module) { Module.new }
+      let(:input) { [ example_class, example_module ] }
+
+      it "does not dup the class and module" do
+        expect(array_index.first).to equal example_class
+        expect(array_index.last).to equal example_module
+      end
     end
 
     context "when the source array changes" do
