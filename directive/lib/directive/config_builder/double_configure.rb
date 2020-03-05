@@ -1,12 +1,8 @@
 # frozen_string_literal: true
 
-require "technologic"
-
 module Directive
   module DoubleConfigure
     extend ActiveSupport::Concern
-
-    include Technologic
 
     included do
       set_callback :configure, :after, :warn_on_multiple_configure_calls
