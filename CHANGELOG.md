@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.22.9
+
+*Release Date*: 3/5/2020
+
+### Directive - [see changes](directive/CHANGELOG.md#v0229)
+
 ## v0.22.8
 
 *Release Date*: 3/5/2020

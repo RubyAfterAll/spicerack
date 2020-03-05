@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.22.9
+
+*Release Date*: 3/5/2020
+
+- Remove unnecessary technologic dependency ([#374](https://github.com/Freshly/spicerack/pull/374))
+
 ## v0.22.8
 
 *Release Date*: 3/5/2020
