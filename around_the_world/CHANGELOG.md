@@ -1,5 +1,29 @@
 # Changelog
 
+## v0.22.7
+
+*Release Date*: 3/2/2020
+
+- No changes
+
+## v0.22.6
+
+*Release Date*: 2/29/2020
+
+- No changes
+
+## v0.22.5 [Yanked]
+
+*Release Date*: 2/29/2020
+
+- No changes
+
+## v0.22.4
+
+*Release Date*: 2/25/2020
+
+- Add `allow_undefined_method` option ([#362](https://github.com/Freshly/spicerack/pull/362))
+
 ## v0.22.3.1
 
 *Release Date*: 2/5/2020

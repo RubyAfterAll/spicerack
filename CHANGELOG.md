@@ -1,5 +1,35 @@
 # Changelog
 
+## v0.22.8
+
+*Release Date*: 3/5/2020
+
+### Technologic - [see changes](technologic/CHANGELOG.md#v0228)
+
+## v0.22.7
+
+*Release Date*: 3/2/2020
+
+- Don't dup classes and modules on `ArrayIndex#freeze` ([#369](https://github.com/Freshly/spicerack/pull/369))
+
+## v0.22.6
+
+*Release Date*: 2/29/2020
+
+- Add missing require statement in `ArrayIndex` ([#367](https://github.com/Freshly/spicerack/pull/367))
+
+## v0.22.5 [Yanked]
+
+*Release Date*: 2/29/2020
+
+- `Spicerack::ArrayIndex`: Fix missing require statement, make constructor parameters more flexible ([#364](https://github.com/Freshly/spicerack/pull/364))
+
+## v0.22.4
+
+*Release Date*: 2/25/2020
+
+### AroundTheWorld - [see changes](around_the_world/CHANGELOG.md#v0224)
+
 ## v0.22.3.1
 
 *Release Date*: 2/5/2020
