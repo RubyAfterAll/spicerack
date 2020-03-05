@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "technologic"
 require "active_support/callbacks"
 
 require_relative "config_builder/double_configure"

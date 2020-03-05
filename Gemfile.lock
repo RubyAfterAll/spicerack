@@ -5,7 +5,6 @@ PATH
       activesupport (>= 5.2.1)
     directive (0.22.8)
       activesupport (>= 5.2.1)
-      technologic (= 0.22.8)
     redis_hash (0.22.8)
       activesupport (>= 5.2.1)
       redis (>= 3.0)
