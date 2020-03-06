@@ -38,8 +38,8 @@ module Collectible
 
         def collection_wrap_on(*methods)
           methods.each do |method_name|
-            around_method(method_name, prevent_double_wrapping_for: PROXY_MODULE_NAME) do |*args, &block|
-              result = super(*args, &block)
+            around_method(method_name, prevent_double_wrapping_for: PROXY_MODULE_NAME) do |*args, **opts, &block|
+              result = super(*args, **opts, &block)
 
               return self if result.equal?(items)
 
@@ -50,8 +50,8 @@ module Collectible
 
         def collection_wrap_values_on(*methods)
           methods.each do |method_name|
-            around_method(method_name, prevent_double_wrapping_for: PROXY_MODULE_NAME) do |*args, &block|
-              result = super(*args, &block)
+            around_method(method_name, prevent_double_wrapping_for: PROXY_MODULE_NAME) do |*args, **opts, &block|
+              result = super(*args, **opts, &block)
 
               if result.respond_to?(:transform_values)
                 result.transform_values { |collection| collection_wrap { collection } }

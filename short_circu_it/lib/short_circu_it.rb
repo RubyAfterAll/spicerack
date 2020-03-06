@@ -79,9 +79,9 @@ module ShortCircuIt
         around_method(
           method_name,
           prevent_double_wrapping_for: ShortCircuIt,
-        ) do |*args|
+        ) do |*args, **opts|
           memoization_store.memoize(method_name, args.hash) do
-            super(*args)
+            super(*args, **opts)
           end
         end
       end

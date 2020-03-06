@@ -42,10 +42,10 @@ module Collectible
 
         def disallow_when_sorted(*methods)
           methods.each do |method_name|
-            around_method(method_name, prevent_double_wrapping_for: "MaintainSortingOrder") do |*arguments, &block|
+            around_method(method_name, prevent_double_wrapping_for: "MaintainSortingOrder") do |*args, **opts, &block|
               raise Collectible::MethodNotAllowedError, "cannot call #{method_name} when sorted" if maintain_sort_order?
 
-              super(*arguments, &block)
+              super(*args, **opts, &block)
             end
           end
         end
