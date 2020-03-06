@@ -1,7 +1,9 @@
 # Changelog
 
-## Upcoming
-- Remove Spicerack::Configurable ([#379](https://github.com/Freshly/spicerack/pull/379))
+## v0.23.1.1
+*Release Date*: 3/6/2020
+
+- Remove Spicerack::Configurable as planned for 0.23.0 ([#379](https://github.com/Freshly/spicerack/pull/379))
 
 ## v0.23.1
 
