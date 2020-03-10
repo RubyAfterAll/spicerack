@@ -23,8 +23,8 @@ module AroundTheWorld
     #
     # @example
     #   class SomeClass
-    #     around_method :dont_look_in_here do |*args|
-    #       things_happened = super(*args)
+    #     around_method :dont_look_in_here do |*args, **opts|
+    #       things_happened = super(*args, **opts)
     #
     #       if things_happened
     #         "Something happened!"
@@ -42,19 +42,19 @@ module AroundTheWorld
     #   => "Something happened!"
     #
     # @example
-    #   around_method :dont_look_in_here, prevent_double_wrapping_for: :memoization do |*args|
-    #     @memoized ||= super(*args)
+    #   around_method :dont_look_in_here, prevent_double_wrapping_for: :memoization do |*args, **opts|
+    #     @memoized ||= super(*args, **opts)
     #   end
     #
-    #   around_method :dont_look_in_here, prevent_double_wrapping_for: :memoization do |*args|
-    #     @memoized ||= super(*args)
+    #   around_method :dont_look_in_here, prevent_double_wrapping_for: :memoization do |*args, **opts|
+    #     @memoized ||= super(*args, **opts)
     #   end
     #   # => AroundTheWorld::DoubleWrapError:
     #          "Module AroundTheWorld:ProxyModule:memoization already defines the method :dont_look_in_here"
     #
-    #   around_method :dont_look_in_here do |*args|
+    #   around_method :dont_look_in_here do |*args, **opts|
     #     do_something_else
-    #     super(*args)
+    #     super(*args, **opts)
     #   end
     #   # => no error raised
     #
@@ -65,8 +65,8 @@ module AroundTheWorld
     #     class << self
     #       def a_singleton_method; end
     #
-    #       around_method :a_singleton_method do |*args|
-    #         super(*args)
+    #       around_method :a_singleton_method do |*args, **opts|
+    #         super(*args, **opts)
     #         "It works for class methods too!"
     #       end
     #     end
