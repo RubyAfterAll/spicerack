@@ -19,8 +19,8 @@ module Conjunction
 
       def prototype_name
         output = name
-        output = output.slice(conjunction_prefix) if conjunction_prefix?
-        output = output.chomp(conjunction_suffix) if conjunction_suffix?
+        output = output.delete_prefix(conjunction_prefix) if conjunction_prefix?
+        output = output.delete_suffix(conjunction_suffix) if conjunction_suffix?
         output unless output == name
       end
 
