@@ -1,6 +1,13 @@
 # Changelog
 
+## v0.23.1.2
+
+*Release Date*: 3/10/2020
+
+### Conjunction - [see changes](conjunction/CHANGELOG.md#v02312)
+
 ## v0.23.1.1
+
 *Release Date*: 3/6/2020
 
 - Remove Spicerack::Configurable as planned for 0.23.0 ([#379](https://github.com/Freshly/spicerack/pull/379))
