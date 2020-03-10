@@ -18,12 +18,10 @@ module Conjunction
       end
 
       def prototype_name
-        @prototype_name ||= begin
-          output = name
-          output = output.slice(conjunction_prefix) if conjunction_prefix?
-          output = output.chomp(conjunction_suffix) if conjunction_suffix?
-          output unless output == name
-        end
+        output = name
+        output = output.slice(conjunction_prefix) if conjunction_prefix?
+        output = output.chomp(conjunction_suffix) if conjunction_suffix?
+        output unless output == name
       end
 
       def conjunction_for!(other_prototype, prototype_name)
