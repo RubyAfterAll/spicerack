@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "spicerack"
+
 module Directive
   class ConfigObject < Spicerack::InputObject
     include Singleton

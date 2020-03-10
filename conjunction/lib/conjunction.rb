@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "active_support"
-
+require "directive"
 require "spicerack"
 
 require "conjunction/version"

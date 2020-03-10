@@ -1,5 +1,35 @@
 # Changelog
 
+## v0.23.1.1
+
+*Release Date*: 3/6/2020
+
+- No changes
+
+## v0.23.1 [Yanked]
+
+*Release Date*: 3/6/2020
+
+- Require spicerack dependency
+
+## v0.23.0 [Yanked]
+
+*Release Date*: 3/5/2020
+
+- No changes
+
+## v0.22.9 [Yanked]
+
+*Release Date*: 3/5/2020
+
+- Remove unnecessary technologic dependency ([#374](https://github.com/Freshly/spicerack/pull/374))
+
+## v0.22.8
+
+*Release Date*: 3/5/2020
+
+- No changes
+
 ## v0.22.7
 
 *Release Date*: 3/2/2020
