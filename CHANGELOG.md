@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.23.2
+
+*Release Date*: 3/20/2020
+
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0232)
+
 ## v0.23.1.2
 
 *Release Date*: 3/10/2020

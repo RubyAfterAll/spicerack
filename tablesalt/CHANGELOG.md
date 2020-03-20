@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.23.2
+
+*Release Date*: 3/20/2020
+
+- Add `instance_reader` option to DSLAccessor ([#386](https://github.com/Freshly/spicerack/pull/386), [#387](https://github.com/Freshly/spicerack/pull/387))
+
 ## v0.23.1.2
 
 *Release Date*: 3/10/2020

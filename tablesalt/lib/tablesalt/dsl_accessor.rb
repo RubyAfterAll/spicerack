@@ -39,17 +39,22 @@ module Tablesalt
   module DSLAccessor
     extend ActiveSupport::Concern
 
-    class_methods do
+    module ClassMethods
       private
 
-      def dsl_accessor(*accessors)
-        accessors.each { |attr| _define_dsl_accessor(attr) }
+      # @param *accessors [Array<String, Symbol>] A list of dsl accessor attributes to define
+      # @param :instance_reader [Boolean] If true, a reader method is defined on the instance. Default: false
+      def dsl_accessor(*accessors, **options)
+        accessors.each do |attr|
+          _define_dsl_accessor(attr)
+          _define_instance_reader(attr) if options[:instance_reader]
+        end
       end
 
       def _define_dsl_accessor(attr)
-        define_singleton_method attr do |*args|
-          ivar_name = attr_internal_ivar_name(attr)
+        ivar_name = attr_internal_ivar_name(attr)
 
+        define_singleton_method attr do |*args|
           if instance_variable_defined?(ivar_name)
             raise NameError, "internal attribute #{attr} already set" if args.one?
             raise ArgumentError, "wrong number of arguments (given #{args.size}, expected 0)" if args.size > 1
@@ -63,6 +68,16 @@ module Tablesalt
         end
 
         private_class_method attr
+      end
+
+      def _define_instance_reader(attr)
+        ivar_name = attr_internal_ivar_name(attr)
+
+        define_method attr do
+          self.class.instance_variable_get(ivar_name)
+        end
+
+        private attr
       end
     end
   end

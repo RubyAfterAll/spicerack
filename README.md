@@ -121,6 +121,8 @@ To perform release, set the new canonical version in the .4.4`SPICERACK_VERSION`
 ```ruby
 echo "0.1.0" > SPICERACK_VERSION
 rake spicerack:update_all_versions
+rake spicerack:update_all_changelogs
+# Manually add any changes to the necessary changelogs
 git commit -am "Updating to version 0.1.0 for release"
 rake spicerack:release_all
 ```
