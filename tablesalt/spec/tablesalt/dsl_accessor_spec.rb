@@ -7,7 +7,7 @@ RSpec.describe Tablesalt::DSLAccessor do
     end
   end
 
-  let(:accessor) { Faker::Lorem.word }
+  let(:accessor) { Faker::Lorem.words(3).join("_").downcase }
 
   describe ".dsl_accessor" do
     let(:accessor_name) { Faker::Lorem.words(3).join("_").downcase }
@@ -31,21 +31,21 @@ RSpec.describe Tablesalt::DSLAccessor do
 
       before do
         including_class.instance_exec(self) do |spec_context|
-          spec_context.accessors.each do |accessor|
-            dsl_accessor accessor
+          spec_context.accessors.each do |attr|
+            dsl_accessor attr
           end
         end
       end
 
       it "does not define a public method for each argument" do
-        accessors.each do |accessor|
-          expect { including_class.public_send(accessor) }.to raise_error NoMethodError
+        accessors.each do |attr|
+          expect { including_class.public_send(attr) }.to raise_error NoMethodError
         end
       end
 
       it "defines a private method for each argument" do
-        accessors.each do |accessor|
-          expect { including_class.__send__(accessor) }.not_to raise_error NoMethodError
+        accessors.each do |attr|
+          expect { including_class.__send__(attr, Faker::Lorem) }.not_to raise_error
         end
       end
     end
