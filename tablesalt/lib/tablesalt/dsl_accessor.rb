@@ -72,9 +72,12 @@ module Tablesalt
 
       def _define_instance_reader(attr)
         ivar_name = attr_internal_ivar_name(attr)
+
         define_method attr do
           self.class.instance_variable_get(ivar_name)
         end
+
+        private attr
       end
     end
   end
