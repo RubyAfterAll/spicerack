@@ -2,6 +2,7 @@
 
 require "bundler/gem_tasks"
 require "rspec/core/rake_task"
+require "date"
 
 require_relative "shared/rakefile"
 
@@ -34,6 +35,28 @@ ALL_GEMS.each do |gem|
 
       File.open(version_path, "w") { |f| f.write file_text }
     end
+
+    desc "Add changelog boilerplate for new version. Uses SPICERACK_VERSION."
+    task :update_changelog do
+      changelog_path = File.join(__dir__, (gem == "spicerack") ? "" : gem, "CHANGELOG.md")
+      changelog_text = File.read(changelog_path)
+
+      # Skip any changelogs that were updated by hand
+      next if changelog_text.include?("## v#{version}")
+
+      new_version_text = <<~TEXT
+        # Changelog
+
+        ## v#{version}
+
+        *Release Date*: #{Date.today.strftime("%-m/%-d/%Y")}
+
+        * No changes
+      TEXT
+
+      changelog_text.gsub!("# Changelog\n", new_version_text)
+      File.open(changelog_path, "w") { |f| f.write(changelog_text) }
+    end
   end
 end
 
@@ -52,5 +75,10 @@ namespace :spicerack do
     system "bundle"
     Rake::Task["release"].invoke
     SPICERACK_GEMS.each { |gem| sh "cd #{gem} && bundle exec rake release" }
+  end
+
+  desc "Update changelogs for all gems with no changes this version."
+  task :update_all_changelogs do
+    ALL_GEMS.each { |gem| Rake::Task["#{gem}:update_changelog"].invoke }
   end
 end
