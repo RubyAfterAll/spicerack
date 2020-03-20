@@ -39,7 +39,7 @@ module Tablesalt
   module DSLAccessor
     extend ActiveSupport::Concern
 
-    class_methods do
+    module ClassMethods
       private
 
       # @param *accessors [Array<String, Symbol>] A list of dsl accessor attributes to define
