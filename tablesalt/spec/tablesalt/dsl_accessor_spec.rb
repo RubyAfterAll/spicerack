@@ -121,7 +121,7 @@ RSpec.describe Tablesalt::DSLAccessor do
     end
 
     describe "instance reader" do
-      subject(:reader) { instance.public_send(accessor) }
+      subject(:reader) { instance.__send__(accessor) }
 
       let(:dsl_value) { Faker::ChuckNorris.fact }
 
@@ -147,6 +147,10 @@ RSpec.describe Tablesalt::DSLAccessor do
         let(:instance_reader) { true }
 
         it { is_expected.to eq dsl_value }
+
+        it "defines a private instance method" do
+          expect { instance.public_send(accessor) }.to raise_error NoMethodError
+        end
       end
     end
   end
