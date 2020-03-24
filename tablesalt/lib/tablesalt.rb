@@ -8,6 +8,7 @@ require "tablesalt/version"
 require "tablesalt/dsl_accessor"
 require "tablesalt/isolation"
 require "tablesalt/stringable_object"
+require "tablesalt/thread_accessor"
 require "tablesalt/uses_hash_for_equality"
 
 module Tablesalt; end
