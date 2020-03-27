@@ -10,16 +10,15 @@
 #   private?
 #      - boolean, true if the method is expected to be private. Default: true
 RSpec.shared_examples "a thread reader" do
-  subject { receiver.__send__(method) }
+  subject { receiver }
 
   let(:value) { double }
-  let(:private?) { true }
 
-  it "defines a thread reader" do
-    expect(receiver).to define_thread_reader(method, thread_key)
-  end
+  it { is_expected.to define_thread_reader(method, thread_key, private: private?) }
 
-  context "with falue set on thread" do
+  context "with value set on thread" do
+    subject { receiver.__send__(method) }
+
     before { Thread.current[thread_key] = value }
 
     after { Thread.current[thread_key] = nil }
