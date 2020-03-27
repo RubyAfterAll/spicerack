@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.23.4
+
+*Release Date*: 3/27/2020
+
+* Allow wrapping multiple methods at once ([#391](https://github.com/Freshly/spicerack/pull/391))
+
 ## v0.23.3
 
 *Release Date*: 3/26/2020
