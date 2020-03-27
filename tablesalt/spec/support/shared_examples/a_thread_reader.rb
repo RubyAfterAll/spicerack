@@ -15,17 +15,23 @@ RSpec.shared_examples "a thread reader" do
   let(:value) { double }
   let(:private?) { true }
 
-  before { Thread.current[thread_key] = value }
+  it "defines a thread reader" do
+    expect(receiver).to define_thread_reader(method, thread_key)
+  end
 
-  after { Thread.current[thread_key] = nil }
+  context "with falue set on thread" do
+    before { Thread.current[thread_key] = value }
 
-  it { is_expected.to eq value }
+    after { Thread.current[thread_key] = nil }
 
-  it "has expected privacy" do
-    if private?
-      expect { receiver.public_send(method) }.to raise_error(NoMethodError)
-    else
-      expect { receiver.public_send(method) }.not_to raise_error
+    it { is_expected.to eq value }
+
+    it "has expected privacy" do
+      if private?
+        expect { receiver.public_send(method) }.to raise_error(NoMethodError)
+      else
+        expect { receiver.public_send(method) }.not_to raise_error
+      end
     end
   end
 end
