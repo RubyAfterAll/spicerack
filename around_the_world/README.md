@@ -40,11 +40,15 @@ Define a method that gets called _around_ the given instance method:
 class SomeClass
   include AroundTheWorld
 
-  def did_something_happened?
-    true
+  def make_something_happen!
+    @something_happened = true
   end
-
-  around_method :did_something_happened? do |*args, **opts|
+  
+  def did_something_happened?
+    !!@something_happened
+  end
+  
+  around_method :make_something_happen!, :did_something_happened? do |*args, **opts|
     things_happened = super(*args, **opts)
 
     if things_happened
@@ -57,6 +61,12 @@ end
 ```
 
 ```
+> SomeClass.new.did_something_happened?
+=> "Nothing to see here..."
+
+> SomeClass.new.make_something_happen!
+=> "Something happened!"
+
 > SomeClass.new.did_something_happened?
 => "Something happened!"
 ```
