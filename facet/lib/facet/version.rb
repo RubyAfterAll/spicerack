@@ -2,5 +2,5 @@
 
 module Facet
   # This constant is managed by spicerack
-  VERSION = "0.23.2"
+  VERSION = "0.23.3"
 end

@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.23.3
+
+*Release Date*: 3/26/2020
+
+- `ThreadAccessor` ([#389](https://github.com/Freshly/spicerack/pull/389))
+
 ## v0.23.2
 
 *Release Date*: 3/20/2020
