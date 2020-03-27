@@ -76,19 +76,21 @@ module AroundTheWorld
     #   => "It works for class methods too!"
     #
     # @api public
-    # @param method_name [Symbol]
+    # @param method_names [Array<Symbol, String>] A list of methods to be wrapped
     # @param :prevent_double_wrapping_for [Object]
     #   If defined, this prevents wrapping the method twice for a given purpose. Accepts any argument.
     # @param :allow_undefined_method [Boolean] When false, an error is raised if the wrapped method is not
     #   explicitly defined by the target module or class. Default: false
-    def around_method(method_name, prevent_double_wrapping_for: nil, allow_undefined_method: false, &block)
-      MethodWrapper.wrap(
-        method_name: method_name,
-        target: self,
-        prevent_double_wrapping_for: prevent_double_wrapping_for,
-        allow_undefined_method: allow_undefined_method,
-        &block
-      )
+    def around_method(*method_names, prevent_double_wrapping_for: nil, allow_undefined_method: false, &block)
+      method_names.each do |method_name|
+        MethodWrapper.wrap(
+          method_name: method_name,
+          target: self,
+          prevent_double_wrapping_for: prevent_double_wrapping_for,
+          allow_undefined_method: allow_undefined_method,
+          &block
+        )
+      end
     end
   end
 end
