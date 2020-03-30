@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+
+### ShortCircuIt - [see changes](short_circu_it/CHANGELOG.md#Upcoming)
+
 ## v0.23.4
 
 *Release Date*: 3/27/2020

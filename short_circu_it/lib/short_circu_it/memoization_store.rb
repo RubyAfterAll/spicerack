@@ -27,10 +27,10 @@ module ShortCircuIt
 
     # Clears all cached values for the given method
     #
-    # @param method_name [Symbol] The name of a memoized method
+    # @param *method_names [Symbol] The name of a memoized method
     # @return [Boolean] True if a value was cleared, false if not
-    def clear_memoization(method_name)
-      !!memoized_hash.delete(method_name)
+    def clear_memoization(*method_names)
+      method_names.all? { |method_name| memoized_hash.delete(method_name.to_sym) }
     end
 
     # Clears all memoized values on the object
