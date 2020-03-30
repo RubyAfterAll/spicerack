@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+
+- Allow clearing multiple memoized methods at once ([#393](https://github.com/Freshly/spicerack/pull/393))
+
 ## v0.23.4
 
 *Release Date*: 3/27/2020
