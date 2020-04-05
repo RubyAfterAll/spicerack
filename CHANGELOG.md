@@ -2,7 +2,7 @@
 
 ## v0.23.5
 
-* Upgraded dependency of faker to major version 2
+### RSpice - [see changes](rspice/CHANGELOG.md#v0235)
 
 *Release Date*: 4/5/2020
 
