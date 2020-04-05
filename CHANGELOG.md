@@ -6,8 +6,6 @@
 
 *Release Date*: 4/5/2020
 
-* No changes
-
 ## Upcoming
 
 ### ShortCircuIt - [see changes](short_circu_it/CHANGELOG.md#Upcoming)
