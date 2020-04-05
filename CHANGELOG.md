@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.23.5
+
+### RSpice - [see changes](rspice/CHANGELOG.md#v0235)
+
+*Release Date*: 4/5/2020
+
+## Upcoming
+
+### ShortCircuIt - [see changes](short_circu_it/CHANGELOG.md#Upcoming)
+
 ## v0.23.4
 
 *Release Date*: 3/27/2020
