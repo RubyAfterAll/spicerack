@@ -2,6 +2,8 @@
 
 ## v0.23.5
 
+* Upgraded dependency of faker to major version 2
+
 *Release Date*: 4/5/2020
 
 * No changes
