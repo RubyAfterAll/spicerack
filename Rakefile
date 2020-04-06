@@ -51,7 +51,7 @@ ALL_GEMS.each do |gem|
 
         *Release Date*: #{Date.today.strftime("%-m/%-d/%Y")}
 
-        * No changes
+        - No changes
       TEXT
 
       changelog_text.gsub!("# Changelog\n", new_version_text)

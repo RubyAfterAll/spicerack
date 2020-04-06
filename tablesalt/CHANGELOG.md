@@ -4,13 +4,13 @@
 
 *Release Date*: 4/5/2020
 
-* No changes
+- No changes
 
 ## v0.23.4
 
 *Release Date*: 3/27/2020
 
-* No changes
+- No changes
 
 ## v0.23.3
 
