@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.23.7
+
+*Release Date*: 4/14/2020
+
+- No changes
+
 ## v0.23.6
 
 *Release Date*: 4/13/2020
@@ -450,7 +456,7 @@
 
 *Release Date*: 4/11/2019
 
-- Stubbed in some starting `README` documentation 
+- Stubbed in some starting `README` documentation
 - Added a `technologic:initializer` rails generator for creating a `config/initializer`
 - Added a utility class to convert the default Rails logger into a JSON format
 - Removed the janky autoinclude which didn't play nicely with development server reloading
