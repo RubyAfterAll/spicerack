@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.23.6
+
+*Release Date*: 4/13/2020
+
+### Direcrive - [see changes](directive/CHANGELOG.md#v0236)
+
 ## v0.23.5
 
 *Release Date*: 4/5/2020

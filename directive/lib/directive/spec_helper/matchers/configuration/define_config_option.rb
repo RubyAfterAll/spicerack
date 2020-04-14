@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "spicerack/rspec/custom_matchers/define_option"
+
 module Directive
   module SpecHelper
     module Matchers
