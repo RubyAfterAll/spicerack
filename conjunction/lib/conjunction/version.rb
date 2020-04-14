@@ -2,5 +2,5 @@
 
 module Conjunction
   # This constant is managed by spicerack
-  VERSION = "0.23.5"
+  VERSION = "0.23.6"
 end

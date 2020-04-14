@@ -1,10 +1,16 @@
 # Changelog
 
+## v0.23.6
+
+*Release Date*: 4/13/2020
+
+- No changes
+
 ## v0.23.5
 
 *Release Date*: 4/5/2020
 
-* No changes
+- No changes
 
 ## v0.23.4
 
@@ -16,13 +22,13 @@
 
 *Release Date*: 3/26/2020
 
-* No changes
+- No changes
 
 ## v0.23.2
 
 *Release Date*: 3/20/2020
 
-* No changes
+- No changes
 
 ## v0.23.1.2
 
