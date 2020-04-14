@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.23.7
+
+*Release Date*: 4/14/2020
+
+- No changes
+
 ## v0.23.6
 
 *Release Date*: 4/13/2020
@@ -370,7 +376,7 @@
 
 *Release Date*: 5/19/2019
 
-- Added `Tablesalt::ArrayIndex` 
+- Added `Tablesalt::ArrayIndex`
 
 ## v0.9.2
 

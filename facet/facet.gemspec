@@ -7,8 +7,8 @@ require "facet/version"
 Gem::Specification.new do |spec|
   spec.name          = "facet"
   spec.version       = Facet::VERSION
-  spec.authors       = [ "Eric Garside" ]
-  spec.email         = %w[eric.garside@freshly.com]
+  spec.authors       = [ "Eric Garside", "Brandon Trumpold" ]
+  spec.email         = %w[eric.garside@freshly.com brandon.trumpold@gmail.com]
 
   spec.summary       = "A filterable, sortable, pageable, and Rails cacheable ActiveRecord::Relation"
   spec.description   = "Create cacheable collections of filtered, sorted, and paginated ActiveRecord objects"

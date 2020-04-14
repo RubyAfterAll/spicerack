@@ -1,0 +1,8 @@
+Description:
+    Stub a Facet test.
+
+Example:
+    `rails generate rspec:facet foo`
+
+    Generates:
+      Test: spec/facets/foo_facet_spec.rb
