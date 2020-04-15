@@ -29,11 +29,11 @@ module Directive
             @obj = obj
 
             if obj.is_a? Directive::ConfigObject
-              expect(obj).to define_option option, default: default
+              expect(obj).to define_option option.to_sym, default: default
             else
               expect(obj).to respond_to :config
               expect(obj.config.instance_variable_get(:@config)).to be_present
-              expect(obj.config.instance_variable_get(:@config)).to define_option option, default: default
+              expect(obj.config.instance_variable_get(:@config)).to define_option option.to_sym, default: default
             end
           end
         end
