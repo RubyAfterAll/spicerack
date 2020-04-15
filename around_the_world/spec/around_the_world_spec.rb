@@ -66,7 +66,7 @@ RSpec.describe AroundTheWorld do
     end
 
     context "when called with multiple methods" do
-      let(:wrapped_method_names) { Faker::Lorem.unique.words }
+      let(:wrapped_method_names) { Faker::Lorem.unique.words.uniq }
 
       before do
         wrapped_method_names.each { |name| wrapped_class.define_method(name) {} }
