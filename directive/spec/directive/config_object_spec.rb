@@ -20,14 +20,14 @@ RSpec.describe Directive::ConfigObject do
       end
     end
 
-    it { is_expected.to define_option name, default: default_value }
+    it { is_expected.to define_option name.to_sym, default: default_value }
 
     context "when a reserved word is used" do
       let(:name) { described_class::RESERVED_WORDS.sample.to_s }
 
       it "raises an ArgumentError" do
         expect { config_object_class }.
-          to raise_error ArgumentError, "\"config_eval\" is reserved and cannot be used at a config option"
+          to raise_error ArgumentError, ":#{name} is reserved and cannot be used at a config option"
       end
     end
   end
@@ -75,7 +75,7 @@ RSpec.describe Directive::ConfigObject do
       context "when a nested config is used twice" do
         it "raises an ArgumentError" do
           expect(nested_config_setup).
-            to raise_error ArgumentError, "#{namespace.inspect} is already in use"
+            to raise_error ArgumentError, ":#{namespace} is defined twice"
         end
       end
     end
@@ -85,7 +85,7 @@ RSpec.describe Directive::ConfigObject do
 
       it "raises an ArgumentError" do
         expect(nested_config_setup).
-          to raise_error ArgumentError, "\"config_eval\" is reserved and cannot be used at a config option"
+          to raise_error ArgumentError, ":#{namespace} is reserved and cannot be used at a config option"
       end
     end
   end
