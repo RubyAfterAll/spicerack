@@ -64,6 +64,7 @@ RSpec.describe ExampleConfigurableClass, type: :configuration do
     end
   end
 
+  it { is_expected.to define_config_option("option_without_default") }
   it { is_expected.to define_config_option(:option_without_default) }
   it { is_expected.to define_config_option(:option_with_default, default: "default value") }
   it { is_expected.to define_config_option(:option_with_default_block, default: "default value from block") }
