@@ -69,7 +69,7 @@
 
 *Release Date*: 3/5/2020
 
-### Directive - [see changes](directive/CHANGELOG.md#v0229)
+### Directive - [see changes](directive/CHANGELOG.md#v0229-yanked)
 
 ## v0.22.8
 
