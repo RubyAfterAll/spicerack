@@ -37,6 +37,7 @@ Or install it yourself as:
 * [AroundTheWorld](around_the_world/README.md) allows you to easily wrap methods with custom logic on any class.
 * [Collectible](collectible/README.md) provides an extensible framework for building array-like object collections.
 * [Conjunction](conjunction/README.md) provides a mechanism to loosely coupled a suite of cross-referenced objects.
+* [Directive](directive/README.md) provides a framework for easily building sane gem configuration classes.
 * [Facet](facet/README.md) is a filterable, sortable, pageable, and Rails cacheable `ActiveRecord::Relation`.
 * [RedisHash](redis_hash/README.md) provides a class that matches the Hash api by wrapping Redis.
 * [RSpice](rspice/README.md) is an `RSpec` utility gem of custom matchers, shared contexts and examples.
@@ -120,6 +121,8 @@ To perform release, set the new canonical version in the .4.4`SPICERACK_VERSION`
 ```ruby
 echo "0.1.0" > SPICERACK_VERSION
 rake spicerack:update_all_versions
+rake spicerack:update_all_changelogs
+# Manually add any changes to the necessary changelogs
 git commit -am "Updating to version 0.1.0 for release"
 rake spicerack:release_all
 ```

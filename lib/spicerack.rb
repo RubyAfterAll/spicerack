@@ -21,6 +21,9 @@ require "spicerack/root_object"
 require "spicerack/attribute_object"
 require "spicerack/input_object"
 require "spicerack/input_model"
-require "spicerack/configurable"
+require "spicerack/output_object"
 
-module Spicerack; end
+module Spicerack
+  class Error < StandardError; end
+  class NotValidatedError < Error; end
+end

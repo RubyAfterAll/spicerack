@@ -1,0 +1,5 @@
+# Cop overrides specific to the Service Architecture team
+
+Metrics/LineLength:
+  Enabled: true
+  Max: 120

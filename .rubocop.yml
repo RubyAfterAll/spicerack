@@ -1,1 +1,4 @@
 inherit_from: spicerack-styleguide/rubocop.yml
+
+Style/ConditionalAssignment:
+  Enabled: false

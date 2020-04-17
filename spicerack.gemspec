@@ -18,12 +18,14 @@ Gem::Specification.new do |spec|
     "Allen Rettberg",
     "Jordan Minneti",
     "Aleksei Kharkov",
+    "Brandon Trumpold"
   ]
   spec.email = %w[
     garside@gmail.com
     allen.rettberg@freshly.com
     jordan.minneti@freshly.com
     aliaksei.kharkou@freshly.com
+    brandon.trumpold@gmail.com
   ]
 
   spec.metadata["homepage_uri"] = spec.homepage
@@ -41,8 +43,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency "technologic", version
   spec.add_dependency "tablesalt", version
 
-  spec.add_development_dependency "bundler", "~> 2.0.1"
-  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "bundler", ">= 2.0.1"
+  spec.add_development_dependency "rake", ">= 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "simplecov", "~> 0.16"
   spec.add_development_dependency "faker", ">= 1.8", "< 2.0"

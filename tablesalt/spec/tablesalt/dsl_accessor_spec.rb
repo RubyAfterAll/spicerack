@@ -6,15 +6,19 @@ RSpec.describe Tablesalt::DSLAccessor do
       include spec_context.described_class
     end
   end
+  let(:instance) { including_class.new }
 
-  let(:accessor) { Faker::Lorem.word }
+  let(:accessor) { Faker::Lorem.words(3).join("_").downcase }
+
+  let(:options) { { instance_reader: instance_reader }.compact }
+  let(:instance_reader) { nil }
 
   describe ".dsl_accessor" do
     let(:accessor_name) { Faker::Lorem.words(3).join("_").downcase }
 
     before do
       including_class.instance_exec(self) do |spec_context|
-        dsl_accessor spec_context.accessor
+        dsl_accessor spec_context.accessor, **spec_context.options
       end
     end
 
@@ -31,21 +35,21 @@ RSpec.describe Tablesalt::DSLAccessor do
 
       before do
         including_class.instance_exec(self) do |spec_context|
-          spec_context.accessors.each do |accessor|
-            dsl_accessor accessor
+          spec_context.accessors.each do |attr|
+            dsl_accessor attr
           end
         end
       end
 
       it "does not define a public method for each argument" do
-        accessors.each do |accessor|
-          expect { including_class.public_send(accessor) }.to raise_error NoMethodError
+        accessors.each do |attr|
+          expect { including_class.public_send(attr) }.to raise_error NoMethodError
         end
       end
 
       it "defines a private method for each argument" do
-        accessors.each do |accessor|
-          expect { including_class.__send__(accessor) }.not_to raise_error NoMethodError
+        accessors.each do |attr|
+          expect { including_class.__send__(attr, Faker::Lorem) }.not_to raise_error
         end
       end
     end
@@ -112,6 +116,40 @@ RSpec.describe Tablesalt::DSLAccessor do
           it "raises" do
             expect { dsl }.to raise_error ArgumentError, "wrong number of arguments (given #{args.size}, expected 0)"
           end
+        end
+      end
+    end
+
+    describe "instance reader" do
+      subject(:reader) { instance.__send__(accessor) }
+
+      let(:dsl_value) { Faker::ChuckNorris.fact }
+
+      before { including_class.__send__(accessor, dsl_value) }
+
+      context "when instance_reader option is nil" do
+        let(:instance_reader) { nil }
+
+        it "doesn't defines a reader on the instance" do
+          expect { reader }.to raise_error NoMethodError
+        end
+      end
+
+      context "when instance_reader option is false" do
+        let(:instance_reader) { false }
+
+        it "doesn't defines a reader on the instance" do
+          expect { reader }.to raise_error NoMethodError
+        end
+      end
+
+      context "when instance_reader option is true" do
+        let(:instance_reader) { true }
+
+        it { is_expected.to eq dsl_value }
+
+        it "defines a private instance method" do
+          expect { instance.public_send(accessor) }.to raise_error NoMethodError
         end
       end
     end

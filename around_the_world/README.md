@@ -40,12 +40,20 @@ Define a method that gets called _around_ the given instance method:
 class SomeClass
   include AroundTheWorld
 
-  def did_something_happened?
-    true
+  def make_something_happen!
+    @something_happened = true
   end
-
-  around_method :did_something_happened? do |*args|
+  
+  def did_something_happened?
+    !!@something_happened
+  end
+  
+  around_method :make_something_happen!, :did_something_happened? do |*args| # use |...| for ruby 2.7+
+    # For Ruby <= 2.6:
     things_happened = super(*args)
+    
+    #Or, for Ruby <= 2.7:
+    things_happened = super(...)
 
     if things_happened
       "Something happened!"
@@ -57,6 +65,12 @@ end
 ```
 
 ```
+> SomeClass.new.did_something_happened?
+=> "Nothing to see here..."
+
+> SomeClass.new.make_something_happen!
+=> "Something happened!"
+
 > SomeClass.new.did_something_happened?
 => "Something happened!"
 ```
@@ -72,12 +86,12 @@ class SomeClass
     "method behavior"
   end
 
-  around_method :some_method, prevent_double_wrapping_for: :memoization do |*args|
-    @memoized ||= super(*args)
+  around_method :some_method, prevent_double_wrapping_for: :memoization do |...|
+    @memoized ||= super(...)
   end
 
-  around_method :some_method, prevent_double_wrapping_for: :memoization do |*args|
-    @memoized ||= super(*args)
+  around_method :some_method, prevent_double_wrapping_for: :memoization do |...|
+    @memoized ||= super(...)
   end
 end
 ```
@@ -98,8 +112,8 @@ class SomeClass
 
     def a_singleton_method; end
 
-    around_method :a_singleton_method do |*args|
-      super(*args)
+    around_method :a_singleton_method do |...|
+      super(...) # See above for ruby <= 2.6 syntax
 
       "It works for class methods too!"
     end

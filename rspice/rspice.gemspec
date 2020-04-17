@@ -35,5 +35,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = "lib"
 
   spec.add_dependency "rspec", "~> 3.0"
-  spec.add_dependency "faker", ">= 1.8", "< 2.0"
+  spec.add_dependency "faker", ">= 1.8", "< 3.0"
 end

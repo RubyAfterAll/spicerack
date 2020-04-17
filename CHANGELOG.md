@@ -1,5 +1,186 @@
 # Changelog
 
+## Upcoming
+
+### Directive - [see changes](directive/CHANGELOG.md#Upcoming)
+
+## v0.23.7
+
+*Release Date*: 4/14/2020
+
+### Facet - [see changes](facet/CHANGELOG.md#v0237)
+
+## v0.23.6
+
+*Release Date*: 4/13/2020
+
+### Directive - [see changes](directive/CHANGELOG.md#v0236)
+
+## v0.23.5
+
+*Release Date*: 4/5/2020
+
+### RSpice - [see changes](rspice/CHANGELOG.md#v0235)
+### ShortCircuIt - [see changes](short_circu_it/CHANGELOG.md#v0235)
+
+## v0.23.4
+
+*Release Date*: 3/27/2020
+
+### AroundTheWorld - [see changes](around_the_world/CHANGELOG.md#v0234)
+
+## v0.23.3
+
+*Release Date*: 3/26/2020
+
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0233)
+
+## v0.23.2
+
+*Release Date*: 3/20/2020
+
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0232)
+
+## v0.23.1.2
+
+*Release Date*: 3/10/2020
+
+### Conjunction - [see changes](conjunction/CHANGELOG.md#v02312)
+
+## v0.23.1.1
+
+*Release Date*: 3/6/2020
+
+- Remove Spicerack::Configurable as planned for 0.23.0 ([#379](https://github.com/Freshly/spicerack/pull/379))
+
+## v0.23.1
+
+*Release Date*: 3/6/2020
+
+### Directive - [see changes](directive/CHANGELOG.md#v0231-yanked)
+
+## v0.23.0  [Yanked]
+
+*Release Date*: 3/5/2020
+
+- Remove Directive from spicerack bundle ([#376](https://github.com/Freshly/spicerack/pull/376))
+
+## v0.22.9  [Yanked]
+
+*Release Date*: 3/5/2020
+
+### Directive - [see changes](directive/CHANGELOG.md#v0229-yanked)
+
+## v0.22.8
+
+*Release Date*: 3/5/2020
+
+### Technologic - [see changes](technologic/CHANGELOG.md#v0228)
+
+## v0.22.7
+
+*Release Date*: 3/2/2020
+
+- Don't dup classes and modules on `ArrayIndex#freeze` ([#369](https://github.com/Freshly/spicerack/pull/369))
+
+## v0.22.6
+
+*Release Date*: 2/29/2020
+
+- Add missing require statement in `ArrayIndex` ([#367](https://github.com/Freshly/spicerack/pull/367))
+
+## v0.22.5 [Yanked]
+
+*Release Date*: 2/29/2020
+
+- `Spicerack::ArrayIndex`: Fix missing require statement, make constructor parameters more flexible ([#364](https://github.com/Freshly/spicerack/pull/364))
+
+## v0.22.4
+
+*Release Date*: 2/25/2020
+
+### AroundTheWorld - [see changes](around_the_world/CHANGELOG.md#v0224)
+
+## v0.22.3.1
+
+*Release Date*: 2/5/2020
+
+### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v02231)
+
+## v0.22.3 [Yanked]
+
+*Release Date*: 2/5/2020
+
+### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0223)
+
+## v0.22.2
+
+*Release Date*: 1/28/2020
+
+- Remove all references to `Spicerack::Configurable` except deprecation support
+
+### Conjunction - [see changes](conjunction/CHANGELOG.md#v0222)
+
+## v0.22.1 [Yanked]
+
+*Release Date*: 1/28/2020
+
+### Conjunction - [see changes](conjunction/CHANGELOG.md#v0221)
+
+## v0.22.0
+
+*Release Date*: 1/28/2020
+
+- Deprecated `Spicerack::Configurable`, to be replaced by `Directive` ([#344](https://github.com/Freshly/spicerack/pull/344))
+
+### Directive - [see changes](directive/CHANGELOG.md#v0220)
+### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0220)
+### Technologic - [see changes](technologic/CHANGELOG.md#v0220)
+
+## v0.21.0
+
+*Release Date*: 1/10/2020
+
+### Conjunction - [see changes](conjunction/CHANGELOG.md#v0210)
+### Spicery - [see changes](spicery/CHANGELOG.md#v0210)
+
+- Add `.to_h` method to AttributeObjects ([#326](https://github.com/Freshly/spicerack/pull/326))
+- Improve failure message for `define_config_option` matcher ([#327](https://github.com/Freshly/spicerack/pull/327))
+- Fix unintentionally committed `StatefulObject` ([#334](https://github.com/Freshly/spicerack/pull/334))
+- Rename `StatefulObject` to `OutputObject` ([#335](https://github.com/Freshly/spicerack/pull/335))
+
+## v0.20.4 [Yanked]
+
+*Release Date*: 1/8/2020
+
+## v0.20.3 [Yanked]
+
+*Release Date*: 1/8/2020
+
+## v0.20.2
+
+*Release Date*: 1/6/2020
+
+### Rspice - [see changes](rspice/CHANGELOG.md#v0202)
+
+## v0.20.1 [Yanked]
+
+*Release Date*: 1/6/2020
+
+### Rspice - [see changes](rspice/CHANGELOG.md#v0201)
+
+## 0.20.0.1
+
+*Release Date*: 1/3/2020
+
+- Add missing require statement
+
+## 0.20.0
+
+*Release Date*: 1/3/2020
+
+- Add callback support to Configurable, add `configure` callback event ([#318](https://github.com/Freshly/spicerack/pull/318)), ([#320](https://github.com/Freshly/spicerack/pull/320)), ([#321](https://github.com/Freshly/spicerack/pull/321))
+
 ## v0.19.3
 
 *Release Date*: 12/16/2019
