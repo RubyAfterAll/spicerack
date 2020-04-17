@@ -27,6 +27,7 @@ module Collectible
         yield
       end
 
+      # rubocop:disable Metrics/BlockLength
       class_methods do
         private
 
@@ -68,6 +69,7 @@ module Collectible
           end
         end
       end
+      # rubocop:enable Metrics/BlockLength
     end
   end
 end
