@@ -3,6 +3,7 @@
 ## Upcoming
 
 - Remove redundant/inefficient `to_sym` calls ([#401](https://github.com/Freshly/spicerack/pull/401))
+- Improve `define_config_option` matcher ([#402](https://github.com/Freshly/spicerack/pull/402))
 
 ## v0.23.7
 
