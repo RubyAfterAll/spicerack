@@ -1,6 +1,8 @@
 # Changelog
 
-## Upcoming
+## v0.23.8
+
+*Release Date*: 6/9/2020
 
 ### Directive - [see changes](directive/CHANGELOG.md#Upcoming)
 
