@@ -17,19 +17,15 @@ module Directive
     attr_reader :config
 
     def method_missing(method_name, *)
-      name = method_name.to_sym
-
-      return mutex.synchronize { config.public_send(name) } if config._options.map(&:to_sym).include?(name)
-      return config._nested_builders[name].reader if config._nested_builders.key?(name)
+      return mutex.synchronize { config.public_send(method_name) } if config._options.include?(method_name)
+      return config._nested_builders[method_name].reader if config._nested_builders.key?(method_name)
 
       super
     end
 
     def respond_to_missing?(method_name, *)
-      name = method_name.to_sym
-
-      config._options.map(&:to_sym).include?(name) ||
-        config._nested_builders.key?(name) ||
+      config._options.include?(method_name) ||
+        config._nested_builders.key?(method_name) ||
         super
     end
 

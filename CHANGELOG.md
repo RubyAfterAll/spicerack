@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.23.8
+
+*Release Date*: 6/9/2020
+
+### Directive - [see changes](directive/CHANGELOG.md#Upcoming)
+
 ## v0.23.7
 
 *Release Date*: 4/14/2020
@@ -10,7 +16,7 @@
 
 *Release Date*: 4/13/2020
 
-### Direcrive - [see changes](directive/CHANGELOG.md#v0236)
+### Directive - [see changes](directive/CHANGELOG.md#v0236)
 
 ## v0.23.5
 
@@ -53,7 +59,7 @@
 
 *Release Date*: 3/6/2020
 
-### Directive - [see changes](directive/CHANGELOG.md#v0231)
+### Directive - [see changes](directive/CHANGELOG.md#v0231-yanked)
 
 ## v0.23.0  [Yanked]
 
@@ -65,7 +71,7 @@
 
 *Release Date*: 3/5/2020
 
-### Directive - [see changes](directive/CHANGELOG.md#v0229)
+### Directive - [see changes](directive/CHANGELOG.md#v0229-yanked)
 
 ## v0.22.8
 
