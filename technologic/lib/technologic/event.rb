@@ -16,7 +16,7 @@ module Technologic
       {}.tap do |hash|
         hash.merge!(@payload)
         hash[:event] = name
-        hash[:duration] = duration if duration.round > 0
+        hash[:duration] = duration
       end
     end
     memoize :data

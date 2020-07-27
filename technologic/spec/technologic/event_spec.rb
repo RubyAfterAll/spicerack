@@ -21,7 +21,7 @@ RSpec.describe Technologic::Event do
     shared_examples_for "expected data is returned" do
       subject { event.data }
 
-      let(:expected_base_data) { payload.merge(event: name) }
+      let(:expected_base_data) { payload.merge(event: name, duration: finished - started) }
 
       it { is_expected.to eq expected_data }
     end
@@ -36,7 +36,7 @@ RSpec.describe Technologic::Event do
 
     context "when rounded duration is greater than 0" do
       it_behaves_like "expected data is returned" do
-        let(:expected_data) { expected_base_data.merge(duration: finished - started) }
+        let(:expected_data) { expected_base_data }
       end
     end
   end
