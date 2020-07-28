@@ -4,6 +4,8 @@ module Technologic
   class Event
     include ShortCircuIt
 
+    LOGGABLE_DURATION_THRESHOLD_MS = 0.01
+
     attr_reader :name, :duration
 
     def initialize(name, started, finished, payload)
@@ -18,7 +20,7 @@ module Technologic
       {}.tap do |hash|
         hash.merge!(@payload)
         hash[:event] = name
-        hash[:duration] = ConfigOptions.log_duration_in_ms ? duration_in_ms : duration if duration_in_ms.round(1) > 0
+        hash[:duration] = ConfigOptions.log_duration_in_ms ? duration_in_ms : duration if duration_in_ms > LOGGABLE_DURATION_THRESHOLD_MS
       end
     end
     memoize :data
