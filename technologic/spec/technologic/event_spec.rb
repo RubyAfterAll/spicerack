@@ -18,25 +18,55 @@ RSpec.describe Technologic::Event do
   end
 
   describe "#data" do
+    before { Technologic::ConfigOptions.log_duration_in_ms = log_duration_in_ms }
+
     shared_examples_for "expected data is returned" do
       subject { event.data }
 
-      let(:expected_base_data) { payload.merge(event: name) }
+      let(:expected_base_data) { payload.merge(event: name, duration: duration) }
 
       it { is_expected.to eq expected_data }
     end
 
-    context "when rounded duration is 0" do
-      let(:finished) { started + (rand * 0.5) }
+    context "when log_duration_in_ms is false" do
+      let(:log_duration_in_ms) { false }
+      let(:duration) { finished - started }
 
-      it_behaves_like "expected data is returned" do
-        let(:expected_data) { expected_base_data }
+      context "when rounded duration is under threshold" do
+        let(:finished) { started + rand(0...0.00004) }
+
+        it_behaves_like "expected data is returned" do
+          let(:expected_data) { expected_base_data.except(:duration) }
+        end
+      end
+
+      context "when rounded duration is above threshold" do
+        let(:finished) { started + rand(0.00004...0.00009) }
+
+        it_behaves_like "expected data is returned" do
+          let(:expected_data) { expected_base_data }
+        end
       end
     end
 
-    context "when rounded duration is greater than 0" do
-      it_behaves_like "expected data is returned" do
-        let(:expected_data) { expected_base_data.merge(duration: finished - started) }
+    context "when log_duration_in_ms is true" do
+      let(:log_duration_in_ms) { true }
+      let(:duration) { (finished - started) * 1000 }
+
+      context "when rounded duration is under threshold" do
+        let(:finished) { started + rand(0...0.00004) }
+
+        it_behaves_like "expected data is returned" do
+          let(:expected_data) { expected_base_data.except(:duration) }
+        end
+      end
+
+      context "when rounded duration is above threshold" do
+        let(:finished) { started + rand(0.00004...0.00009) }
+
+        it_behaves_like "expected data is returned" do
+          let(:expected_data) { expected_base_data }
+        end
       end
     end
   end

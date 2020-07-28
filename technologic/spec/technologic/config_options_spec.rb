@@ -57,4 +57,8 @@ RSpec.describe Technologic::ConfigOptions do
   describe ".log_debug_events" do
     it_behaves_like "a config option", :log_debug_events
   end
+
+  describe ".log_duration_in_ms" do
+    it_behaves_like "a config option", :log_duration_in_ms, false
+  end
 end

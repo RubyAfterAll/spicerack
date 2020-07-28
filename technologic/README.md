@@ -53,6 +53,40 @@ error :email_for_user_does_not_exist, user_id: @user.email
 fatal :it_is_going_to_be_a_long_day, need_to_know: info_dump
 ```
 
+If given a block, these methods will include the runtime duration of the given block after the code is evaluated:
+```ruby
+info :something_happening_in_here, extra_data: "I really need this data" do
+  sleep 0.5
+  puts "Important things happening here!"
+end
+
+# Results in:
+
+Important things happening here!
+{"extra_data":"I really need this data","event":"something_happening_in_here.Object","duration":503.745,"@timestamp":"2020-07-27T20:05:06.355-04:00","@version":"1","severity":"INFO","host":"localhost"}
+```
+
+### Configuration
+
+_TODO: Improve me_
+
+* `log_duration_in_ms` - Boolean; default: false
+  
+  By default, Technologic will log duration as a float in seconds. To log duration as milliseconds instead, set it in your application config:
+    
+  ```ruby
+  # Rails app - in application.rb
+  Rails.application.configure do |config|
+    ...
+    technologic.log_duration_in_ms = true
+  end
+  
+  # For a plain ol' Ruby app with no Railties:
+  Technologic::ConfigOptions.log_duration_in_ms = true
+  ```
+  
+  **NOTE:** In a future version of Technologic, the default will change from `false` to `true`
+
 ## Development
 
 Consult Spicerack's [development instructions](../README.md#development) for more info.

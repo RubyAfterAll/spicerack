@@ -1,10 +1,16 @@
 # Changelog
 
+## v0.24.0
+
+*Release Date*: 7/28/2020
+
+### Technologic - [see changes](technologic/CHANGELOG.md#v0.24.0)
+
 ## v0.23.8
 
 *Release Date*: 6/9/2020
 
-### Directive - [see changes](directive/CHANGELOG.md#Upcoming)
+### Directive - [see changes](directive/CHANGELOG.md#v0.23.8)
 
 ## v0.23.7
 
