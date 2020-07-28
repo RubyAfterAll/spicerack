@@ -23,9 +23,9 @@ module Technologic
     # TODO: Remove with duration-as-seconds deprecation
     class << self
       around_method :log_duration_in_ms= do |*args|
-        super(*args)
-
-        @_log_duration_in_ms_set_explicitly = true
+        super(*args).tap do
+          @_log_duration_in_ms_set_explicitly = true
+        end
       end
 
       private
