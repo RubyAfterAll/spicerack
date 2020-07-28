@@ -8,6 +8,7 @@ module Technologic
 
         setup_subscribers(technologic_config)
         setup_loggers(technologic_config)
+        warn_duration_unit_not_set(technologic_config)
       end
 
       private
@@ -26,6 +27,12 @@ module Technologic
         Technologic::WarnSubscriber.on_event { |e| Technologic::Logger.log(:warn, e) } if config.log_warn_events
         Technologic::InfoSubscriber.on_event { |e| Technologic::Logger.log(:info, e) } if config.log_info_events
         Technologic::DebugSubscriber.on_event { |e| Technologic::Logger.log(:debug, e) } if config.log_debug_events
+      end
+
+      def warn_duration_unit_not_set(config)
+        return if config.__send__(:log_duration_in_ms_set_explicitly?)
+
+        warn "WARNING: Technologic.log_duration_in_ms is not set. In a future version of Technologic, the default value will change from false to true. To maintain existing behavior, set `application.config.technologic.log_duration_in_ms = false` explicitly."
       end
     end
   end
