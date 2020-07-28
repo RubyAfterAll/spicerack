@@ -33,7 +33,7 @@ RSpec.describe Technologic::Event do
       let(:duration) { finished - started }
 
       context "when rounded duration is under threshold" do
-        let(:finished) { started + rand(0...0.00001) }
+        let(:finished) { started + rand(0...0.00004) }
 
         it_behaves_like "expected data is returned" do
           let(:expected_data) { expected_base_data.except(:duration) }
@@ -41,7 +41,7 @@ RSpec.describe Technologic::Event do
       end
 
       context "when rounded duration is above threshold" do
-        let(:finished) { started + rand(0.00001...0.00009) }
+        let(:finished) { started + rand(0.00004...0.00009) }
 
         it_behaves_like "expected data is returned" do
           let(:expected_data) { expected_base_data }
@@ -54,7 +54,7 @@ RSpec.describe Technologic::Event do
       let(:duration) { (finished - started) * 1000 }
 
       context "when rounded duration is under threshold" do
-        let(:finished) { started + rand(0...0.00001) }
+        let(:finished) { started + rand(0...0.00004) }
 
         it_behaves_like "expected data is returned" do
           let(:expected_data) { expected_base_data.except(:duration) }
@@ -62,7 +62,7 @@ RSpec.describe Technologic::Event do
       end
 
       context "when rounded duration is above threshold" do
-        let(:finished) { started + rand(0.00001...0.00009) }
+        let(:finished) { started + rand(0.00004...0.00009) }
 
         it_behaves_like "expected data is returned" do
           let(:expected_data) { expected_base_data }

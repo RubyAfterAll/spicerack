@@ -4,7 +4,7 @@ module Technologic
   class Event
     include ShortCircuIt
 
-    LOGGABLE_DURATION_THRESHOLD_MS = 0.01
+    LOGGABLE_DURATION_THRESHOLD_MS = 0.04
 
     attr_reader :name, :duration
 
