@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.24.0
+
+*Release Date*: 7/28/2020
+
+- Add `log_duration_in_ms` config option ([#409](https://github.com/Freshly/spicerack/pull/409))
+- Log duration if > 0.04 ms instead of 1 second ([#409](https://github.com/Freshly/spicerack/pull/409))
+
 ## v0.23.8
 
 *Release Date*: 6/9/2020
