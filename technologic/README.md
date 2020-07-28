@@ -76,7 +76,7 @@ _TODO: Improve me_
     
   ```ruby
   # Rails app - in application.rb
-  Application.configure do |config
+  Rails.application.configure do |config|
     ...
     technologic.log_duration_in_ms = true
   end
