@@ -2,7 +2,7 @@
 
 RSpec.describe Technologic::Setup do
   let(:application) { double(config: double(technologic: config)) } # rubocop:disable RSpec/VerifiedDoubles
-  let(:config) { instance_double(Technologic::ConfigOptions) }
+  let(:config) { class_double(Technologic::ConfigOptions) }
 
   describe ".for" do
     subject(:for_application) { described_class.for(application) }
@@ -10,6 +10,7 @@ RSpec.describe Technologic::Setup do
     before do
       allow(described_class).to receive(:setup_subscribers)
       allow(described_class).to receive(:setup_loggers)
+      allow(config).to receive(:log_duration_in_ms_set_explicitly?).and_return(true)
     end
 
     it "calls constituent methods with the given config" do
