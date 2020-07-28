@@ -60,6 +60,8 @@ info :something_happening_in_here, extra_data: "I really need this data" do
   puts "Important things happening here!"
 end
 
+# Results in:
+
 Important things happening here!
 {"extra_data":"I really need this data","event":"something_happening_in_here.Object","duration":503.745,"@timestamp":"2020-07-27T20:05:06.355-04:00","@version":"1","severity":"INFO","host":"localhost"}
 ```
