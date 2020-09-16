@@ -2,7 +2,7 @@
 
 ## Upcoming
 
-- Fix NameError caused by a recent version of Faker
+- Fix NameError caused by a recent version of Faker ([#414](https://github.com/Freshly/spicerack/pull/414))
 
 ## v0.24.0
 
