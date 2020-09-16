@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+
+### RSpice - [see changes](rspice/CHANGELOG.md#Upcoming)
+
 ## v0.24.0
 
 *Release Date*: 7/28/2020
