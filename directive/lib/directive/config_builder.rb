@@ -27,12 +27,12 @@ module Directive
     end
 
     # NOTE: options must be set up before {#configure} is called
-    def option(*args, &block)
-      config_class.__send__(:option, *args, &block)
+    def option(*args, **kwargs, &block)
+      config_class.__send__(:option, *args, **kwargs, &block)
     end
 
-    def nested(*args, &block)
-      config_class.__send__(:nested, *args, &block)
+    def nested(namespace, &block)
+      config_class.__send__(:nested, namespace, &block)
     end
 
     private
