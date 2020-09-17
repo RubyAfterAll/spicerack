@@ -1,6 +1,8 @@
 # Changelog
 
-## Upcoming
+## v0.24.1
+
+*Release Date*: 7/28/2020
 
 - Fix NameError caused by a recent version of Faker ([#414](https://github.com/Freshly/spicerack/pull/414))
 

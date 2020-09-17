@@ -1,6 +1,8 @@
 # Changelog
 
-## Upcoming
+## v0.24.1
+
+*Release Date*: 7/28/2020
 
 ### Directive - [see changes](directive/CHANGELOG.md#Upcoming)
 ### RedisHash - [see changes](redis_hash/CHANGELOG.md#Upcoming)

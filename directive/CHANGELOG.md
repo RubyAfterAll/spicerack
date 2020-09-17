@@ -1,6 +1,8 @@
 # Changelog
 
-## Upcoming
+## v0.24.1
+
+*Release Date*: 9/16/2020
 
 - Pass explicit kwargs to silence 2.7 warnings ([#415](https://github.com/Freshly/spicerack/pull/415))
 
