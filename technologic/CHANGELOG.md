@@ -1,5 +1,66 @@
 # Changelog
 
+## v0.24.1
+
+*Release Date*: 9/16/2020
+
+- No changes
+
+## v0.24.0
+
+*Release Date*: 7/28/2020
+
+- Add `log_duration_in_ms` config option ([#409](https://github.com/Freshly/spicerack/pull/409))
+- Log duration if > 0.04 ms instead of 1 second ([#409](https://github.com/Freshly/spicerack/pull/409))
+
+## v0.23.8
+
+*Release Date*: 6/9/2020
+
+- No changes
+
+## v0.23.7
+
+*Release Date*: 4/14/2020
+
+- No changes
+
+## v0.23.6
+
+*Release Date*: 4/13/2020
+
+- No changes
+
+## v0.23.5
+
+*Release Date*: 4/5/2020
+
+- No changes
+
+## v0.23.4
+
+*Release Date*: 3/27/2020
+
+- No changes
+
+## v0.23.3
+
+*Release Date*: 3/26/2020
+
+- No changes
+
+## v0.23.2
+
+*Release Date*: 3/20/2020
+
+- No changes
+
+## v0.23.1.2
+
+*Release Date*: 3/10/2020
+
+- No changes
+
 ## v0.23.1.1
 
 *Release Date*: 3/6/2020
@@ -414,7 +475,7 @@
 
 *Release Date*: 4/11/2019
 
-- Stubbed in some starting `README` documentation 
+- Stubbed in some starting `README` documentation
 - Added a `technologic:initializer` rails generator for creating a `config/initializer`
 - Added a utility class to convert the default Rails logger into a JSON format
 - Removed the janky autoinclude which didn't play nicely with development server reloading

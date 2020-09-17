@@ -527,12 +527,12 @@ This now gives the `Presenter` junction enough information to know that it's nam
 ApplicationPresenter.junction_key # => presenter
 ```
 
-You can also use `suffixed_with` if you want to do namespaces instead, ex:
+You can also use `prefixed_with` if you want to do namespaces instead, ex:
 
 ```ruby
 class ApplicationFleeb
   include Conjunction::Junction
-  suffixed_with "Grundus::Fleeb::"
+  prefixed_with "Grundus::Fleeb::"
 end
 ```
 

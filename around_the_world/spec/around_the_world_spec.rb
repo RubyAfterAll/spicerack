@@ -5,6 +5,7 @@ RSpec.describe AroundTheWorld do
   let(:allow_undefined_method) { false }
   let(:proxy_module) { wrapped_class.ancestors.find { |mod| mod.is_a?(described_class::ProxyModule) } }
   let(:wrapped_method_name) { :sample_method }
+  let(:wrapped_method_names) { [ wrapped_method_name ] }
   let(:private_method_name) { :some_private_method }
   let(:wrapped_method_return_value) { Faker::Hipster.sentence }
   let(:wrapped_instance) { wrapped_class.new }
@@ -29,7 +30,7 @@ RSpec.describe AroundTheWorld do
   let(:wrap_method) do
     wrapped_class.__send__(
       :around_method,
-      wrapped_method_name,
+      *wrapped_method_names,
       prevent_double_wrapping_for: prevent_double_wrapping_purpose,
       allow_undefined_method: allow_undefined_method,
       &wrapper_proc
@@ -44,6 +45,42 @@ RSpec.describe AroundTheWorld do
     subject(:around) { wrap_method }
 
     let(:wrapper_proc) { -> {} }
+    let(:expected_method_wrapper_kwargs) do
+      {
+        target: wrapped_class,
+        prevent_double_wrapping_for: prevent_double_wrapping_purpose,
+        allow_undefined_method: allow_undefined_method,
+      }
+    end
+
+    before { allow(AroundTheWorld::MethodWrapper).to receive(:wrap).and_call_original }
+
+    context "when called with a single method" do
+      before { around }
+
+      it "calls MethodWrapper with the expected arguments" do
+        expect(AroundTheWorld::MethodWrapper).
+          to have_received(:wrap).
+          with(method_name: wrapped_method_name, **expected_method_wrapper_kwargs, &wrapper_proc)
+      end
+    end
+
+    context "when called with multiple methods" do
+      let(:wrapped_method_names) { Faker::Lorem.unique.words.uniq }
+
+      before do
+        wrapped_method_names.each { |name| wrapped_class.define_method(name) {} }
+        around
+      end
+
+      it "calls MethodWrapper with the expected arguments" do
+        wrapped_method_names.each do |method_name|
+          expect(AroundTheWorld::MethodWrapper).
+            to have_received(:wrap).
+            with(method_name: method_name, **expected_method_wrapper_kwargs, &wrapper_proc)
+        end
+      end
+    end
 
     context "when the target does not define the wrapped method" do
       before { wrapped_class.undef_method(wrapped_method_name) }

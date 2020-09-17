@@ -1,6 +1,70 @@
 # Changelog
 
+## v0.24.1
+
+*Release Date*: 7/28/2020
+
+### Directive - [see changes](directive/CHANGELOG.md#Upcoming)
+### RedisHash - [see changes](redis_hash/CHANGELOG.md#Upcoming)
+### RSpice - [see changes](rspice/CHANGELOG.md#Upcoming)
+
+## v0.24.0
+
+*Release Date*: 7/28/2020
+
+### Technologic - [see changes](technologic/CHANGELOG.md#v0.24.0)
+
+## v0.23.8
+
+*Release Date*: 6/9/2020
+
+### Directive - [see changes](directive/CHANGELOG.md#v0.23.8)
+
+## v0.23.7
+
+*Release Date*: 4/14/2020
+
+### Facet - [see changes](facet/CHANGELOG.md#v0237)
+
+## v0.23.6
+
+*Release Date*: 4/13/2020
+
+### Directive - [see changes](directive/CHANGELOG.md#v0236)
+
+## v0.23.5
+
+*Release Date*: 4/5/2020
+
+### RSpice - [see changes](rspice/CHANGELOG.md#v0235)
+### ShortCircuIt - [see changes](short_circu_it/CHANGELOG.md#v0235)
+
+## v0.23.4
+
+*Release Date*: 3/27/2020
+
+### AroundTheWorld - [see changes](around_the_world/CHANGELOG.md#v0234)
+
+## v0.23.3
+
+*Release Date*: 3/26/2020
+
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0233)
+
+## v0.23.2
+
+*Release Date*: 3/20/2020
+
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0232)
+
+## v0.23.1.2
+
+*Release Date*: 3/10/2020
+
+### Conjunction - [see changes](conjunction/CHANGELOG.md#v02312)
+
 ## v0.23.1.1
+
 *Release Date*: 3/6/2020
 
 - Remove Spicerack::Configurable as planned for 0.23.0 ([#379](https://github.com/Freshly/spicerack/pull/379))
@@ -9,7 +73,7 @@
 
 *Release Date*: 3/6/2020
 
-### Directive - [see changes](directive/CHANGELOG.md#v0231)
+### Directive - [see changes](directive/CHANGELOG.md#v0231-yanked)
 
 ## v0.23.0  [Yanked]
 
@@ -21,7 +85,7 @@
 
 *Release Date*: 3/5/2020
 
-### Directive - [see changes](directive/CHANGELOG.md#v0229)
+### Directive - [see changes](directive/CHANGELOG.md#v0229-yanked)
 
 ## v0.22.8
 

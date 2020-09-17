@@ -1,5 +1,65 @@
 # Changelog
 
+## v0.24.1
+
+*Release Date*: 7/28/2020
+
+- Kill a 2.7 kwargs warning ([#416](https://github.com/Freshly/spicerack/pull/416))
+
+## v0.24.0
+
+*Release Date*: 7/28/2020
+
+- No changes
+
+## v0.23.8
+
+*Release Date*: 6/9/2020
+
+- No changes
+
+## v0.23.7
+
+*Release Date*: 4/14/2020
+
+- No changes
+
+## v0.23.6
+
+*Release Date*: 4/13/2020
+
+- No changes
+
+## v0.23.5
+
+*Release Date*: 4/5/2020
+
+- No changes
+
+## v0.23.4
+
+*Release Date*: 3/27/2020
+
+- No changes
+
+## v0.23.3
+
+*Release Date*: 3/26/2020
+
+- No changes
+
+## v0.23.2
+
+*Release Date*: 3/20/2020
+
+- No changes
+
+## v0.23.1.2
+
+*Release Date*: 3/10/2020
+
+- No changes
+
 ## v0.23.1.1
 
 *Release Date*: 3/6/2020

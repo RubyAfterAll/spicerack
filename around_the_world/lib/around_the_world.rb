@@ -23,9 +23,13 @@ module AroundTheWorld
     #
     # @example
     #   class SomeClass
-    #     around_method :dont_look_in_here do |*args, **opts|
-    #       things_happened = super(*args, **opts)
-    #
+    #     around_method :make_something_happen!, :did_something_happened? do |*args| # use |...| for ruby 2.7+
+    #       # For Ruby <= 2.6:
+    #       things_happened = super(*args)
+
+    #       #Or, for Ruby <= 2.7:
+    #       things_happened = super(...)
+
     #       if things_happened
     #         "Something happened!"
     #       else
@@ -42,19 +46,19 @@ module AroundTheWorld
     #   => "Something happened!"
     #
     # @example
-    #   around_method :dont_look_in_here, prevent_double_wrapping_for: :memoization do |*args, **opts|
-    #     @memoized ||= super(*args, **opts)
+    #   around_method :dont_look_in_here, prevent_double_wrapping_for: :memoization do |...|
+    #     @memoized ||= super(...)
     #   end
     #
-    #   around_method :dont_look_in_here, prevent_double_wrapping_for: :memoization do |*args, **opts|
-    #     @memoized ||= super(*args, **opts)
+    #   around_method :dont_look_in_here, prevent_double_wrapping_for: :memoization do |...|
+    #     @memoized ||= super(...)
     #   end
     #   # => AroundTheWorld::DoubleWrapError:
     #          "Module AroundTheWorld:ProxyModule:memoization already defines the method :dont_look_in_here"
     #
-    #   around_method :dont_look_in_here do |*args, **opts|
+    #   around_method :dont_look_in_here do |...|
     #     do_something_else
-    #     super(*args, **opts)
+    #     super(...)
     #   end
     #   # => no error raised
     #
@@ -65,8 +69,8 @@ module AroundTheWorld
     #     class << self
     #       def a_singleton_method; end
     #
-    #       around_method :a_singleton_method do |*args, **opts|
-    #         super(*args, **opts)
+    #       around_method :a_singleton_method do |...|
+    #         super(...)
     #         "It works for class methods too!"
     #       end
     #     end
@@ -76,19 +80,21 @@ module AroundTheWorld
     #   => "It works for class methods too!"
     #
     # @api public
-    # @param method_name [Symbol]
+    # @param method_names [Array<Symbol, String>] A list of methods to be wrapped
     # @param :prevent_double_wrapping_for [Object]
     #   If defined, this prevents wrapping the method twice for a given purpose. Accepts any argument.
     # @param :allow_undefined_method [Boolean] When false, an error is raised if the wrapped method is not
     #   explicitly defined by the target module or class. Default: false
-    def around_method(method_name, prevent_double_wrapping_for: nil, allow_undefined_method: false, &block)
-      MethodWrapper.wrap(
-        method_name: method_name,
-        target: self,
-        prevent_double_wrapping_for: prevent_double_wrapping_for,
-        allow_undefined_method: allow_undefined_method,
-        &block
-      )
+    def around_method(*method_names, prevent_double_wrapping_for: nil, allow_undefined_method: false, &block)
+      method_names.each do |method_name|
+        MethodWrapper.wrap(
+          method_name: method_name,
+          target: self,
+          prevent_double_wrapping_for: prevent_double_wrapping_for,
+          allow_undefined_method: allow_undefined_method,
+          &block
+        )
+      end
     end
   end
 end

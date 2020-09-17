@@ -4,7 +4,7 @@ module Directive
   module SpecHelper
     module Matchers
       module Global
-        # RSpec matcher to test options of a Configurable class
+        # RSpec matcher to test a module's delegation to its configuration module
         #
         #     module MyGem
         #       include Directive::ConfigDelegation

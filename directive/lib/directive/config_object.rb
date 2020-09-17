@@ -17,19 +17,23 @@ module Directive
     class << self
       private
 
-      def option(name, *)
+      def option(name, *args, **kwargs)
+        name = name.to_sym
+
         _ensure_safe_option_name(name)
 
-        super
+        super(name, *args, **kwargs)
       end
 
       def nested(namespace, &block)
+        namespace = namespace.to_sym
+
         _ensure_safe_option_name(namespace)
 
         nested_config_builder_for(namespace).tap do |builder|
           builder.instance_exec(&block)
 
-          _nested_options << namespace.to_sym
+          _nested_options << namespace
           define_method(namespace) do |&nested_configure_block|
             builder.__send__(:configuration).tap do |nested_config|
               nested_configure_block.call(nested_config) if nested_configure_block.respond_to?(:call)
@@ -43,10 +47,10 @@ module Directive
       end
 
       def _ensure_safe_option_name(name)
-        raise ArgumentError, "#{name.inspect} is reserved and cannot be used at a config option" if name.to_sym.in? RESERVED_WORDS
-        raise ArgumentError, "#{name.inspect} is already in use" if _nested_options.include?(name.to_sym)
+        raise ArgumentError, "#{name.inspect} is reserved and cannot be used at a config option" if name.in? RESERVED_WORDS
+        raise ArgumentError, "#{name.inspect} is defined twice" if _nested_options.include?(name)
 
-        puts "Warning: the config option #{name} is already defined" if _options.include?(name.to_sym) # rubocop:disable Rails/Output
+        puts "Warning: the config option #{name} is already defined" if _options.include?(name) # rubocop:disable Rails/Output
       end
 
       def inherited(base)
