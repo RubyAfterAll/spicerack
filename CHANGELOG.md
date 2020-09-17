@@ -2,8 +2,9 @@
 
 ## Upcoming
 
-### RSpice - [see changes](rspice/CHANGELOG.md#Upcoming)
 ### Directive - [see changes](directive/CHANGELOG.md#Upcoming)
+### RedisHash - [see changes](redis_hash/CHANGELOG.md#Upcoming)
+### RSpice - [see changes](rspice/CHANGELOG.md#Upcoming)
 
 ## v0.24.0
 
