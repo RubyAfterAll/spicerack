@@ -3,6 +3,7 @@
 ## Upcoming
 
 ### RSpice - [see changes](rspice/CHANGELOG.md#Upcoming)
+### Directive - [see changes](directive/CHANGELOG.md#Upcoming)
 
 ## v0.24.0
 
