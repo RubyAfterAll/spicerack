@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.25.1.1
+
+*Release Date*: 10/13/2020
+
+- Change EnforcedStyle of HashAsLastArrayItem to match existing code
+
 ## v0.25.1
 
 *Release Date*: 10/13/2020
