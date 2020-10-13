@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.25.1
+
+*Release Date*: 10/13/2020
+
+- Bump rubocop to 0.92 ([#421](https://github.com/Freshly/spicerack/pull/421))
+
 ## v0.25.0
 
 *Release Date*: 10/12/2020
