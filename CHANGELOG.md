@@ -1,11 +1,13 @@
 # Changelog
 
-## Upcoming
+## v0.25.0
 
-### Directive - [see changes](directive/CHANGELOG.md#Upcoming)
-### RedisHash - [see changes](redis_hash/CHANGELOG.md#Upcoming)
-### RSpice - [see changes](rspice/CHANGELOG.md#Upcoming)
-### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#Upcoming)
+*Release Date*: 10/12/2020
+
+### Directive - [see changes](directive/CHANGELOG.md#v0.25.0)
+### RedisHash - [see changes](redis_hash/CHANGELOG.md#v0.25.0)
+### RSpice - [see changes](rspice/CHANGELOG.md#v0.25.0)
+### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0.25.0)
 
 ## v0.24.0
 

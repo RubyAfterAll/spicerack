@@ -1,6 +1,8 @@
 # Changelog
 
-## Upcoming
+## v0.25.0
+
+*Release Date*: 10/12/2020
 
 - Bump rubocop gems to latest-ish ([#417](https://github.com/Freshly/spicerack/pull/417))
 
