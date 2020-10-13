@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+
+### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#Upcoming)
+
 ## v0.24.1
 
 *Release Date*: 7/28/2020
