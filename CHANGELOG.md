@@ -2,15 +2,10 @@
 
 ## Upcoming
 
-### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#Upcoming)
-
-## v0.24.1
-
-*Release Date*: 7/28/2020
-
 ### Directive - [see changes](directive/CHANGELOG.md#Upcoming)
 ### RedisHash - [see changes](redis_hash/CHANGELOG.md#Upcoming)
 ### RSpice - [see changes](rspice/CHANGELOG.md#Upcoming)
+### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#Upcoming)
 
 ## v0.24.0
 
