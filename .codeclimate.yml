@@ -44,7 +44,7 @@ checks:
 plugins:
   rubocop:
     enabled: true
-    channel: rubocop-0-91
+    channel: rubocop-0-92
 
 exclude_patterns:
   - "config/"

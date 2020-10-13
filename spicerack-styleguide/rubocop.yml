@@ -20,6 +20,8 @@ Layout/ArrayAlignment:
   Enabled: true
 Layout/AssignmentIndentation:
   Enabled: false
+Layout/BeginEndAlignment:
+  Enabled: true
 Layout/BlockAlignment:
   Enabled: true
   EnforcedStyleAlignWith: start_of_block
@@ -258,6 +260,8 @@ Lint/BooleanSymbol:
   Enabled: true
 Lint/CircularArgumentReference:
   Enabled: true
+Lint/ConstantDefinitionInBlock:
+  Enabled: true
 Lint/ConstantResolution:
   Enabled: false
 Lint/DisjunctiveAssignmentInConstructor:
@@ -306,6 +310,8 @@ Lint/FloatComparison:
 Lint/FloatOutOfRange:
   Enabled: true
 Lint/FormatParameterMismatch:
+  Enabled: true
+Lint/IdentityComparison:
   Enabled: true
 Lint/ImplicitStringConcatenation:
   Enabled: true
@@ -431,6 +437,8 @@ Lint/UselessElseWithoutRescue:
 Lint/UselessMethodDefinition:
   Enabled: true
 Lint/UselessSetterCall:
+  Enabled: true
+Lint/UselessTimes:
   Enabled: true
 Lint/Void:
   Enabled: true
