@@ -993,6 +993,7 @@ Style/GuardClause:
   MinBodyLength: 1
 Style/HashAsLastArrayItem:
   Enabled: true
+  EnforcedStyle: no_braces
 Style/HashEachMethods:
   Enabled: true
 Style/HashLikeCase:
