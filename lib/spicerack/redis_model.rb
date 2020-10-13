@@ -7,7 +7,7 @@ module Spicerack
     alias_method :data, :itself
 
     class << self
-      def field(name, *)
+      def field(name, *, **)
         allow_keys(name)
         super
       end
