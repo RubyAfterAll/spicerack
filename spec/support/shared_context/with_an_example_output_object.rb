@@ -7,7 +7,7 @@ RSpec.shared_context "with an example output object" do
 
   let(:input) { {} }
 
-  let(:example_name) { Faker::Internet.domain_word.capitalize }
+  let(:example_name) { Faker::Internet.domain_word.underscore.camelize }
   let(:example_output_object_name) { "#{example_name}State" }
 
   before { stub_const(example_output_object_name, example_output_object_class) }

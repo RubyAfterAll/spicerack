@@ -49,7 +49,7 @@ RSpec.describe Conjunction::Nexus, type: :nexus do
       end
 
       context "with conjunctive junction" do
-        let(:conjunctive_prefix) { Faker::Internet.domain_word.capitalize }
+        let(:conjunctive_prefix) { Faker::Internet.domain_word.underscore.camelize }
 
         let(:conjunctive) do
           Class.new(example_conjunctive_class).tap do |klass|

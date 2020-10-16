@@ -30,7 +30,7 @@ RSpec.describe Tablesalt::StringableObject, type: :concern do
     subject { example_object.__send__(:string_for, method) }
 
     let(:method) { Faker::Lorem.word.to_sym }
-    let(:class_name) { Faker::Internet.domain_word.capitalize }
+    let(:class_name) { Faker::Internet.domain_word.underscore.camelize }
     let(:test_string) { Faker::Lorem.sentence }
 
     before do

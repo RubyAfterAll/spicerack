@@ -69,7 +69,7 @@ RSpec.describe Conjunction::Junction, type: :junction do
       example_junction_class.__send__(:conjunction_name_for, other_prototype, prototype_name)
     end
 
-    let(:prototype_name) { Faker::Internet.domain_word.capitalize }
+    let(:prototype_name) { Faker::Internet.domain_word.underscore.camelize }
 
     shared_examples_for "a valid prototype" do
       let(:other_prototype) { double(prototype_name: prototype_name) }
@@ -119,7 +119,7 @@ RSpec.describe Conjunction::Junction, type: :junction do
   describe ".conjunction_for" do
     subject(:conjunction_for) { example_junction_class.conjunction_for(other_prototype, prototype_name) }
 
-    let(:prototype_name) { Faker::Internet.domain_word.capitalize }
+    let(:prototype_name) { Faker::Internet.domain_word.underscore.camelize }
     let(:other_prototype) { double }
 
     before do
@@ -136,7 +136,7 @@ RSpec.describe Conjunction::Junction, type: :junction do
     end
 
     context "when present" do
-      let(:conjunction_name) { Faker::Internet.domain_word.capitalize }
+      let(:conjunction_name) { Faker::Internet.domain_word.underscore.camelize }
 
       context "with class" do
         let(:conjunction_class) { Class.new }
@@ -156,7 +156,7 @@ RSpec.describe Conjunction::Junction, type: :junction do
     subject(:conjunction_for!) { example_junction_class.conjunction_for!(other_prototype, other_prototype_name) }
 
     let(:other_prototype) { double }
-    let(:other_prototype_name) { Faker::Internet.domain_word.capitalize }
+    let(:other_prototype_name) { Faker::Internet.domain_word.underscore.camelize }
 
     before do
       allow(example_junction_class).
