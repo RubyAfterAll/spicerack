@@ -96,13 +96,13 @@ RSpec.describe JsonLogConverter do
     end
 
     context "when msg is an array" do
-      let(:msg) { Faker::Lorem.words(2) }
+      let(:msg) { Faker::Lorem.words(number: 2) }
 
       it { is_expected.to eq expected_payload }
     end
 
     context "when msg is a hash" do
-      let(:msg) { Hash[*Faker::Lorem.words(2 * rand(1..2))] }
+      let(:msg) { Hash[*Faker::Lorem.words(number: 2 * rand(1..2))] }
 
       let(:expected_payload) { core_payload.merge(msg) }
 
@@ -114,7 +114,7 @@ RSpec.describe JsonLogConverter do
     subject { example_class.split_event_key_for_payload(payload) }
 
     let(:payload) { base_payload.merge(event: event) }
-    let(:base_payload) { Hash[*Faker::Lorem.words(2 * rand(1..2))] }
+    let(:base_payload) { Hash[*Faker::Lorem.words(number: 2 * rand(1..2))] }
     let(:expected_payload) { payload }
 
     context "with no event key" do
@@ -136,7 +136,7 @@ RSpec.describe JsonLogConverter do
     end
 
     context "with an event key with multiple periods" do
-      let(:event) { Faker::Lorem.words(3).join(".") }
+      let(:event) { Faker::Lorem.words(number: 3).join(".") }
 
       it { is_expected.to eq expected_payload }
     end

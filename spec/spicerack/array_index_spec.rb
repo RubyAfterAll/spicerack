@@ -5,7 +5,7 @@ RSpec.describe Spicerack::ArrayIndex do
 
   let(:input) { [ array ] }
   let(:array) { Faker::Hipster.words.uniq }
-  let(:example_hash) { Hash[*Faker::Lorem.unique.words(rand(2..4) * 2)] }
+  let(:example_hash) { Hash[*Faker::Lorem.unique.words(number: rand(2..4) * 2)] }
 
   it { is_expected.to delegate_method(:[]).to(:index) }
 

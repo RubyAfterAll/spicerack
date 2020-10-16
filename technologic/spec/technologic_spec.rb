@@ -23,7 +23,7 @@ RSpec.describe Technologic do
 
   shared_context "with instrumentation data" do
     let(:event) { Faker::TvShows::GameOfThrones.city.parameterize.underscore }
-    let(:data) { Hash[*Faker::Hipster.words(rand(1..4) * 2)].symbolize_keys }
+    let(:data) { Hash[*Faker::Hipster.words(number: rand(1..4) * 2)].symbolize_keys }
     let(:block_value) { Faker::Lorem.word }
     let(:event_namespace) { example_class.name }
     let(:block) do
