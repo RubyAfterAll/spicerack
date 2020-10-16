@@ -331,7 +331,7 @@ Lint/Loop:
 Lint/MissingCopEnableDirective:
   Enabled: true
 Lint/MissingSuper:
-  Enabled: true
+  Enabled: false
 Lint/MixedRegexpCaptureTypes:
   Enabled: true
 Lint/MultipleComparison:
@@ -1471,7 +1471,7 @@ RSpec/MultipleDescribes:
 RSpec/MultipleExpectations:
   Enabled: false
 RSpec/MultipleMemoizedHelpers:
-    Enabled: true
+    Enabled: false
 RSpec/MultipleSubjects:
   Enabled: true
 RSpec/NamedSubject:
