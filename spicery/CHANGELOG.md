@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.25.1.1
+## v0.25.2
 
 *Release Date*: 10/16/2020
 

@@ -1,10 +1,11 @@
 # Changelog
 
-## v0.25.1.1
+## v0.25.2
 
 *Release Date*: 10/16/2020
 
 - Change EnforcedStyle of HashAsLastArrayItem to match existing code
+- Disable `Lint/MissingSuper` and `RSpec/MultipleMemoizedHelpers` cops ([#423](https://github.com/Freshly/spicerack/pull/423))
 
 ## v0.25.1
 

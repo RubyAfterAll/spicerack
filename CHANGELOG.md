@@ -1,10 +1,10 @@
 # Changelog
 
-## v0.25.1.1
+## v0.25.2
 
 *Release Date*: 10/16/2020
 
-### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0.25.1.1)
+### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0.25.2)
 
 ## v0.25.1
 
