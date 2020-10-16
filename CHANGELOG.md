@@ -2,7 +2,7 @@
 
 ## v0.25.1.1
 
-*Release Date*: 10/13/2020
+*Release Date*: 10/16/2020
 
 ### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0.25.1.1)
 
