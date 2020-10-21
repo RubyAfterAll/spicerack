@@ -1,5 +1,9 @@
 # Changelog
 
+## Upcoming
+
+- Add `rubocop-faker` to required gems ([#425](https://github.com/Freshly/spicerack/pull/425))
+
 ## v0.25.2
 
 *Release Date*: 10/16/2020

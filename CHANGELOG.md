@@ -1,5 +1,10 @@
 # Changelog
 
+## Upcoming
+
+- Upgrade Faker, fix specs ([#425](https://github.com/Freshly/spicerack/pull/425))
+### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#Upcoming)
+
 ## v0.25.2
 
 *Release Date*: 10/16/2020
