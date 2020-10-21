@@ -2,6 +2,7 @@ require:
   - rubocop-rspec
   - rubocop-performance
   - rubocop-rails
+  - rubocop-faker
 
 AllCops:
   TargetRubyVersion: 2.6

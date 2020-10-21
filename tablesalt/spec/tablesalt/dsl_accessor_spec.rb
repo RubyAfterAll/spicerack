@@ -8,13 +8,13 @@ RSpec.describe Tablesalt::DSLAccessor do
   end
   let(:instance) { including_class.new }
 
-  let(:accessor) { Faker::Lorem.words(3).join("_").downcase }
+  let(:accessor) { Faker::Lorem.words(number: 3).join("_").downcase }
 
   let(:options) { { instance_reader: instance_reader }.compact }
   let(:instance_reader) { nil }
 
   describe ".dsl_accessor" do
-    let(:accessor_name) { Faker::Lorem.words(3).join("_").downcase }
+    let(:accessor_name) { Faker::Lorem.words(number: 3).join("_").downcase }
 
     before do
       including_class.instance_exec(self) do |spec_context|
@@ -31,7 +31,7 @@ RSpec.describe Tablesalt::DSLAccessor do
     end
 
     context "when passed multiple arguments" do
-      let(:accessors) { Faker::Lorem.words(rand(2..4)).uniq }
+      let(:accessors) { Faker::Lorem.words(number: rand(2..4)).uniq }
 
       before do
         including_class.instance_exec(self) do |spec_context|
