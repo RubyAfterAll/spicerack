@@ -2,7 +2,7 @@
 
 RSpec.describe Technologic::Subscriber::Core do
   let(:example_class) { Class.new.include(described_class) }
-  let(:severity) { Faker::Internet.domain_word }
+  let(:severity) { Faker::Internet.domain_word.underscore }
 
   describe ".severity" do
     subject { example_class.severity }
@@ -28,7 +28,7 @@ RSpec.describe Technologic::Subscriber::Core do
 
     # This is the standard event format emitted by Technologic
     let(:name) { "#{event}.#{class_name}.#{severity}" }
-    let(:event) { Faker::Internet.domain_word }
+    let(:event) { Faker::Internet.domain_word.underscore }
     let(:class_name) { Faker::Internet.domain_word.underscore.camelize }
     let(:started) { double }
     let(:finished) { double }
