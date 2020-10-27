@@ -15,28 +15,28 @@
 
 *Release Date*: 10/13/2020
 
-### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0.25.1)
+### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0251)
 
 ## v0.25.0
 
 *Release Date*: 10/12/2020
 
-### Directive - [see changes](directive/CHANGELOG.md#v0.25.0)
-### RedisHash - [see changes](redis_hash/CHANGELOG.md#v0.25.0)
-### RSpice - [see changes](rspice/CHANGELOG.md#v0.25.0)
-### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0.25.0)
+### Directive - [see changes](directive/CHANGELOG.md#v0250)
+### RedisHash - [see changes](redis_hash/CHANGELOG.md#v0250)
+### RSpice - [see changes](rspice/CHANGELOG.md#v0250)
+### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0250)
 
 ## v0.24.0
 
 *Release Date*: 7/28/2020
 
-### Technologic - [see changes](technologic/CHANGELOG.md#v0.24.0)
+### Technologic - [see changes](technologic/CHANGELOG.md#v0240)
 
 ## v0.23.8
 
 *Release Date*: 6/9/2020
 
-### Directive - [see changes](directive/CHANGELOG.md#v0.23.8)
+### Directive - [see changes](directive/CHANGELOG.md#v0238)
 
 ## v0.23.7
 
