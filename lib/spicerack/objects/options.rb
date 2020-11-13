@@ -27,8 +27,8 @@ module Spicerack
         private
 
         def option(option, default: nil, output: false, &block)
-          _options << name
-          _outputs << argument if output && respond_to?(:_outputs)
+          _options << option
+          _outputs << option if output && respond_to?(:_outputs)
           define_attribute option
           define_default option, static: default, &block
         end
