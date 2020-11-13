@@ -28,15 +28,11 @@ module Spicerack
         private
 
         def output(output, default: nil, &block)
-          _register_output(output)
+          _outputs << name
           define_attribute output
           define_default output, static: default, &block
           ensure_validation_before output
           ensure_validation_before "#{output}=".to_sym
-        end
-
-        def _register_output(name)
-          _outputs << name
         end
 
         def ensure_validation_before(method)

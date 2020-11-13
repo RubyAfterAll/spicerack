@@ -27,14 +27,10 @@ module Spicerack
         private
 
         def option(option, default: nil, output: false, &block)
-          _register_option(option)
-          _register_output(option) if output && respond_to?(:_register_output)
+          _options << name
+          _outputs << argument if output && respond_to?(:_outputs)
           define_attribute option
           define_default option, static: default, &block
-        end
-
-        def _register_option(name)
-          _options << name
         end
       end
     end
