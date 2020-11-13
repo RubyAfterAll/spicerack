@@ -35,7 +35,7 @@ module Spicerack
         end
 
         def _register_argument(name, allow_nil)
-          _arguments[argument] = { allow_nil: allow_nil }
+          _arguments[name] = { allow_nil: allow_nil }
         end
       end
     end
