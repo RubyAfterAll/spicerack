@@ -32,7 +32,7 @@ RSpec.describe Spicerack::Objects::Arguments, type: :module do
       it_behaves_like "an argument is defined"
     end
 
-    context "with allow_nil" do
+    context "with allow_nil option" do
       context "with allow_nil: true" do
         it_behaves_like "an argument is defined"
       end
@@ -44,7 +44,7 @@ RSpec.describe Spicerack::Objects::Arguments, type: :module do
       end
     end
 
-    context "with output" do
+    context "with output option" do
       context "when _outputs is defined" do
         before { example_input_object_class.__send__(:class_attribute, :_outputs, instance_writer: false, default: []) }
 
