@@ -28,7 +28,7 @@ module Spicerack
         private
 
         def output(output, default: nil, &block)
-          _outputs << name
+          _outputs << output
           define_attribute output
           define_default output, static: default, &block
           ensure_validation_before output
