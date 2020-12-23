@@ -11,6 +11,6 @@ RSpec.shared_context "with an example naming convention" do
     end
   end
 
-  let(:prefix) { Faker::Internet.domain_word.capitalize }
-  let(:suffix) { Faker::Internet.domain_word.capitalize }
+  let(:prefix) { Faker::Internet.domain_word.underscore.camelize }
+  let(:suffix) { Faker::Internet.domain_word.underscore.camelize }
 end

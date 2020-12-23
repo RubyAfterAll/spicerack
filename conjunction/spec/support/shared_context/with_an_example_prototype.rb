@@ -7,7 +7,7 @@ RSpec.shared_context "with an example prototype" do
     Class.new.tap { |klass| klass.include Conjunction::Prototype }
   end
 
-  let(:example_prototype_name) { Faker::Internet.domain_word.capitalize }
+  let(:example_prototype_name) { Faker::Internet.domain_word.underscore.camelize }
 
   before { stub_const(example_prototype_name, example_prototype_class) }
 end

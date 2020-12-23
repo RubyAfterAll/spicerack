@@ -22,7 +22,7 @@ RSpec.describe RedisHash::Schema, type: :module do
     context "with array" do
       subject(:allow_keys) { example_redis_hash_class.__send__(:allow_keys, keys) }
 
-      let(:keys) { Faker::Lorem.words(2).map(&:to_sym) }
+      let(:keys) { Faker::Lorem.words(number: 2).map(&:to_sym) }
       let(:expected_allowed_keys) { keys }
 
       it_behaves_like "the keys are allowed"
@@ -48,7 +48,7 @@ RSpec.describe RedisHash::Schema, type: :module do
   describe "#assert_keys_allowed" do
     subject(:assert_keys_allowed) { example_redis_hash.__send__(:assert_keys_allowed, *keys) }
 
-    let(:keys) { Faker::Lorem.words(2).map(&:to_sym) }
+    let(:keys) { Faker::Lorem.words(number: 2).map(&:to_sym) }
 
     context "with no allowed keys" do
       it { is_expected.to eq true }

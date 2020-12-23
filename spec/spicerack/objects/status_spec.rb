@@ -6,7 +6,7 @@ RSpec.describe Spicerack::Objects::Status, type: :concern do
   describe "#validated?" do
     subject { example_output_object.validated? }
 
-    before { stub_const(Faker::Internet.domain_word.capitalize, example_output_object_class) }
+    before { stub_const(Faker::Internet.domain_word.underscore.camelize, example_output_object_class) }
 
     it { is_expected.to be false }
 

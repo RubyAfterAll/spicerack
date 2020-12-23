@@ -16,7 +16,7 @@ RSpec.describe RedisHash::Converters, type: :module do
     end
 
     let(:hashable_arguments) do
-      Array.new(argument_count) { Hash[*Faker::Lorem.words(2)] }
+      Array.new(argument_count) { Hash[*Faker::Lorem.words(number: 2)] }
     end
 
     shared_examples_for "an odd number error is raised" do
@@ -128,7 +128,7 @@ RSpec.describe RedisHash::Converters, type: :module do
     end
 
     context "with hashable argument" do
-      let(:argument) { Hash[*Faker::Lorem.words(2)] }
+      let(:argument) { Hash[*Faker::Lorem.words(number: 2)] }
 
       shared_examples_for "a successful conversion" do
         it { is_expected.to be_a example_redis_hash_class }

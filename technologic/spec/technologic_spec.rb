@@ -23,7 +23,7 @@ RSpec.describe Technologic do
 
   shared_context "with instrumentation data" do
     let(:event) { Faker::TvShows::GameOfThrones.city.parameterize.underscore }
-    let(:data) { Hash[*Faker::Hipster.words(rand(1..4) * 2)].symbolize_keys }
+    let(:data) { Hash[*Faker::Hipster.words(number: rand(1..4) * 2)].symbolize_keys }
     let(:block_value) { Faker::Lorem.word }
     let(:event_namespace) { example_class.name }
     let(:block) do
@@ -107,8 +107,8 @@ RSpec.describe Technologic do
 
   shared_context "with example error class" do
     let(:error_message) { Faker::Lorem.sentence }
-    let(:error_module_name) { Faker::Internet.unique.domain_word.capitalize }
-    let(:error_class_name) { Faker::Internet.unique.domain_word.capitalize }
+    let(:error_module_name) { Faker::Internet.unique.domain_word.underscore.camelize }
+    let(:error_class_name) { Faker::Internet.unique.domain_word.underscore.camelize }
     let(:modulized_error_class_name) { "#{error_module_name}::#{error_class_name}" }
     let(:error_class) { modulized_error_class_name.constantize }
     let(:expected_event_name) { "#{error_class_name}.#{event_namespace}.#{severity}" }
@@ -121,8 +121,8 @@ RSpec.describe Technologic do
     include_context "with instrumentation data"
 
     let(:message) { Faker::Lorem.sentence }
-    let(:module_name) { Faker::Internet.unique.domain_word.capitalize }
-    let(:error_class_name) { Faker::Internet.unique.domain_word.capitalize }
+    let(:module_name) { Faker::Internet.unique.domain_word.underscore.camelize }
+    let(:error_class_name) { Faker::Internet.unique.domain_word.underscore.camelize }
     let(:modulized_error_class_name) { "#{module_name}::#{error_class_name}" }
     let(:error_class) { modulized_error_class_name.constantize }
     let(:expected_event_name) { "#{error_class_name}.#{event_namespace}.#{severity}" }

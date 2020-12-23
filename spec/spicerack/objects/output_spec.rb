@@ -26,8 +26,8 @@ RSpec.describe Spicerack::Objects::Output, type: :concern do
     end
 
     before do
-      stub_const(Faker::Internet.unique.domain_word.capitalize, example_output_object_class)
-      stub_const(Faker::Internet.unique.domain_word.capitalize, example_class)
+      stub_const(Faker::Internet.unique.domain_word.underscore.camelize, example_output_object_class)
+      stub_const(Faker::Internet.unique.domain_word.underscore.camelize, example_class)
     end
   end
 

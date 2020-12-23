@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.25.3
+
+- Raise if used with a class ([#427](https://github.com/Freshly/spicerack/pull/427))
+
 ## v0.25.2
 
 *Release Date*: 10/16/2020

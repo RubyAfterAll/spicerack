@@ -11,9 +11,9 @@ RSpec.shared_context "with an example junction" do
     end
   end
 
-  let(:prefix) { Faker::Internet.domain_word.capitalize }
-  let(:suffix) { Faker::Internet.domain_word.capitalize }
-  let(:prototype_name) { Faker::Internet.domain_word.capitalize }
+  let(:prefix) { Faker::Internet.domain_word.underscore.capitalize }
+  let(:suffix) { Faker::Internet.domain_word.underscore.capitalize }
+  let(:prototype_name) { Faker::Internet.domain_word.underscore.capitalize }
   let(:example_junction_name) { [ prefix, prototype_name, suffix ].compact.join }
 
   before { stub_const(example_junction_name, example_junction_class) }

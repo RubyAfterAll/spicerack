@@ -4,16 +4,25 @@ RSpec.describe Directive, type: :configuration do
   subject(:configurable) { example_configurable }
 
   let(:has_default_default_value) { "A default value" }
-  let(:example_configurable) { Module.new }
+  let(:example_configurable_module) { Module.new }
+  let(:example_configurable) do
+    example_configurable_module.tap do |mod|
+      mod.instance_exec(self) do |spec_context|
+        extend spec_context.described_class
 
-  before do
-    example_configurable.instance_exec(self) do |spec_context|
-      extend spec_context.described_class
-
-      configuration_options do
-        option :no_default
-        option :has_default, default: spec_context.has_default_default_value
+        configuration_options do
+          option :no_default
+          option :has_default, default: spec_context.has_default_default_value
+        end
       end
+    end
+  end
+
+  context "when extended on a class" do
+    let(:example_configurable_module) { Class.new }
+
+    it "raises a TypeError" do
+      expect { example_configurable }.to raise_error TypeError, "#{example_configurable_module} is a class; it must be a module to use Directive"
     end
   end
 
