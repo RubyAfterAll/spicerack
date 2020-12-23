@@ -53,6 +53,14 @@ require_relative "directive/reader"
 module Directive
   delegate :configure, :config_eval, to: :_config_builder
 
+  class << self
+    def extended(base)
+      raise TypeError, "#{base} is a class; it must be a module to use Directive" if base.is_a?(Class)
+
+      super
+    end
+  end
+
   # @return [Directive::ConfigReader] A read-only object containing configuration options set inside {#configure}
   def config
     _config_builder.reader
