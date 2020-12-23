@@ -1,11 +1,11 @@
 # Changelog
 
-## Upcoming
+## v0.25.3
 
 - Upgrade Faker, fix specs ([#425](https://github.com/Freshly/spicerack/pull/425))
 
-### Directive - [see changes](directive/CHANGELOG.md#Upcoming)
-### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#Upcoming)
+### Directive - [see changes](directive/CHANGELOG.md#v0.25.3)
+### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0.25.3)
 
 ## v0.25.2
 
