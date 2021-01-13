@@ -1,6 +1,12 @@
 # Changelog
 
+## Upcoming
+
+### Directive - [see changes](directive/CHANGELOG.md#Upcoming)
+
 ## v0.25.3
+
+*Release Date*: 12/23/2020
 
 - Upgrade Faker, fix specs ([#425](https://github.com/Freshly/spicerack/pull/425))
 

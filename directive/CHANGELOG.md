@@ -1,6 +1,12 @@
 # Changelog
 
+## Upcoming
+
+- Fix a missing require ([#429](https://github.com/Freshly/spicerack/pull/429))
+
 ## v0.25.3
+
+*Release Date*: 12/23/2020
 
 - Raise if used with a class ([#427](https://github.com/Freshly/spicerack/pull/427))
 
