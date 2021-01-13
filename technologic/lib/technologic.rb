@@ -47,7 +47,10 @@ module Technologic
   end
 
   class_methods do
-    def instrument(severity, event, **data, &block)
+    def instrument(severity, event = nil, **data, &block)
+      # Rails 6.1 calls instrument without an event. Only enforce requiring an event if it is called from Technologic
+      raise ArgumentError, "event is required" if event.nil? && defined?(super)
+
       ActiveSupport::Notifications.instrument("#{event}.#{name}.#{severity}", data, &block).tap do
         # If a block was defined, :instrument will return the value of the block.
         # Otherwise, :instrument will return nil, since it didn't do anything.
