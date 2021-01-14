@@ -2,7 +2,7 @@
 
 ## Upcoming
 
-- Fix `instrument` method collision in ActiveJob 6.1+
+- Fix `instrument` method collision in ActiveJob 6.1+ ([#431](https://github.com/Freshly/spicerack/pull/409))
 
 ## v0.25.3
 
