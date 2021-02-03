@@ -32,7 +32,14 @@ module Spicerack
         define_method("#{name}?".to_sym) { data[name].present? }
         define_method("#{name}=".to_sym) { |value| data[name] = value }
         define_method(name) do
-          self[name] = data[name] || attribute(name)
+          value = data[name] || attribute(name)
+
+          if respond_to?(:_write_attribute)
+            _write_attribute(name, value)
+          else
+            write_attribute(name, value)
+          end
+
           attribute(name)
         end
       end

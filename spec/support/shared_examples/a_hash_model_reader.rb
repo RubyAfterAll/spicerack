@@ -9,11 +9,22 @@ RSpec.shared_examples_for "a hash model reader" do |field|
   let(:expected_invalid_value) { expected_nil_value }
 
   shared_examples_for "expected value is returned" do
-    before { allow(hash_model).to receive(:write_attribute).and_call_original }
+    before do
+      if hash_model.respond_to?(:_write_attribute)
+        allow(hash_model).to receive(:_write_attribute).and_call_original
+      else
+        allow(hash_model).to receive(:write_attribute).and_call_original
+      end
+    end
 
     it "assigns actual and returns expected" do
       expect(reader).to eq expected_value
-      expect(hash_model).to have_received(:write_attribute).with(field, hash_value)
+
+      if hash_model.respond_to?(:_write_attribute)
+        expect(hash_model).to have_received(:_write_attribute).with(field, hash_value)
+      else
+        expect(hash_model).to have_received(:write_attribute).with(field, hash_value)
+      end
     end
   end
 
