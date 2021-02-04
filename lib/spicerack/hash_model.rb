@@ -34,10 +34,10 @@ module Spicerack
         define_method(name) do
           value = data[name] || attribute(name)
 
-          if respond_to?(:write_attribute)
-            write_attribute(name, value)
-          else
+          if respond_to?(:_write_attribute, true)
             _write_attribute(name, value)
+          else
+            write_attribute(name, value)
           end
 
           attribute(name)
