@@ -3,6 +3,7 @@
 require "active_model"
 
 module Spicerack
+  # Proivdes on-demand synchronization between a `data' object and ActiveModel::Attributes
   module HashModel
     extend ActiveSupport::Concern
 
@@ -32,17 +33,25 @@ module Spicerack
         define_method("#{name}?".to_sym) { data[name].present? }
         define_method("#{name}=".to_sym) { |value| data[name] = value }
         define_method(name) do
-          # value = data[name] || attribute(name)
-
-          # unless value.nil?
-          #   if respond_to?(:_write_attribute, true)
-          #     _write_attribute(name, value)
-          #   else
-          #     write_attribute(name, value)
-          #   end
-          # end
-
+          synchronize_attribute_from_datastore(name)
           attribute(name)
+        end
+      end
+      
+      private
+      
+      # The data object can be anything from a normal hash to a hash-like object backed by redis.
+      def synchronize_attribute_from_datastore(name)
+        value = data[name]
+        return if value == attribute(name)
+        
+        # ActiveModel changed the interface to this method between Rails 6.0 and 6.1
+        # This method is a patch which allows this class to work with either version
+        # Once support for pre rails 6.0 is sunset this should likely be removed
+        if respond_to?(:_write_attribute, true)
+          _write_attribute(name, value)
+        else
+          write_attribute(name, value)
         end
       end
     end
