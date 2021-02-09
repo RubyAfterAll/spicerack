@@ -37,22 +37,22 @@ module Spicerack
           attribute(name)
         end
       end
+    end
       
-      private
-      
-      # The data object can be anything from a normal hash to a hash-like object backed by redis.
-      def synchronize_attribute_from_datastore(name)
-        value = data[name]
-        return if value == attribute(name)
-        
-        # ActiveModel changed the interface to this method between Rails 6.0 and 6.1
-        # This method is a patch which allows this class to work with either version
-        # Once support for pre rails 6.0 is sunset this should likely be removed
-        if respond_to?(:_write_attribute, true)
-          _write_attribute(name, value)
-        else
-          write_attribute(name, value)
-        end
+    private
+
+    # The data object can be anything from a normal hash to a hash-like object backed by redis.
+    def synchronize_attribute_from_datastore(name)
+      value = data[name]
+      return if value == attribute(name)
+
+      # ActiveModel changed the interface to this method between Rails 6.0 and 6.1
+      # This method is a patch which allows this class to work with either version
+      # Once support for pre rails 6.0 is sunset this should likely be removed
+      if respond_to?(:_write_attribute, true)
+        _write_attribute(name, value)
+      else
+        write_attribute(name, value)
       end
     end
   end
