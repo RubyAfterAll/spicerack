@@ -31,7 +31,10 @@ module Spicerack
 
       def define_field_methods(name)
         define_method("#{name}?".to_sym) { data[name].present? }
-        define_method("#{name}=".to_sym) { |value| data[name] = value }
+        define_method("#{name}=".to_sym) do |value|  
+          data[name] = value
+          synchronize_attribute_from_datastore(name)
+        end
         define_method(name) do
           synchronize_attribute_from_datastore(name)
           attribute(name)
