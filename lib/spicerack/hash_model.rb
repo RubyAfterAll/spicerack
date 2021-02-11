@@ -46,9 +46,17 @@ module Spicerack
 
     # The data object can be anything from a normal hash to a hash-like object backed by redis.
     def synchronize_attribute_from_datastore(name)
-      value = data[name]
-      return if value == attribute(name)
-
+      value_from_datastore = data[name]
+      value_from_attribute = attribute(name)
+      return if value_from_datastore == value_from_attribute
+      
+      # The dataset value is not set, but the attribute value is (as from a default attribute value)
+      if !value_from_datastore && value_from_attribute
+        data[name] = value_from_attribute
+        return
+      end
+      
+      # Otherwise, the dataset is value takes priority and is written as the attribute value
       # ActiveModel changed the interface to this method between Rails 6.0 and 6.1
       # This method is a patch which allows this class to work with either version
       # Once support for pre rails 6.0 is sunset this should likely be removed
