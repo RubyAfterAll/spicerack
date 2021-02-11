@@ -50,20 +50,16 @@ module Spicerack
       value_from_attribute = attribute(name)
       return if value_from_datastore == value_from_attribute
       
-      # The dataset value is not set, but the attribute value is (as from a default attribute value)
-      if !value_from_datastore && value_from_attribute
-        data[name] = value_from_attribute
-        return
-      end
+      value = value_from_datastore || value_from_attribute
       
       # Otherwise, the dataset is value takes priority and is written as the attribute value
       # ActiveModel changed the interface to this method between Rails 6.0 and 6.1
       # This method is a patch which allows this class to work with either version
       # Once support for pre rails 6.0 is sunset this should likely be removed
       if respond_to?(:_write_attribute, true)
-        _write_attribute(name, value_from_attribute)
+        _write_attribute(name, value)
       else
-        write_attribute(name, value_from_attribute)
+        write_attribute(name, value)
       end
     end
   end
