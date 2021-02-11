@@ -61,9 +61,9 @@ module Spicerack
       # This method is a patch which allows this class to work with either version
       # Once support for pre rails 6.0 is sunset this should likely be removed
       if respond_to?(:_write_attribute, true)
-        _write_attribute(name, value)
+        _write_attribute(name, value_from_attribute)
       else
-        write_attribute(name, value)
+        write_attribute(name, value_from_attribute)
       end
     end
   end
