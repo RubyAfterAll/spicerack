@@ -3,7 +3,7 @@
 RSpec.shared_examples_for "a hash model predicate" do |field|
   subject(:predicate) { hash_model.public_send("#{field}?".to_sym) }
 
-  let(:data) { Hash[field, hash_value] }
+  let(:data) { Hash[field.to_s, hash_value] }
 
   let(:expected_value) { false }
 

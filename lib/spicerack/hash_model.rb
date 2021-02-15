@@ -24,6 +24,7 @@ module Spicerack
       private
 
       def field(name, type = Type::Value.new, **options)
+        name = name.to_s
         _fields << name
         attribute(name, type, **options)
         define_field_methods(name)

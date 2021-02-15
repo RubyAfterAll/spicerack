@@ -20,7 +20,7 @@ RSpec::Matchers.define :define_field do |field, type = nil, default: nil|
   match do
     expect(test_subject.attribute_types[field.to_s].type).to eq type unless type.nil?
     expect(test_subject._default_attributes[field.to_s].value).to eq default unless default.nil?
-    expect(test_subject._fields).to include field
+    expect(test_subject._fields).to include field.to_s
   end
   description { "define field #{field}" }
   failure_message { "expected #{test_subject} to define field #{field} #{with_details(type, default)}" }
