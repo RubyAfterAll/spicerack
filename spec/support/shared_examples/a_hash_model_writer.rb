@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.shared_examples_for "a hash model writer" do |field|
-  subject(:writer) { hash_model.public_send("#{field.to_s}=".to_sym, given_value) }
+  subject(:writer) { hash_model.public_send("#{field}=".to_sym, given_value) }
 
   let(:data) { Hash[field.to_s, initial_value] }
   let(:expected_value) { given_value }
