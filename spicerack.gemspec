@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 version = File.read(File.expand_path("SPICERACK_VERSION", __dir__)).strip
+rails_version = File.read(File.expand_path("RAILS_VERSION", __dir__)).strip
 
 Gem::Specification.new do |spec|
   raise StandardError, "RubyGems 2.0 or newer is required." unless spec.respond_to?(:metadata)
@@ -58,6 +59,6 @@ Gem::Specification.new do |spec|
 
   # ActiveRecord Testing
   spec.add_development_dependency "will_paginate", "~> 3.1.1"
-  spec.add_development_dependency "activerecord", ">= 5.2.1"
+  spec.add_development_dependency "activerecord", rails_version
   spec.add_development_dependency "sqlite3", ">= 1.3.6", "< 2.0.0"
 end
