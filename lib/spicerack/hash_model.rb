@@ -3,7 +3,7 @@
 require "active_model"
 
 module Spicerack
-  # Proivdes on-demand synchronization between a `data' object and ActiveModel::Attributes
+  # Provides on-demand synchronization between a `data' object and ActiveModel::Attributes
   module HashModel
     extend ActiveSupport::Concern
 
