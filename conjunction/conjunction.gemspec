@@ -1,6 +1,7 @@
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "conjunction/version"
+rails_version = File.read(File.expand_path("../RAILS_VERSION", __dir__)).strip
 
 Gem::Specification.new do |spec|
   spec.name          = "conjunction"
@@ -21,9 +22,9 @@ Gem::Specification.new do |spec|
   spec.files         = Dir["README.md", "LICENSE.txt", ".yardopts", "lib/**/{*,.[a-z]*}"]
   spec.require_paths = "lib"
 
-  spec.add_runtime_dependency "activesupport", ">= 5.2.1"
+  spec.add_runtime_dependency "activesupport", rails_version
   spec.add_runtime_dependency "directive", Conjunction::VERSION
   spec.add_runtime_dependency "spicerack", Conjunction::VERSION
 
-  spec.add_dependency "activemodel", ">= 5.2.1"
+  spec.add_dependency "activemodel", rails_version
 end
