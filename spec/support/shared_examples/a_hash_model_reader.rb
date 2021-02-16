@@ -3,17 +3,20 @@
 RSpec.shared_examples_for "a hash model reader" do |field|
   subject(:reader) { hash_model.public_send(field) }
 
-  let(:data) { Hash[field, hash_value] }
+  let(:data) { Hash[field.to_s, hash_value] }
 
   let(:expected_nil_value) { nil }
   let(:expected_invalid_value) { expected_nil_value }
+  let(:attribute_writer_method) do
+    hash_model.respond_to?(:_write_attribute, true) ? :_write_attribute : :write_attribute
+  end
 
   shared_examples_for "expected value is returned" do
-    before { allow(hash_model).to receive(:write_attribute).and_call_original }
+    before { allow(hash_model).to receive(attribute_writer_method).and_call_original }
 
     it "assigns actual and returns expected" do
       expect(reader).to eq expected_value
-      expect(hash_model).to have_received(:write_attribute).with(field, hash_value)
+      expect(hash_model).to have_received(attribute_writer_method).with(field.to_s, hash_value)
     end
   end
 
