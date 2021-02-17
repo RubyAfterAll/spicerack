@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.25.4
+
+*Release Date*: 2/16/2021
+
+- Fix compatibility issue with ActiveModel 6.1 ([#434](https://github.com/Freshly/spicerack/pull/434))
+
 ## v0.25.3
 
 *Release Date*: 12/23/2020

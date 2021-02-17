@@ -1,8 +1,15 @@
 # Changelog
 
-## Upcoming
+## Upcoming <!-- Add unreleased change notes here: -->
 
-### Directive - [see changes](directive/CHANGELOG.md#Upcoming)
+## v0.25.4
+
+*Release Date*: 2/16/2021
+
+- Rails 6.1 compatibility ([#433](https://github.com/Freshly/spicerack/pull/433))
+
+### Directive - [see changes](directive/CHANGELOG.md#v0.25.4)
+### RedisHash - [see changes](redis_hash/CHANGELOG.md#v0.25.4)
 
 ## v0.25.3
 
