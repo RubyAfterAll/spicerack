@@ -2,5 +2,5 @@
 
 module Directive
   # This constant is managed by spicerack
-  VERSION = "0.25.3"
+  VERSION = "0.25.4"
 end

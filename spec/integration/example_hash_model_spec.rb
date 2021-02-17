@@ -17,7 +17,7 @@ RSpec.describe ExampleHashModel, type: :integration do
   describe "._fields" do
     subject { hash_model._fields }
 
-    it { is_expected.to match_array %i[started_at finished_at count rate] }
+    it { is_expected.to match_array %w[started_at finished_at count rate] }
   end
 
   describe "#started_at" do
