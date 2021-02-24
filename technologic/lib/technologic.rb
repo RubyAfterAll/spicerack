@@ -73,8 +73,10 @@ module Technologic
     def surveil(event, severity: :info, **data, &block)
       raise LocalJumpError unless block_given?
 
-      instrument(severity, "#{event}_started", **data)
-      instrument(severity, "#{event}_finished", &block)
+      raise ArgumentError, "Invalid severity: #{severity}" unless severity.to_sym.in?(SEVERITIES)
+
+      __send__(severity, "#{event}_started", **data)
+      __send__(severity, "#{event}_finished", &block)
     end
 
     SEVERITIES.each do |severity|
