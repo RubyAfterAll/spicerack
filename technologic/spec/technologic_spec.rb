@@ -197,12 +197,12 @@ RSpec.describe Technologic do
       subject(:surveil) { example_class }
 
       before do
-        allow(example_class).to receive(severity).and_call_original
+        allow(example_class).to receive(:_tl_instrument).and_call_original
         example_class.__send__(:surveil, event, severity: severity, **data, &block)
       end
 
-      it { is_expected.to have_received(severity).with("#{event}_started", **data) }
-      it { is_expected.to have_received(severity).with("#{event}_finished", &block) }
+      it { is_expected.to have_received(:_tl_instrument).with(severity, "#{event}_started", **data) }
+      it { is_expected.to have_received(:_tl_instrument).with(severity, "#{event}_finished", &block) }
     end
   end
 
