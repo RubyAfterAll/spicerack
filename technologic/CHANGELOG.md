@@ -1,12 +1,14 @@
 # Changelog
 
+## v0.25.5
+
+*Release Date*: 2/24/2021
+
+- Drop internal usage of deprecated `instrument` ([#436](https://github.com/Freshly/spicerack/pull/436))
+
 ## v0.25.4
 
 *Release Date*: 2/16/2021
-
-- No changes
-
-## Upcoming
 
 - Fix `instrument` method collision in ActiveJob 6.1+ ([#431](https://github.com/Freshly/spicerack/pull/431))
 
