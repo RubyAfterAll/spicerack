@@ -75,8 +75,8 @@ module Technologic
 
       raise ArgumentError, "Invalid severity: #{severity}" unless severity.to_sym.in?(SEVERITIES)
 
-      __send__(severity, "#{event}_started", **data)
-      __send__(severity, "#{event}_finished", &block)
+      _tl_instrument(severity, "#{event}_started", **data)
+      _tl_instrument(severity, "#{event}_finished", &block)
     end
 
     SEVERITIES.each do |severity|
@@ -99,7 +99,7 @@ module Technologic
 
           raise exception
         else
-          instrument severity, exception.name.demodulize, message: message, **data, &block
+          _tl_instrument severity, exception.name.demodulize, message: message, **data, &block
           raise exception, message
         end
       end
