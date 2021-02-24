@@ -13,7 +13,7 @@ RSpec.shared_context "with an example facet" do
   end
 
   let(:example_facet_class) { Class.new(Facet::Base) }
-  let(:example_facet_root_name) { Faker::Internet.domain_word.capitalize }
+  let(:example_facet_root_name) { Faker::Internet.domain_word.underscore.camelize }
   let(:example_facet_name) { "#{example_facet_root_name}Facet" }
 
   let(:current_page) { 1 }

@@ -1,8 +1,40 @@
 # Changelog
 
-## v0.24.1
+## v0.25.5
 
-*Release Date*: 9/16/2020
+*Release Date*: 2/24/2021
+
+- No changes
+
+## Upcoming
+
+## v0.25.4
+
+*Release Date*: 2/16/2021
+
+- Fix a missing require ([#429](https://github.com/Freshly/spicerack/pull/429))
+
+## v0.25.3
+
+*Release Date*: 12/23/2020
+
+- Raise if used with a class ([#427](https://github.com/Freshly/spicerack/pull/427))
+
+## v0.25.2
+
+*Release Date*: 10/16/2020
+
+- No changes
+
+## v0.25.1
+
+*Release Date*: 10/13/2020
+
+- No changes
+
+## v0.25.0
+
+*Release Date*: 10/12/2020
 
 - Pass explicit kwargs to silence 2.7 warnings ([#415](https://github.com/Freshly/spicerack/pull/415))
 

@@ -8,7 +8,7 @@ RSpec.describe Spicerack::InputObject do
   it { is_expected.to include_module Spicerack::Objects::Options }
 
   describe "#initialize" do
-    let(:input) { Hash[*Faker::Lorem.words(4)].symbolize_keys }
+    let(:input) { Hash[*Faker::Lorem.words(number: 4)].symbolize_keys }
 
     context "when no writers are defined for the arguments" do
       it "raises" do

@@ -12,8 +12,9 @@ jobs:
           - "2.6.x"
           - "2.7.x"
         rails:
-          - "5.2"
-          - "6.0"
+          - "5.2.0"
+          - "6.0.0"
+          - "6.1.0"
 
     steps:
     - uses: actions/checkout@v1

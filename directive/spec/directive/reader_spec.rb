@@ -6,7 +6,7 @@ RSpec.describe Directive::Reader do
   let(:config_class) { Class.new(Directive::ConfigObject) }
   let(:config) { config_class.instance }
 
-  let(:config_attributes) { Faker::Lorem.words(3).map(&:to_sym) }
+  let(:config_attributes) { Faker::Lorem.words(number: 3).map(&:to_sym) }
   let(:attribute_with_default) { config_attributes.sample }
   let(:attributes_without_default) { config_attributes.without(attribute_with_default) }
   let(:default_value) { Faker::Hipster.sentence }

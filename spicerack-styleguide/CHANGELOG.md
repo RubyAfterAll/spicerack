@@ -1,10 +1,39 @@
 # Changelog
 
-## v0.24.1
+## v0.25.5
 
-*Release Date*: 9/16/2020
+*Release Date*: 2/24/2021
 
 - No changes
+
+## v0.25.4
+
+*Release Date*: 2/16/2021
+
+- No changes
+
+## v0.25.3
+
+- Add `rubocop-faker` to required gems ([#425](https://github.com/Freshly/spicerack/pull/425))
+
+## v0.25.2
+
+*Release Date*: 10/16/2020
+
+- Change EnforcedStyle of HashAsLastArrayItem to match existing code
+- Disable `Lint/MissingSuper` and `RSpec/MultipleMemoizedHelpers` cops ([#423](https://github.com/Freshly/spicerack/pull/423))
+
+## v0.25.1
+
+*Release Date*: 10/13/2020
+
+- Bump rubocop to 0.92 ([#421](https://github.com/Freshly/spicerack/pull/421))
+
+## v0.25.0
+
+*Release Date*: 10/12/2020
+
+- Bump rubocop gems to latest-ish ([#417](https://github.com/Freshly/spicerack/pull/417))
 
 ## v0.24.0
 

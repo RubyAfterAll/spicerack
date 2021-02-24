@@ -6,7 +6,7 @@ RSpec.describe Technologic::Logger do
 
     let(:severity) { Faker::Internet.domain_word.to_sym }
     let(:event) { instance_double(Technologic::Event, data: event_data) }
-    let(:event_data) { Hash[*Faker::Lorem.unique.words(2 * rand(1..2))] }
+    let(:event_data) { Hash[*Faker::Lorem.unique.words(number: 2 * rand(1..2))] }
     let(:data_keys) { event_data.keys }
     let(:data_values) { event_data.values }
     let(:expected_log_data) do
@@ -56,7 +56,7 @@ RSpec.describe Technologic::Logger do
 
     shared_context "when the value is a hash" do
       let(:value) { { keys.first => object_0, keys.last => object_1 } }
-      let(:keys) { Faker::Lorem.words(2).map(&:to_sym) }
+      let(:keys) { Faker::Lorem.words(number: 2).map(&:to_sym) }
       let(:object_0) { double(id: formatted_value_0) } # rubocop:disable RSpec/VerifiedDoubles
       let(:object_1) { double(to_log_string: formatted_value_1) } # rubocop:disable RSpec/VerifiedDoubles
       let(:formatted_value_0) { Faker::Lorem.unique.word }
@@ -71,7 +71,7 @@ RSpec.describe Technologic::Logger do
     end
 
     context "when the value is an enumerator" do
-      let(:value) { Faker::Hipster.words(3).each }
+      let(:value) { Faker::Hipster.words(number: 3).each }
 
       it { is_expected.to eq value.to_s }
     end

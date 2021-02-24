@@ -3,6 +3,7 @@
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "tablesalt/version"
+rails_version = File.read(File.expand_path("../RAILS_VERSION", __dir__)).strip
 
 Gem::Specification.new do |spec|
   spec.name          = "tablesalt"
@@ -23,6 +24,6 @@ Gem::Specification.new do |spec|
   spec.files         = Dir["README.md", "LICENSE.txt", ".yardopts",  "lib/**/{*,.[a-z]*}"]
   spec.require_paths = "lib"
 
-  spec.add_runtime_dependency "activesupport", ">= 5.2.1"
-  spec.add_runtime_dependency "activemodel", ">= 5.2.1"
+  spec.add_runtime_dependency "activesupport", rails_version
+  spec.add_runtime_dependency "activemodel", rails_version
 end

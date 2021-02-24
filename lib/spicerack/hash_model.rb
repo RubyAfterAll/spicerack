@@ -3,6 +3,7 @@
 require "active_model"
 
 module Spicerack
+  # Provides on-demand synchronization between a `data' object and ActiveModel::Attributes
   module HashModel
     extend ActiveSupport::Concern
 
@@ -23,6 +24,7 @@ module Spicerack
       private
 
       def field(name, type = Type::Value.new, **options)
+        name = name.to_s
         _fields << name
         attribute(name, type, **options)
         define_field_methods(name)
@@ -30,11 +32,35 @@ module Spicerack
 
       def define_field_methods(name)
         define_method("#{name}?".to_sym) { data[name].present? }
-        define_method("#{name}=".to_sym) { |value| data[name] = value }
+        define_method("#{name}=".to_sym) do |value|  
+          data[name] = value
+          synchronize_attribute_from_datastore(name)
+        end
         define_method(name) do
-          write_attribute(name, data[name] || attribute(name))
+          synchronize_attribute_from_datastore(name)
           attribute(name)
         end
+      end
+    end
+      
+    private
+
+    # The data object can be anything from a normal hash to a hash-like object backed by redis.
+    def synchronize_attribute_from_datastore(name)
+      value_from_datastore = data[name]
+      value_from_attribute = attribute(name)
+      return if value_from_datastore == value_from_attribute
+      
+      value = value_from_datastore || value_from_attribute
+      
+      # Otherwise, the dataset is value takes priority and is written as the attribute value
+      # ActiveModel changed the interface to this method between Rails 6.0 and 6.1
+      # This method is a patch which allows this class to work with either version
+      # Once support for pre rails 6.0 is sunset this should likely be removed
+      if respond_to?(:_write_attribute, true)
+        _write_attribute(name, value)
+      else
+        write_attribute(name, value)
       end
     end
   end

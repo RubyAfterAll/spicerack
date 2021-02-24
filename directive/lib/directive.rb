@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "active_support/core_ext/module/delegation"
+
 require_relative "directive/config_builder"
 require_relative "directive/config_delegation"
 require_relative "directive/config_object"
@@ -52,6 +54,14 @@ require_relative "directive/reader"
 #   => "The teletubbies on repeat 😱"
 module Directive
   delegate :configure, :config_eval, to: :_config_builder
+
+  class << self
+    def extended(base)
+      raise TypeError, "#{base} is a class; it must be a module to use Directive" if base.is_a?(Class)
+
+      super
+    end
+  end
 
   # @return [Directive::ConfigReader] A read-only object containing configuration options set inside {#configure}
   def config

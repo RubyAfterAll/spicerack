@@ -1,24 +1,64 @@
 # Changelog
 
-## v0.24.1
+## Upcoming <!-- Add unreleased change notes here: -->
 
-*Release Date*: 7/28/2020
+## v0.25.5
 
-### Directive - [see changes](directive/CHANGELOG.md#Upcoming)
-### RedisHash - [see changes](redis_hash/CHANGELOG.md#Upcoming)
-### RSpice - [see changes](rspice/CHANGELOG.md#Upcoming)
+*Release Date*: 2/24/2021
+
+### Technologic - [see changes](technologic/CHANGELOG.md#v0.25.5)
+
+## v0.25.4
+
+*Release Date*: 2/16/2021
+
+- Rails 6.1 compatibility ([#433](https://github.com/Freshly/spicerack/pull/433))
+
+### Directive - [see changes](directive/CHANGELOG.md#v0.25.4)
+### RedisHash - [see changes](redis_hash/CHANGELOG.md#v0.25.4)
+### Technologic - [see changes](technologic/CHANGELOG.md#v0.25.4)
+
+## v0.25.3
+
+*Release Date*: 12/23/2020
+
+- Upgrade Faker, fix specs ([#425](https://github.com/Freshly/spicerack/pull/425))
+
+### Directive - [see changes](directive/CHANGELOG.md#v0.25.3)
+### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0.25.3)
+
+## v0.25.2
+
+*Release Date*: 10/16/2020
+
+### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0.25.2)
+
+## v0.25.1
+
+*Release Date*: 10/13/2020
+
+### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0251)
+
+## v0.25.0
+
+*Release Date*: 10/12/2020
+
+### Directive - [see changes](directive/CHANGELOG.md#v0250)
+### RedisHash - [see changes](redis_hash/CHANGELOG.md#v0250)
+### RSpice - [see changes](rspice/CHANGELOG.md#v0250)
+### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0250)
 
 ## v0.24.0
 
 *Release Date*: 7/28/2020
 
-### Technologic - [see changes](technologic/CHANGELOG.md#v0.24.0)
+### Technologic - [see changes](technologic/CHANGELOG.md#v0240)
 
 ## v0.23.8
 
 *Release Date*: 6/9/2020
 
-### Directive - [see changes](directive/CHANGELOG.md#v0.23.8)
+### Directive - [see changes](directive/CHANGELOG.md#v0238)
 
 ## v0.23.7
 

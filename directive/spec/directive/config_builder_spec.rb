@@ -3,7 +3,7 @@
 RSpec.describe Directive::ConfigBuilder do
   subject(:builder) { described_class.new }
 
-  let(:all_options) { Faker::Lorem.words(4).map(&:to_sym) }
+  let(:all_options) { Faker::Lorem.words(number: 4).map(&:to_sym) }
   let(:options_with_defaults) { all_options.sample(2) }
   let(:options_without_defaults) { all_options - options_with_defaults }
   let(:default_values) do
@@ -65,7 +65,7 @@ RSpec.describe Directive::ConfigBuilder do
 
   describe "#nested" do
     let(:nested_parent) { Faker::Superhero.name.parameterize.underscore.to_sym }
-    let(:nested_options) { Faker::Lorem.words(5).map(&:to_sym).uniq }
+    let(:nested_options) { Faker::Lorem.words(number: 5).map(&:to_sym).uniq }
     let!(:nested_option) { nested_options.pop }
     let!(:nested_option_with_default) { nested_options.pop }
     let(:nested_default_value) { Faker::Hipster.sentence }

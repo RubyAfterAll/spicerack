@@ -1,8 +1,38 @@
 # Changelog
 
-## v0.24.1
+## v0.25.5
 
-*Release Date*: 7/28/2020
+*Release Date*: 2/24/2021
+
+- No changes
+
+## v0.25.4
+
+*Release Date*: 2/16/2021
+
+- Fix compatibility issue with ActiveModel 6.1 ([#434](https://github.com/Freshly/spicerack/pull/434))
+
+## v0.25.3
+
+*Release Date*: 12/23/2020
+
+- No changes
+
+## v0.25.2
+
+*Release Date*: 10/16/2020
+
+- No changes
+
+## v0.25.1
+
+*Release Date*: 10/13/2020
+
+- No changes
+
+## v0.25.0
+
+*Release Date*: 10/12/2020
 
 - Kill a 2.7 kwargs warning ([#416](https://github.com/Freshly/spicerack/pull/416))
 

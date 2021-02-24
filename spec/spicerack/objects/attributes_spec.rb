@@ -4,7 +4,7 @@ RSpec.describe Spicerack::Objects::Attributes, type: :module do
   include_context "with an example input object"
 
   shared_context "with attributes defined on the class" do
-    let(:attributes) { Faker::Lorem.words(rand(2..5)).map(&:to_sym) }
+    let(:attributes) { Faker::Lorem.words(number: rand(2..5)).map(&:to_sym) }
 
     before do
       example_input_object_class.instance_exec(self) do |spec_context|
@@ -51,7 +51,7 @@ RSpec.describe Spicerack::Objects::Attributes, type: :module do
 
     include_context "with attributes defined on the class"
 
-    let(:values) { Faker::Hipster.words(attributes.length) }
+    let(:values) { Faker::Hipster.words(number: attributes.length) }
     let(:input) { attributes.zip(values).to_h }
 
     it { is_expected.to eq input }
