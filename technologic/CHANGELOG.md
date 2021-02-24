@@ -6,7 +6,7 @@
 
 - Drop **all** internal usage of deprecated `instrument` ([#436](https://github.com/Freshly/spicerack/pull/436))
 
-## v0.25.5
+## v0.25.5 [Yanked]
 
 *Release Date*: 2/24/2021
 

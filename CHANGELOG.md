@@ -8,7 +8,7 @@
 
 ### Technologic - [see changes](technologic/CHANGELOG.md#v0.25.6)
 
-## v0.25.5
+## v0.25.5 [Yanked]
 
 *Release Date*: 2/24/2021
 
