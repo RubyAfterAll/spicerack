@@ -2,6 +2,12 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## v0.25.5
+
+*Release Date*: 2/24/2021
+
+### Technologic - [see changes](technologic/CHANGELOG.md#v0.25.5)
+
 ## v0.25.4
 
 *Release Date*: 2/16/2021
@@ -10,6 +16,7 @@
 
 ### Directive - [see changes](directive/CHANGELOG.md#v0.25.4)
 ### RedisHash - [see changes](redis_hash/CHANGELOG.md#v0.25.4)
+### Technologic - [see changes](technologic/CHANGELOG.md#v0.25.4)
 
 ## v0.25.3
 
