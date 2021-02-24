@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.25.5
+
+*Release Date*: 2/24/2021
+
+- No changes
+
 ## Upcoming
 
 ## v0.25.4

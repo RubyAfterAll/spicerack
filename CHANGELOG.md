@@ -2,6 +2,10 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## v0.25.5
+
+*Release Date*: 2/24/2021
+
 ### Technologic - [see changes](technologic/CHANGELOG.md#v0.25.5)
 
 ## v0.25.4
