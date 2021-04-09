@@ -82,10 +82,10 @@ module ShortCircuIt
         ) do |*args, **opts|
           memoization_store.memoize(method_name, (args + [ opts ]).hash) do
             # TODO: replace with `super(*args, **opts)` when <= 2.6 support is dropped
-            if opts.present?
-              super(*args, **opts)
-            else
+            if RUBY_VERSION < "2.7" && opts.blank?
               super(*args)
+            else
+              super(*args, **opts)
             end
           end
         end

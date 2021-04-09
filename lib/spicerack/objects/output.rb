@@ -39,11 +39,11 @@ module Spicerack
           around_method method do |*args, **opts|
             raise NotValidatedError unless validated?
 
-            # TODO: replace with `super(*args, **opts)` when <= 2.6 support is dropped
-            if opts.present?
-              super(*args, **opts)
-            else
+            # TODO: replace with `super(...)` when <= 2.6 support is dropped
+            if RUBY_VERSION < "2.7" && opts.blank?
               super(*args)
+            else
+              super(*args, **opts)
             end
           end
         end

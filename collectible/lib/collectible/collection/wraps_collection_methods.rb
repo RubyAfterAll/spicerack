@@ -40,10 +40,10 @@ module Collectible
           methods.each do |method_name|
             around_method(method_name, prevent_double_wrapping_for: PROXY_MODULE_NAME) do |*args, **opts, &block|
               # TODO: replace with `super(*args, **opts, &block)` when <= 2.6 support is dropped
-              result = if opts.present?
-                super(*args, **opts, &block)
-              else
+              result = if RUBY_VERSION < "2.7" && opts.blank?
                 super(*args, &block)
+              else
+                super(*args, **opts, &block)
               end
 
               return self if result.equal?(items)
@@ -56,11 +56,11 @@ module Collectible
         def collection_wrap_values_on(*methods)
           methods.each do |method_name|
             around_method(method_name, prevent_double_wrapping_for: PROXY_MODULE_NAME) do |*args, **opts, &block|
-              # TODO: replace with `super(*args, **opts, &block)` when <= 2.6 support is dropped
-              result = if opts.present?
-                super(*args, **opts, &block)
-              else
+              # TODO: replace with `super(...)` when <= 2.6 support is dropped
+              result = if RUBY_VERSION < "2.7" && opts.blank?
                 super(*args, &block)
+              else
+                super(*args, **opts, &block)
               end
 
               if result.respond_to?(:transform_values)
