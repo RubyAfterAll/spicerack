@@ -2,6 +2,8 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+### Rspice - [see changes](rspice/CHANGELOG.md#Upcoming)
+
 ## v0.25.6
 
 *Release Date*: 2/24/2021
