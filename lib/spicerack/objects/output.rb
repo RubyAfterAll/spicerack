@@ -36,10 +36,15 @@ module Spicerack
         end
 
         def ensure_validation_before(method)
-          around_method method do |*arguments|
+          around_method method do |*args, **opts|
             raise NotValidatedError unless validated?
 
-            super(*arguments)
+            # TODO: replace with `super(*args, **opts)` when <= 2.6 support is dropped
+            if opts.present?
+              super(*args, **opts)
+            else
+              super(*args)
+            end
           end
         end
       end
