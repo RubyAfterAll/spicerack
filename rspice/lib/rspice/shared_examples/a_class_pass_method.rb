@@ -34,7 +34,13 @@
 RSpec.shared_examples_for "a class pass method" do |method|
   subject do
     if accepts_block?
-      call_class.public_send(method, *arguments, &block)
+      if options.present?
+        call_class.public_send(method, *arguments, **options, &block)
+      else
+        call_class.public_send(method, *arguments, &block)
+      end
+    elsif options.present?
+      call_class.public_send(method, *arguments, **options)
     else
       call_class.public_send(method, *arguments)
     end
@@ -47,13 +53,11 @@ RSpec.shared_examples_for "a class pass method" do |method|
   let(:argument_arity) { method_parameters.map(&:first).select { |type| type.in?(%i[req opt]) }.length }
   let(:option_keys) { method_parameters.select { |param| param.first.in?(%i[key keyreq]) }.map(&:last) }
   let(:accepts_block?) { method_parameters.any? { |param| param.first == :block } }
+  let(:keyrest?) { method_parameters.any? { |param| param.first == :keyrest } }
 
-  let(:arguments) do
-    Array.new(argument_arity) { double }.tap do |array|
-      array << options if options.present?
-    end
-  end
-  let(:options) { option_keys.each_with_object({}) { |key, hash| hash[key] = Faker::Lorem.word } }
+  let(:arguments) { Array.new(argument_arity) { double } }
+  let(:keyrest_keys) { keyrest? ? Faker::Lorem.unique.words.map(&:to_sym) : [] }
+  let(:options) { (option_keys + keyrest_keys).each_with_object({}) { |key, hash| hash[key] = Faker::Lorem.word } }
   let(:block) { -> {} }
   let(:instance) { instance_double(test_class) }
   let(:output) { double }
@@ -61,10 +65,26 @@ RSpec.shared_examples_for "a class pass method" do |method|
   before do
     allow(instance).to receive(method).and_return(output)
 
-    if accepts_block?
-      allow(test_class).to receive(:new).with(*arguments, &block).and_return(instance)
-    elsif arguments.any?
-      allow(test_class).to receive(:new).with(*arguments).and_return(instance)
+    if arguments.present?
+      if options.present?
+        if accepts_block?
+          allow(test_class).to receive(:new).with(*arguments, **options, &block).and_return(instance)
+        else
+          allow(test_class).to receive(:new).with(*arguments, **options).and_return(instance)
+        end
+      elsif accepts_block?
+        allow(test_class).to receive(:new).with(*arguments, &block).and_return(instance)
+      else
+        allow(test_class).to receive(:new).with(*arguments).and_return(instance)
+      end
+    elsif options.present?
+      if accepts_block?
+        allow(test_class).to receive(:new).with(**options, &block).and_return(instance)
+      else
+        allow(test_class).to receive(:new).with(**options).and_return(instance)
+      end
+    elsif accepts_block?
+      allow(test_class).to receive(:new).with(&block).and_return(instance)
     else
       allow(test_class).to receive(:new).with(no_args).and_return(instance)
     end
