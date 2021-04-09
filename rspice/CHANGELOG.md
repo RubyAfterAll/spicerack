@@ -1,6 +1,16 @@
 # Changelog
 
-## v0.25.5
+## Upcoming
+
+- Improve ruby 3.0 compatibility in `a_class_pass_method` shared example ([#440](https://github.com/Freshly/spicerack/pull/440))
+
+## v0.25.6
+
+*Release Date*: 2/24/2021
+
+- No changes
+
+## v0.25.5 [Yanked]
 
 *Release Date*: 2/24/2021
 

@@ -2,7 +2,15 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
-## v0.25.5
+### Rspice - [see changes](rspice/CHANGELOG.md#Upcoming)
+
+## v0.25.6
+
+*Release Date*: 2/24/2021
+
+### Technologic - [see changes](technologic/CHANGELOG.md#v0.25.6)
+
+## v0.25.5 [Yanked]
 
 *Release Date*: 2/24/2021
 

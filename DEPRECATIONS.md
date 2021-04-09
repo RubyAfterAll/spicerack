@@ -1,7 +1,7 @@
 # Deprecation History
 
 ## DEP-2021-01-14
-*First version introduced: TODO*  
+*First version introduced: 0.25.4*  
 *Deprecated behavior removed: TODO*  
 
 Deprecates `Technologic#instrument` and `Technologic.instrument` in favor of severity-level convenience methods (`info`, `error` etc).
