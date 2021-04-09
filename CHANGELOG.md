@@ -8,7 +8,9 @@
 
 - Ruby 3.0 compatibility for Spicerack objects ([#381](https://github.com/Freshly/spicerack/pull/381))
 
-### Rspice - [see changes](rspice/CHANGELOG.md#Upcoming)
+### Collectible - [see changes](collectible/CHANGELOG.md#v0.25.7)
+### ShortCircuIt - [see changes](rspice/CHANGELOG.md#v0.25.7)
+### Rspice - [see changes](rspice/CHANGELOG.md#v0.25.7)
 
 ## v0.25.6
 
