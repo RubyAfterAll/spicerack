@@ -2,6 +2,10 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## v0.25.7
+
+*Release Date*: 4/8/2021
+
 - Ruby 3.0 compatibility ([#381](https://github.com/Freshly/spicerack/pull/381))
 
 ## v0.25.6
