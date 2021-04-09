@@ -2,6 +2,8 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+- Ruby 3.0 compatibility for Spicerack objects ([#381](https://github.com/Freshly/spicerack/pull/381))
+
 ### Rspice - [see changes](rspice/CHANGELOG.md#Upcoming)
 
 ## v0.25.6
