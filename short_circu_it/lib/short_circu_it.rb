@@ -81,9 +81,7 @@ module ShortCircuIt
           prevent_double_wrapping_for: ShortCircuIt,
         ) do |*args, **opts|
           memoization_store.memoize(method_name, (args + [ opts ]).hash) do
-            # super(*args, **opts)
-
-            # TODO: replace with above when <= 2.6 support is dropped
+            # TODO: replace with `super(*args, **opts)` when <= 2.6 support is dropped
             if opts.present?
               super(*args, **opts)
             else

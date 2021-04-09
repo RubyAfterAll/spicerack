@@ -39,7 +39,12 @@ module Collectible
         def collection_wrap_on(*methods)
           methods.each do |method_name|
             around_method(method_name, prevent_double_wrapping_for: PROXY_MODULE_NAME) do |*args, **opts, &block|
-              result = super(*args, **opts, &block)
+              # TODO: replace with `super(*args, **opts, &block)` when <= 2.6 support is dropped
+              result = if opts.present?
+                super(*args, **opts, &block)
+              else
+                super(*args, &block)
+              end
 
               return self if result.equal?(items)
 
@@ -51,7 +56,12 @@ module Collectible
         def collection_wrap_values_on(*methods)
           methods.each do |method_name|
             around_method(method_name, prevent_double_wrapping_for: PROXY_MODULE_NAME) do |*args, **opts, &block|
-              result = super(*args, **opts, &block)
+              # TODO: replace with `super(*args, **opts, &block)` when <= 2.6 support is dropped
+              result = if opts.present?
+                super(*args, **opts, &block)
+              else
+                super(*args, &block)
+              end
 
               if result.respond_to?(:transform_values)
                 result.transform_values { |collection| collection_wrap { collection } }
