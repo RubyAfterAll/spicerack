@@ -2,7 +2,11 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
-- Fix protected method error introduced in 0.25.6
+## v0.25.8
+
+*Release Date*: 4/12/2021
+
+- Fix protected method error introduced in 0.25.6 ([#444](https://github.com/Freshly/spicerack/pull/444))
 
 ## v0.25.7
 
