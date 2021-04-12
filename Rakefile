@@ -47,6 +47,8 @@ ALL_GEMS.each do |gem|
       new_version_text = <<~TEXT
         # Changelog
 
+        ## Upcoming <!-- Add unreleased change notes here: -->
+
         ## v#{version}
 
         *Release Date*: #{Date.today.strftime("%-m/%-d/%Y")}
@@ -54,7 +56,7 @@ ALL_GEMS.each do |gem|
         - No changes
       TEXT
 
-      changelog_text.gsub!("# Changelog\n", new_version_text)
+      changelog_text.gsub!("# Changelog\n\n## Upcoming <!-- Add unreleased change notes here: -->\n", new_version_text)
       File.open(changelog_path, "w") { |f| f.write(changelog_text) }
     end
   end
