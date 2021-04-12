@@ -2,6 +2,8 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+- Fix protected method error introduced in 0.25.6
+
 ## v0.25.7
 
 *Release Date*: 4/8/2021
