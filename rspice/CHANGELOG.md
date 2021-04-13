@@ -2,6 +2,12 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## v0.25.8.1
+
+*Release Date*: 4/13/2021
+
+- Fix broken matcher introduced in 0.25.8 ([#445](https://github.com/Freshly/spicerack/pull/445))
+
 ## v0.25.8
 
 *Release Date*: 4/12/2021
