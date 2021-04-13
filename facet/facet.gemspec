@@ -13,12 +13,12 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "A filterable, sortable, pageable, and Rails cacheable ActiveRecord::Relation"
   spec.description   = "Create cacheable collections of filtered, sorted, and paginated ActiveRecord objects"
-  spec.homepage      = "https://github.com/Freshly/spicerack/tree/master/facet"
+  spec.homepage      = "https://github.com/Freshly/spicerack/tree/main/facet"
   spec.license       = "MIT"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
-  spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/master/facet/CHANGELOG.md"
+  spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/main/facet/CHANGELOG.md"
   spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/facet/#{Facet::VERSION}"
 
   spec.files         = Dir["README.md", "LICENSE.txt", ".yardopts", "lib/**/{*,.[a-z]*}"]

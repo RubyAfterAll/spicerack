@@ -13,12 +13,12 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Logging system built on an extensible event triggering system requiring minimal implementation"
   spec.description   = "A clean and terse way to produce standardized, highly actionable, and data-rich logs"
-  spec.homepage      = "https://github.com/Freshly/spicerack/tree/master/technologic"
+  spec.homepage      = "https://github.com/Freshly/spicerack/tree/main/technologic"
   spec.license       = "MIT"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
-  spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/master/technologic/CHANGELOG.md"
+  spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/main/technologic/CHANGELOG.md"
   spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/technologic/#{Technologic::VERSION}"
 
   spec.files         = Dir["README.md", "LICENSE.txt", ".yardopts", "lib/**/{*,.[a-z]*}"]
