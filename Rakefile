@@ -77,6 +77,9 @@ namespace :spicerack do
     system "bundle"
     Rake::Task["release"].invoke
     SPICERACK_GEMS.each { |gem| sh "cd #{gem} && bundle exec rake release" }
+
+    # TODO: Remove once codeclimate configs have been updated to look at main branch
+    system "git pull --tag && git tag master && git push --tag -f"
   end
 
   desc "Update changelogs for all gems with no changes this version."

@@ -13,12 +13,12 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Allows you to easily wrap methods with custom logic on any class"
   spec.description   = "A metaprogramming module which allows you to wrap any method easily"
-  spec.homepage      = "https://github.com/Freshly/spicerack/tree/master/around_the_world"
+  spec.homepage      = "https://github.com/Freshly/spicerack/tree/main/around_the_world"
   spec.license       = "MIT"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
-  spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/master/around_the_world/CHANGELOG.md"
+  spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/main/around_the_world/CHANGELOG.md"
   spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/around_the_world/#{AroundTheWorld::VERSION}"
 
   spec.files         = Dir["README.md", "LICENSE.txt", ".yardopts", "lib/**/{*,.[a-z]*}"]

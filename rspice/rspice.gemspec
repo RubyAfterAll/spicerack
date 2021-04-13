@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "An `RSpec` utility gem of custom matchers, shared contexts and examples"
   spec.description   = "A dash of custom matchers, a pinch of shared contexts, and shared examples (to taste) for RSpec"
-  spec.homepage      = "https://github.com/Freshly/spicerack/tree/master/rspice"
+  spec.homepage      = "https://github.com/Freshly/spicerack/tree/main/rspice"
   spec.license       = "MIT"
 
   spec.authors = [
@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
-  spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/master/rspice/CHANGELOG.md"
+  spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/main/rspice/CHANGELOG.md"
   spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/rspice/#{Rspice::VERSION}"
 
   spec.files         = Dir["README.md", "LICENSE.txt", ".yardopts", "lib/**/{*,.[a-z]*}"]
