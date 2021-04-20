@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require "spicerack"
+require "substance/input_object"
 
 module Directive
-  class ConfigObject < Spicerack::InputObject
+  class ConfigObject < Substance::InputObject
     include Singleton
     include ActiveModel::AttributeAssignment
 

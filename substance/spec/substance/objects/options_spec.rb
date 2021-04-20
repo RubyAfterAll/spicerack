@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Spicerack::Objects::Options, type: :module do
+RSpec.describe Substance::Objects::Options, type: :module do
   include_context "with an example input object"
 
   describe ".option" do

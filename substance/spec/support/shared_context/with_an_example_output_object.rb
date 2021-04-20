@@ -3,7 +3,7 @@
 RSpec.shared_context "with an example output object" do
   subject(:example_output_object) { example_output_object_class.new(**input) }
 
-  let(:example_output_object_class) { Class.new(Spicerack::OutputObject) }
+  let(:example_output_object_class) { Class.new(Substance::OutputObject) }
 
   let(:input) { {} }
 

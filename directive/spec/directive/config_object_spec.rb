@@ -5,7 +5,7 @@ RSpec.describe Directive::ConfigObject do
 
   let(:config_object_class) { Class.new(described_class) }
 
-  it { is_expected.to inherit_from Spicerack::InputObject }
+  it { is_expected.to inherit_from Substance::InputObject }
   it { is_expected.to include_module Singleton }
   it { is_expected.to include_module ActiveModel::AttributeAssignment }
 

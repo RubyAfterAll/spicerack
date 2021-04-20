@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Spicerack::Objects::Arguments, type: :module do
+RSpec.describe Substance::Objects::Arguments, type: :module do
   include_context "with an example input object"
 
   describe ".argument" do

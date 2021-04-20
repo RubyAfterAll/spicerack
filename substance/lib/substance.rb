@@ -2,8 +2,6 @@
 
 require_relative "substance/version"
 
-require "tablesalt"
-
 require_relative "substance/root_object"
 require_relative "substance/attribute_object"
 require_relative "substance/input_object"

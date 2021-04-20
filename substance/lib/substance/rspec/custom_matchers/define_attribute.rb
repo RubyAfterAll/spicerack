@@ -2,7 +2,7 @@
 
 # RSpec matcher that tests usage of `.attribute`
 #
-#     class Example < Spicerack::InputObject
+#     class Example < Substance::InputObject
 #       attribute :foo
 #     end
 #

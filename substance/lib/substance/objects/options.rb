@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Options describe input which may be provided to define or override default values.
-module Spicerack
+module Substance
   module Objects
     module Options
       extend ActiveSupport::Concern

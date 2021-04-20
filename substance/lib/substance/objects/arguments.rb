@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Arguments describe input that is required (which can be nil, unless otherwise specified).
-module Spicerack
+module Substance
   module Objects
     module Arguments
       extend ActiveSupport::Concern

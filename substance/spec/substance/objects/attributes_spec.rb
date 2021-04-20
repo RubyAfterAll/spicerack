@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Spicerack::Objects::Attributes, type: :module do
+RSpec.describe Substance::Objects::Attributes, type: :module do
   include_context "with an example input object"
 
   shared_context "with attributes defined on the class" do

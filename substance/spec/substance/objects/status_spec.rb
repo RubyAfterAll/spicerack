@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Spicerack::Objects::Status, type: :concern do
+RSpec.describe Substance::Objects::Status, type: :concern do
   include_context "with an example output object"
 
   describe "#validated?" do

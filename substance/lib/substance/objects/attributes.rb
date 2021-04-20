@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Attributes are structured data within an object.
-module Spicerack
+module Substance
   module Objects
     module Attributes
       extend ActiveSupport::Concern

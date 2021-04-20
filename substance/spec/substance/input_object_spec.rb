@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-RSpec.describe Spicerack::InputObject do
+RSpec.describe Substance::InputObject do
   include_context "with an example input object"
 
-  it { is_expected.to inherit_from Spicerack::AttributeObject }
-  it { is_expected.to include_module Spicerack::Objects::Arguments }
-  it { is_expected.to include_module Spicerack::Objects::Options }
+  it { is_expected.to inherit_from Substance::AttributeObject }
+  it { is_expected.to include_module Substance::Objects::Arguments }
+  it { is_expected.to include_module Substance::Objects::Options }
 
   describe "#initialize" do
     let(:input) { Hash[*Faker::Lorem.words(number: 4)].symbolize_keys }

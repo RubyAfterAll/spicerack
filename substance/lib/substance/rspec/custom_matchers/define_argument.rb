@@ -2,7 +2,7 @@
 
 # RSpec matcher that tests usage of `.argument`
 #
-#     class Example < Spicerack::InputObject
+#     class Example < Substance::InputObject
 #       argument :foo
 #       argument :bar, allow_nil: false
 #     end

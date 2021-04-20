@@ -3,9 +3,9 @@
 require_relative "objects/defaults"
 require_relative "objects/attributes"
 
-module Spicerack
-  class AttributeObject < Spicerack::RootObject
-    include Spicerack::Objects::Defaults
-    include Spicerack::Objects::Attributes
+module Substance
+  class AttributeObject < Substance::RootObject
+    include Substance::Objects::Defaults
+    include Substance::Objects::Attributes
   end
 end

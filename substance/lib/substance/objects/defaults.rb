@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
+require "tablesalt/isolation"
+
 # Defaults are used as the value when then attribute is unspecified.
-module Spicerack
+module Substance
   module Objects
     module Defaults
       extend ActiveSupport::Concern

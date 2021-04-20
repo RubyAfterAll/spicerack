@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
-module Spicerack
+module Substance
   module Objects
     module Output
       extend ActiveSupport::Concern
 
       included do
+        include AroundTheWorld
+
         class_attribute :_outputs, instance_writer: false, default: []
 
         delegate :_outputs, to: :class

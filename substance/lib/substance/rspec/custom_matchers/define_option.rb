@@ -2,7 +2,7 @@
 
 # RSpec matcher that tests usage of `.option`
 #
-#     class Example < Spicerack::InputObject
+#     class Example < Substance::InputObject
 #       option :foo
 #       option :bar, default: :baz
 #       option(:gaz) { :haz }

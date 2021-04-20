@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Spicerack::Objects::Output, type: :concern do
+RSpec.describe Substance::Objects::Output, type: :concern do
   include_context "with an example output object"
 
   describe ".output" do
@@ -38,15 +38,15 @@ RSpec.describe Spicerack::Objects::Output, type: :concern do
 
     shared_examples_for "can't read or write output" do
       it "raises on attempted write" do
-        expect { example_output_object.test_output0 = :test }.to raise_error Spicerack::NotValidatedError
-        expect { example_output_object.test_output1 = :test }.to raise_error Spicerack::NotValidatedError
-        expect { example_output_object.test_output2 = :test }.to raise_error Spicerack::NotValidatedError
+        expect { example_output_object.test_output0 = :test }.to raise_error Substance::NotValidatedError
+        expect { example_output_object.test_output1 = :test }.to raise_error Substance::NotValidatedError
+        expect { example_output_object.test_output2 = :test }.to raise_error Substance::NotValidatedError
       end
 
       it "raises on attempted read" do
-        expect { example_output_object.test_output0 }.to raise_error Spicerack::NotValidatedError
-        expect { example_output_object.test_output1 }.to raise_error Spicerack::NotValidatedError
-        expect { example_output_object.test_output2 }.to raise_error Spicerack::NotValidatedError
+        expect { example_output_object.test_output0 }.to raise_error Substance::NotValidatedError
+        expect { example_output_object.test_output1 }.to raise_error Substance::NotValidatedError
+        expect { example_output_object.test_output2 }.to raise_error Substance::NotValidatedError
       end
     end
 
@@ -105,7 +105,7 @@ RSpec.describe Spicerack::Objects::Output, type: :concern do
 
       context "without running validations" do
         it "raises" do
-          expect { example_output_object.outputs }.to raise_error Spicerack::NotValidatedError
+          expect { example_output_object.outputs }.to raise_error Substance::NotValidatedError
         end
       end
 

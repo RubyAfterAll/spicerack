@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-module Spicerack
+require "tablesalt/stringable_object"
+
+module Substance
   class RootObject
     include ActiveSupport::Callbacks
     include ShortCircuIt

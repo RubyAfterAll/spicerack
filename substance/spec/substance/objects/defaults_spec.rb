@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Spicerack::Objects::Defaults, type: :module do
+RSpec.describe Substance::Objects::Defaults, type: :module do
   subject(:example_object) { example_dsl_class.new }
 
   let(:example_dsl_class) do

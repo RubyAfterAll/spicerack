@@ -5,7 +5,11 @@ RSpec.describe Substance do
     expect(Substance::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  describe described_class::Error do
+    it { is_expected.to inherit_from StandardError }
+  end
+
+  describe described_class::NotValidatedError do
+    it { is_expected.to inherit_from Substance::Error }
   end
 end

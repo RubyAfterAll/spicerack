@@ -8,8 +8,4 @@ RSpec.describe Spicerack do
   describe described_class::Error do
     it { is_expected.to inherit_from StandardError }
   end
-
-  describe described_class::NotValidatedError do
-    it { is_expected.to inherit_from Spicerack::Error }
-  end
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Spicerack
+module Substance
   class InputModel < InputObject
     extend ActiveModel::Naming
     extend ActiveModel::Translation

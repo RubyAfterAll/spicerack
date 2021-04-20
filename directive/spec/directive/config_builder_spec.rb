@@ -41,7 +41,7 @@ RSpec.describe Directive::ConfigBuilder do
   describe "#configure" do
     it "yields the input object" do
       builder.configure do |config|
-        expect(config).to be_a Spicerack::InputObject
+        expect(config).to be_a Substance::InputObject
 
         all_options.each do |opt|
           expect(config).to define_option opt, default: default_values[opt]

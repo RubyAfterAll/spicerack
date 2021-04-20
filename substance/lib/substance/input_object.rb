@@ -3,12 +3,12 @@
 require_relative "objects/arguments"
 require_relative "objects/options"
 
-module Spicerack
-  class InputObject < Spicerack::AttributeObject
+module Substance
+  class InputObject < Substance::AttributeObject
     define_callbacks :initialize
 
-    include Spicerack::Objects::Arguments
-    include Spicerack::Objects::Options
+    include Substance::Objects::Arguments
+    include Substance::Objects::Options
 
     def initialize(**input)
       @input = input

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Spicerack
+module Substance
   module Objects
     module Status
       extend ActiveSupport::Concern
