@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
 module Substance
-  VERSION = "0.1.0"
+  # This constant is managed by spicerack
+  VERSION = "0.25.8.1"
 end
