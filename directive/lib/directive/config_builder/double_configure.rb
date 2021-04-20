@@ -5,7 +5,7 @@ module Directive
     extend ActiveSupport::Concern
 
     included do
-      set_callback :configure, :after, :warn_on_multiple_configure_calls
+      set_callback :configure, :after, :warn_on_multiple_configure_calls, if: []
     end
 
     private
