@@ -1,6 +1,16 @@
-require "substance/version"
+# frozen_string_literal: true
+
+require_relative "substance/version"
+
+require "tablesalt"
+
+require_relative "substance/root_object"
+require_relative "substance/attribute_object"
+require_relative "substance/input_object"
+require_relative "substance/input_model"
+require_relative "substance/output_object"
 
 module Substance
   class Error < StandardError; end
-  # Your code goes here...
+  class NotValidatedError < Error; end
 end

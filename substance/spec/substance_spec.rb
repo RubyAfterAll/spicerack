@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Substance do
   it "has a version number" do
     expect(Substance::VERSION).not_to be nil

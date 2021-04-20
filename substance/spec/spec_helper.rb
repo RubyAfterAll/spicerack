@@ -3,4 +3,6 @@
 require_relative "../../shared/spec_helper"
 
 require "substance"
-require "substance/spec_helper"
+require "substance/rspec"
+
+Dir["#{__dir__}/support/**/*.rb"].each { |f| require f }
