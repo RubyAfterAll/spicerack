@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require "active_support/callbacks"
+require "short_circu_it"
+require "technologic"
 require "tablesalt/stringable_object"
 
 module Substance

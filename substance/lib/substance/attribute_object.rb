@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative "root_object"
 require_relative "objects/defaults"
 require_relative "objects/attributes"
 

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "input_object"
+
 module Substance
   class InputModel < InputObject
     extend ActiveModel::Naming

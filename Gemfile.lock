@@ -19,6 +19,8 @@ PATH
       technologic (= 0.25.8.1)
     substance (0.25.8.1)
       activesupport (>= 5.2.1)
+      short_circu_it (= 0.25.8.1)
+      technologic (= 0.25.8.1)
     tablesalt (0.25.8.1)
       activemodel (>= 5.2.1)
       activesupport (>= 5.2.1)

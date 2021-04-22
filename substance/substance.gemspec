@@ -26,6 +26,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = %w[lib]
 
   spec.add_runtime_dependency "activesupport", rails_version
+  spec.add_runtime_dependency "short_circu_it", Substance::VERSION
+  spec.add_runtime_dependency "technologic", Substance::VERSION
 
   spec.add_development_dependency "faker", ">= 1.8", "< 2.0"
   spec.add_development_dependency "rspec", "~> 3.0"
