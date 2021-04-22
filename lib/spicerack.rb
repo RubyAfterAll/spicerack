@@ -21,9 +21,11 @@ require "spicerack/redis_model"
 module Spicerack
   class Error < StandardError; end
 
-  RootObject = ActiveSupport::Deprecation::DeprecatedConstantProxy.new("Spicerack::RootObject", "Substance::RootObject")
-  AttributeObject = ActiveSupport::Deprecation::DeprecatedConstantProxy.new("Spicerack::AttributeObject", "Substance::AttributeObject")
-  InputModel = ActiveSupport::Deprecation::DeprecatedConstantProxy.new("Spicerack::InputModel", "Substance::InputModel")
-  InputObject = ActiveSupport::Deprecation::DeprecatedConstantProxy.new("Spicerack::InputObject", "Substance::InputObject")
-  OutputObject = ActiveSupport::Deprecation::DeprecatedConstantProxy.new("Spicerack::OutputObject", "Substance::OutputObject")
+  include ActiveSupport::Deprecation::DeprecatedConstantAccessor
+
+  deprecate_constant "RootObject", "Substance::RootObject"
+  deprecate_constant "AttributeObject", "Substance::AttributeObject"
+  deprecate_constant "InputModel", "Substance::InputModel"
+  deprecate_constant "InputObject", "Substance::InputObject"
+  deprecate_constant "OutputObject", "Substance::OutputObject"
 end
