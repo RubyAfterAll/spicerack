@@ -5,6 +5,7 @@ require "short_circu_it"
 
 require "tablesalt/version"
 
+require "tablesalt/class_pass"
 require "tablesalt/dsl_accessor"
 require "tablesalt/isolation"
 require "tablesalt/stringable_object"
