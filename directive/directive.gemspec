@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency "activesupport", rails_version
-  spec.add_runtime_dependency "spicerack", Directive::VERSION
+  spec.add_runtime_dependency "substance", Directive::VERSION
 
   spec.add_development_dependency "bundler", ">= 2.0.1"
   spec.add_development_dependency "faker", ">= 1.8", "< 2.0"

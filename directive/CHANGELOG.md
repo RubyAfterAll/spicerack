@@ -2,6 +2,8 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+- Fix dependency bug introduced in 0.26.0
+
 ## v0.26.0
 
 *Release Date*: 4/27/2021
