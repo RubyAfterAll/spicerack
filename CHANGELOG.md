@@ -2,9 +2,13 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## v0.26.0
+
+*Release Date*: 4/27/2021
+
 - Move Spicerack objects to new `Substance` gem ([#451](https://github.com/Freshly/spicerack/pull/451))
 
-### Tablesalt - [see changes](tablesalt/CHANGELOG.md#Upcoming)
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0.26.0)
 
 ## v0.25.8.1
 
