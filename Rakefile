@@ -17,6 +17,7 @@ SPICERACK_GEMS = %w[
   short_circu_it
   spicerack-styleguide
   spicery
+  substance
   technologic
   tablesalt
 ].freeze
