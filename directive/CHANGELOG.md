@@ -2,9 +2,13 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## v0.26.0.1
+
+*Release Date*: 4/27/2021
+
 - Fix dependency bug introduced in 0.26.0 ([#454](https://github.com/Freshly/spicerack/pull/454))
 
-## v0.26.0
+## v0.26.0 [Yanked]
 
 *Release Date*: 4/27/2021
 
