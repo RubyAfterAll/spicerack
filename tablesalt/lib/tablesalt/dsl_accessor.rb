@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "active_support/concern"
 require "active_support/core_ext/module/attr_internal"
 
 # Utility for creating DSL class variables - great for base classes with many child classes.

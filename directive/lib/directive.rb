@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "active_support/core_ext/module/delegation"
+require "active_support/core_ext/object/blank"
 
 require_relative "directive/config_builder"
 require_relative "directive/config_delegation"
