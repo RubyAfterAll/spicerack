@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
+require "active_support/concern"
+
 module Directive
   module DoubleConfigure
     extend ActiveSupport::Concern
 
     included do
-      set_callback :configure, :after, :warn_on_multiple_configure_calls, if: []
+      set_callback :configure, :after, :warn_on_multiple_configure_calls
     end
 
     private

@@ -3,6 +3,7 @@
 ## Upcoming <!-- Add unreleased change notes here: -->
 
 - Make Directive a dependency of Spicerack to simplify bundling
+- Update dependency requirements to improve compatibility with different environments ([#456](https://github.com/Freshly/spicerack/pull/456))
 
 ## v0.26.0.1
 

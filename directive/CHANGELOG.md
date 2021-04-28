@@ -2,6 +2,8 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+- Update dependency requirements to improve compatibility with different environments ([#456](https://github.com/Freshly/spicerack/pull/456))
+
 ## v0.26.0.1
 
 *Release Date*: 4/27/2021
