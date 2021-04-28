@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+require "active_model"
 require "substance/input_object"
+require "tablesalt/stringable_object"
 
 module Directive
   class ConfigObject < Substance::InputObject
