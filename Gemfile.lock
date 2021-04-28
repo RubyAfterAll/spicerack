@@ -3,6 +3,9 @@ PATH
   specs:
     around_the_world (0.26.0.1)
       activesupport (>= 5.2.1)
+    directive (0.26.0.1)
+      activesupport (>= 5.2.1)
+      substance (= 0.26.0.1)
     redis_hash (0.26.0.1)
       activesupport (>= 5.2.1)
       redis (>= 3.0)
@@ -34,6 +37,7 @@ PATH
   specs:
     spicerack (0.26.0.1)
       around_the_world (= 0.26.0.1)
+      directive (= 0.26.0.1)
       redis_hash (= 0.26.0.1)
       short_circu_it (= 0.26.0.1)
       substance (= 0.26.0.1)

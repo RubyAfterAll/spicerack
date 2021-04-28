@@ -2,6 +2,8 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+- Make Directive a dependency of Spicerack to simplify bundling
+
 ## v0.26.0.1
 
 *Release Date*: 4/27/2021
