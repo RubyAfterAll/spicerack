@@ -2,6 +2,10 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## v0.26.0.3
+
+*Release Date*: 5/4/2021
+
 - Add ActiveModel dependency ([#458](https://github.com/Freshly/spicerack/pull/458))
 
 ## v0.26.0.2

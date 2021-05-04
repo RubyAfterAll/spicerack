@@ -18,7 +18,7 @@ module Tablesalt
 
       private
 
-      def class_pass_method(*methods)
+      def class_pass_method(*methods, to: nil)
         methods.each do |method|
           next if _class_pass_methods.include?(method)
 
@@ -26,9 +26,9 @@ module Tablesalt
 
           define_singleton_method method do |*args, **attrs|
             if RUBY_VERSION < "2.7.0" && attrs.empty?
-              new(*args).public_send(method)
+              new(*args).public_send(to || method)
             else
-              new(*args, **attrs).public_send(method)
+              new(*args, **attrs).public_send(to || method)
             end
           end
         end
