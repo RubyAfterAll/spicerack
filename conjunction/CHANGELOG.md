@@ -2,6 +2,12 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## v0.26.0.4
+
+*Release Date*: 5/17/2021
+
+- Remove unused Spicerack dependency ([#460](https://github.com/Freshly/spicerack/pull/460))
+
 ## v0.26.0.3
 
 *Release Date*: 5/4/2021
