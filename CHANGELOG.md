@@ -2,9 +2,66 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## v0.26.0.4
+
+*Release Date*: 5/17/2021
+
+- No changes
+
+### Conjunction - [see changes](conjunction/CHANGELOG.md#Upcoming)
+
+## v0.26.0.3
+
+*Release Date*: 5/4/2021
+
+### Substance - [see changes](substance/CHANGELOG.md#Upcoming)
+
+## v0.26.0.2
+
+*Release Date*: 4/28/2021
+
+- Make Directive a dependency of Spicerack to simplify bundling
+- Update dependency requirements to improve compatibility with different environments ([#456](https://github.com/Freshly/spicerack/pull/456))
+
+## v0.26.0.1
+
+*Release Date*: 4/27/2021
+
+- No changes
+
+### Directive - [see changes](directive/CHANGELOG.md#v0.26.0.1)
+
+## v0.26.0 [Yanked]
+
+*Release Date*: 4/27/2021
+
+- Move Spicerack objects to new `Substance` gem ([#451](https://github.com/Freshly/spicerack/pull/451))
+
+### Directive - [see changes](directive/CHANGELOG.md#v0.26.0-Yanked)
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0.26.0-Yanked)
+
+## v0.25.8.1
+
+*Release Date*: 4/13/2021
+
+### Rspice - [see changes](rspice/CHANGELOG.md#v0.25.8.1)
+
+## v0.25.8
+
+*Release Date*: 4/12/2021
+
+### Technologic - [see changes](technologic/CHANGELOG.md#v0.25.8)
+### Rspice - [see changes](rspice/CHANGELOG.md#v0.25.8)
+
+## v0.25.7
+
+*Release Date*: 4/8/2021
+
 - Ruby 3.0 compatibility for Spicerack objects ([#381](https://github.com/Freshly/spicerack/pull/381))
 
-### Rspice - [see changes](rspice/CHANGELOG.md#Upcoming)
+### Collectible - [see changes](collectible/CHANGELOG.md#v0.25.7)
+### ShortCircuIt - [see changes](rspice/CHANGELOG.md#v0.25.7)
+### Rspice - [see changes](rspice/CHANGELOG.md#v0.25.7)
 
 ## v0.25.6
 

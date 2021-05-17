@@ -13,12 +13,12 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Provides a class that matches the Hash api by wrapping Redis"
   spec.description   = "A full implementation of Ruby's Hash API which transparently wraps a Redis hash"
-  spec.homepage      = "https://github.com/Freshly/spicerack/tree/master/redis_hash"
+  spec.homepage      = "https://github.com/Freshly/spicerack/tree/main/redis_hash"
   spec.license       = "MIT"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
-  spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/master/redis_hash/CHANGELOG.md"
+  spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/main/redis_hash/CHANGELOG.md"
   spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/redis_hash/#{RedisHash::VERSION}"
 
   spec.files         = Dir["README.md", "LICENSE.txt", ".yardopts", "lib/**/{*,.[a-z]*}"]

@@ -17,6 +17,7 @@ SPICERACK_GEMS = %w[
   short_circu_it
   spicerack-styleguide
   spicery
+  substance
   technologic
   tablesalt
 ].freeze
@@ -47,6 +48,8 @@ ALL_GEMS.each do |gem|
       new_version_text = <<~TEXT
         # Changelog
 
+        ## Upcoming <!-- Add unreleased change notes here: -->
+
         ## v#{version}
 
         *Release Date*: #{Date.today.strftime("%-m/%-d/%Y")}
@@ -54,7 +57,7 @@ ALL_GEMS.each do |gem|
         - No changes
       TEXT
 
-      changelog_text.gsub!("# Changelog\n", new_version_text)
+      changelog_text.gsub!("# Changelog\n\n## Upcoming <!-- Add unreleased change notes here: -->\n", new_version_text)
       File.open(changelog_path, "w") { |f| f.write(changelog_text) }
     end
   end
@@ -75,6 +78,9 @@ namespace :spicerack do
     system "bundle"
     Rake::Task["release"].invoke
     SPICERACK_GEMS.each { |gem| sh "cd #{gem} && bundle exec rake release" }
+
+    # TODO: Remove once codeclimate configs have been updated to look at main branch
+    system "git pull --tag && git tag master -f && git push --tag -f"
   end
 
   desc "Update changelogs for all gems with no changes this version."

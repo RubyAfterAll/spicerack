@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "active_support/concern"
+
 module Directive
   module DoubleConfigure
     extend ActiveSupport::Concern

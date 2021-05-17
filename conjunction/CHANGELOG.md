@@ -1,5 +1,55 @@
 # Changelog
 
+## Upcoming <!-- Add unreleased change notes here: -->
+
+## v0.26.0.4
+
+*Release Date*: 5/17/2021
+
+- Remove unused Spicerack dependency ([#460](https://github.com/Freshly/spicerack/pull/460))
+
+## v0.26.0.3
+
+*Release Date*: 5/4/2021
+
+- No changes
+
+## v0.26.0.2
+
+*Release Date*: 4/28/2021
+
+- No changes
+
+## v0.26.0.1
+
+*Release Date*: 4/27/2021
+
+- No changes
+
+## v0.26.0 [Yanked]
+
+*Release Date*: 4/27/2021
+
+- No changes
+
+## v0.25.8.1
+
+*Release Date*: 4/13/2021
+
+- No changes
+
+## v0.25.8
+
+*Release Date*: 4/12/2021
+
+- No changes
+
+## v0.25.7
+
+*Release Date*: 4/8/2021
+
+- No changes
+
 ## v0.25.6
 
 *Release Date*: 2/24/2021

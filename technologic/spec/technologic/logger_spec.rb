@@ -43,6 +43,7 @@ RSpec.describe Technologic::Logger do
         allow(logger).to receive(severity).with(no_args) { |&block| @yield = block.yield }
       end
 
+      # TODO: Flake
       it "logs formatted data" do
         expect { log }.to change { @yield }.from(nil).to(expected_log_data) # rubocop:disable RSpec/InstanceVariable
       end

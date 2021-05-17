@@ -3,7 +3,7 @@
 Join together related concepts for a common purpose with Conjugation.
 
 [![Gem Version](https://badge.fury.io/rb/conjunction.svg)](https://badge.fury.io/rb/conjunction)
-[![Build Status](https://semaphoreci.com/api/v1/freshly/spicerack/branches/master/badge.svg)](https://semaphoreci.com/freshly/spicerack)
+[![Build Status](https://semaphoreci.com/api/v1/freshly/spicerack/branches/main/badge.svg)](https://semaphoreci.com/freshly/spicerack)
 [![Maintainability](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/maintainability)](https://codeclimate.com/github/Freshly/spicerack/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7e089c2617c530a85b17/test_coverage)](https://codeclimate.com/github/Freshly/spicerack/test_coverage)
 

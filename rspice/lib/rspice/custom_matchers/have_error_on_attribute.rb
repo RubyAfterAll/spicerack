@@ -26,6 +26,8 @@ RSpec::Matchers.define :have_error_on_attribute do |attribute|
     @errors = (record.errors.details[attribute.to_sym] || []).pluck(:error).map(&:to_sym)
 
     expect(@errors).to include(@detail_key.to_sym)
+
+    expect { record.errors[attribute.to_sym] }.to_not raise_error
   end
 
   chain :with_detail_key do |detail_key|

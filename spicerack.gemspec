@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/Freshly/spicerack"
-  spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/master/CHANGELOG.md"
+  spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/main/CHANGELOG.md"
   spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/spicerack"
 
   spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]
@@ -39,8 +39,10 @@ Gem::Specification.new do |spec|
 
   # Spicerack Gems
   spec.add_dependency "around_the_world", version
+  spec.add_dependency "directive", version
   spec.add_dependency "redis_hash", version
   spec.add_dependency "short_circu_it", version
+  spec.add_dependency "substance", version
   spec.add_dependency "technologic", version
   spec.add_dependency "tablesalt", version
 

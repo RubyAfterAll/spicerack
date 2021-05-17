@@ -56,9 +56,7 @@ module Technologic
     # Targeted workaround for ActiveJob#instrument in Rails 6.1+
     return super if defined?(ActiveJob) && self.class <= ActiveJob::Base && ActiveJob.version >= ACTIVEJOB_WORKAROUND_FIRST_VERSION
 
-    ActiveSupport::Deprecation.warn("Technologic#instrument is deprecated. Instead, use the corresponding severity-level convenience method (#info, #error etc)")
-
-    _tl_instrument(*args, **opts, &block)
+    self.class.instrument(*args, **opts, &block)
   end
 
   module ClassMethods
