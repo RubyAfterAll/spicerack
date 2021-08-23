@@ -11,7 +11,13 @@ module Tablesalt
       # Make sure this middleware appears +before+ anything that may set
       # thread variables using ThreadAccessor
       def call(req)
-        ThreadAccessor.clean_thread_context(logger: @app.logger) { @app.call(req) }
+        ThreadAccessor.clean_thread_context(logger: logger) { @app.call(req) }
+      end
+
+      def logger
+        return unless @app.respond_to? :logger
+
+        @app.logger
       end
     end
   end
