@@ -2,6 +2,10 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## v0.27.0
+
+*Release Date*: 8/23/2021
+
 ### ThreadAccessor
 - Isolated ThreadAccessor store, Rack middleware ([#462](https://github.com/Freshly/spicerack/pull/462))
 - Added namespaced thread stores for gem usage ([#463](https://github.com/Freshly/spicerack/pull/463), ([#464](https://github.com/Freshly/spicerack/pull/464)), ([#466](https://github.com/Freshly/spicerack/pull/466)))

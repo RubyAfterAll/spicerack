@@ -2,6 +2,10 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## v0.27.0
+
+*Release Date*: 8/23/2021
+
 ### Tablesalt - [see changes](tablesalt/CHANGELOG.md#Upcoming)
 
 ## v0.26.0.4
