@@ -8,6 +8,20 @@ RSpec.describe Tablesalt::ThreadAccessor do
   let(:thread_key) { Faker::Lorem.sentence.parameterize.underscore.to_sym }
   let(:private?) { true }
 
+  it { expect(example_class.private_methods).to include :__thread_accessor_store_instance__ }
+
+  describe ".[]" do
+    subject(:mod) { described_class[namespace] }
+
+    let(:namespace) { Faker::Lorem.word }
+
+    it { is_expected.to be_a described_class::ScopedAccessor }
+
+    it "has the specified namespace" do
+      expect(mod.scope).to eq namespace
+    end
+  end
+
   describe ".thread_reader" do
     before { example_class.__send__(:thread_reader, method, thread_key, private: private?) }
 
