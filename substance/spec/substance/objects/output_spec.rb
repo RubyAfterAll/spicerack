@@ -111,7 +111,7 @@ RSpec.describe Substance::Objects::Output, type: :concern do
         end
 
         context "when outputs are also arguments" do
-          let(:example_output_object) { example_class.new(state_input) }
+          let(:example_output_object) { example_class.new(**state_input) }
           let(:state_input) do
             { test_output0: nil, test_output1: :default_value1, test_output2: :default_value2 }
           end
