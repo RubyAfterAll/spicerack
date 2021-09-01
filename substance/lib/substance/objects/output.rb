@@ -39,7 +39,8 @@ module Substance
 
         def ensure_validation_before(method)
           around_method method do |*args, **opts|
-            raise NotValidatedError unless validated?
+            attr_name = method.to_s.delete("=").to_sym
+            raise NotValidatedError unless validated? || _options.include?(attr_name) || _arguments.include?(attr_name)
 
             # TODO: replace with `super(...)` when <= 2.6 support is dropped
             if RUBY_VERSION < "2.7" && opts.blank?
