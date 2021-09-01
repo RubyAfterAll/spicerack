@@ -39,7 +39,6 @@ module Substance
 
         def ensure_validation_before(method)
           around_method method do |*args, **opts|
-            attr_name = method.to_s.delete("=").to_sym
             raise NotValidatedError unless validated_output?(method)
 
             # TODO: replace with `super(...)` when <= 2.6 support is dropped
@@ -61,8 +60,6 @@ module Substance
       def output_struct
         Struct.new(*_outputs)
       end
-
-      private
 
       def validated_output?(method)
         attr_name = method.to_s.delete("=").to_sym
