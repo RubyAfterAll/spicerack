@@ -2,7 +2,7 @@
 
 require "active_support/core_ext/module/delegation"
 require "active_support/core_ext/object/blank"
-require "active_support/core_ext/object/inclusion.rb"
+require "active_support/core_ext/object/inclusion"
 
 require_relative "directive/config_builder"
 require_relative "directive/config_delegation"
