@@ -62,7 +62,7 @@ module Substance
       end
 
       def validated_output?(method)
-        validate? || begin
+        validated? || begin
           attr_name = method.to_s.delete("=").to_sym
 
           _options.include?(attr_name) || _arguments.include?(attr_name)
