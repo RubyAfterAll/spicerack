@@ -39,7 +39,7 @@ module Substance
 
         def ensure_validation_before(method)
           around_method method do |*args, **opts|
-            raise NotValidatedError unless validated?
+            raise NotValidatedError unless validated_output?(method)
 
             # TODO: replace with `super(...)` when <= 2.6 support is dropped
             if RUBY_VERSION < "2.7" && opts.blank?
@@ -59,6 +59,14 @@ module Substance
 
       def output_struct
         Struct.new(*_outputs)
+      end
+
+      def validated_output?(method)
+        validated? || begin
+          attr_name = method.to_s.delete("=").to_sym
+
+          _options.include?(attr_name) || _arguments.include?(attr_name)
+        end
       end
     end
   end
