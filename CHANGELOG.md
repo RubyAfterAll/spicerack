@@ -2,6 +2,13 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## v0.27.1
+
+*Release Date*: 9/3/2021
+
+### Directive - [see changes](directive/CHANGELOG.md#v0.27.1)
+### Substance - [see changes](substance/CHANGELOG.md#v0.27.1)
+
 ## v0.27.0
 
 *Release Date*: 8/23/2021
