@@ -6,6 +6,7 @@
 
 *Release Date*: 9/3/2021
 
+### Directive - [see changes](directive/CHANGELOG.md#v0.27.1)
 ### Substance - [see changes](substance/CHANGELOG.md#v0.27.1)
 
 ## v0.27.0

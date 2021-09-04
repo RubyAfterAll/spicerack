@@ -6,6 +6,7 @@
 
 *Release Date*: 9/3/2021
 
+### Fixes
 - Allow arguments and options to be defined as outputs ([#471](https://github.com/Freshly/spicerack/pull/471))
 
 ## v0.27.0

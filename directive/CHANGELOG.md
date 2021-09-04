@@ -6,7 +6,8 @@
 
 *Release Date*: 9/3/2021
 
-- No changes
+### Fixes
+- Add missing ActiveSupport dependency to ConfigObject ([#470](https://github.com/Freshly/spicerack/pull/470))
 
 ## v0.27.0
 
