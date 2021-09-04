@@ -2,6 +2,12 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## v0.27.1
+
+*Release Date*: 9/3/2021
+
+- No changes
+
 ## v0.27.0
 
 *Release Date*: 8/23/2021
