@@ -2,3 +2,7 @@ inherit_from: spicerack-styleguide/rubocop.yml
 
 Style/ConditionalAssignment:
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/custom_matchers/**/*"
