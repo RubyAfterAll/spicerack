@@ -2,6 +2,10 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## v0.27.2
+
+*Release Date*: 2/8/2022
+
 - Improve failure message for `have_error_on_attribute` matcher ([#1](https://github.com/RubyAfterAll/spicerack/pull/1))
 
 ## v0.27.1
