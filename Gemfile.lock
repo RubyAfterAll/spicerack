@@ -1,6 +1,18 @@
 PATH
   remote: .
   specs:
+    rspice (0.27.1)
+      faker (>= 1.8, < 3.0)
+      rspec (~> 3.0)
+    spicerack-styleguide (0.27.1)
+      rubocop (~> 0.92.0)
+      rubocop-performance (~> 1.8.0)
+      rubocop-rails (~> 2.8.0)
+      rubocop-rspec (~> 1.43.0)
+
+PATH
+  remote: .
+  specs:
     around_the_world (0.27.1)
       activesupport (>= 5.2.1)
     directive (0.27.1)
@@ -11,17 +23,17 @@ PATH
       activesupport (>= 5.2.1)
       redis (>= 3.0)
       tablesalt (= 0.27.1)
-    rspice (0.27.1)
-      faker (>= 1.8, < 3.0)
-      rspec (~> 3.0)
     short_circu_it (0.27.1)
       activesupport (>= 5.2.1)
       around_the_world (= 0.27.1)
-    spicerack-styleguide (0.27.1)
-      rubocop (~> 0.92.0)
-      rubocop-performance (~> 1.8.0)
-      rubocop-rails (~> 2.8.0)
-      rubocop-rspec (~> 1.43.0)
+    spicerack (0.27.1)
+      around_the_world (= 0.27.1)
+      directive (= 0.27.1)
+      redis_hash (= 0.27.1)
+      short_circu_it (= 0.27.1)
+      substance (= 0.27.1)
+      tablesalt (= 0.27.1)
+      technologic (= 0.27.1)
     substance (0.27.1)
       activemodel (>= 5.2.1)
       activesupport (>= 5.2.1)
@@ -34,18 +46,6 @@ PATH
     technologic (0.27.1)
       activesupport (>= 5.2.1)
       short_circu_it (= 0.27.1)
-
-PATH
-  remote: .
-  specs:
-    spicerack (0.27.1)
-      around_the_world (= 0.27.1)
-      directive (= 0.27.1)
-      redis_hash (= 0.27.1)
-      short_circu_it (= 0.27.1)
-      substance (= 0.27.1)
-      tablesalt (= 0.27.1)
-      technologic (= 0.27.1)
 
 GEM
   remote: https://rubygems.org/
@@ -73,8 +73,8 @@ GEM
     json (2.3.0)
     method_source (0.8.2)
     minitest (5.14.4)
-    parallel (1.20.1)
-    parser (3.0.2.0)
+    parallel (1.21.0)
+    parser (3.1.0.0)
       ast (~> 2.4.1)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -83,10 +83,10 @@ GEM
     pry-nav (0.3.0)
       pry (>= 0.9.10, < 0.13.0)
     rack (2.2.3)
-    rainbow (3.0.0)
+    rainbow (3.1.1)
     rake (13.0.1)
     redis (4.4.0)
-    regexp_parser (2.1.1)
+    regexp_parser (2.2.0)
     rexml (3.2.5)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
@@ -110,7 +110,7 @@ GEM
       rubocop-ast (>= 0.5.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
-    rubocop-ast (1.11.0)
+    rubocop-ast (1.15.1)
       parser (>= 3.0.1.1)
     rubocop-performance (1.8.1)
       rubocop (>= 0.87.0)
@@ -133,7 +133,7 @@ GEM
     sqlite3 (1.4.2)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    unicode-display_width (1.7.0)
+    unicode-display_width (1.8.0)
     will_paginate (3.1.8)
     zeitwerk (2.4.2)
 
@@ -157,4 +157,4 @@ DEPENDENCIES
   will_paginate (~> 3.1.1)
 
 BUNDLED WITH
-   2.2.16
+   2.2.33
