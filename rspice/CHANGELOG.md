@@ -2,6 +2,8 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+- Improve failure message for `have_error_on_attribute` matcher ([#1](https://github.com/RubyAfterAll/spicerack/pull/1))
+
 ## v0.27.1
 
 *Release Date*: 9/3/2021
