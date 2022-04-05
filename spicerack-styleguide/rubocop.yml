@@ -4,7 +4,7 @@ require:
   - rubocop-rails
 
 AllCops:
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 2.7
   Exclude:
     - "**/bin/**/*"
     - Rakefile
@@ -125,6 +125,8 @@ Layout/HashAlignment:
   EnforcedHashRocketStyle: key
   EnforcedColonStyle: key
   EnforcedLastArgumentHashStyle: always_inspect
+Lint/HashCompareByIdentity:
+  Enabled: true
 Layout/HeredocArgumentClosingParenthesis:
   Enabled: true
 Layout/HeredocIndentation:
@@ -360,6 +362,8 @@ Lint/PercentSymbolArray:
   Enabled: true
 Lint/RandOne:
   Enabled: true
+Lint/RedundantSafeNavigation:
+  Enabled: true
 Lint/RedundantStringCoercion:
   Enabled: true
 Lint/RedundantWithIndex:
@@ -550,8 +554,12 @@ Naming/VariableNumber:
 
 Performance/AncestorsInclude:
   Enabled: false
+Performance/ArraySemiInfiniteRangeSlice:
+  Enabled: false
 Performance/BigDecimalWithNumericArgument:
   Enabled: false
+Performance/BlockGivenWithExplicitBlock:
+  Enabled: true
 Performance/Caller:
   Enabled: false
 Performance/CaseWhenSplat:
@@ -561,6 +569,8 @@ Performance/Casecmp:
 Performance/CollectionLiteralInLoop:
   Enabled: true
 Performance/CompareWithBlock:
+  Enabled: true
+Performance/ConstantRegexp:
   Enabled: true
 Performance/Count:
   Enabled: true
@@ -576,6 +586,8 @@ Performance/FlatMap:
   Enabled: true
 Performance/IoReadlines:
   Enabled: true
+Performance/MethodObjectAsBlock:
+  Enabled: true
 Performance/OpenStruct:
   Enabled: true
   Exclude:
@@ -584,11 +596,15 @@ Performance/RangeInclude:
   Enabled: true
 Performance/RedundantBlockCall:
   Enabled: true
+Performance/RedundantEqualityComparisonBlock:
+  Enabled: true
 Performance/RedundantMatch:
   Enabled: true
 Performance/RedundantMerge:
   Enabled: true
 Performance/RedundantSortBlock:
+  Enabled: true
+Performance/RedundantSplitRegexpArgument:
   Enabled: true
 Performance/RedundantStringChars:
   Enabled: true
@@ -638,7 +654,11 @@ Rails/ApplicationJob:
   Enabled: true
 Rails/ApplicationRecord:
   Enabled: true
+Rails/ArelStar:
+  Enabled: true
 Rails/AfterCommitOverride:
+  Enabled: true
+Rails/AttributeDefaultBlockValue:
   Enabled: true
 Rails/BelongsTo:
   Enabled: true
@@ -824,6 +844,8 @@ Rails/UnknownEnv:
     - production
 Rails/WhereExists:
   Enabled: true
+Rails/WhereEquals:
+  Enabled: true
 Rails/WhereNot:
   Enabled: true
 Rails/Validation:
@@ -884,6 +906,8 @@ Style/ClassAndModuleChildren:
 Style/ClassCheck:
   Enabled: true
   EnforcedStyle: is_a?
+Style/ClassEqualityComparison:
+  Enabled: true
 Style/ClassMethods:
   Enabled: true
 Style/ClassMethodsDefinitions:
@@ -1379,6 +1403,12 @@ RSpec/BeEql:
   Enabled: true
 RSpec/BeforeAfterAll:
   Enabled: true
+RSpec/Capybara/CurrentPathExpectation:
+  Enabled: true
+RSpec/Capybara/FeatureMethods:
+  Enabled: false
+RSpec/Capybara/VisibilityMatcher:
+  Enabled: true
 RSpec/ContextWording:
   Enabled: true
 RSpec/DescribeClass:
@@ -1424,6 +1454,13 @@ RSpec/ExpectInHook:
   Enabled: true
 RSpec/ExpectOutput:
   Enabled: true
+RSpec/FactoryBot/AttributeDefinedStatically:
+  Enabled: true
+RSpec/FactoryBot/CreateList:
+  Enabled: true
+  EnforcedStyle: create_list
+RSpec/FactoryBot/FactoryClassName:
+  Enabled: true
 RSpec/FilePath:
   Enabled: true
   IgnoreMethods: true
@@ -1444,8 +1481,6 @@ RSpec/InstanceSpy:
 RSpec/InstanceVariable:
   Enabled: true
   AssignmentOnly: false
-RSpec/InvalidPredicateMatcher:
-  Enabled: true
 RSpec/ItBehavesLike:
   Enabled: true
   EnforcedStyle: it_behaves_like
@@ -1498,6 +1533,8 @@ RSpec/RepeatedExampleGroupBody:
     Enabled: true
 RSpec/RepeatedExampleGroupDescription:
     Enabled: true
+RSpec/RepeatedIncludeExample:
+  Enabled: true
 RSpec/ReturnFromStub:
   Enabled: true
   EnforcedStyle: and_return
@@ -1513,6 +1550,8 @@ RSpec/SingleArgumentMessageChain:
   Enabled: true
 RSpec/SubjectStub:
   Enabled: true
+RSpec/StubbedMock:
+  Enabled: true
 RSpec/VariableDefinition:
     Enabled: true
 RSpec/VariableName:
@@ -1523,19 +1562,4 @@ RSpec/VerifiedDoubles:
 RSpec/VoidExpect:
   Enabled: true
 RSpec/Yield:
-  Enabled: true
-
-FactoryBot/AttributeDefinedStatically:
-  Enabled: true
-FactoryBot/CreateList:
-  Enabled: true
-  EnforcedStyle: create_list
-FactoryBot/FactoryClassName:
-    Enabled: true
-
-Capybara/CurrentPathExpectation:
-  Enabled: true
-Capybara/FeatureMethods:
-  Enabled: false
-Capybara/VisibilityMatcher:
   Enabled: true
