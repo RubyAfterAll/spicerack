@@ -596,11 +596,15 @@ Performance/RangeInclude:
   Enabled: true
 Performance/RedundantBlockCall:
   Enabled: true
+Performance/RedundantEqualityComparisonBlock:
+  Enabled: true
 Performance/RedundantMatch:
   Enabled: true
 Performance/RedundantMerge:
   Enabled: true
 Performance/RedundantSortBlock:
+  Enabled: true
+Performance/RedundantSplitRegexpArgument:
   Enabled: true
 Performance/RedundantStringChars:
   Enabled: true
