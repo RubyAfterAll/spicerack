@@ -1506,6 +1506,8 @@ RSpec/RepeatedExampleGroupBody:
     Enabled: true
 RSpec/RepeatedExampleGroupDescription:
     Enabled: true
+RSpec/RepeatedIncludeExample:
+  Enabled: true
 RSpec/ReturnFromStub:
   Enabled: true
   EnforcedStyle: and_return
@@ -1520,6 +1522,8 @@ RSpec/SharedExamples:
 RSpec/SingleArgumentMessageChain:
   Enabled: true
 RSpec/SubjectStub:
+  Enabled: true
+RSpec/StubbedMock:
   Enabled: true
 RSpec/VariableDefinition:
     Enabled: true
