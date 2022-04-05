@@ -1403,6 +1403,12 @@ RSpec/BeEql:
   Enabled: true
 RSpec/BeforeAfterAll:
   Enabled: true
+RSpec/Capybara/CurrentPathExpectation:
+  Enabled: true
+RSpec/Capybara/FeatureMethods:
+  Enabled: false
+RSpec/Capybara/VisibilityMatcher:
+  Enabled: true
 RSpec/ContextWording:
   Enabled: true
 RSpec/DescribeClass:
@@ -1448,6 +1454,13 @@ RSpec/ExpectInHook:
   Enabled: true
 RSpec/ExpectOutput:
   Enabled: true
+RSpec/FactoryBot/AttributeDefinedStatically:
+  Enabled: true
+RSpec/FactoryBot/CreateList:
+  Enabled: true
+  EnforcedStyle: create_list
+RSpec/FactoryBot/FactoryClassName:
+  Enabled: true
 RSpec/FilePath:
   Enabled: true
   IgnoreMethods: true
@@ -1468,8 +1481,6 @@ RSpec/InstanceSpy:
 RSpec/InstanceVariable:
   Enabled: true
   AssignmentOnly: false
-RSpec/InvalidPredicateMatcher:
-  Enabled: true
 RSpec/ItBehavesLike:
   Enabled: true
   EnforcedStyle: it_behaves_like
@@ -1551,19 +1562,4 @@ RSpec/VerifiedDoubles:
 RSpec/VoidExpect:
   Enabled: true
 RSpec/Yield:
-  Enabled: true
-
-FactoryBot/AttributeDefinedStatically:
-  Enabled: true
-FactoryBot/CreateList:
-  Enabled: true
-  EnforcedStyle: create_list
-FactoryBot/FactoryClassName:
-    Enabled: true
-
-Capybara/CurrentPathExpectation:
-  Enabled: true
-Capybara/FeatureMethods:
-  Enabled: false
-Capybara/VisibilityMatcher:
   Enabled: true
