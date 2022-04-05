@@ -654,7 +654,11 @@ Rails/ApplicationJob:
   Enabled: true
 Rails/ApplicationRecord:
   Enabled: true
+Rails/ArelStar:
+  Enabled: true
 Rails/AfterCommitOverride:
+  Enabled: true
+Rails/AttributeDefaultBlockValue:
   Enabled: true
 Rails/BelongsTo:
   Enabled: true
@@ -839,6 +843,8 @@ Rails/UnknownEnv:
     - test
     - production
 Rails/WhereExists:
+  Enabled: true
+Rails/WhereEquals:
   Enabled: true
 Rails/WhereNot:
   Enabled: true
