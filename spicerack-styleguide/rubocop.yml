@@ -4,7 +4,7 @@ require:
   - rubocop-rails
 
 AllCops:
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 2.7
   Exclude:
     - "**/bin/**/*"
     - Rakefile
@@ -348,8 +348,6 @@ Lint/NonDeterministicRequireOrder:
   Enabled: true
 Lint/NonLocalExitFromIterator:
   Enabled: true
-Lint/NoReturnInBeginEndBlocks:
-  Enabled: true
 Lint/NumberConversion:
   Enabled: false
 Lint/OrderedMagicComments:
@@ -556,8 +554,12 @@ Naming/VariableNumber:
 
 Performance/AncestorsInclude:
   Enabled: false
+Performance/ArraySemiInfiniteRangeSlice:
+  Enabled: false
 Performance/BigDecimalWithNumericArgument:
   Enabled: false
+Performance/BlockGivenWithExplicitBlock:
+  Enabled: true
 Performance/Caller:
   Enabled: false
 Performance/CaseWhenSplat:
@@ -567,6 +569,8 @@ Performance/Casecmp:
 Performance/CollectionLiteralInLoop:
   Enabled: true
 Performance/CompareWithBlock:
+  Enabled: true
+Performance/ConstantRegexp:
   Enabled: true
 Performance/Count:
   Enabled: true
@@ -581,6 +585,8 @@ Performance/FixedSize:
 Performance/FlatMap:
   Enabled: true
 Performance/IoReadlines:
+  Enabled: true
+Performance/MethodObjectAsBlock:
   Enabled: true
 Performance/OpenStruct:
   Enabled: true
