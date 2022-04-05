@@ -125,6 +125,8 @@ Layout/HashAlignment:
   EnforcedHashRocketStyle: key
   EnforcedColonStyle: key
   EnforcedLastArgumentHashStyle: always_inspect
+Lint/HashCompareByIdentity:
+  Enabled: true
 Layout/HeredocArgumentClosingParenthesis:
   Enabled: true
 Layout/HeredocIndentation:
@@ -346,6 +348,8 @@ Lint/NonDeterministicRequireOrder:
   Enabled: true
 Lint/NonLocalExitFromIterator:
   Enabled: true
+Lint/NoReturnInBeginEndBlocks:
+  Enabled: true
 Lint/NumberConversion:
   Enabled: false
 Lint/OrderedMagicComments:
@@ -359,6 +363,8 @@ Lint/PercentStringArray:
 Lint/PercentSymbolArray:
   Enabled: true
 Lint/RandOne:
+  Enabled: true
+Lint/RedundantSafeNavigation:
   Enabled: true
 Lint/RedundantStringCoercion:
   Enabled: true
@@ -884,6 +890,8 @@ Style/ClassAndModuleChildren:
 Style/ClassCheck:
   Enabled: true
   EnforcedStyle: is_a?
+Style/ClassEqualityComparison:
+  Enabled: true
 Style/ClassMethods:
   Enabled: true
 Style/ClassMethodsDefinitions:
