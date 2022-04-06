@@ -68,13 +68,13 @@ require 'rspice'
 
 ## Development
 
-See Spicerack development instructions [here](https://github.com/Freshly/spicerack/blob/develop/README.md#development).
+See Spicerack development instructions [here](https://github.com/RubyAfterAll/spicerack/blob/develop/README.md#development).
 
 To add a new example, context or matcher, add a new file to the appropriate directory in lib/rspice. Next, require the added file in its respective include file (such as `lib/rspice/custom_matchers.rb`).
 
 ## Contributing
 
-See Spicerack contribution instructions [here](https://github.com/Freshly/spicerack/blob/develop/README.md#contributing).
+See Spicerack contribution instructions [here](https://github.com/RubyAfterAll/spicerack/blob/develop/README.md#contributing).
 
 ## License
 

@@ -13,12 +13,12 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Gem configuration made simple"
   spec.description   = "Easily create rich, self-documenting gem configuration"
-  spec.homepage      = "https://github.com/Freshly/spicerack/tree/main/directive"
+  spec.homepage      = "https://github.com/RubyAfterAll/spicerack/tree/main/directive"
   spec.license       = "MIT"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/Freshly/spicerack/blob/main/directive"
-  spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/main/directive/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/RubyAfterAll/spicerack/blob/main/directive"
+  spec.metadata["changelog_uri"] = "https://github.com/RubyAfterAll/spicerack/blob/main/directive/CHANGELOG.md"
 
   spec.files         = Dir["README.md", "LICENSE.txt", ".yardopts", "lib/**/{*,.[a-z]*}"]
   spec.require_paths = ["lib"]
