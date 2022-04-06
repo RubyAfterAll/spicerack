@@ -674,6 +674,8 @@ Rails/ActiveRecordOverride:
   Enabled: true
 Rails/ActiveSupportAliases:
   Enabled: true
+Rails/AddColumnIndex:
+  Enabled: true
 Rails/ApplicationController:
   Enabled: true
 Rails/ApplicationMailer:
@@ -719,6 +721,8 @@ Rails/EnvironmentVariableAccess:
   AllowWrites: false
 Rails/Exit:
   Enabled: true
+Rails/ExpandedDateRange:
+  Enabled: true
 Rails/FilePath:
   Enabled: true
   EnforcedStyle: arguments
@@ -747,6 +751,8 @@ Rails/HttpPositionalArguments:
 Rails/HttpStatus:
   Enabled: true
   EnforcedStyle: symbolic
+Rails/I18nLocaleAssignment:
+  Enabled: true
 Rails/IndexBy:
   Enabled: true
 Rails/IndexWith:
@@ -882,6 +888,10 @@ Rails/UnknownEnv:
     - development
     - test
     - production
+Rails/UnusedIgnoredColumns:
+  Enabled: true
+Rails/EagerEvaluationLogMessage:
+  Enabled: true
 Rails/WhereExists:
   Enabled: true
 Rails/WhereEquals:
