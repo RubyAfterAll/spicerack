@@ -416,6 +416,8 @@ Lint/ToJSON:
   Enabled: true
 Lint/UnderscorePrefixedVariableName:
   Enabled: true
+Lint/UnexpectedBlockArity:
+  Enabled: true
 Lint/UnifiedInteger:
   Enabled: true
 Lint/RaiseException:
