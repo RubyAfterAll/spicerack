@@ -55,7 +55,15 @@ Layout/DefEndAlignment:
 Layout/DotPosition:
   Enabled: true
   EnforcedStyle: trailing
+Lint/DuplicateRegexpCharacterClassElement:
+  Enabled: true
 Layout/ElseAlignment:
+  Enabled: true
+Lint/EmptyBlock:
+  Enabled: true
+Lint/ToEnumArguments:
+  Enabled: true
+Lint/UnmodifiedReduceAccumulator:
   Enabled: true
 Layout/EmptyComment:
   Enabled: true
@@ -872,6 +880,8 @@ Style/Alias:
 Style/AndOr:
   Enabled: true
   EnforcedStyle: conditionals
+Style/ArgumentsForwarding:
+  Enabled: true
 Style/ArrayCoercion:
   Enabled: true
 Style/ArrayJoin:
@@ -954,6 +964,8 @@ Style/DisableCopsWithinSourceCodeDirective:
   Enabled: false
 Style/Documentation:
   Enabled: false
+Style/DocumentDynamicEvalDefinition:
+  Enabled: true
 Style/DocumentationMethod:
   Enabled: false
 Style/DoubleNegation:
@@ -1353,6 +1365,8 @@ Style/RedundantInterpolation:
 Style/RedundantPercentQ:
   Enabled: true
 Style/RedundantSort:
+  Enabled: true
+Style/SwapValues:
   Enabled: true
 Style/UnpackFirst:
   Enabled: true
