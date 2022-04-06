@@ -1213,6 +1213,8 @@ Style/RaiseArgs:
   EnforcedStyle: exploded
 Style/RandomWithOffset:
   Enabled: true
+Style/RedundantArgument:
+  Enabled: true
 Style/RedundantAssignment:
   Enabled: true
 Style/RedundantBegin:
