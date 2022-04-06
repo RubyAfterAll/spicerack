@@ -6,7 +6,7 @@ PATH
       rspec (~> 3.0)
     spicerack-styleguide (0.28)
       rubocop (~> 1.7.0)
-      rubocop-performance (~> 1.12.0)
+      rubocop-performance (~> 1.13.0)
       rubocop-rails (~> 2.9.1)
       rubocop-rspec (~> 2.4.0)
 
@@ -112,7 +112,7 @@ GEM
       unicode-display_width (>= 1.4.0, < 2.0)
     rubocop-ast (1.16.0)
       parser (>= 3.1.1.0)
-    rubocop-performance (1.12.0)
+    rubocop-performance (1.13.3)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
     rubocop-rails (2.9.1)

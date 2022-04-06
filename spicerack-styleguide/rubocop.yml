@@ -648,6 +648,8 @@ Performance/Squeeze:
   Enabled: true
 Performance/StartWith:
   Enabled: true
+Performance/StringIdentifierArgument:
+  Enabled: true
 Performance/StringInclude:
   Enabled: true
 Performance/StringReplacement:
