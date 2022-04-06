@@ -61,6 +61,8 @@ Layout/ElseAlignment:
   Enabled: true
 Lint/EmptyBlock:
   Enabled: true
+Lint/NoReturnInBeginEndBlocks:
+  Enabled: true
 Lint/ToEnumArguments:
   Enabled: true
 Lint/UnmodifiedReduceAccumulator:
@@ -925,6 +927,8 @@ Style/ClassMethodsDefinitions:
   EnforcedStyle: self_class
 Style/ClassVars:
   Enabled: true
+Style/CollectionCompact:
+  Enabled: true
 Style/CollectionMethods:
   Enabled: false
 Style/ColonMethodCall:
@@ -1114,6 +1118,8 @@ Style/MutableConstant:
 Style/NegatedIf:
   Enabled: true
   EnforcedStyle: both
+Style/NegatedIfElseCondition:
+  Enabled: true
 Style/NegatedUnless:
   Enabled: true
   EnforcedStyle: both
