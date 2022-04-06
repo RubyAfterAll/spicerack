@@ -592,6 +592,8 @@ Performance/CompareWithBlock:
   Enabled: true
 Performance/ConstantRegexp:
   Enabled: true
+Performance/ConcurrentMonotonicTime:
+  Enabled: true
 Performance/Count:
   Enabled: true
 Performance/Detect:
@@ -605,6 +607,8 @@ Performance/FixedSize:
 Performance/FlatMap:
   Enabled: true
 Performance/IoReadlines:
+  Enabled: true
+Performance/MapCompact:
   Enabled: true
 Performance/MethodObjectAsBlock:
   Enabled: true
@@ -633,6 +637,8 @@ Performance/RegexpMatch:
 Performance/ReverseEach:
   Enabled: true
 Performance/ReverseFirst:
+  Enabled: true
+Performance/SelectMap:
   Enabled: true
 Performance/Size:
   Enabled: true
