@@ -839,7 +839,7 @@ Rails/ReversibleMigration:
   Include:
     - db/migrate/*.rb
 Rails/RequireDependency:
-  Enabled: false # Theoretically all projects are using zeitwerk
+  Enabled: false # Theoretically not all projects could use zeitwerk
 Rails/ReversibleMigrationMethodDefinition:
   Enabled: true
   Include:
