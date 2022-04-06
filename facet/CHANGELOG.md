@@ -2,7 +2,7 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
-## v0.28
+## v0.28.0
 
 *Release Date*: 4/6/2022
 

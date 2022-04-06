@@ -2,11 +2,11 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
-## v0.28
+## v0.28.0
 
 *Release Date*: 4/6/2022
 
-### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0.28)
+### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0.28.0)
 
 ## v0.27.2
 
