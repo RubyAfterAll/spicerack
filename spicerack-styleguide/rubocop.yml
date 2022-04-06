@@ -55,6 +55,8 @@ Layout/DefEndAlignment:
 Layout/DotPosition:
   Enabled: true
   EnforcedStyle: trailing
+Lint/AmbiguousAssignment:
+  Enabled: true
 Lint/DuplicateBranch:
   Enabled: true
 Lint/DuplicateRegexpCharacterClassElement:
@@ -214,6 +216,8 @@ Layout/SpaceAroundOperators:
 Layout/SpaceBeforeBlockBraces:
   Enabled: true
   EnforcedStyle: space
+Layout/SpaceBeforeBrackets:
+  Enabled: true
 Layout/SpaceBeforeComma:
   Enabled: true
 Layout/SpaceBeforeComment:
@@ -1042,6 +1046,8 @@ Style/HashAsLastArrayItem:
   EnforcedStyle: no_braces
 Style/HashEachMethods:
   Enabled: true
+Style/HashExcept:
+  Enabled: false # TODO: enable once ruby 3.0 is supported
 Style/HashLikeCase:
   Enabled: true
 Style/HashSyntax:
