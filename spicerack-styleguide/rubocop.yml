@@ -55,11 +55,15 @@ Layout/DefEndAlignment:
 Layout/DotPosition:
   Enabled: true
   EnforcedStyle: trailing
+Lint/DuplicateBranch:
+  Enabled: true
 Lint/DuplicateRegexpCharacterClassElement:
   Enabled: true
 Layout/ElseAlignment:
   Enabled: true
 Lint/EmptyBlock:
+  Enabled: true
+Lint/EmptyClass:
   Enabled: true
 Lint/NoReturnInBeginEndBlocks:
   Enabled: true
@@ -1154,6 +1158,8 @@ Style/Next:
   EnforcedStyle: skip_modifier_ifs
 Style/NilComparison:
   Enabled: true
+Style/NilLambda:
+  Enabled: true
 Style/NonNilCheck:
   Enabled: true
 Style/Not:
@@ -1286,6 +1292,8 @@ Style/SpecialGlobalVars:
 Style/StabbyLambdaParentheses:
   Enabled: true
   EnforcedStyle: require_parentheses
+Style/StaticClass:
+  Enabled: false
 Style/StderrPuts:
   Enabled: true
 Style/StringConcatenation:
