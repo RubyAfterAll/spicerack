@@ -1509,6 +1509,8 @@ RSpec/HookArgument:
   EnforcedStyle: implicit
 RSpec/HooksBeforeExamples:
  Enabled: true
+RSpec/IdenticalEqualityAssertion:
+  Enabled: true
 RSpec/ImplicitBlockExpectation:
  Enabled: true
 RSpec/ImplicitExpect:
@@ -1563,6 +1565,8 @@ RSpec/PredicateMatcher:
   Enabled: true
   Strict: false
   EnforcedStyle: inflected
+RSpec/Rails/AvoidSetupHook:
+  Enabled: true
 RSpec/RepeatedDescription:
   Enabled: true
 RSpec/RepeatedExample:
