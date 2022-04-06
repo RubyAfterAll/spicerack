@@ -713,6 +713,10 @@ Rails/EnumUniqueness:
   Enabled: true
 Rails/EnvironmentComparison:
   Enabled: true
+Rails/EnvironmentVariableAccess:
+  Enabled: true
+  AllowReads: true
+  AllowWrites: false
 Rails/Exit:
   Enabled: true
 Rails/FilePath:
@@ -828,6 +832,12 @@ Rails/ReversibleMigration:
   Enabled: true
   Include:
     - db/migrate/*.rb
+Rails/RequireDependency:
+  Enabled: false # Theoretically all projects are using zeitwerk
+Rails/ReversibleMigrationMethodDefinition:
+  Enabled: true
+  Include:
+    - db/migrate/*.rb
 Rails/SafeNavigation:
   Enabled: true
 Rails/SafeNavigationWithBlank:
@@ -859,6 +869,8 @@ Rails/SquishedSQLHeredocs:
 Rails/TimeZone:
   Enabled: true
   EnforcedStyle: flexible
+Rails/TimeZoneAssignment:
+  Enabled: true
 Rails/UniqBeforePluck:
   Enabled: true
   EnforcedStyle: conservative
