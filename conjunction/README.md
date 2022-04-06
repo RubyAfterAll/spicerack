@@ -440,7 +440,7 @@ All these are very disparate and feature-rich implementations of a solution to t
 
 So ultimately, `Conjunction` exists because I thought it would be nice to create a generic solution to this object reference problem that can be utilized by other gems to create some kind of standardization and consistency to this hard problem.
 
-It also selfishly helps cleanup a lot of duplicate code across several co-developed gems which I will shamelessly plug here: [Command](https://github.com/Freshly/command), [Facet](https://github.com/Freshly/spicerack/tree/develop/facet), [Flow](https://github.com/Freshly/flow), [Law](https://github.com/Freshly/law), [Material](https://github.com/Freshly/material).
+It also selfishly helps cleanup a lot of duplicate code across several co-developed gems which I will shamelessly plug here: [Command](https://github.com/RubyAfterAll/command), [Facet](https://github.com/RubyAfterAll/spicerack/tree/develop/facet), [Flow](https://github.com/RubyAfterAll/flow), [Law](https://github.com/RubyAfterAll/law), [Material](https://github.com/RubyAfterAll/material).
 
 ### How's it Function?
 
@@ -746,7 +746,7 @@ Consult Spicerack's [development instructions](../README.md#development) for mor
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/Freshly/spicerack.
+Bug reports and pull requests are welcome on GitHub at https://github.com/RubyAfterAll/spicerack.
 
 ## License
 

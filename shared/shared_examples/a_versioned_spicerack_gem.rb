@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# RSpec example that ensures gem compliance with internal standard of [Spicerack](https://github.com/Freshly/spicerack/)
+# RSpec example that ensures gem compliance with internal standard of [Spicerack](https://github.com/RubyAfterAll/spicerack/)
 #
 #     RSpice.describe MyAwesomeGem do
 #       it_behaves_like "a versioned spicerack gem"
