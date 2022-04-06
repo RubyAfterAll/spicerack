@@ -2,18 +2,18 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
-## v0.28
+## v0.28.0
 
 *Release Date*: 4/6/2022
 
-- Add .idea to .gitignore
-- Set TargetRubyVersion as 2.7
-- Bump upgrades
+- Tweaks and updates [#3](https://github.com/RubyAfterAll/spicerack/pull/3)
+  - Set default TargetRubyVersion to 2.7
+  - Upgraded dependencies
     - rubocop - 1.0.0
     - rubocop-rspec - 1.44.1
     - rubocop-rails - 2.9.1
     - rubocop-performance - 1.9.2
-- Enable the majority of new cops
+  - Added new cop definitions
 
 ## v0.27.2
 

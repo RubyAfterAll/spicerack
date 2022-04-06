@@ -12,13 +12,13 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Base classes for building powerful service objects"
   spec.description   = "Base classes for building powerful service objects"
-  spec.homepage      = "https://github.com/Freshly/spicerack/blob/main/substance"
+  spec.homepage      = "https://github.com/RubyAfterAll/spicerack/blob/main/substance"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.5.0")
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/Freshly/spicerack/blob/main/substance"
-  spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/main/substance/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/RubyAfterAll/spicerack/blob/main/substance"
+  spec.metadata["changelog_uri"] = "https://github.com/RubyAfterAll/spicerack/blob/main/substance/CHANGELOG.md"
 
   spec.files         = Dir["README.md", "LICENSE.txt", ".yardopts", "lib/**/{*,.[a-z]*}"]
   spec.require_paths = %w[lib]

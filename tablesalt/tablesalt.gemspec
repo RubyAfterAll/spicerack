@@ -13,12 +13,12 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Miscellaneous helper modules, POROs, and more, that standardize common behavior"
   spec.description   = "A package of helpers that introduce some conventions and convenience for common behaviors"
-  spec.homepage      = "https://github.com/Freshly/spicerack/tree/main/tablesalt"
+  spec.homepage      = "https://github.com/RubyAfterAll/spicerack/tree/main/tablesalt"
   spec.license       = "MIT"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
-  spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/main/tablesalt/CHANGELOG.md"
+  spec.metadata["changelog_uri"] = "https://github.com/RubyAfterAll/spicerack/blob/main/tablesalt/CHANGELOG.md"
   spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/tablesalt/#{Tablesalt::VERSION}"
 
   spec.files         = Dir["README.md", "LICENSE.txt", ".yardopts",  "lib/**/{*,.[a-z]*}"]

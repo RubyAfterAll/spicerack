@@ -1,51 +1,68 @@
 PATH
   remote: .
   specs:
-    rspice (0.28)
+    around_the_world (0.28.0)
+      activesupport (>= 5.2.1)
+    collectible (0.28.0)
+      activesupport (>= 5.2.1)
+      short_circu_it (= 0.28.0)
+      tablesalt (= 0.28.0)
+    conjunction (0.28.0)
+      activemodel (>= 5.2.1)
+      activesupport (>= 5.2.1)
+      directive (= 0.28.0)
+    directive (0.28.0)
+      activemodel (>= 5.2.1)
+      activesupport (>= 5.2.1)
+      substance (= 0.28.0)
+    facet (0.28.0)
+      activesupport (>= 5.2.1)
+      short_circu_it (= 0.28.0)
+      tablesalt (= 0.28.0)
+    redis_hash (0.28.0)
+      activesupport (>= 5.2.1)
+      redis (>= 3.0)
+      tablesalt (= 0.28.0)
+    rspice (0.28.0)
       faker (>= 1.8, < 3.0)
       rspec (~> 3.0)
-    spicerack-styleguide (0.28)
+    short_circu_it (0.28.0)
+      activesupport (>= 5.2.1)
+      around_the_world (= 0.28.0)
+    spicerack-styleguide (0.28.0)
       rubocop (~> 1.7.0)
       rubocop-performance (~> 1.13.0)
       rubocop-rails (~> 2.11.0)
       rubocop-rspec (~> 2.4.0)
+    spicery (0.28.0)
+      collectible (= 0.28.0)
+      conjunction (= 0.28.0)
+      facet (= 0.28.0)
+      spicerack (= 0.28.0)
+    substance (0.28.0)
+      activemodel (>= 5.2.1)
+      activesupport (>= 5.2.1)
+      short_circu_it (= 0.28.0)
+      tablesalt (= 0.28.0)
+      technologic (= 0.28.0)
+    tablesalt (0.28.0)
+      activemodel (>= 5.2.1)
+      activesupport (>= 5.2.1)
+    technologic (0.28.0)
+      activesupport (>= 5.2.1)
+      short_circu_it (= 0.28.0)
 
 PATH
   remote: .
   specs:
-    around_the_world (0.28)
-      activesupport (>= 5.2.1)
-    directive (0.28)
-      activemodel (>= 5.2.1)
-      activesupport (>= 5.2.1)
-      substance (= 0.28)
-    redis_hash (0.28)
-      activesupport (>= 5.2.1)
-      redis (>= 3.0)
-      tablesalt (= 0.28)
-    short_circu_it (0.28)
-      activesupport (>= 5.2.1)
-      around_the_world (= 0.28)
-    spicerack (0.28)
-      around_the_world (= 0.28)
-      directive (= 0.28)
-      redis_hash (= 0.28)
-      short_circu_it (= 0.28)
-      substance (= 0.28)
-      tablesalt (= 0.28)
-      technologic (= 0.28)
-    substance (0.28)
-      activemodel (>= 5.2.1)
-      activesupport (>= 5.2.1)
-      short_circu_it (= 0.28)
-      tablesalt (= 0.28)
-      technologic (= 0.28)
-    tablesalt (0.28)
-      activemodel (>= 5.2.1)
-      activesupport (>= 5.2.1)
-    technologic (0.28)
-      activesupport (>= 5.2.1)
-      short_circu_it (= 0.28)
+    spicerack (0.28.0)
+      around_the_world (= 0.28.0)
+      directive (= 0.28.0)
+      redis_hash (= 0.28.0)
+      short_circu_it (= 0.28.0)
+      substance (= 0.28.0)
+      tablesalt (= 0.28.0)
+      technologic (= 0.28.0)
 
 GEM
   remote: https://rubygems.org/
@@ -143,18 +160,29 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (>= 5.2.1)
+  around_the_world!
   bundler (>= 2.0.1)
+  collectible!
+  conjunction!
+  directive!
+  facet!
   faker (>= 2.0, < 3.0)
   pry (~> 0.10.0)
   pry-nav (>= 0.2.4)
   rake (>= 10.0)
+  redis_hash!
   rspec (~> 3.0)
   rspice!
+  short_circu_it!
   shoulda-matchers (= 4.0.1)
   simplecov (~> 0.16)
   spicerack!
   spicerack-styleguide!
+  spicery!
   sqlite3 (>= 1.3.6, < 2.0.0)
+  substance!
+  tablesalt!
+  technologic!
   will_paginate (~> 3.1.1)
 
 BUNDLED WITH
