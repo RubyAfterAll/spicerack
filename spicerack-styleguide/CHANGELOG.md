@@ -2,6 +2,19 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## v0.28
+
+*Release Date*: 4/6/2022
+
+- Add .idea to .gitignore
+- Set TargetRubyVersion as 2.7
+- Bump upgrades
+    - rubocop - 1.0.0
+    - rubocop-rspec - 1.44.1
+    - rubocop-rails - 2.9.1
+    - rubocop-performance - 1.9.2
+- Enable the majority of new cops
+
 ## v0.27.2
 
 *Release Date*: 2/8/2022
