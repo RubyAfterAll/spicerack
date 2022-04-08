@@ -163,7 +163,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord (>= 5.2.1)
   around_the_world!
-  bundler (>= 2.0.1)
+  bundler (~> 2.3.11)
   collectible!
   conjunction!
   directive!
