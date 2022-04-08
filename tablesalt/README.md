@@ -195,7 +195,7 @@ Consult Spicerack's [development instructions](../README.md#development) for mor
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/Freshly/spicerack.
+Bug reports and pull requests are welcome on GitHub at https://github.com/RubyAfterAll/spicerack.
 
 ## License
 

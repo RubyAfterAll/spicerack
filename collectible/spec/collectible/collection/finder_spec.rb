@@ -18,10 +18,10 @@ RSpec.describe Collectible::Collection::Finder, type: :concern do
 
     context "with unexpected options" do
       let(:options) { Hash[attribute, SecureRandom.hex] }
-      let(:attribute) { SecureRandom.hex.to_sym }
+      let(:attribute) { Faker::Alphanumeric.alpha(number: 10).to_sym }
 
       it "raises" do
-        expect { find_by }.to raise_error NoMethodError, "undefined method `#{attribute}' for #{item0}"
+        expect { find_by }.to raise_error NoMethodError, %r{undefined method `#{attribute}' for #{item0}}
       end
     end
 
@@ -62,10 +62,10 @@ RSpec.describe Collectible::Collection::Finder, type: :concern do
 
     context "with unexpected options" do
       let(:options) { Hash[attribute, SecureRandom.hex] }
-      let(:attribute) { SecureRandom.hex.to_sym }
+      let(:attribute) { Faker::Alphanumeric.alpha(number: 10).to_sym }
 
       it "raises" do
-        expect { where }.to raise_error NoMethodError, "undefined method `#{attribute}' for #{item0}"
+        expect { where }.to raise_error NoMethodError, %r{undefined method `#{attribute}' for #{item0}}
       end
     end
 

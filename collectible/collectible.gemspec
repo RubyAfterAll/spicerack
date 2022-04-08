@@ -11,12 +11,12 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Provides an extensible framework for building array-like object collections"
   spec.description   = "Perform operations on and pass around explicit collections of objects"
-  spec.homepage      = "https://github.com/Freshly/spicerack/tree/main/collectible"
+  spec.homepage      = "https://github.com/RubyAfterAll/spicerack/tree/main/collectible"
   spec.license       = "MIT"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
-  spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/main/collectible/CHANGELOG.md"
+  spec.metadata["changelog_uri"] = "https://github.com/RubyAfterAll/spicerack/blob/main/collectible/CHANGELOG.md"
   spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/collectible/#{Collectible::VERSION}"
 
   spec.files         = Dir["README.md", "LICENSE.txt", ".yardopts", "lib/**/{*,.[a-z]*}"]
