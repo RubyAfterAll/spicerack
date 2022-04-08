@@ -74,7 +74,6 @@ RSpec.describe RedisHash::Schema, type: :module do
         end
       end
 
-
       context "with no invalid keys" do
         let(:allowed_keys) { keys }
 
