@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "A suite of utility gems for Ruby on Rails."
   spec.description   = "This collection of gems will spice up your rails and kick your rubies up a notch. Bam!"
-  spec.homepage      = "https://github.com/Freshly/spicerack"
+  spec.homepage      = "https://github.com/RubyAfterAll/spicerack"
   spec.license       = "MIT"
 
   spec.authors = [
@@ -30,8 +30,8 @@ Gem::Specification.new do |spec|
   ]
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/Freshly/spicerack"
-  spec.metadata["changelog_uri"] = "https://github.com/Freshly/spicerack/blob/main/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/RubyAfterAll/spicerack"
+  spec.metadata["changelog_uri"] = "https://github.com/RubyAfterAll/spicerack/blob/main/CHANGELOG.md"
   spec.metadata["documentation_uri"] = "https://www.rubydoc.info/gems/spicerack"
 
   spec.files         = Dir["README.md", "LICENSE.txt", "lib/**/{*,.[a-z]*}"]

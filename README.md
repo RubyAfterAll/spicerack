@@ -61,7 +61,7 @@ We're basically [always hiring](https://jobs.lever.co/freshly).
 
 Come join us in our New York City, Phoenix, or Minsk offices and write some awesome software!
 
-Community support is always appreciated! Bug reports and pull requests are welcome on [GitHub](https://github.com/Freshly/spicerack).
+Community support is always appreciated! Bug reports and pull requests are welcome on [GitHub](https://github.com/RubyAfterAll/spicerack).
 
 ### Adding a New Spicerack Gem
 

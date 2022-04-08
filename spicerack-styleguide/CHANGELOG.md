@@ -2,6 +2,30 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## v0.29.0
+
+*Release Date*: 4/7/2022
+
+- Update minimum rubocop versions ([#5](https://github.com/RubyAfterAll/spicerack/pull/5))
+  - Upgraded rubocop to 1.7
+  - Upgraded rubocop-rspec to 2.4.0
+  - Upgraded rubocop-rails to 2.11.3
+  - Upgraded rubocop-performance to 1.13.3
+- Allow later versions of rubocop ([#9](https://github.com/RubyAfterAll/spicerack/pull/9))
+
+## v0.28.0
+
+*Release Date*: 4/6/2022
+
+- Tweaks and updates ([#3](https://github.com/RubyAfterAll/spicerack/pull/3))
+  - Set default TargetRubyVersion to 2.7
+  - Upgraded dependencies
+    - rubocop - 1.0.0
+    - rubocop-rspec - 1.44.1
+    - rubocop-rails - 2.9.1
+    - rubocop-performance - 1.9.2
+  - Added new cop definitions
+
 ## v0.27.2
 
 *Release Date*: 2/8/2022

@@ -4,7 +4,8 @@ require:
   - rubocop-rails
 
 AllCops:
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 2.7
+  NewCops: enable
   Exclude:
     - "**/bin/**/*"
     - Rakefile
@@ -55,7 +56,23 @@ Layout/DefEndAlignment:
 Layout/DotPosition:
   Enabled: true
   EnforcedStyle: trailing
+Lint/AmbiguousAssignment:
+  Enabled: true
+Lint/DuplicateBranch:
+  Enabled: true
+Lint/DuplicateRegexpCharacterClassElement:
+  Enabled: true
 Layout/ElseAlignment:
+  Enabled: true
+Lint/EmptyBlock:
+  Enabled: true
+Lint/EmptyClass:
+  Enabled: true
+Lint/NoReturnInBeginEndBlocks:
+  Enabled: true
+Lint/ToEnumArguments:
+  Enabled: true
+Lint/UnmodifiedReduceAccumulator:
   Enabled: true
 Layout/EmptyComment:
   Enabled: true
@@ -125,6 +142,8 @@ Layout/HashAlignment:
   EnforcedHashRocketStyle: key
   EnforcedColonStyle: key
   EnforcedLastArgumentHashStyle: always_inspect
+Lint/HashCompareByIdentity:
+  Enabled: true
 Layout/HeredocArgumentClosingParenthesis:
   Enabled: true
 Layout/HeredocIndentation:
@@ -198,6 +217,8 @@ Layout/SpaceAroundOperators:
 Layout/SpaceBeforeBlockBraces:
   Enabled: true
   EnforcedStyle: space
+Layout/SpaceBeforeBrackets:
+  Enabled: true
 Layout/SpaceBeforeComma:
   Enabled: true
 Layout/SpaceBeforeComment:
@@ -360,6 +381,8 @@ Lint/PercentSymbolArray:
   Enabled: true
 Lint/RandOne:
   Enabled: true
+Lint/RedundantSafeNavigation:
+  Enabled: true
 Lint/RedundantStringCoercion:
   Enabled: true
 Lint/RedundantWithIndex:
@@ -397,6 +420,8 @@ Lint/SuppressedException:
 Lint/ToJSON:
   Enabled: true
 Lint/UnderscorePrefixedVariableName:
+  Enabled: true
+Lint/UnexpectedBlockArity:
   Enabled: true
 Lint/UnifiedInteger:
   Enabled: true
@@ -550,8 +575,12 @@ Naming/VariableNumber:
 
 Performance/AncestorsInclude:
   Enabled: false
+Performance/ArraySemiInfiniteRangeSlice:
+  Enabled: false
 Performance/BigDecimalWithNumericArgument:
   Enabled: false
+Performance/BlockGivenWithExplicitBlock:
+  Enabled: true
 Performance/Caller:
   Enabled: false
 Performance/CaseWhenSplat:
@@ -561,6 +590,10 @@ Performance/Casecmp:
 Performance/CollectionLiteralInLoop:
   Enabled: true
 Performance/CompareWithBlock:
+  Enabled: true
+Performance/ConstantRegexp:
+  Enabled: true
+Performance/ConcurrentMonotonicTime:
   Enabled: true
 Performance/Count:
   Enabled: true
@@ -576,6 +609,10 @@ Performance/FlatMap:
   Enabled: true
 Performance/IoReadlines:
   Enabled: true
+Performance/MapCompact:
+  Enabled: true
+Performance/MethodObjectAsBlock:
+  Enabled: true
 Performance/OpenStruct:
   Enabled: true
   Exclude:
@@ -584,11 +621,15 @@ Performance/RangeInclude:
   Enabled: true
 Performance/RedundantBlockCall:
   Enabled: true
+Performance/RedundantEqualityComparisonBlock:
+  Enabled: true
 Performance/RedundantMatch:
   Enabled: true
 Performance/RedundantMerge:
   Enabled: true
 Performance/RedundantSortBlock:
+  Enabled: true
+Performance/RedundantSplitRegexpArgument:
   Enabled: true
 Performance/RedundantStringChars:
   Enabled: true
@@ -598,6 +639,8 @@ Performance/ReverseEach:
   Enabled: true
 Performance/ReverseFirst:
   Enabled: true
+Performance/SelectMap:
+  Enabled: true
 Performance/Size:
   Enabled: true
 Performance/SortReverse:
@@ -605,6 +648,8 @@ Performance/SortReverse:
 Performance/Squeeze:
   Enabled: true
 Performance/StartWith:
+  Enabled: true
+Performance/StringIdentifierArgument:
   Enabled: true
 Performance/StringInclude:
   Enabled: true
@@ -630,6 +675,8 @@ Rails/ActiveRecordOverride:
   Enabled: true
 Rails/ActiveSupportAliases:
   Enabled: true
+Rails/AddColumnIndex:
+  Enabled: true
 Rails/ApplicationController:
   Enabled: true
 Rails/ApplicationMailer:
@@ -638,7 +685,11 @@ Rails/ApplicationJob:
   Enabled: true
 Rails/ApplicationRecord:
   Enabled: true
+Rails/ArelStar:
+  Enabled: true
 Rails/AfterCommitOverride:
+  Enabled: true
+Rails/AttributeDefaultBlockValue:
   Enabled: true
 Rails/BelongsTo:
   Enabled: true
@@ -665,7 +716,13 @@ Rails/EnumUniqueness:
   Enabled: true
 Rails/EnvironmentComparison:
   Enabled: true
+Rails/EnvironmentVariableAccess:
+  Enabled: true
+  AllowReads: true
+  AllowWrites: false
 Rails/Exit:
+  Enabled: true
+Rails/ExpandedDateRange:
   Enabled: true
 Rails/FilePath:
   Enabled: true
@@ -695,6 +752,8 @@ Rails/HttpPositionalArguments:
 Rails/HttpStatus:
   Enabled: true
   EnforcedStyle: symbolic
+Rails/I18nLocaleAssignment:
+  Enabled: true
 Rails/IndexBy:
   Enabled: true
 Rails/IndexWith:
@@ -780,6 +839,12 @@ Rails/ReversibleMigration:
   Enabled: true
   Include:
     - db/migrate/*.rb
+Rails/RequireDependency:
+  Enabled: false # Theoretically not all projects could use zeitwerk
+Rails/ReversibleMigrationMethodDefinition:
+  Enabled: true
+  Include:
+    - db/migrate/*.rb
 Rails/SafeNavigation:
   Enabled: true
 Rails/SafeNavigationWithBlank:
@@ -811,6 +876,8 @@ Rails/SquishedSQLHeredocs:
 Rails/TimeZone:
   Enabled: true
   EnforcedStyle: flexible
+Rails/TimeZoneAssignment:
+  Enabled: true
 Rails/UniqBeforePluck:
   Enabled: true
   EnforcedStyle: conservative
@@ -822,7 +889,13 @@ Rails/UnknownEnv:
     - development
     - test
     - production
+Rails/UnusedIgnoredColumns:
+  Enabled: true
+Rails/EagerEvaluationLogMessage:
+  Enabled: true
 Rails/WhereExists:
+  Enabled: true
+Rails/WhereEquals:
   Enabled: true
 Rails/WhereNot:
   Enabled: true
@@ -850,6 +923,8 @@ Style/Alias:
 Style/AndOr:
   Enabled: true
   EnforcedStyle: conditionals
+Style/ArgumentsForwarding:
+  Enabled: true
 Style/ArrayCoercion:
   Enabled: true
 Style/ArrayJoin:
@@ -884,12 +959,16 @@ Style/ClassAndModuleChildren:
 Style/ClassCheck:
   Enabled: true
   EnforcedStyle: is_a?
+Style/ClassEqualityComparison:
+  Enabled: true
 Style/ClassMethods:
   Enabled: true
 Style/ClassMethodsDefinitions:
   Enabled: true
   EnforcedStyle: self_class
 Style/ClassVars:
+  Enabled: true
+Style/CollectionCompact:
   Enabled: true
 Style/CollectionMethods:
   Enabled: false
@@ -930,6 +1009,8 @@ Style/DisableCopsWithinSourceCodeDirective:
   Enabled: false
 Style/Documentation:
   Enabled: false
+Style/DocumentDynamicEvalDefinition:
+  Enabled: true
 Style/DocumentationMethod:
   Enabled: false
 Style/DoubleNegation:
@@ -996,6 +1077,8 @@ Style/HashAsLastArrayItem:
   EnforcedStyle: no_braces
 Style/HashEachMethods:
   Enabled: true
+Style/HashExcept:
+  Enabled: false # TODO: enable once ruby 3.0 is supported
 Style/HashLikeCase:
   Enabled: true
 Style/HashSyntax:
@@ -1078,6 +1161,8 @@ Style/MutableConstant:
 Style/NegatedIf:
   Enabled: true
   EnforcedStyle: both
+Style/NegatedIfElseCondition:
+  Enabled: true
 Style/NegatedUnless:
   Enabled: true
   EnforcedStyle: both
@@ -1111,6 +1196,8 @@ Style/Next:
   Enabled: true
   EnforcedStyle: skip_modifier_ifs
 Style/NilComparison:
+  Enabled: true
+Style/NilLambda:
   Enabled: true
 Style/NonNilCheck:
   Enabled: true
@@ -1164,6 +1251,8 @@ Style/RaiseArgs:
   Enabled: true
   EnforcedStyle: exploded
 Style/RandomWithOffset:
+  Enabled: true
+Style/RedundantArgument:
   Enabled: true
 Style/RedundantAssignment:
   Enabled: true
@@ -1244,6 +1333,8 @@ Style/SpecialGlobalVars:
 Style/StabbyLambdaParentheses:
   Enabled: true
   EnforcedStyle: require_parentheses
+Style/StaticClass:
+  Enabled: false
 Style/StderrPuts:
   Enabled: true
 Style/StringConcatenation:
@@ -1330,6 +1421,8 @@ Style/RedundantPercentQ:
   Enabled: true
 Style/RedundantSort:
   Enabled: true
+Style/SwapValues:
+  Enabled: true
 Style/UnpackFirst:
   Enabled: true
 Style/VariableInterpolation:
@@ -1379,6 +1472,12 @@ RSpec/BeEql:
   Enabled: true
 RSpec/BeforeAfterAll:
   Enabled: true
+RSpec/Capybara/CurrentPathExpectation:
+  Enabled: true
+RSpec/Capybara/FeatureMethods:
+  Enabled: false
+RSpec/Capybara/VisibilityMatcher:
+  Enabled: true
 RSpec/ContextWording:
   Enabled: true
 RSpec/DescribeClass:
@@ -1424,6 +1523,13 @@ RSpec/ExpectInHook:
   Enabled: true
 RSpec/ExpectOutput:
   Enabled: true
+RSpec/FactoryBot/AttributeDefinedStatically:
+  Enabled: true
+RSpec/FactoryBot/CreateList:
+  Enabled: true
+  EnforcedStyle: create_list
+RSpec/FactoryBot/FactoryClassName:
+  Enabled: true
 RSpec/FilePath:
   Enabled: true
   IgnoreMethods: true
@@ -1434,6 +1540,8 @@ RSpec/HookArgument:
   EnforcedStyle: implicit
 RSpec/HooksBeforeExamples:
  Enabled: true
+RSpec/IdenticalEqualityAssertion:
+  Enabled: true
 RSpec/ImplicitBlockExpectation:
  Enabled: true
 RSpec/ImplicitExpect:
@@ -1444,8 +1552,6 @@ RSpec/InstanceSpy:
 RSpec/InstanceVariable:
   Enabled: true
   AssignmentOnly: false
-RSpec/InvalidPredicateMatcher:
-  Enabled: true
 RSpec/ItBehavesLike:
   Enabled: true
   EnforcedStyle: it_behaves_like
@@ -1490,6 +1596,8 @@ RSpec/PredicateMatcher:
   Enabled: true
   Strict: false
   EnforcedStyle: inflected
+RSpec/Rails/AvoidSetupHook:
+  Enabled: true
 RSpec/RepeatedDescription:
   Enabled: true
 RSpec/RepeatedExample:
@@ -1498,6 +1606,8 @@ RSpec/RepeatedExampleGroupBody:
     Enabled: true
 RSpec/RepeatedExampleGroupDescription:
     Enabled: true
+RSpec/RepeatedIncludeExample:
+  Enabled: true
 RSpec/ReturnFromStub:
   Enabled: true
   EnforcedStyle: and_return
@@ -1513,6 +1623,8 @@ RSpec/SingleArgumentMessageChain:
   Enabled: true
 RSpec/SubjectStub:
   Enabled: true
+RSpec/StubbedMock:
+  Enabled: true
 RSpec/VariableDefinition:
     Enabled: true
 RSpec/VariableName:
@@ -1523,19 +1635,4 @@ RSpec/VerifiedDoubles:
 RSpec/VoidExpect:
   Enabled: true
 RSpec/Yield:
-  Enabled: true
-
-FactoryBot/AttributeDefinedStatically:
-  Enabled: true
-FactoryBot/CreateList:
-  Enabled: true
-  EnforcedStyle: create_list
-FactoryBot/FactoryClassName:
-    Enabled: true
-
-Capybara/CurrentPathExpectation:
-  Enabled: true
-Capybara/FeatureMethods:
-  Enabled: false
-Capybara/VisibilityMatcher:
   Enabled: true

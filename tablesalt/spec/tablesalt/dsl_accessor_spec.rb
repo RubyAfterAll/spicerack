@@ -106,7 +106,7 @@ RSpec.describe Tablesalt::DSLAccessor do
           let(:args) { [ new_value ] }
 
           it "raises" do
-            expect { dsl }.to raise_error NameError
+            expect { dsl }.to raise_error NameError, %r{internal attribute #{accessor} already set}
           end
         end
 

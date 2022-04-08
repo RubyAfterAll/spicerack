@@ -64,7 +64,7 @@ This... is a yml. You don't develop it. Go home, boilerplate gem README text, yo
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/Freshly/spicerack.
+Bug reports and pull requests are welcome on GitHub at https://github.com/RubyAfterAll/spicerack.
 
 ## License
 

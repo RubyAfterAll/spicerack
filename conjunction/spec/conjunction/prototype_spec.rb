@@ -14,7 +14,7 @@ RSpec.describe Conjunction::Prototype, type: :prototype do
       before { allow(example_prototype_class).to receive(:prototype).and_return(nil) }
 
       it "raises" do
-        expect { prototype! }.to raise_error NameError
+        expect { prototype! }.to raise_error NameError, %r{#{example_prototype_name} is not defined}
       end
     end
 

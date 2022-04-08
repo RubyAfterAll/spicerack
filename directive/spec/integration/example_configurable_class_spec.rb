@@ -416,8 +416,10 @@ RSpec.describe ExampleConfigurableClass, type: :configuration do
 
     context "when config delegation is not set up" do
       it "raises" do
-        expect { delegating_configurable_class.config }.to raise_error NoMethodError
-        expect { delegating_configurable_class.configure }.to raise_error NoMethodError
+        expect { delegating_configurable_class.config }.
+          to raise_error NoMethodError, %r{Configuration not set up for #{delegating_configurable_class}. Did you forget to call delegates_to_configuration?}
+        expect { delegating_configurable_class.configure }.
+          to raise_error NoMethodError, %r{Configuration not set up for #{delegating_configurable_class}. Did you forget to call delegates_to_configuration?}
       end
     end
   end
