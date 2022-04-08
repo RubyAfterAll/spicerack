@@ -4,7 +4,7 @@
 
 ## v0.29.0
 
-*Release Date*: 4/7/2022
+*Release Date*: 4/8/2022
 
 - No changes
 
