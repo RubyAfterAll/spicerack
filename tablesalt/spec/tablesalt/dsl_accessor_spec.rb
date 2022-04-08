@@ -114,7 +114,7 @@ RSpec.describe Tablesalt::DSLAccessor do
           let(:args) { Array.new(rand(2..5)) { new_value } }
 
           it "raises" do
-            expect { dsl }.to raise_error ArgumentError, "wrong number of arguments (given #{args.size}, expected 0)"
+            expect { dsl }.to raise_error ArgumentError, %r{wrong number of arguments \(given #{args.size}, expected 0\)}
           end
         end
       end

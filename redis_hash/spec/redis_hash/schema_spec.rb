@@ -48,7 +48,8 @@ RSpec.describe RedisHash::Schema, type: :module do
   describe "#assert_keys_allowed" do
     subject(:assert_keys_allowed) { example_redis_hash.__send__(:assert_keys_allowed, *keys) }
 
-    let(:keys) { Faker::Lorem.words(number: 2).map(&:to_sym) }
+    # Faker#unique seems to only work so-so
+    let(:keys) { Faker::Hipster.unique.words(number: 4).uniq.first(2).map(&:to_sym) }
 
     context "with no allowed keys" do
       it { is_expected.to eq true }
