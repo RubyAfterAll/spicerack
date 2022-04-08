@@ -6,6 +6,8 @@
 
 *Release Date*: 4/7/2022
 
+- Add ruby 3.1 support ([#10](https://github.com/RubyAfterAll/spicerack/pull/10))
+
 ### Spicerack::Styleguide - [see changes](spicerack-styleguide/CHANGELOG.md#v0.29.0)
 
 ## v0.28.0
