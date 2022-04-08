@@ -39,8 +39,6 @@ jobs:
       with:
         ruby-version: ${{ matrix.rubies[0] }}
         bundler-cache: true
-      env:
-        BUNDLE_DEPLOYMENT: false
     - name: Apply Rails ${{ matrix.rubies[1] }} dependencies
       run: |
         echo "gem 'activesupport', '~> ${{ matrix.rubies[1] }}'" >> Gemfile
