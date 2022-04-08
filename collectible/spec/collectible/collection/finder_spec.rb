@@ -21,7 +21,7 @@ RSpec.describe Collectible::Collection::Finder, type: :concern do
       let(:attribute) { SecureRandom.hex.to_sym }
 
       it "raises" do
-        expect { find_by }.to raise_error NoMethodError, "undefined method `#{attribute}' for #{item0}"
+        expect { find_by }.to raise_error NoMethodError, %r{undefined method `#{attribute}' for #{item0}}
       end
     end
 
@@ -65,7 +65,7 @@ RSpec.describe Collectible::Collection::Finder, type: :concern do
       let(:attribute) { SecureRandom.hex.to_sym }
 
       it "raises" do
-        expect { where }.to raise_error NoMethodError, "undefined method `#{attribute}' for #{item0}"
+        expect { where }.to raise_error NoMethodError, %r{undefined method `#{attribute}' for #{item0}}
       end
     end
 
