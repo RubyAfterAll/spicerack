@@ -13,6 +13,8 @@ RSpec.describe Tablesalt::ClassPass, type: :module do
 
       define_method(spec.method_name) { [ a, b ] }
 
+      class_exec(self, &spec.define_initialize)
+
       self
     end
   end
@@ -33,8 +35,8 @@ RSpec.describe Tablesalt::ClassPass, type: :module do
     context "when the class accepts kwargs" do
       let(:kwargs) { { a: attributes.first, b: attributes.last } }
 
-      before do
-        example_dsl_class.class_exec do
+      let(:define_initialize) do
+        proc do
           def initialize(a:, b:)
             @a = a
             @b = b
@@ -53,8 +55,8 @@ RSpec.describe Tablesalt::ClassPass, type: :module do
     context "when the class accepts args" do
       let(:args) { attributes }
 
-      before do
-        example_dsl_class.class_exec do
+      let(:define_initialize) do
+        proc do
           def initialize(a, b)
             @a = a
             @b = b
@@ -74,8 +76,8 @@ RSpec.describe Tablesalt::ClassPass, type: :module do
       let(:args) { [ attributes.first ] }
       let(:kwargs) { { b: attributes.last } }
 
-      before do
-        example_dsl_class.class_exec do
+      let(:define_initialize) do
+        proc do
           def initialize(a, b:)
             @a = a
             @b = b
@@ -92,8 +94,8 @@ RSpec.describe Tablesalt::ClassPass, type: :module do
     end
 
     context "when the class accepts no args" do
-      before do
-        example_dsl_class.class_exec do
+      let(:define_initialize) do
+        proc do
           def initialize; end
         end
       end
