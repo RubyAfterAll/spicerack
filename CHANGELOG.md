@@ -6,7 +6,7 @@
 
 *Release Date*: 8/23/2022
 
-- No changes
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#v0.29.1)
 
 ## v0.29.0
 
