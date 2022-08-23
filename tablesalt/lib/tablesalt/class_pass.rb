@@ -24,12 +24,15 @@ module Tablesalt
 
           _class_pass_methods << method
 
-          define_singleton_method method do |*args, **attrs|
-            # TODO: replace with ... when 2.6 support is removed
+          define_singleton_method method do |*args, **attrs, &block|
+            # TODO: remove this if branch when 2.6 support is removed
             if RUBY_VERSION < "2.7.0" && attrs.empty?
-              new(*args).public_send(to || method)
+              new(*args).public_send(to || method, &block)
+            # TODO: remove this if branch when 2.7 support is removed
+            elsif RUBY_VERSION < "3.0.0" && args.empty? && attrs.empty?
+              new.public_send(to || method, &block)
             else
-              new(*args, **attrs).public_send(to || method)
+              new(*args, **attrs).public_send(to || method, &block)
             end
           end
         end
