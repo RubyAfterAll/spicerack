@@ -25,7 +25,14 @@ RSpec.describe Tablesalt::ClassPass, type: :module do
     let(:method_name) { Faker::Hipster.unique.word }
     let(:attributes) { Array.new(2) { |i| double("attribute #{i}") } }
 
-    let(:example_instance) { example_dsl_class.new(*args, **kwargs) }
+    let(:example_instance) do
+      # TODO: remove top branch when ruby 2.7 support is removed
+      if args.empty? && kwargs.empty?
+        example_dsl_class.new
+      else
+        example_dsl_class.new(*args, **kwargs)
+      end
+    end
 
     let(:define_instance_method) do
       proc do |spec|
