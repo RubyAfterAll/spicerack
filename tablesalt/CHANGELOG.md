@@ -2,6 +2,8 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+- Pass blocks given to class pass methods to the underlying instance method ([#12](https://github.com/RubyAfterAll/spicerack/pull/12))
+
 ## v0.29.0
 
 *Release Date*: 4/8/2022
