@@ -58,6 +58,27 @@ class MyClass
 end
 ```
 
+#### Blocks
+Blocks passed to class pass methods will be passed to the instance method being called, *not* initialize.
+```ruby
+class MyClass
+  include Tablesalt::ClassPass
+  class_pass_method :call
+  
+  def initialize(a)
+    @a = a
+    yield "called from initialize" if block_given?
+  end
+    
+  def call
+    yield "called from call" if block_given?
+  end
+end
+
+MyClass.call(nil) { |str| puts str }
+"called from call"
+```
+
 ### DSLAccessor
 
 TODO: write usage instructions
