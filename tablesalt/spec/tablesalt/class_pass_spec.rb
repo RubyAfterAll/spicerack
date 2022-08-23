@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 RSpec.describe Tablesalt::ClassPass, type: :module do
-  subject(:example_object) { example_dsl_class.new }
-
   let(:example_dsl_class) do
     Class.new.instance_exec(self) do |spec|
       include spec.described_class
@@ -11,9 +9,8 @@ RSpec.describe Tablesalt::ClassPass, type: :module do
 
       attr_reader :a, :b
 
-      define_method(spec.method_name) { [ a, b ] }
-
-      class_exec(self, &spec.define_initialize)
+      class_exec(spec, &spec.define_instance_method)
+      class_exec(spec, &spec.define_initialize)
 
       self
     end
@@ -26,10 +23,37 @@ RSpec.describe Tablesalt::ClassPass, type: :module do
     let(:kwargs) { {} }
 
     let(:method_name) { Faker::Hipster.unique.word }
-    let(:attributes) { Array.new(2) { double } }
+    let(:attributes) { Array.new(2) { |i| double("attribute #{i}") } }
+
+    let(:example_instance) { example_dsl_class.new(*args, **kwargs) }
+
+    let(:define_instance_method) do
+      proc do |spec|
+        define_method(spec.method_name) { [ a, b ] }
+      end
+    end
 
     before do
-      allow(example_dsl_class).to receive(:new).and_call_original
+      if args.blank? && kwargs.blank?
+        allow(example_dsl_class).to receive(:new).with(no_args).and_return(example_instance)
+      else
+        allow(example_dsl_class).to receive(:new).with(*args, **kwargs).and_return(example_instance)
+      end
+
+      allow(example_instance).to receive(method_name).and_call_original
+    end
+
+    shared_context "when the method accepts a block" do
+      let(:block) { -> { block_return_value } }
+      let(:block_return_value) { double("block return value") }
+
+      let(:define_instance_method) do
+        proc do |spec|
+          define_method(spec.method_name) do |&block|
+            block.call
+          end
+        end
+      end
     end
 
     context "when the class accepts kwargs" do
@@ -49,6 +73,15 @@ RSpec.describe Tablesalt::ClassPass, type: :module do
       it "initializes with the provided params" do
         class_pass
         expect(example_dsl_class).to have_received(:new).with(a: attributes.first, b: attributes.last)
+        expect(example_instance).to have_received(method_name).with(no_args)
+      end
+
+      context "when a block is given" do
+        subject(:class_pass) { example_dsl_class.public_send(method_name, *args, **kwargs, &block) }
+
+        include_context "when the method accepts a block"
+
+        it { is_expected.to eq block_return_value }
       end
     end
 
@@ -69,6 +102,15 @@ RSpec.describe Tablesalt::ClassPass, type: :module do
       it "initializes with the provided params" do
         class_pass
         expect(example_dsl_class).to have_received(:new).with(*attributes)
+        expect(example_instance).to have_received(method_name).with(no_args)
+      end
+
+      context "when a block is given" do
+        subject(:class_pass) { example_dsl_class.public_send(method_name, *args, **kwargs, &block) }
+
+        include_context "when the method accepts a block"
+
+        it { is_expected.to eq block_return_value }
       end
     end
 
@@ -90,6 +132,15 @@ RSpec.describe Tablesalt::ClassPass, type: :module do
       it "initializes with the provided params" do
         class_pass
         expect(example_dsl_class).to have_received(:new).with(attributes.first, b: attributes.last)
+        expect(example_instance).to have_received(method_name).with(no_args)
+      end
+
+      context "when a block is given" do
+        subject(:class_pass) { example_dsl_class.public_send(method_name, *args, **kwargs, &block) }
+
+        include_context "when the method accepts a block"
+
+        it { is_expected.to eq block_return_value }
       end
     end
 
@@ -105,6 +156,15 @@ RSpec.describe Tablesalt::ClassPass, type: :module do
       it "initializes with the provided params" do
         class_pass
         expect(example_dsl_class).to have_received(:new).with(no_args)
+        expect(example_instance).to have_received(method_name).with(no_args)
+      end
+
+      context "when a block is given" do
+        subject(:class_pass) { example_dsl_class.public_send(method_name, *args, **kwargs, &block) }
+
+        include_context "when the method accepts a block"
+
+        it { is_expected.to eq block_return_value }
       end
     end
   end
