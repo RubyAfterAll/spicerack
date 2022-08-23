@@ -18,7 +18,9 @@ module Substance
 
         private
 
-        def define_attribute(attribute)
+        def define_attribute(attribute, *args, **kwargs)
+          # super if defined?(super)
+
           _attributes << attribute
           attr_accessor attribute
         end
