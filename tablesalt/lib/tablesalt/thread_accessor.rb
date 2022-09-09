@@ -63,9 +63,9 @@ module Tablesalt
       #   => "bar"
       #
       # @param method [String, Symbol] The name of the reader method
-      # @param thread_key [String, Symbol] The key to read from Thread.current
+      # @param thread_key [String, Symbol] The key to read from Thread.current. Default: <method>
       # @option :private [Boolean] If true, both defined methods will be private. Default: true
-      def thread_reader(method, thread_key, **options)
+      def thread_reader(method, thread_key = method, **options)
         define_method(method) { __thread_accessor_store_instance__[thread_key] }
         define_singleton_method(method) { __thread_accessor_store_instance__[thread_key] }
 
@@ -101,9 +101,9 @@ module Tablesalt
       #   to clear the thread store themselves.
       #
       # @param method [String, Symbol] The name of the writer method
-      # @param thread_key [String, Symbol] The key to write to on Thread.current
+      # @param thread_key [String, Symbol] The key to write to on Thread.current. Default: <method>
       # @option :private [Boolean] If true, both defined methods will be private. Default: true
-      def thread_writer(method, thread_key, **options)
+      def thread_writer(method, thread_key = method, **options)
         method_name = "#{method}="
 
         define_method(method_name) { |value| __thread_accessor_store_instance__[thread_key] = value }
@@ -136,9 +136,9 @@ module Tablesalt
       #   => "baz"
       #
       # @param method [String, Symbol] The name of the writer method
-      # @param thread_key [String, Symbol] The key to write to on Thread.current
+      # @param thread_key [String, Symbol] The key to write to on Thread.current. Default: <method>
       # @option :private [Boolean] If true, all defined methods will be private. Default: true
-      def thread_accessor(method, thread_key, **options)
+      def thread_accessor(method, thread_key = method, **options)
         thread_reader(method, thread_key, **options)
         thread_writer(method, thread_key, **options)
       end
