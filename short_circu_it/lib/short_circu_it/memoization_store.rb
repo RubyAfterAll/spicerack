@@ -25,10 +25,12 @@ module ShortCircuIt
 
       return value unless value == NOT_MEMOIZED
 
-      clear_memoization(method_name) unless current_memoization_for_method?(method_name)
+      state_hash = state_hash(method_name)
+
+      clear_memoization(method_name) unless current_memoization_for_method?(method_name, state_hash)
 
       yield.tap do |returned_value|
-        current_memoization_for_method(method_name)[argument_hash] = returned_value
+        current_memoization_for_method(method_name, state_hash)[argument_hash] = returned_value
       end
     end
 
@@ -37,7 +39,7 @@ module ShortCircuIt
     # @param *method_names [Symbol] The name of a memoized method
     # @return [Boolean] True if a value was cleared, false if not
     def clear_memoization(*method_names)
-      method_names.all? { |method_name| memoized_hash.delete(method_name.to_sym) }
+      method_names.all? { |method_name| memoized_hash.delete(method_name) }
     end
 
     # Clears all memoized values on the object
@@ -68,15 +70,19 @@ module ShortCircuIt
 
     # @param method_name [Symbol] The name of a memoized method
     # @return [Hash] A hash of memoized values for the current state of the observed objects for the given method.
-    def current_memoization_for_method(method_name)
+    def current_memoization_for_method(method_name, state_hash = nil)
+      state_hash ||= state_hash(method_name)
+
       # Memoize values inside a hash with default value of NOT_MEMOIZED
-      memoization_for_method(method_name)[state_hash(method_name)] ||= Hash.new(NOT_MEMOIZED)
+      memoization_for_method(method_name)[state_hash] ||= Hash.new(NOT_MEMOIZED)
     end
 
     # @param method_name [Symbol] The name of a memoized method
     # @return [Boolean] True if there are any memoized values for the current state of the observed objects.
-    def current_memoization_for_method?(method_name)
-      memoization_for_method(method_name).key?(state_hash(method_name))
+    def current_memoization_for_method?(method_name, state_hash = nil)
+      state_hash ||= state_hash(method_name)
+
+      memoization_for_method(method_name).key?(state_hash)
     end
 
     # @param method_name [Symbol] The name of a memoized method
