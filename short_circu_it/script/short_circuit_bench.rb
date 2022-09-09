@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "benchmark"
-require_relative "short_circu_it/lib/short_circu_it"
+require_relative "../lib/short_circu_it"
 
 class A
   include ShortCircuIt
