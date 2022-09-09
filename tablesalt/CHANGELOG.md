@@ -2,6 +2,8 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+- ThreadAccessor: Assign default thread key implicitly ([#14](https://github.com/RubyAfterAll/spicerack/pull/14))
+
 ## v0.29.1
 
 *Release Date*: 8/23/2022
