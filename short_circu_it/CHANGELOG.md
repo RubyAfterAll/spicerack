@@ -2,6 +2,8 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+- Remove redundant calls when fetching memoized values ([#15](https://github.com/RubyAfterAll/spicerack/pull/15))
+
 ## v0.29.1
 
 *Release Date*: 8/23/2022
