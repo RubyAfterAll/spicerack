@@ -22,3 +22,7 @@ path "." do
   gem "tablesalt"
   gem "technologic"
 end
+
+# Pin to < 5.0 until compatibility issues are resolved:
+# https://github.com/RubyAfterAll/spicerack/issues/16
+gem "redis", "< 5.0"
