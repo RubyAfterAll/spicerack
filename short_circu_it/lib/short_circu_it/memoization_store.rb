@@ -5,6 +5,7 @@ require "active_support/core_ext/module"
 module ShortCircuIt
   class MemoizationStore
     NOT_MEMOIZED = Object.new
+    private_constant :NOT_MEMOIZED
 
     delegate :memoization_observers, to: :owner
 
