@@ -2,6 +2,9 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+### ShortCircuIt - [see changes](short_circu_it/CHANGELOG.md#Upcoming)
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#Upcoming)
+
 ## v0.29.1
 
 *Release Date*: 8/23/2022
