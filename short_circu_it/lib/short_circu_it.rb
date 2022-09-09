@@ -73,7 +73,7 @@ module ShortCircuIt
     #   A method or array of methods to be observed to determine memoization cache validity.
     #   If any of the observed values change, the cached value will be invalidated.
     #   By default, the object will observe itself.
-    def memoize(*method_names, observes: nil)
+    def memoize(*method_names, observes: :itself)
       method_names.map(&:to_sym).each do |method_name|
         add_memoized_observers(method_name, observes)
 
