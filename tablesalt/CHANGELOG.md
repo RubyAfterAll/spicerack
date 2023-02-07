@@ -2,6 +2,10 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## v0.29.2
+
+*Release Date*: 2/6/2023
+
 - ThreadAccessor: Assign default thread key implicitly ([#14](https://github.com/RubyAfterAll/spicerack/pull/14))
 - Remove Ruby 2.6 support ([#19](https://github.com/RubyAfterAll/spicerack/pull/19))
 
