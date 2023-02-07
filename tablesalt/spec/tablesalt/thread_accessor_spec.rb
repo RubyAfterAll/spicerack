@@ -23,97 +23,211 @@ RSpec.describe Tablesalt::ThreadAccessor do
   end
 
   describe ".thread_reader" do
-    before { example_class.__send__(:thread_reader, method, thread_key, private: private?) }
+    let(:arguments) do
+      [
+        method,
+        thread_key,
+      ]
+    end
+
+    before { example_class.__send__(:thread_reader, *arguments, private: private?) }
 
     it "is private" do
       expect { example_class.thread_reader(method, thread_key) }.to raise_error(NoMethodError)
     end
 
-    context "when private option is true" do
-      let(:private?) { true }
+    context "when thread key is provided" do
+      context "when private option is true" do
+        let(:private?) { true }
 
-      it_behaves_like "a thread reader" do
-        let(:receiver) { instance }
+        it_behaves_like "a thread reader" do
+          let(:receiver) { instance }
+        end
+
+        it_behaves_like "a thread reader" do
+          let(:receiver) { example_class }
+        end
       end
 
-      it_behaves_like "a thread reader" do
-        let(:receiver) { example_class }
+      context "when private option is false" do
+        let(:private?) { false }
+
+        it_behaves_like "a thread reader" do
+          let(:receiver) { instance }
+        end
+
+        it_behaves_like "a thread reader" do
+          let(:receiver) { example_class }
+        end
       end
     end
 
-    context "when private option is false" do
-      let(:private?) { false }
+    context "when thread key is not provided" do
+      let(:arguments) { [ method ] }
+      let(:thread_key) { method }
 
-      it_behaves_like "a thread reader" do
-        let(:receiver) { instance }
+      context "when private option is true" do
+        let(:private?) { true }
+
+        it_behaves_like "a thread reader" do
+          let(:receiver) { instance }
+        end
+
+        it_behaves_like "a thread reader" do
+          let(:receiver) { example_class }
+        end
       end
 
-      it_behaves_like "a thread reader" do
-        let(:receiver) { example_class }
+      context "when private option is false" do
+        let(:private?) { false }
+
+        it_behaves_like "a thread reader" do
+          let(:receiver) { instance }
+        end
+
+        it_behaves_like "a thread reader" do
+          let(:receiver) { example_class }
+        end
       end
     end
   end
 
   describe ".thread_writer" do
-    before { example_class.__send__(:thread_writer, method, thread_key, private: private?) }
+    let(:arguments) do
+      [
+        method,
+        thread_key,
+      ]
+    end
+
+    before { example_class.__send__(:thread_writer, *arguments, private: private?) }
 
     it "is private" do
       expect { example_class.thread_writer(method, thread_key) }.to raise_error(NoMethodError)
     end
 
-    context "when private option is true" do
-      let(:private?) { true }
+    context "when thread key is provided" do
+      context "when private option is true" do
+        let(:private?) { true }
 
-      it_behaves_like "a thread writer" do
-        let(:receiver) { instance }
+        it_behaves_like "a thread writer" do
+          let(:receiver) { instance }
+        end
+
+        it_behaves_like "a thread writer" do
+          let(:receiver) { example_class }
+        end
       end
 
-      it_behaves_like "a thread writer" do
-        let(:receiver) { example_class }
+      context "when private option is false" do
+        let(:private?) { false }
+
+        it_behaves_like "a thread writer" do
+          let(:receiver) { instance }
+        end
+
+        it_behaves_like "a thread writer" do
+          let(:receiver) { example_class }
+        end
       end
     end
 
-    context "when private option is false" do
-      let(:private?) { false }
+    context "when thread key is not provided" do
+      let(:arguments) { [ method ] }
+      let(:thread_key) { method }
 
-      it_behaves_like "a thread writer" do
-        let(:receiver) { instance }
+      context "when private option is true" do
+        let(:private?) { true }
+
+        it_behaves_like "a thread writer" do
+          let(:receiver) { instance }
+        end
+
+        it_behaves_like "a thread writer" do
+          let(:receiver) { example_class }
+        end
       end
 
-      it_behaves_like "a thread writer" do
-        let(:receiver) { example_class }
+      context "when private option is false" do
+        let(:private?) { false }
+
+        it_behaves_like "a thread writer" do
+          let(:receiver) { instance }
+        end
+
+        it_behaves_like "a thread writer" do
+          let(:receiver) { example_class }
+        end
       end
     end
   end
 
   describe ".thread_accessor" do
-    before { example_class.__send__(:thread_accessor, method, thread_key, private: private?) }
+    let(:arguments) do
+      [
+        method,
+        thread_key,
+      ]
+    end
+
+    before { example_class.__send__(:thread_accessor, *arguments, private: private?) }
 
     it "is private" do
       expect { example_class.thread_accessor(method, thread_key) }.to raise_error(NoMethodError)
     end
 
-    context "when private option is true" do
-      let(:private?) { true }
+    context "when thread key is provided" do
+      context "when private option is true" do
+        let(:private?) { true }
 
-      it_behaves_like "a thread accessor" do
-        let(:receiver) { instance }
+        it_behaves_like "a thread accessor" do
+          let(:receiver) { instance }
+        end
+
+        it_behaves_like "a thread accessor" do
+          let(:receiver) { example_class }
+        end
       end
 
-      it_behaves_like "a thread accessor" do
-        let(:receiver) { example_class }
+      context "when private option is false" do
+        let(:private?) { false }
+
+        it_behaves_like "a thread accessor" do
+          let(:receiver) { instance }
+        end
+
+        it_behaves_like "a thread accessor" do
+          let(:receiver) { example_class }
+        end
       end
     end
 
-    context "when private option is false" do
-      let(:private?) { false }
+    context "when thread key is not provided" do
+      let(:arguments) { [ method ] }
+      let(:thread_key) { method }
 
-      it_behaves_like "a thread accessor" do
-        let(:receiver) { instance }
+      context "when private option is true" do
+        let(:private?) { true }
+
+        it_behaves_like "a thread accessor" do
+          let(:receiver) { instance }
+        end
+
+        it_behaves_like "a thread accessor" do
+          let(:receiver) { example_class }
+        end
       end
 
-      it_behaves_like "a thread accessor" do
-        let(:receiver) { example_class }
+      context "when private option is false" do
+        let(:private?) { false }
+
+        it_behaves_like "a thread accessor" do
+          let(:receiver) { instance }
+        end
+
+        it_behaves_like "a thread accessor" do
+          let(:receiver) { example_class }
+        end
       end
     end
   end

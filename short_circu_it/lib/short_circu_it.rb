@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
-require "short_circu_it/version"
-require "short_circu_it/errors"
-require "short_circu_it/memoization_store"
 require "active_support/core_ext/module"
 require "active_support/core_ext/array"
 require "active_support/concern"
 require "around_the_world"
+
+require_relative "short_circu_it/version"
+require_relative "short_circu_it/errors"
+require_relative "short_circu_it/memoization_store"
 
 module ShortCircuIt
   extend ActiveSupport::Concern
@@ -80,13 +81,8 @@ module ShortCircuIt
           method_name,
           prevent_double_wrapping_for: ShortCircuIt,
         ) do |*args, **opts|
-          memoization_store.memoize(method_name, (args + [ opts ]).hash) do
-            # TODO: replace with `super(*args, **opts)` when <= 2.6 support is dropped
-            if RUBY_VERSION < "2.7" && opts.blank?
-              super(*args)
-            else
-              super(*args, **opts)
-            end
+          memoization_store.memoize(method_name, args, opts) do
+            super(*args, **opts)
           end
         end
       end

@@ -41,12 +41,7 @@ module Substance
           around_method method do |*args, **opts|
             raise NotValidatedError unless validated_output?(method)
 
-            # TODO: replace with `super(...)` when <= 2.6 support is dropped
-            if RUBY_VERSION < "2.7" && opts.blank?
-              super(*args)
-            else
-              super(*args, **opts)
-            end
+            super(*args, **opts)
           end
         end
       end

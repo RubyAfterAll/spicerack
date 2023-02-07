@@ -29,10 +29,6 @@ RSpec.describe Tablesalt::ClassPass, type: :module do
       # TODO: remove top branch when ruby 2.7 support is removed
       if args.empty? && kwargs.empty?
         example_dsl_class.new
-
-      # TODO: remove this branch when ruby 2.6 support is removed
-      elsif kwargs.empty? && RUBY_VERSION < "2.7.0"
-        example_dsl_class.new(*args)
       else
         example_dsl_class.new(*args, **kwargs)
       end
@@ -47,10 +43,6 @@ RSpec.describe Tablesalt::ClassPass, type: :module do
     before do
       if args.blank? && kwargs.blank?
         allow(example_dsl_class).to receive(:new).with(no_args).and_return(example_instance)
-
-      # TODO: remove this branch when ruby 2.6 support is removed
-      elsif kwargs.blank? && RUBY_VERSION < "2.7.0"
-        allow(example_dsl_class).to receive(:new).with(*args).and_return(example_instance)
       else
         allow(example_dsl_class).to receive(:new).with(*args, **kwargs).and_return(example_instance)
       end
@@ -116,7 +108,17 @@ RSpec.describe Tablesalt::ClassPass, type: :module do
 
       it "initializes with the provided params" do
         class_pass
-        expect(example_dsl_class).to have_received(:new).with(*attributes)
+
+        # Remove after 2.7 support is removed
+        if RUBY_VERSION <= "3.0.0"
+          expect(example_dsl_class).to have_received(:new) do |*received_args, **received_kwargs|
+            expect(received_args).to eq args
+            expect(received_kwargs).to eq kwargs
+          end
+        else
+          expect(example_dsl_class).to have_received(:new).with(*attributes)
+        end
+
         expect(example_instance).to have_received(method_name).with(no_args)
       end
 

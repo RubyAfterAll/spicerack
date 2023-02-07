@@ -127,7 +127,7 @@ CurrentUser.current_user
 Yep, when you mess with thread variables, you need to think about thread safety. For Rack applications, `ThreadAccessor` ships with a Rack middleware component:
 ```ruby
 # in config/initializers/rack.rb, or config/initializers/tablesalt.rb, or anywhere else in your boot path:
-config.middleware.use TableSalt::ThreadAccessor::RackMiddleware
+Rails.application.config.middleware.use Tablesalt::ThreadAccessor::RackMiddleware
 ```
 
 If your application isn't on Rack, you'll need to add a little more code manually to take care of this:

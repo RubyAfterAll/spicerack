@@ -2,6 +2,15 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## v0.29.2
+
+*Release Date*: 2/6/2023
+
+- Remove Ruby 2.6 support ([#19](https://github.com/RubyAfterAll/spicerack/pull/19))
+
+### ShortCircuIt - [see changes](short_circu_it/CHANGELOG.md#Upcoming)
+### Tablesalt - [see changes](tablesalt/CHANGELOG.md#Upcoming)
+
 ## v0.29.1
 
 *Release Date*: 8/23/2022
