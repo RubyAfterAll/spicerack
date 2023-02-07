@@ -48,11 +48,7 @@ class SomeClass
     !!@something_happened
   end
   
-  around_method :make_something_happen!, :did_something_happened? do |*args| # use |...| for ruby 2.7+
-    # For Ruby <= 2.6:
-    things_happened = super(*args)
-    
-    #Or, for Ruby <= 2.7:
+  around_method :make_something_happen!, :did_something_happened? do |..|
     things_happened = super(...)
 
     if things_happened
@@ -113,7 +109,7 @@ class SomeClass
     def a_singleton_method; end
 
     around_method :a_singleton_method do |...|
-      super(...) # See above for ruby <= 2.6 syntax
+      super(...)
 
       "It works for class methods too!"
     end

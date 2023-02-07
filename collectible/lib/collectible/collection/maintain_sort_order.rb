@@ -45,12 +45,7 @@ module Collectible
             around_method(method_name, prevent_double_wrapping_for: "MaintainSortingOrder") do |*args, **opts, &block|
               raise Collectible::MethodNotAllowedError, "cannot call #{method_name} when sorted" if maintain_sort_order?
 
-              # TODO: replace with `super(...)` when <= 2.6 support is dropped
-              if RUBY_VERSION < "2.7" && opts.blank?
-                super(*args, &block)
-              else
-                super(*args, **opts, &block)
-              end
+              super(*args, **opts, &block)
             end
           end
         end

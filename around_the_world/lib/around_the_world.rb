@@ -23,11 +23,7 @@ module AroundTheWorld
     #
     # @example
     #   class SomeClass
-    #     around_method :make_something_happen!, :did_something_happened? do |*args| # use |...| for ruby 2.7+
-    #       # For Ruby <= 2.6:
-    #       things_happened = super(*args)
-
-    #       #Or, for Ruby <= 2.7:
+    #     around_method :make_something_happen!, :did_something_happened? do |...|
     #       things_happened = super(...)
 
     #       if things_happened
