@@ -3,6 +3,7 @@
 ## Upcoming <!-- Add unreleased change notes here: -->
 
 - Remove redundant calls when fetching memoized values ([#15](https://github.com/RubyAfterAll/spicerack/pull/15))
+- Remove Ruby 2.6 support ([#19](https://github.com/RubyAfterAll/spicerack/pull/19))
 
 ## v0.29.1
 

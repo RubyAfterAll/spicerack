@@ -3,6 +3,7 @@
 ## Upcoming <!-- Add unreleased change notes here: -->
 
 - ThreadAccessor: Assign default thread key implicitly ([#14](https://github.com/RubyAfterAll/spicerack/pull/14))
+- Remove Ruby 2.6 support ([#19](https://github.com/RubyAfterAll/spicerack/pull/19))
 
 ## v0.29.1
 
