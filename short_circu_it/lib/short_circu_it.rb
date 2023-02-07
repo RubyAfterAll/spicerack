@@ -82,12 +82,7 @@ module ShortCircuIt
           prevent_double_wrapping_for: ShortCircuIt,
         ) do |*args, **opts|
           memoization_store.memoize(method_name, args, opts) do
-            # TODO: replace with `super(*args, **opts)` when <= 2.6 support is dropped
-            if RUBY_VERSION < "2.7" && opts.blank?
-              super(*args)
-            else
-              super(*args, **opts)
-            end
+            super(*args, **opts)
           end
         end
       end

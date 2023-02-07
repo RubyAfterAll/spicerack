@@ -2,6 +2,8 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+- Remove Ruby 2.6 support ([#19](https://github.com/RubyAfterAll/spicerack/pull/19))
+
 ### ShortCircuIt - [see changes](short_circu_it/CHANGELOG.md#Upcoming)
 ### Tablesalt - [see changes](tablesalt/CHANGELOG.md#Upcoming)
 
