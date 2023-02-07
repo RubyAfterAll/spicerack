@@ -7,6 +7,7 @@
 *Release Date*: 2/6/2023
 
 - Remove Ruby 2.6 support ([#19](https://github.com/RubyAfterAll/spicerack/pull/19))
+- Fix Capybara namespaces ([#20](https://github.com/RubyAfterAll/spicerack/pull/20))
 
 ## v0.29.1
 
