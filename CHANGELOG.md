@@ -2,6 +2,8 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+ - Drop 2.7 support, add 3.3 & rails 7.1 ([#22](https://github.com/RubyAfterAll/spicerack/pull/22))
+
 ## v0.29.2
 
 *Release Date*: 2/6/2023
