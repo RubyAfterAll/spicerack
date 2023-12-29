@@ -2,7 +2,8 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
-- Fixed `DeprecatedConstantAccessor.deprecate_constant without a deprecator is deprecated` warnings
+- Fixed `DeprecatedConstantAccessor.deprecate_constant without a deprecator is deprecated` warnings ([#21](https://github.com/RubyAfterAll/spicerack/pull/21))
+ - Drop 2.7 support, add 3.3 & rails 7.1 ([#22](https://github.com/RubyAfterAll/spicerack/pull/22))
 
 ## v0.29.2
 
