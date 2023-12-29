@@ -2,6 +2,12 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+## v0.29.3
+
+*Release Date*: 12/29/2023
+
+- No changes
+
 ## v0.29.2
 
 *Release Date*: 2/6/2023

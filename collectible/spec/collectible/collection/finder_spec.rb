@@ -21,7 +21,11 @@ RSpec.describe Collectible::Collection::Finder, type: :concern do
       let(:attribute) { Faker::Alphanumeric.alpha(number: 10).to_sym }
 
       it "raises" do
-        expect { find_by }.to raise_error NoMethodError, %r{undefined method `#{attribute}' for #{item0}}
+        if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("3.3.0")
+          expect { find_by }.to raise_error NoMethodError, %r{undefined method `#{attribute}' for an instance of #{item_class}}
+        else
+          expect { find_by }.to raise_error NoMethodError, %r{undefined method `#{attribute}' for #{item0}}
+        end
       end
     end
 
@@ -65,7 +69,11 @@ RSpec.describe Collectible::Collection::Finder, type: :concern do
       let(:attribute) { Faker::Alphanumeric.alpha(number: 10).to_sym }
 
       it "raises" do
-        expect { where }.to raise_error NoMethodError, %r{undefined method `#{attribute}' for #{item0}}
+        if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("3.3.0")
+          expect { where }.to raise_error NoMethodError, %r{undefined method `#{attribute}' for an instance of #{item_class}}
+        else
+          expect { where }.to raise_error NoMethodError, %r{undefined method `#{attribute}' for #{item0}}
+        end
       end
     end
 

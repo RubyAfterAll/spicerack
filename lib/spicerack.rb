@@ -23,9 +23,11 @@ module Spicerack
 
   include ActiveSupport::Deprecation::DeprecatedConstantAccessor
 
-  deprecate_constant "RootObject", "Substance::RootObject"
-  deprecate_constant "AttributeObject", "Substance::AttributeObject"
-  deprecate_constant "InputModel", "Substance::InputModel"
-  deprecate_constant "InputObject", "Substance::InputObject"
-  deprecate_constant "OutputObject", "Substance::OutputObject"
+  const_deprecator = ActiveSupport::Deprecation.new
+
+  deprecate_constant :RootObject, "Substance::RootObject", deprecator: const_deprecator
+  deprecate_constant :AttributeObject, "Substance::AttributeObject", deprecator: const_deprecator
+  deprecate_constant :InputModel, "Substance::InputModel", deprecator: const_deprecator
+  deprecate_constant :InputObject, "Substance::InputObject", deprecator: const_deprecator
+  deprecate_constant :OutputObject, "Substance::OutputObject", deprecator: const_deprecator
 end

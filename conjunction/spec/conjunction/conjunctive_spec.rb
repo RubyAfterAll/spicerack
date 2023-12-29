@@ -5,8 +5,8 @@ RSpec.describe Conjunction::Conjunctive, type: :conjunctive do
 
   it { is_expected.to include_module Conjunction::Prototype }
 
-  it { is_expected.to delegate_method(:conjugate).to(:class) }
-  it { is_expected.to delegate_method(:conjugate!).to(:class) }
+  it { is_expected.to delegate_method(:conjugate).to(:class).with_arguments(Faker::Lorem.word) }
+  it { is_expected.to delegate_method(:conjugate!).to(:class).with_arguments(Faker::Lorem.word) }
 
   shared_examples_for "conjunction_for is called" do |method_name|
     let(:junction) { Class.new }
