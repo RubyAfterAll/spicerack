@@ -26,5 +26,3 @@ end
 # Pin to < 5.0 until compatibility issues are resolved:
 # https://github.com/RubyAfterAll/spicerack/issues/16
 gem "redis", "< 5.0"
-gem "rails", "> 7.1.0"
-gem "pry"
