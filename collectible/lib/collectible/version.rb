@@ -2,5 +2,5 @@
 
 module Collectible
   # This constant is managed by spicerack
-  VERSION = "0.29.2"
+  VERSION = "0.29.3"
 end
