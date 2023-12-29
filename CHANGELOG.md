@@ -2,6 +2,8 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+- Fixed `DeprecatedConstantAccessor.deprecate_constant without a deprecator is deprecated` warnings
+
 ## v0.29.2
 
 *Release Date*: 2/6/2023
