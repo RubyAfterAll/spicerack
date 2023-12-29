@@ -6,9 +6,9 @@ RSpec.describe Conjunction::Junction, type: :junction do
   it { is_expected.to include_module Conjunction::Conjunctive }
   it { is_expected.to include_module Conjunction::NamingConvention }
 
-  it { is_expected.to delegate_method(:conjunction_for!).to(:class) }
-  it { is_expected.to delegate_method(:conjunction_for).to(:class) }
-  it { is_expected.to delegate_method(:conjunction_name_for).to(:class) }
+  it { is_expected.to delegate_method(:conjunction_for!).to(:class).with_arguments(*Faker::Lorem.words(number: 2)) }
+  it { is_expected.to delegate_method(:conjunction_for).to(:class).with_arguments(*Faker::Lorem.words(number: 2)) }
+  it { is_expected.to delegate_method(:conjunction_name_for).to(:class).with_arguments(*Faker::Lorem.words(number: 2)) }
 
   describe ".junction_key" do
     subject { example_junction_class.junction_key }
