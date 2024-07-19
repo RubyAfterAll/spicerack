@@ -1523,13 +1523,6 @@ RSpec/ExpectInHook:
   Enabled: true
 RSpec/ExpectOutput:
   Enabled: true
-RSpec/FactoryBot/AttributeDefinedStatically:
-  Enabled: true
-RSpec/FactoryBot/CreateList:
-  Enabled: true
-  EnforcedStyle: create_list
-RSpec/FactoryBot/FactoryClassName:
-  Enabled: true
 RSpec/FilePath:
   Enabled: true
   IgnoreMethods: true
@@ -1596,8 +1589,6 @@ RSpec/PredicateMatcher:
   Enabled: true
   Strict: false
   EnforcedStyle: inflected
-RSpec/Rails/AvoidSetupHook:
-  Enabled: true
 RSpec/RepeatedDescription:
   Enabled: true
 RSpec/RepeatedExample:
@@ -1635,4 +1626,15 @@ RSpec/VerifiedDoubles:
 RSpec/VoidExpect:
   Enabled: true
 RSpec/Yield:
+  Enabled: true
+
+RSpecRails/AvoidSetupHook:
+  Enabled: true
+
+FactoryBot/AttributeDefinedStatically:
+  Enabled: true
+FactoryBot/CreateList:
+  Enabled: true
+  EnforcedStyle: create_list
+FactoryBot/FactoryClassName:
   Enabled: true
