@@ -2,6 +2,8 @@
 
 ## Upcoming <!-- Add unreleased change notes here: -->
 
+- Fix cop namespaces ([#24](https://github.com/RubyAfterAll/spicerack/pull/24))
+
 ## v0.29.3
 
 *Release Date*: 12/29/2023
